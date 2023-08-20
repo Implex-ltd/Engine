@@ -14,7 +14,7 @@ var (
 	HSW_VERSION = "a91272a"
 
 	ARGS = []string{
-		"--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+		"--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
 		"--disable-popup-blocking", // "discord ask access to position, lol?, no way!"
 
 		"--no-sandbox",
@@ -23,6 +23,7 @@ var (
 		"--disable-dev-shm-usage",
 		"--enable-gpu",
 		//"--headless",
+		"--headless=new",
 	}
 )
 

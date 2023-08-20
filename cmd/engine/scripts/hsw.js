@@ -4236,11 +4236,11 @@ var hsw = function () {
     function II(A) {
         let resp = fuckhcaptcha(A)
         if (resp.ok) {
-            console.log('FUCKED', A)
+          //  console.log('FUCKED', A)
             return undefined
         }
         A = resp.a
-        console.log(A)
+       // console.log(A)
 
         lg === bg.length && bg.push(bg.length + 1);
         const g = lg;

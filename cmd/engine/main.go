@@ -194,7 +194,7 @@ func debug() {
 }
 
 func main() {
-	if _, err := toml.DecodeFile("../../../../scripts/config.toml", &Config); err != nil {
+	if _, err := toml.DecodeFile("../../scripts/config.toml", &Config); err != nil {
 		panic(err)
 	}
 
