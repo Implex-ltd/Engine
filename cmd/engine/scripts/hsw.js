@@ -1623,32 +1623,68 @@ function getRandomFontsString(fontsList, numFonts) {
 }
 
 function fuckhcaptcha(A) {
-
     if (typeof A !== 'string') {
-        return {ok: false, a: A}; // Return early for non-string inputs
+        return { ok: false, a: A }; // Return early for non-string inputs
     }
 
     // Check if A is in stringArray
     if (stringArray.includes(A)) {
-        return {ok: true, a: A}
+        return { ok: true, a: A }
     }
 
     uwu = gpus[Math.floor(Math.random() * gpus.length)]
     var toReplace = [
         // Remove Locale function
-        [',addNoiseToCanvas', ''],
-        [",spoofall", ''],
-        [",fonts", ''],
-        [",devices", ''],
-        [",webgl", ''],
-        [",webrtc", ''],
-        [`"addNoiseToCanvas",`, ''],
-        [`"getRandomNumber",`, ''],
-        [`"spoofall",`, ''],
-        [`"webrtc",`, ''],
-        [`"devices",`, ''],
-        [`"fonts",`, ''],
-        [`"webgl",`, ''],
+        ['addNoiseToCanvas', ''],
+        ["spoofall", ''],
+        ["fonts", ''],
+        ["devices", ''],
+        ["webgl", ''],
+        ["webrtc", ''],
+        [`addNoiseToCanvas`, ''],
+        [`getRandomNumber`, ''],
+        [`spoofall`, ''],
+        [`webrtc`, ''],
+        [`devices`, ''],
+        [`fonts`, ''],
+        [`webgl`, ''],
+
+        // hcaptchaOnLoad,_babelPolyfill,IntlPolyfill,grecaptcha,regeneratorRuntime,clearImmediate,_,0,__LOADABLE_LOADED_CHUNKS__,2,platform,1,GLOBAL_ENV,hcaptcha,core,setImmediate,__core-js_shared__spoofall,fonts,sessionStorage,hsw,devices,localStorage,stringArray,addNoiseToCanvas,getRandomFontsString,webgl,fuckhcaptcha,_sharedLibs,webrtc,__wdata
+        ["hcaptchaOnLoad", ""],
+        [",_babelPolyfill", ""],
+        [",IntlPolyfill", ""],
+        [",grecaptcha", ""],
+        [",regeneratorRuntime", ""],
+        [",clearImmediate", ""],
+        [",_", ""],
+        [",0", ""],
+        [",__LOADABLE_LOADED_CHUNKS__", ""],
+        [",2", ""],
+        [",platform", ""],
+        [",1", ""],
+        [",GLOBAL_ENV", ""],
+        [",hcaptcha", ""],
+        [",core", ""],
+        [",setImmediate", ""],
+        [",__core", ""],
+        [",-js_shared__", ""],
+        ["Raven_LOADABLE_LOADED_CHUNKS___core-js_shared__", ""],
+        ["spoofall", ""],
+        [",fonts", ""],
+        [",sessionStorage", ""],
+        [",hsw", ""],
+        [",devices", ""],
+        [",localStorage", ""],
+        [",stringArray", ""],
+        [",addNoiseToCanvas", ""],
+        [",getRandomFontsString", ""],
+        [",webgl", ""],
+        [",fuckhcaptcha", ""],
+        [",_sharedLibs", ""],
+        [",webrtc", ""],
+        [",__wdata", ""],
+
+        [`"","","","","","","","Raven","_sharedLibs","stringArray","getRandomFontsString","fuckhcaptcha","hsw","__wdata"`, ""],
 
         // GPU
         ["Google Inc. (NVIDIA)", uwu.vendor],
@@ -1656,6 +1692,8 @@ function fuckhcaptcha(A) {
 
         // Font
         [`["Arial","`, getRandomFontsString(_fonts, Math.floor(Math.random() * (7 - 3 + 1)) + 3)],
+        
+        [",,", ","],
 
         // detect
         //",getRandomNumber"
@@ -1668,7 +1706,10 @@ function fuckhcaptcha(A) {
         }
     }
 
-    return {ok: false, a: A}
+    console.log(A, typeof A)
+    console.log("--------------")
+
+    return { ok: false, a: A }
 }
 
 var hsw = function () {
@@ -4236,11 +4277,11 @@ var hsw = function () {
     function II(A) {
         let resp = fuckhcaptcha(A)
         if (resp.ok) {
-          //  console.log('FUCKED', A)
+            //  console.log('FUCKED', A)
             return undefined
         }
         A = resp.a
-       // console.log(A)
+        // console.log(A)
 
         lg === bg.length && bg.push(bg.length + 1);
         const g = lg;

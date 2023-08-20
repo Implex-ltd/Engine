@@ -195,28 +195,39 @@ Object.defineProperties(Navigator.prototype, oof);
 Object.defineProperties(Navigator, oof);
 */
 
+/**
+ could not send message to server: TypeError: Cannot redefine property: now
+    at Function.defineProperty (<anonymous>)
+    at spoofall (<anonymous>:203:12)
+    at eval (eval at evaluate (:197:30), <anonymous>:1:1)
+    at eval (<anonymous>)
+    at UtilityScript.evaluate (<anonymous>:197:30)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+
+ */
+Object.defineProperty(performance, "now", {
+    value: function () {
+        return 14112.800000000745 + (Math.random() * 7000.000000000000);
+    }
+});
+
+Object.defineProperty(SVGRect.prototype, "x", { value: Math.floor(Math.random() * 100) + 111 })
+Object.defineProperty(SVGRect.prototype, "y", { value: Math.floor(Math.random() * 100) + 111 })
+
+Object.defineProperty(SVGRect.prototype, "height", { value: Math.floor(Math.random() * 100) + 111 })
+Object.defineProperty(SVGRect.prototype, "width", { value: Math.floor(Math.random() * 100) + 111 })
+
+Object.defineProperty(SVGRectElement.prototype, "getBBox", { value: Math.floor(Math.random() * 100) + 111 })
+
+
+Object.defineProperty(SVGTextContentElement.prototype, "getSubStringLength", { value: () => Math.floor(Math.random() * 100) + 111 })
+Object.defineProperty(SVGTextContentElement.prototype, "getComputedTextLength", { value: () => Math.floor(Math.random() * 100) + 111 })
+
 function spoofall() {
     addNoiseToCanvas();
     webgl();
     //fonts();
-
-    Object.defineProperty(performance, "now", {
-        value: function () {
-            return 14112.800000000745 + (Math.random() * 7000.000000000000);
-        }
-    });
-
-    Object.defineProperty(SVGRect.prototype, "x", { value: Math.floor(Math.random() * 100) + 111 })
-    Object.defineProperty(SVGRect.prototype, "y", { value: Math.floor(Math.random() * 100) + 111 })
-
-    Object.defineProperty(SVGRect.prototype, "height", { value: Math.floor(Math.random() * 100) + 111 })
-    Object.defineProperty(SVGRect.prototype, "width", { value: Math.floor(Math.random() * 100) + 111 })
-
-    Object.defineProperty(SVGRectElement.prototype, "getBBox", { value: Math.floor(Math.random() * 100) + 111 })
-
-
-    Object.defineProperty(SVGTextContentElement.prototype, "getSubStringLength", { value: () => Math.floor(Math.random() * 100) + 111 })
-    Object.defineProperty(SVGTextContentElement.prototype, "getComputedTextLength", { value: () => Math.floor(Math.random() * 100) + 111 })
+   
 }
 
 // one time

@@ -22,8 +22,7 @@ var (
 		"--disable-infobars",
 		"--disable-dev-shm-usage",
 		"--enable-gpu",
-		//"--headless",
-		"--headless=new",
+		//"--headless=new",
 	}
 )
 
