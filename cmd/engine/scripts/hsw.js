@@ -4025,7 +4025,7 @@ var hsw = function () {
 
     function II(A) {
         uii++
-        if (uii == 706) {
+        //if (uii == 706) {
 
             // FUCK GPU
             let GPU = ['NVIDIA SUPER 5070TI', 'ANGLE (NVIDIA, NVIDIA GeForce RTX ULTRA-UHQ HSL 7050 Ti Direct3D11 vs_5_0 ps_5_0, D3D11)']
@@ -4062,10 +4062,10 @@ var hsw = function () {
             // langs
             // bg[100]
 
-            console.log(bg)
-        }
+           // console.log(bg)
+       // }
         //console.log(bg)
-        console.log(uii)
+        
         /*let resp = fuckhcaptcha(A)
         if (resp.ok) {
             //  console.log('FUCKED', A)
