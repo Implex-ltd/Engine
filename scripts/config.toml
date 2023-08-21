@@ -31,7 +31,7 @@ debug = false
 
 [engine]
 browserHswThreadCount = 500
-browserCount = 8
+browserCount = 2
 
 [extra]
 theme = "random"

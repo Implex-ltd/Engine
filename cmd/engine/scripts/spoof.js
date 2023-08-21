@@ -205,6 +205,8 @@ Object.defineProperties(Navigator, oof);
     at UtilityScript.<anonymous> (<anonymous>:1:44)
 
  */
+
+    
 Object.defineProperty(performance, "now", {
     value: function () {
         return 14112.800000000745 + (Math.random() * 7000.000000000000);
@@ -231,7 +233,7 @@ function spoofall() {
 }
 
 // one time
-webrtc();
+//webrtc();
 devices();
 
 spoofall();
