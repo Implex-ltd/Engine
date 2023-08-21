@@ -4041,12 +4041,26 @@ var hsw = function () {
             bg[54][1] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ChromeHsw/1337.0.0.0 Safari/537.36"
             bg[54][2] = 69 // device memory
             bg[54][3] = 1337 // hardware conccurency
+            bg[54][8] = ['ChromeHsw 1337', 'Not)A;Brand 24', 'Google ChromeHsw 1337'] // ua data
+            bg[54][15] = 50
+
+            bg[55][4] = 24 // colorDepth
+            bg[55][5] = 24 // pixelDepth
 
             // spoof functions array
             bg[64][13] = ['Raven', '_sharedLibs', 'hsw', '__wdata', 'image_label_binary']
+            
+            // audio fp
+            //bg[50]
 
             // fonts
             bg[57] = getRandomFontsString(_fonts, Math.floor(Math.random() * (7 - 3 + 1)) + 3)
+            
+            // windows infos
+            // bg[108]
+
+            // langs
+            // bg[100]
 
             console.log(bg)
         }
