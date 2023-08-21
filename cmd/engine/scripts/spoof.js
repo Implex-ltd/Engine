@@ -233,7 +233,7 @@ function spoofall() {
 }
 
 // one time
-//webrtc();
-devices();
+webrtc();
+//devices();
 
 spoofall();

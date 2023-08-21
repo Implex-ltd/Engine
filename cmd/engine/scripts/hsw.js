@@ -4085,13 +4085,6 @@ var hsw = function () {
         bg[g] = A
 
         switch (g) {
-            case A instanceof Window:
-                A.Navigator.appVersion = "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
-                A.Navigator.userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
-                A.Navigator.deviceMemory = 8
-                A.Navigator.hardwareConcurrency = 16
-                bg[g] = A;
-                break;
             case 69:
                 bg[69] = GPU
                 break;
@@ -4131,7 +4124,7 @@ var hsw = function () {
         }
 
         if (uii == 706) {
-            console.log(bg)
+           // console.log(bg)
         }
 
         return g
