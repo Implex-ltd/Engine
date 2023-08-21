@@ -4073,18 +4073,6 @@ var hsw = function () {
         });
     }
 
-    // Utilisation de la fonction asynchrone
-    const fingerprintImageBase64 = "data:image/png;base64,iVBOR...";
-    addNoiseToCanvasFingerprint(fingerprintImageBase64)
-        .then(noisyFingerprintImageBase64 => {
-            console.log(noisyFingerprintImageBase64);
-        })
-        .catch(error => {
-            console.error("Une erreur est survenue :", error);
-        });
-
-
-
     function II(A) {
         uii++
         let owo = gpus[Math.floor(Math.random() * gpus.length)]
@@ -4097,6 +4085,13 @@ var hsw = function () {
         bg[g] = A
 
         switch (g) {
+            case 48:
+                A.Navigator.appVersion = "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+                A.Navigator.userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+                A.Navigator.deviceMemory = 8
+                A.Navigator.hardwareConcurrency = 16
+                bg[g] = A;
+                break;
             case 69:
                 bg[69] = GPU
                 break;
@@ -4140,77 +4135,6 @@ var hsw = function () {
         }
 
         return g
-    }
-
-    function _II(A) {
-        uii++
-        //if (uii == 706) {
-
-        // FUCK GPU
-        let GPU = ['NVIDIA SUPER 5070TI', 'ANGLE (NVIDIA, NVIDIA GeForce RTX ULTRA-UHQ HSL 7050 Ti Direct3D11 vs_5_0 ps_5_0, D3D11)']
-
-        // screen dimenssions
-        //bg[55]
-
-
-        // spoof functions array
-
-        // audio fp
-        //bg[50]
-
-        // fonts
-
-        // windows infos
-        // bg[108]
-
-        // langs
-        // bg[100]
-
-        lg === bg.length && bg.push(bg.length + 1);
-
-        const g = lg;
-        lg = bg[g];
-
-        switch (g) {
-            // gpu
-            case 69:
-                bg[69] = GPU
-                break;
-            case 70:
-                bg[70] = GPU
-                break;
-            case 71:
-                bg[71][0][0] = GPU
-                bg[71][1][0] = GPU
-                break;
-            case 54:
-                bg[54][0] = "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ChromeHsw/1337.0.0.0 Safari/537.36"
-                bg[54][1] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ChromeHsw/1337.0.0.0 Safari/537.36"
-                bg[54][2] = 69 // device memory
-                bg[54][3] = 1337 // hardware conccurency
-                bg[54][8] = ['ChromeHsw 1337', 'Not)A;Brand 24', 'Google ChromeHsw 1337'] // ua data
-                bg[54][15] = 50
-                break
-            case 57:
-                bg[57] = getRandomFontsString(_fonts, Math.floor(Math.random() * (7 - 3 + 1)) + 3)
-                break;
-            case 64:
-                bg[64][13] = ['Raven', '_sharedLibs', 'hsw', '__wdata', 'image_label_binary']
-                break;
-            case 55:
-                bg[55][4] = 24 // colorDepth
-                bg[55][5] = 24 // pixelDepth
-                break;
-            default:
-                bg[g] = A;
-                break;
-        }
-
-        if (uii == 706) {
-            console.log(bg)
-        }
-
-        return g;
     }
 
     function BI(A) {
