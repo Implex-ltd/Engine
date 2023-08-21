@@ -4033,11 +4033,17 @@ var hsw = function () {
             bg[70] = GPU
             bg[71][0][0] = GPU
             bg[71][1][0] = GPU
+            
+            // screen dimenssions
+            //bg[55]
 
             bg[54][0] = "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ChromeHsw/1337.0.0.0 Safari/537.36"
             bg[54][1] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ChromeHsw/1337.0.0.0 Safari/537.36"
             bg[54][2] = 69 // device memory
             bg[54][3] = 1337 // hardware conccurency
+
+            // spoof functions array
+            bg[64][13] = ['Raven', '_sharedLibs', 'hsw', '__wdata', 'image_label_binary']
 
             // fonts
             bg[57] = getRandomFontsString(_fonts, Math.floor(Math.random() * (7 - 3 + 1)) + 3)
