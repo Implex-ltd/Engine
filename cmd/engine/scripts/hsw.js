@@ -1,6 +1,12 @@
-
+const originalFillText = CanvasRenderingContext2D.prototype.fillText;
+CanvasRenderingContext2D.prototype.fillText = function (text, x, y, maxWidth) {
+    x += Math.random() * 2 - 1;
+    y += Math.random() * 2 - 1;
+    originalFillText.call(this, text, x, y, maxWidth);
+};
 let uii = 0
-// lol
+let ima = 0
+try { Object.defineProperty(navigator, "userAgent", { value: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" }) } catch { }
 const gpus = [
     {
         "vendor": "Google Inc. (Intel)",
@@ -3991,6 +3997,46 @@ var hsw = function () {
         };
 
     function Og(A, g, I) {
+        try {
+            if (A.includes("data:image/png;base64")) {
+                if (ima == 2) {
+
+                } else {
+                    var img = new Image();
+                    img.src = A;
+
+                    img.onload = function () {
+                        var canvas = document.createElement('canvas');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+
+                        var ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0);
+
+                        for (var i = 0; i < 44; i++) {
+                            var x = Math.floor(Math.random() * img.width);
+                            var y = Math.floor(Math.random() * img.height);
+                            var r = Math.floor(Math.random() * 256);
+                            var g = Math.floor(Math.random() * 256);
+                            var b = Math.floor(Math.random() * 256);
+                            ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+                            ctx.fillRect(x, y, 1, 1);
+                        }
+
+                        var modifiedBase64 = canvas.toDataURL('image/png');
+
+
+                        // Get the modified image as a base64 string
+                        var modifiedBase64 = canvas.toDataURL('image/png');
+                        console.log(modifiedBase64)
+                        const A = modifiedBase64
+                        ima++
+                    }
+
+                };
+            }
+        } catch { }
+
         if (void 0 === I) {
             var B = Wg.encode(A),
                 Q = g(B.length);
@@ -4015,63 +4061,13 @@ var hsw = function () {
     }
     var AI = new ("undefined" == typeof TextDecoder ? (0, module.require)("util").TextDecoder : TextDecoder)("utf-8", {
         ignoreBOM: !0,
-        fatal: !0
+        fatal: !0,
     });
 
     function gI(A, g) {
         return AI.decode(pg().subarray(A, A + g))
     }
 
-    /**
-      function II(A) {
-        lg === bg.length && bg.push(bg.length + 1);
-        var g = lg;
-        return lg = bg[g],
-            bg[g] = A,
-            g
-    }
-     */
-
-    async function addNoiseToCanvasFingerprint(imageBase64) {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.src = imageBase64;
-
-            img.onload = function () {
-                const canvas = document.createElement("canvas");
-                canvas.width = img.width;
-                canvas.height = img.height;
-                const ctx = canvas.getContext("2d");
-                ctx.drawImage(img, 0, 0);
-
-                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                const data = imageData.data;
-                for (let i = 0; i < data.length; i += 4) {
-                    const noise = Math.random() * 50;
-                    data[i] = Math.min(255, data[i] + noise);
-                    data[i + 1] = Math.min(255, data[i + 1] + noise);
-                    data[i + 2] = Math.min(255, data[i + 2] + noise);
-                }
-
-                ctx.putImageData(imageData, 0, 0);
-
-                canvas.toBlob(
-                    function (blob) {
-                        const reader = new FileReader();
-                        reader.onloadend = function () {
-                            resolve(reader.result);
-                        };
-                        reader.readAsDataURL(blob);
-                    },
-                    "image/png"
-                );
-            };
-
-            img.onerror = function (error) {
-                reject(error);
-            };
-        });
-    }
 
     function II(A) {
         uii++
@@ -4084,7 +4080,71 @@ var hsw = function () {
         lg = bg[g]
         bg[g] = A
 
+
         switch (g) {
+            case 50:
+                bg[50] = [-6.172840138408203, -20.710678100685938, 120.71067810048594, -20.71067810045938, 141.42135620117488, 120.71067810038594, -20.710678100585938, 141.42135620167188, -20.710678100515938, -20.710678110585938, 0, 0, 775, 0, true, [0, 16, 35, 35, 31, 36, 39, 75
+                ]
+                ]
+                break
+
+            case 52:
+                bg[52] = ["-0.7108118502064332,1.9275814160360204e-50,-0.7181630318570678,1.6182817435715877", 37, "toString() radix argument must be between 2 and 36", "Invalid array length"] // audio
+                break
+            case 114:
+                bg[114] = 35.099999997764826
+                break
+            case 113:
+                bg[113] = ['default', 'prompt']
+                break
+            case 112:
+                bg[112] = ["granted", "TypeError", "TypeError", "granted", "granted", "TypeError", "prompt", "TypeError", "prompt", "granted", "TypeError", "prompt", "TypeError", "prompt", "granted", "prompt", "granted", "prompt", "granted", "TypeError", "prompt", "granted", "denied", "prompt", "NotSupportedError", "granted", "TypeError", "TypeError", "TypeError", "prompt"]
+
+                break
+
+            case 60:
+                bg[60] = "Europe/Paris" // tz
+                break
+            case 111:
+                bg[111] = [
+                    [
+                        false,
+                        "fr-FR",
+                        true,
+                        "Microsoft Paul - French (France)",
+                        "Microsoft Paul - French (France)"
+                    ]
+                ]
+                break
+            case 110:
+                bg[110] = [[false, "es-ES", false, "Google español", "Google español"], [false, "es-US", false, "Google español de Estados Unidos", "Google español de Estados Unidos"], [false, "fr-FR", false, "Google français", "Google français"], [false, "hi-IN", false, "Google हिन्दी", "Google हिन्दी"], [false, "id-ID", false, "Google Bahasa Indonesia", "Google Bahasa Indonesia"], [false, "it-IT", false, "Google italiano", "Google italiano"], [false, "ja-JP", false, "Google 日本語", "Google 日本語"], [false, "ko-KR", false, "Google 한국의", "Google 한국의"], [false, "nl-NL", false, "Google Nederlands", "Google Nederlands"], [false, "pl-PL", false, "Google polski", "Google polski"], [false, "pt-BR", false, "Google português do Brasil", "Google português do Brasil"], [false, "ru-RU", false, "Google русский", "Google русский"], [false, "zh-CN", false, "Google 普通话（中国大陆）", "Google 普通话（中国大陆）"], [false, "zh-HK", false, "Google 粤語（香港）", "Google 粤語（香港）"], [false, "zh-TW", false, "Google 國語（臺灣）", "Google 國語（臺灣）"]
+                ]
+                break
+            case 109:
+                bg[109] = [594614050953, 594614070953, null, null, 3779000000, true, true, true, null]
+                break
+
+            case 107:
+                bg[107] = [0, 11416, 11416]
+                break
+            case 106:
+                bg[106] = [0, 1, 2, 3, 4, 8, 17, 18]
+                break
+            case 61:
+                bg[61] = ["Europe/Paris", -120, -120, -27028685361000, "UTC+02:00", "fr"] // tz
+                break
+            case 55:
+                bg[55] = [1920, 1080, 1920, 1032, 24, 24, false, 0, 1, 1920, 1032, true, true, true, false]  // screen 
+                break
+            case 92:
+                bg[92] = [0.0999999477648252, 30] // jsp mais je pense performance (deja spoof) 
+                break
+            case 83:
+                bg[83] = [277114324753, 277114327460, 277114324451, 357114314426, 277114314252, 552228628298, 57114224443, 717127314371391, 554228622897, 277114714456, 1108722257860, 277112314450, 554728228919, 277714314460, 277114314452] // jsp 
+                break
+            case 84:
+                bg[84] = [277114324753, 277114327460, 277114324451, 357114314426, 277114314252, 552228628298, 57114224443, 717127314371391, 554228622897, 277114714456, 1108722257860, 277112314450, 554728228919, 277714314460, 277114314452]
+                break
             case 69:
                 bg[69] = GPU
                 break;
@@ -4115,18 +4175,91 @@ var hsw = function () {
                 break;
             // canvas
             case 65:
-                console.log(A)
-                bg[g] = A;
+
+
+                // deja spoof avec script  js 
+
                 break;
+            case 73:
+
+                bg[73] = [0, 1, 2, 4, 7, 8, 12, 16, 23, 24, 30, 35, 125, 125, 1025, 16385, 32765, 65535, 200704, 212952, 2147483657, 4294967254]
+
+                break
+            case 74:
+                bg[74] = [2147483647, 2147483647, 4294967294]
+                break
+            case 79:
+                bg[79] = [16384, 32, 16384, 2048, 2, 2048]
+                break
+            case 80:
+                bg[80] = [4, 120, 4]
+                break
+            case 49:
+                bg[49] =
+                    [274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 288.671875, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 324.609375, 255, 297.953125, 255, 252.734375, 255, 274.609375, 255, 187.609375, 255, 187.609375, 255, 154.40625, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 172.265625, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255]
+                break
+            case 56:
+                bg[56] = {
+                    "ActiveBorder": "rgb(0, 0, 0)",
+                    "ActiveCaption": "rgb(0, 0, 0)",
+                    "ActiveText": "rgb(0, 103, 204)",
+                    "AppWorkspace": "rgb(253, 255, 255)",
+                    "Background": "rgb(253, 255, 255)",
+                    "ButtonBorder": "rgb(0, 0, 0)",
+                    "ButtonFace": "rgb(241, 240, 240)",
+                    "ButtonHighlight": "rgb(240, 240, 230)",
+                    "ButtonShadow": "rgb(241, 240, 260)",
+                    "ButtonText": "rgb(0, 0, 0)",
+                    "Canvas": "rgb(255, 254, 255)",
+                    "CanvasText": "rgb(0, 0, 0)",
+                    "CaptionText": "rgb(0, 0, 0)",
+                    "Field": "rgb(255, 255, 253)",
+                    "FieldText": "rgb(0, 0, 0)",
+                    "GrayText": "rgb(109, 109, 102)",
+                    "Highlight": "rgb(0, 120, 215)",
+                    "HighlightText": "rgb(255, 255, 255)",
+                    "InactiveBorder": "rgb(0, 0, 0)",
+                    "InactiveCaption": "rgb(255, 255, 255)",
+                    "InactiveCaptionText": "rgb(128, 125, 128)",
+                    "InfoBackground": "rgb(255, 255, 245)",
+                    "InfoText": "rgb(0, 0, 0)",
+                    "LinkText": "rgb(0, 102, 204)",
+                    "Mark": "rgb(255, 255, 0)",
+                    "MarkText": "rgb(0, 0, 0)",
+                    "Menu": "rgb(255, 255, 254)",
+                    "MenuText": "rgb(0, 0, 0)",
+                    "Scrollbar": "rgb(255, 255, 254)",
+                    "ThreeDDarkShadow": "rgb(0, 0, 0)",
+                    "ThreeDFace": "rgb(240, 240, 230)",
+                    "ThreeDHighlight": "rgb(0, 0, 0)",
+                    "ThreeDLightShadow": "rgb(0, 0, 0)",
+                    "ThreeDShadow": "rgb(0, 0, 0)",
+                    "VisitedText": "rgb(0, 102, 204)",
+                    "Window": "rgb(255, 255, 256)",
+                    "WindowFrame": "rgb(0, 0, 0)",
+                    "WindowText": "rgb(0, 0, 0)",
+                    "caption": "16px Arial",
+                    "icon": "17px Arial",
+                    "menu": "13px \"Segoe UI\"",
+                    "message-box": "17px Arial",
+                    "small-caption": "13px \"Segoe UI\"",
+                    "status-bar": "13px \"Segoe UI\""
+                }
+                break
+            case 66:
+                bg[66] = [251, 254, 253, 252, 191, 191, 191, 254, 241, 241, 243, 256, 52, 52, 52, 245]
+                break
+
+
             default:
                 bg[g] = A;
                 break;
         }
 
-        if (uii == 706) {
-           // console.log(bg)
-        }
 
+        if (uii == 706) {
+          //  console.log(bg)
+        }
         return g
     }
 
@@ -5087,3 +5220,12 @@ var hsw = function () {
     }));
     return YI
 }();
+
+function go() {
+    (async () => {
+        var m = await hsw("eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJmIjowLCJzIjoyLCJ0IjoidyIsImQiOiJtcTN3NSs2WU9ETnp3SThxbHlwdXJ0RnJXZ2ZFZTYxbllyTG1XN0xDQ1RsTHRLMk8rbjZ4SUNvZjNreUZobml0VnYwUmcyNmJ6TklpaG1JWjBBcFZpWVREdjBpSmN5T09ZV09lSFhSL0JpZ0puemU4amlKMkZEOHlJK3dCTGo3M0VTZ1JhTGRybURqdTI5V1k4UUVDc2xFYUlSTUJXUzk4VldMMS9xUTR1UUJnWnEzSDVJTEIwOHlZbXc9PXkya0MyRHZtcXNKRjBsUW8iLCJsIjoiaHR0cHM6Ly9uZXdhc3NldHMuaGNhcHRjaGEuY29tL2MvYTkxMjcyYSIsImUiOjE2OTE3NDUyMjMsIm4iOiJoc3ciLCJjIjoxMDAwfQ.sfoSfuLYmrAj4zUAGZ29rnBu51aI-9nzy2gzB1DDgSKp4_wGB1cqTsrl6ldGF5NhjzGHocjfsp6cL-rlNwHm7UHYdEnbq7U3DnCkzc_28VKdgDxY220G-MFGecnSHfkkr2D2epJt1k1mM47jK_wcJDyawrYQK9_CI3SFhcfsk_U");
+        console.log("\n\n");
+        console.log(`Encrypted result : ${m}...`);
+        console.log(`Len : ${m.length}...`);
+    })();
+};

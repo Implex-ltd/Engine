@@ -1,4 +1,3 @@
-// Deobfuscation failed
 var hsw = function () {
     "use strict";
     function A(A, g, I) {

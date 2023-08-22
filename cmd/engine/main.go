@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/Implex-ltd/engine/internal/browser"
 	"log"
 	"os"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/Implex-ltd/engine/internal/browser"
 
 	"github.com/BurntSushi/toml"
 	"github.com/gofiber/fiber/v2"

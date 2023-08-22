@@ -22,3 +22,5 @@ go.work
 *.json
 
 jsdom_hsw
+.tmp
+.txt

@@ -1,37 +1,7 @@
-[discord]
-invite = "JH2j2E5C"
-inviteGuildID = "1140717857047584798"
-inviteChannelID = "1140717857047584801"
-sendChannelID = "1140717857047584801"
-sendMessage = false
-sendMessageContent = "@everyone follow tos !"
-tryJoin = true
-joinOnRegister = false
-humanize = false
-version = 218604
-
-[hcaptcha]
-lang = "en"
-version = "a8bdc18"
-submitTime = 3
-hswAddress = "http://127.0.0.1:4000"
-SolverAddress = "http://127.0.0.1:1332"
-siteKey = "4c672d35-0701-42b2-88c3-78380b0db560"
-
-
-[spoof]
-cfbm = true
-profilePath = "../../assets/fingerprints/chrome.json"
-proxyType = "http"
-sessionReplaceMe = "REPLACEME"
-
 [performances]
 goroutines = 5
 debug = false
 
 [engine]
 browserHswThreadCount = 500
-browserCount = 8
-
-[extra]
-theme = "random"
+browserCount = 9
