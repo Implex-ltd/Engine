@@ -20,20 +20,32 @@ var (
 	pool []*browser.Instance
 	mt   sync.Mutex
 	curr = 0
+
+	timeout = 10 * time.Second
 )
 
 func next() *browser.Instance {
-	mt.Lock()
-	defer mt.Unlock()
+	for {
+		if len(pool) == 0 {
+			continue
+		}
 
-	if curr >= len(pool) {
-		curr = 0
+		mt.Lock()
+		if curr >= len(pool) {
+			curr = 0
+		}
+
+		
+		c := pool[curr]
+		mt.Unlock()
+		curr++
+
+		if !c.Online {
+			continue
+		}
+
+		return c
 	}
-
-	c := pool[curr]
-	curr++
-
-	return c
 }
 
 func initBrowser() {
@@ -43,8 +55,6 @@ func initBrowser() {
 		c.Wait()
 
 		go func() {
-			defer c.Done()
-
 			client, err := browser.NewInstance(true, false, Config.Engine.BrowserHswThreadCount)
 			if err != nil {
 				log.Println(err)
@@ -64,6 +74,7 @@ func initBrowser() {
 			}
 
 			log.Println("Hooked!")
+			client.Online = true
 
 			mt.Lock()
 			pool = append(pool, client)
@@ -72,6 +83,9 @@ func initBrowser() {
 			defer func() {
 				mt.Lock()
 				defer mt.Unlock()
+				defer c.Done()
+
+				fmt.Println("REMOVE")
 
 				for i, c := range pool {
 					if c == client {
@@ -80,7 +94,19 @@ func initBrowser() {
 					}
 				}
 			}()
-			select {}
+
+			t := time.NewTicker(time.Second)
+			defer t.Stop()
+
+			for client.Online {
+				select {
+				case <-t.C:
+					if !client.Online {
+						log.Println("browser crashed, restarting")
+						break
+					}
+				}
+			}
 		}()
 	}
 }
@@ -100,12 +126,23 @@ func solveHandler(c *fiber.Ctx) error {
 		})
 	}
 
-	log.Println("recv", token[:61])
+	//log.Println("recv", token[:61])
 
 	t := time.Now()
-	pow, err := next().Hsw(token)
+	browser := next()
+
+	pow, err := browser.Hsw(token, timeout)
 	if err != nil {
-		return c.Send([]byte(""))
+		browser.Online = false
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": err.Error(),
+		})
+	}
+
+	if len(pow) < 50 {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "invalid n output",
+		})
 	}
 
 	log.Printf("solved (%dms): %s\n", time.Since(t).Milliseconds(), pow[:50])

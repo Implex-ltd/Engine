@@ -4,4 +4,4 @@ debug = false
 
 [engine]
 browserHswThreadCount = 500
-browserCount = 9
+browserCount = 10

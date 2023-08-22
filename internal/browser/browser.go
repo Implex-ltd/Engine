@@ -14,7 +14,7 @@ var (
 	HSW_VERSION = "a91272a"
 
 	ARGS = []string{
-		"--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+		"--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
 		"--disable-popup-blocking", // "discord ask access to position, lol?, no way!"
 
 		"--no-sandbox",
@@ -23,6 +23,16 @@ var (
 		"--disable-dev-shm-usage",
 		"--enable-gpu",
 		//"--headless=new",
+
+		"--disable-software-rasterizer",   // Disable software rasterizer for GPU acceleration
+		"--disable-extensions",            // Disable Chrome extensions
+		"--disable-background-networking", // Disable background networking
+		"--disable-default-apps",          // Disable default apps
+		"--disable-translate",             // Disable page translation
+		"--disable-sync",                  // Disable syncing with Google Account
+		"--disable-logging",               // Disable logging
+		"--no-first-run",                  // Skip first run tasks
+		"--mute-audio",                    // Mute audio
 	}
 )
 
@@ -59,7 +69,7 @@ func NewInstance(spoof, headless bool, threads int) (*Instance, error) {
 
 	hsw, err := os.ReadFile("../../cmd/engine/scripts/hsw.js")
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	context.Route("**https://discord.com/api/v9/auth/register**", func(r playwright.Route) {
@@ -93,6 +103,7 @@ func NewInstance(spoof, headless bool, threads int) (*Instance, error) {
 	}
 
 	return &Instance{
+		Online:  false,
 		Pw:      pw,
 		Br:      browser,
 		Page:    page,
@@ -202,17 +213,33 @@ func (I *Instance) TriggerCaptcha() error {
 	}
 }
 
-func (I *Instance) Hsw(jwt string) (string, error) {
+func (I *Instance) Hsw(jwt string, timeoutDuration time.Duration) (string, error) {
 	I.Manager <- struct{}{}
 	defer func() {
 		<-I.Manager
 	}()
 
-	answer, err := I.Frame.Evaluate(fmt.Sprintf("spoofall();hsw(`%s`)", jwt))
-	if err != nil {
+	resultChan := make(chan string)
+	errChan := make(chan error)
+
+	go func() {
+		answer, err := I.Frame.Evaluate(fmt.Sprintf("spoofall();hsw(`%s`)", jwt), playwright.ElementHandleInputValueOptions{
+			Timeout: playwright.Float(0),
+		})
+		if err != nil {
+			errChan <- err
+			return
+		}
+		resultChan <- fmt.Sprintf("%s", answer)
+	}()
+
+	select {
+	case result := <-resultChan:
+		return result, nil
+	case err := <-errChan:
 		fmt.Println(err)
 		return "", err
+	case <-time.After(timeoutDuration):
+		return "", errors.New("evaluation timed out")
 	}
-
-	return fmt.Sprintf("%s", answer), nil
 }

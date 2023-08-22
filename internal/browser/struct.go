@@ -18,4 +18,5 @@ type Instance struct {
 	Page    playwright.Page
 	Frame   playwright.Frame
 	Manager chan struct{}
+	Online  bool
 }

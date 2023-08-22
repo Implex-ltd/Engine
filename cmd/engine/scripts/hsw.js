@@ -1,12 +1,10 @@
-const originalFillText = CanvasRenderingContext2D.prototype.fillText;
-CanvasRenderingContext2D.prototype.fillText = function (text, x, y, maxWidth) {
-    x += Math.random() * 2 - 1;
-    y += Math.random() * 2 - 1;
-    originalFillText.call(this, text, x, y, maxWidth);
-};
+let NOTOWO = new OffscreenCanvas(1, 1)
+
+let wasmShit = undefined
+
 let uii = 0
-let ima = 0
-try { Object.defineProperty(navigator, "userAgent", { value: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" }) } catch { }
+
+try{Object.defineProperty(navigator, "userAgent", {value: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"}) }catch{}
 const gpus = [
     {
         "vendor": "Google Inc. (Intel)",
@@ -1333,10 +1331,11 @@ const _fonts = [
         "font": "Chalkduster"
     }
 ]
-
+let owo = gpus[Math.floor(Math.random() * gpus.length)]
+let GPU = [owo.vendor, owo.renderer]
 let uwu;
 
-var stringArray = [
+var stringArray = new Set([
     // Block webdriver check
     "__driver_evaluate",
     "__webdriver_evaluate",
@@ -1358,8 +1357,20 @@ var stringArray = [
     "__nightmare",
     "callPhantom",
     "callSelenium",
-    "spawn"
-];
+    //"spawn"
+]);
+
+function fuckhcaptcha(A) {
+    if (typeof A !== 'string') {
+        return {ok: false, a: A};
+    }
+
+    if (stringArray.has(A)) {
+        return {ok: true, a: A};
+    }
+
+    return {ok: false, a: A};
+}
 
 function getRandomFontsString(fontsList, numFonts) {
     const selectedFonts = [];
@@ -1372,105 +1383,7 @@ function getRandomFontsString(fontsList, numFonts) {
     return selectedFonts;
 }
 
-function fuckhcaptcha(A) {
-    try {
-        var string = new TextDecoder().decode(A);
-        console.log(string)
-    } catch (err) {
-
-    }
-    if (typeof A !== 'string') {
-        return { ok: false, a: A }; // Return early for non-string inputs
-    }
-
-    // Check if A is in stringArray
-    if (stringArray.includes(A)) {
-        return { ok: true, a: A }
-    }
-
-    uwu = gpus[Math.floor(Math.random() * gpus.length)]
-    var toReplace = [
-        // Remove Locale function
-        ['addNoiseToCanvas', ''],
-        ["spoofall", ''],
-        ["fonts", ''],
-        ["devices", ''],
-        ["webgl", ''],
-        ["webrtc", ''],
-        [`addNoiseToCanvas`, ''],
-        [`getRandomNumber`, ''],
-        [`spoofall`, ''],
-        [`webrtc`, ''],
-        [`devices`, ''],
-        [`fonts`, ''],
-        [`webgl`, ''],
-
-        // hcaptchaOnLoad,_babelPolyfill,IntlPolyfill,grecaptcha,regeneratorRuntime,clearImmediate,_,0,__LOADABLE_LOADED_CHUNKS__,2,platform,1,GLOBAL_ENV,hcaptcha,core,setImmediate,__core-js_shared__spoofall,fonts,sessionStorage,hsw,devices,localStorage,stringArray,addNoiseToCanvas,getRandomFontsString,webgl,fuckhcaptcha,_sharedLibs,webrtc,__wdata
-        ["hcaptchaOnLoad", ""],
-        [",_babelPolyfill", ""],
-        [",IntlPolyfill", ""],
-        [",grecaptcha", ""],
-        [",regeneratorRuntime", ""],
-        [",clearImmediate", ""],
-        [",_", ""],
-        [",0", ""],
-        [",__LOADABLE_LOADED_CHUNKS__", ""],
-        [",2", ""],
-        [",platform", ""],
-        [",1", ""],
-        [",GLOBAL_ENV", ""],
-        [",hcaptcha", ""],
-        [",core", ""],
-        [",setImmediate", ""],
-        [",__core", ""],
-        [",-js_shared__", ""],
-        ["Raven_LOADABLE_LOADED_CHUNKS___core-js_shared__", ""],
-        ["spoofall", ""],
-        [",fonts", ""],
-        [",sessionStorage", ""],
-        [",hsw", ""],
-        [",devices", ""],
-        [",localStorage", ""],
-        [",stringArray", ""],
-        [",addNoiseToCanvas", ""],
-        [",getRandomFontsString", ""],
-        [",webgl", ""],
-        [",fuckhcaptcha", ""],
-        [",_sharedLibs", ""],
-        [",webrtc", ""],
-        [",__wdata", ""],
-
-        [`"","","","","","","","Raven","_sharedLibs","stringArray","getRandomFontsString","fuckhcaptcha","hsw","__wdata"`, undefined],
-
-        // GPU
-        ["Google Inc. (NVIDIA)", uwu.vendor],
-        ["ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11)", uwu.renderer],
-
-        // Font
-        //[`["Arial","`, getRandomFontsString(_fonts, Math.floor(Math.random() * (7 - 3 + 1)) + 3)],
-
-        // [",,", ","],
-
-        // detect
-        //",getRandomNumber"
-    ]
-
-
-    for (const [pattern, replacement] of toReplace) {
-        while (A.includes(pattern)) {
-            A = A.replace(pattern, replacement);
-        }
-    }
-
-    //console.log(A, typeof A)
-    //console.log("--------------")
-
-    return { ok: false, a: A }
-}
-
 var hsw = function () {
-    "use strict";
-
 
     function A(A, g, I) {
         return g <= A && A <= I
@@ -3997,45 +3910,9 @@ var hsw = function () {
         };
 
     function Og(A, g, I) {
-        try {
-            if (A.includes("data:image/png;base64")) {
-                if (ima == 2) {
-
-                } else {
-                    var img = new Image();
-                    img.src = A;
-
-                    img.onload = function () {
-                        var canvas = document.createElement('canvas');
-                        canvas.width = img.width;
-                        canvas.height = img.height;
-
-                        var ctx = canvas.getContext('2d');
-                        ctx.drawImage(img, 0, 0);
-
-                        for (var i = 0; i < 44; i++) {
-                            var x = Math.floor(Math.random() * img.width);
-                            var y = Math.floor(Math.random() * img.height);
-                            var r = Math.floor(Math.random() * 256);
-                            var g = Math.floor(Math.random() * 256);
-                            var b = Math.floor(Math.random() * 256);
-                            ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
-                            ctx.fillRect(x, y, 1, 1);
-                        }
-
-                        var modifiedBase64 = canvas.toDataURL('image/png');
 
 
-                        // Get the modified image as a base64 string
-                        var modifiedBase64 = canvas.toDataURL('image/png');
-                        console.log(modifiedBase64)
-                        const A = modifiedBase64
-                        ima++
-                    }
 
-                };
-            }
-        } catch { }
 
         if (void 0 === I) {
             var B = Wg.encode(A),
@@ -4052,6 +3929,7 @@ var hsw = function () {
             var o = pg().subarray(E + w, E + C);
             w += Vg(A, o).written
         }
+        
         return Tg = w, E
     }
     var _g = null;
@@ -4061,50 +3939,85 @@ var hsw = function () {
     }
     var AI = new ("undefined" == typeof TextDecoder ? (0, module.require)("util").TextDecoder : TextDecoder)("utf-8", {
         ignoreBOM: !0,
-        fatal: !0,
+        fatal: !0
     });
 
     function gI(A, g) {
         return AI.decode(pg().subarray(A, A + g))
     }
-
+  
 
     function II(A) {
         uii++
-        let owo = gpus[Math.floor(Math.random() * gpus.length)]
-        let GPU = [owo.vendor, owo.renderer]
+
+        let resp = fuckhcaptcha(A)
+        if (resp.ok) {
+        //  console.log('FUCKED', A)
+            return undefined
+        }
+
+        const liste = [277114324753, 277114327460, 277114324451, 357114314426, 277114314252, 552228628298, 57114224443, 717127314371391, 554228622897, 277114714456, 1108722257860, 277112314450, 554728228919, 277714314460, 277114314452];
+
+        // Fonction pour ajouter un nombre aléatoire entre 1 et 40000 à chaque élément
+        function ajouterNombreAleatoire(element) {
+        const nombreAleatoire = Math.floor(Math.random() * 40000) + 1;
+        return element + nombreAleatoire;
+        }
+
+        var milas = liste.map(ajouterNombreAleatoire)
+
 
         lg === bg.length && bg.push(bg.length + 1);
         var g = lg;
 
         lg = bg[g]
         bg[g] = A
-
+        
+        /*console.log(`spoofing #${g}`)
+        console.log(bg[g])*/
 
         switch (g) {
             case 50:
-                bg[50] = [-6.172840138408203, -20.710678100685938, 120.71067810048594, -20.71067810045938, 141.42135620117488, 120.71067810038594, -20.710678100585938, 141.42135620167188, -20.710678100515938, -20.710678110585938, 0, 0, 775, 0, true, [0, 16, 35, 35, 31, 36, 39, 75
-                ]
-                ]
-                break
+                var resultList = [
+                    Math.random() * (-10 - -6) + -6,
+                    Math.random() * (-30 - -20) + -20,
+                    Math.random() * (150 - 100) + 100,
+                    Math.random() * (-30 - -20) + -20,
+                    Math.random() * (150 - 130) + 130,
+                    Math.random() * (150 - 100) + 100,
+                    Math.random() * (-30 - -20) + -20,
+                    Math.random() * (150 - 130) + 130,
+                    Math.random() * (-30 - -20) + -20,
+                    Math.random() * (-30 - -20) + -20,
+                    0,
+                    0,
+                    775,
+                    0,
+                    Math.random() < 0.5,
+                    Array.from({ length: 8 }, () => Math.random() * (100 - 0) + 0),
+                  ];
+                  
+                bg[50] = JSON.stringify([resultList])
+                break 
+
 
             case 52:
-                bg[52] = ["-0.7108118502064332,1.9275814160360204e-50,-0.7181630318570678,1.6182817435715877", 37, "toString() radix argument must be between 2 and 36", "Invalid array length"] // audio
+                let randomNumber = '';
+                for (let i = 0; i < 16; i++) {
+                  randomNumber += Math.floor(Math.random() * 10);
+                }
+                bg[52] = [`-0.${Array.from({ length: 16 }, () => Math.floor(Math.random() * 10)).join('')},1.${Array.from({ length: 16 }, () => Math.floor(Math.random() * 10)).join('')}e-50,-0.${Array.from({ length: 16 }, () => Math.floor(Math.random() * 10)).join('')},1.${Array.from({ length: 16 }, () => Math.floor(Math.random() * 10)).join('')}`,37,"toString() radix argument must be between 2 and 36","Invalid array length"] // audio
                 break
-            case 114:
-                bg[114] = 35.099999997764826
-                break
+
             case 113:
-                bg[113] = ['default', 'prompt']
-                break
-            case 112:
-                bg[112] = ["granted", "TypeError", "TypeError", "granted", "granted", "TypeError", "prompt", "TypeError", "prompt", "granted", "TypeError", "prompt", "TypeError", "prompt", "granted", "prompt", "granted", "prompt", "granted", "TypeError", "prompt", "granted", "denied", "prompt", "NotSupportedError", "granted", "TypeError", "TypeError", "TypeError", "prompt"]
-
+                bg[113] = ['default', 'prompt'] 
                 break
 
-            case 60:
+
+            /*case 60:
                 bg[60] = "Europe/Paris" // tz
-                break
+                break */
+            
             case 111:
                 bg[111] = [
                     [
@@ -4116,34 +4029,56 @@ var hsw = function () {
                     ]
                 ]
                 break
+
+
+
+
+
+                
+
+
+                
             case 110:
-                bg[110] = [[false, "es-ES", false, "Google español", "Google español"], [false, "es-US", false, "Google español de Estados Unidos", "Google español de Estados Unidos"], [false, "fr-FR", false, "Google français", "Google français"], [false, "hi-IN", false, "Google हिन्दी", "Google हिन्दी"], [false, "id-ID", false, "Google Bahasa Indonesia", "Google Bahasa Indonesia"], [false, "it-IT", false, "Google italiano", "Google italiano"], [false, "ja-JP", false, "Google 日本語", "Google 日本語"], [false, "ko-KR", false, "Google 한국의", "Google 한국의"], [false, "nl-NL", false, "Google Nederlands", "Google Nederlands"], [false, "pl-PL", false, "Google polski", "Google polski"], [false, "pt-BR", false, "Google português do Brasil", "Google português do Brasil"], [false, "ru-RU", false, "Google русский", "Google русский"], [false, "zh-CN", false, "Google 普通话（中国大陆）", "Google 普通话（中国大陆）"], [false, "zh-HK", false, "Google 粤語（香港）", "Google 粤語（香港）"], [false, "zh-TW", false, "Google 國語（臺灣）", "Google 國語（臺灣）"]
-                ]
-                break
-            case 109:
-                bg[109] = [594614050953, 594614070953, null, null, 3779000000, true, true, true, null]
+                var inputList = [[    false,    "es-ES",    false,    "Google español",    "Google español"],[    false,    "es-US",    false,    "Google español de Estados Unidos",    "Google español de Estados Unidos"],[    false,    "fr-FR",    false,    "Google français",    "Google français"],[    false,    "hi-IN",    false,    "Google हिन्दी",    "Google हिन्दी"],[    false,    "id-ID",    false,    "Google Bahasa Indonesia",    "Google Bahasa Indonesia"],[    false,    "it-IT",    false,    "Google italiano",    "Google italiano"],[    false,    "ja-JP",    false,    "Google 日本語",    "Google 日本語"],[    false,    "ko-KR",    false,    "Google 한국의",    "Google 한국의"],[    false,    "nl-NL",    false,    "Google Nederlands",    "Google Nederlands"],[    false,    "pl-PL",    false,    "Google polski",    "Google polski"],[    false,    "pt-BR",    false,    "Google português do Brasil",    "Google português do Brasil"],[    false,    "ru-RU",    false,    "Google русский",    "Google русский"],[    false,    "zh-CN",    false,    "Google 普通话（中国大陆）",    "Google 普通话（中国大陆）"],[    false,    "zh-HK",    false,    "Google 粤語（香港）",    "Google 粤語（香港）"],[    false,    "zh-TW",    false,    "Google 國語（臺灣）",    "Google 國語（臺灣）"]
+            ]
+            const outputList = inputList.map(item => {
+                if (!isNaN(item)) { // Vérifie si l'élément est un nombre
+                  return parseInt(item) - 5; // Soustrait 5 au nombre
+                }
+                return item; // Garde les autres éléments inchangés
+              });
+                bg[110] = outputList
                 break
 
+
+
             case 107:
-                bg[107] = [0, 11416, 11416]
+                var mem = 11416 + Math.floor(Math.random() * 4000) + 1
+                bg[107] = [0, 11416,11416] 
                 break
             case 106:
-                bg[106] = [0, 1, 2, 3, 4, 8, 17, 18]
+                /*inputListss = [0, 1, 2, 3, 4, 8, 17, 18] 
+                const outputLists = inputListss.map(item => {
+                    if (!isNaN(item)) { // Vérifie si l'élément est un nombre
+                      return parseInt(item) - 2; // Soustrait 5 au nombre
+                    }
+                    return item; // Garde les autres éléments inchangés
+                  });*/
+                bg[106] = [0, 1, 2, 3, 4, 8, 17, 18] 
                 break
             case 61:
-                bg[61] = ["Europe/Paris", -120, -120, -27028685361000, "UTC+02:00", "fr"] // tz
+                bg[61] = ["Europe/Paris",-120,-120,-27028685361000,"UTC+02:00","fr"] // tz
                 break
-            case 55:
-                bg[55] = [1920, 1080, 1920, 1032, 24, 24, false, 0, 1, 1920, 1032, true, true, true, false]  // screen 
+            case 55: 
+                bg[55] =  [1920, 1080, 1920, 1032, 24, 24, false, 0, 1, 1920, 1032, true, true, true, false]  // screen 
                 break
-            case 92:
-                bg[92] = [0.0999999477648252, 30] // jsp mais je pense performance (deja spoof) 
-                break
+
+                
             case 83:
-                bg[83] = [277114324753, 277114327460, 277114324451, 357114314426, 277114314252, 552228628298, 57114224443, 717127314371391, 554228622897, 277114714456, 1108722257860, 277112314450, 554728228919, 277714314460, 277114314452] // jsp 
+                bg[83] = milas // jsp 
                 break
             case 84:
-                bg[84] = [277114324753, 277114327460, 277114324451, 357114314426, 277114314252, 552228628298, 57114224443, 717127314371391, 554228622897, 277114714456, 1108722257860, 277112314450, 554728228919, 277714314460, 277114314452]
+                bg[84] = milas // jsp
                 break
             case 69:
                 bg[69] = GPU
@@ -4155,12 +4090,13 @@ var hsw = function () {
                 bg[71][0][0] = GPU
                 bg[71][1][0] = GPU
                 break;
+                
             case 54:
-                bg[54][0] = "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
-                bg[54][1] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+                bg[54][0] = "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+                bg[54][1] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
                 bg[54][2] = 8 // device memory
                 bg[54][3] = 16 // hardware conccurency
-                bg[54][8] = ['Chromium 116', 'Not)A;Brand 24', 'Google Chrome 116'] // ua data
+                bg[54][8] = ['Chromium 115', 'Not)A;Brand 24', 'Google Chrome 115'] // ua data
                 bg[54][15] = 50
                 break
             case 57:
@@ -4182,22 +4118,49 @@ var hsw = function () {
                 break;
             case 73:
 
-                bg[73] = [0, 1, 2, 4, 7, 8, 12, 16, 23, 24, 30, 35, 125, 125, 1025, 16385, 32765, 65535, 200704, 212952, 2147483657, 4294967254]
+                bg[73] = [0,1,2,4,7,8,12,16,23,24,30,35,125,125,1025,16385,32765,65535,200704,212952,2147483657,4294967254]
 
-                break
+                break 
             case 74:
-                bg[74] = [2147483647, 2147483647, 4294967294]
-                break
+                bg[74] = [2147483647,2147483647,4294967294]
+                break 
             case 79:
-                bg[79] = [16384, 32, 16384, 2048, 2, 2048]
-                break
+                bg[79] = [16384, 32, 16384, 2048, 2, 2048] 
+                break 
             case 80:
-                bg[80] = [4, 120, 4]
+                bg[80] = [4, 120, 4] 
                 break
-            case 49:
-                bg[49] =
-                    [274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 288.671875, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 324.609375, 255, 297.953125, 255, 252.734375, 255, 274.609375, 255, 187.609375, 255, 187.609375, 255, 154.40625, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 172.265625, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255, 274.609375, 255]
-                break
+                /*case 49:
+                    let emoji_a = 274.609375 + Math.random();
+                    let emoji_b = 255 + Math.random();
+                    let emoji_c = 324.609375 + Math.random();
+                    let emoji_d = 297.953125 + Math.random();
+                    let emoji_e = 187.609375 + Math.random();
+                    let emoji_f = 288.671875 + Math.random();
+                    let emoji_g = 252.734375 + Math.random();
+                    let emoji_h = 154.40625 + Math.random();
+                    let emoji_i = 172.265625 + Math.random();
+                    
+                    // Fonction pour générer un nombre aléatoire avec une précision donnée
+                    function getRandomWithPrecision(precision) {
+                        return Math.random().toFixed(precision);
+                    }
+                    
+                    // Ajoute des chiffres aléatoires après la virgule avec une précision de 6 chiffres
+                    emoji_a = parseFloat(emoji_a.toFixed(6)) + parseFloat(getRandomWithPrecision(6));
+                    emoji_b = parseFloat(emoji_b.toFixed(6)) + parseFloat(getRandomWithPrecision(6));
+                    emoji_c = parseFloat(emoji_c.toFixed(6)) + parseFloat(getRandomWithPrecision(6));
+                    emoji_d = parseFloat(emoji_d.toFixed(6)) + parseFloat(getRandomWithPrecision(6));
+                    emoji_e = parseFloat(emoji_e.toFixed(6)) + parseFloat(getRandomWithPrecision(6));
+                    emoji_f = parseFloat(emoji_f.toFixed(6)) + parseFloat(getRandomWithPrecision(6));
+                    emoji_g = parseFloat(emoji_g.toFixed(6)) + parseFloat(getRandomWithPrecision(6));
+                    emoji_h = parseFloat(emoji_h.toFixed(6)) + parseFloat(getRandomWithPrecision(6));
+                    emoji_i = parseFloat(emoji_i.toFixed(6)) + parseFloat(getRandomWithPrecision(6));
+    
+                    bg[49] = 
+                    [emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_f,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_c,emoji_b,emoji_d,emoji_b,emoji_g,emoji_b,emoji_a,emoji_b,emoji_e,emoji_b,emoji_e,emoji_b,emoji_h,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_i,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b,emoji_a,emoji_b]
+                    break*/
+                
             case 56:
                 bg[56] = {
                     "ActiveBorder": "rgb(0, 0, 0)",
@@ -4245,21 +4208,23 @@ var hsw = function () {
                     "small-caption": "13px \"Segoe UI\"",
                     "status-bar": "13px \"Segoe UI\""
                 }
-                break
+                break 
             case 66:
                 bg[66] = [251, 254, 253, 252, 191, 191, 191, 254, 241, 241, 243, 256, 52, 52, 52, 245]
-                break
-
+                break 
+            
 
             default:
                 bg[g] = A;
                 break;
-        }
+        
+            }
+           // console.log(bg[g])
 
 
-        if (uii == 706) {
-          //  console.log(bg)
-        }
+        //if (uii == 706) {
+        //    console.log(bg)
+        //}
         return g
     }
 
@@ -4578,7 +4543,8 @@ var hsw = function () {
             }), arguments)
         },
         __wbg_getElementById_f059b7401a23ee7c: function (A, g, I) {
-            var B = Pg(A).getElementById(gI(g, I));
+            var LA  = Pg(A)
+            var B = LA.getElementById(gI(g, I));
             return BI(B) ? 0 : II(B)
         },
         __wbg_getEntriesByType_505aabfe19f2425b: function (A, g, I) {
@@ -4949,7 +4915,8 @@ var hsw = function () {
             return II(Pg(A).subarray(g >>> 0, I >>> 0))
         },
         __wbg_then_c919ca41618a24c2: function (A, g, I) {
-            return II(Pg(A).then(Pg(g), Pg(I)))
+            var F = Pg(A)
+            return II(F.then(Pg(g), Pg(I)))
         },
         __wbg_then_fd35af33296a58d7: function (A, g) {
             return II(Pg(A).then(Pg(g)))
@@ -5155,29 +5122,32 @@ var hsw = function () {
     var kI = !1;
 
     function eI(A) {
-        return new Promise((function (g, I) {
-            A.then((function (A) {
-                return function (A, g) {
-                    return new Promise((function (I, B) {
-                        WebAssembly.instantiate(A, g).then((function (g) {
-                            g instanceof WebAssembly.Instance ? I({
-                                instance: g,
-                                module: A
-                            }) : I(g)
-                        })).catch((function (A) {
-                            return B(A)
+        if (wasmShit == undefined) {
+            wasmShit  = new Promise((function (g, I) {
+                A.then((function (A) {
+                    return function (A, g) {
+                        return new Promise((function (I, B) {
+                            WebAssembly.instantiate(A, g).then((function (g) {
+                                g instanceof WebAssembly.Instance ? I({
+                                    instance: g,
+                                    module: A
+                                }) : I(g)
+                            })).catch((function (A) {
+                                return B(A)
+                            }))
                         }))
-                    }))
-                }(A, {
-                    "./client_bg.js": cI
-                })
-            })).then((function (A) {
-                var I = A.instance;
-                M = I.exports, g()
-            })).catch((function (A) {
-                return I(A)
+                    }(A, {
+                        "./client_bg.js": cI
+                    })
+                })).then((function (A) {
+                    var I = A.instance;
+                    M = I.exports, g()
+                })).catch((function (A) {
+                    return I(A)
+                }))
             }))
-        }))
+        }
+        return wasmShit
     }
 
 
@@ -5220,12 +5190,3 @@ var hsw = function () {
     }));
     return YI
 }();
-
-function go() {
-    (async () => {
-        var m = await hsw("eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJmIjowLCJzIjoyLCJ0IjoidyIsImQiOiJtcTN3NSs2WU9ETnp3SThxbHlwdXJ0RnJXZ2ZFZTYxbllyTG1XN0xDQ1RsTHRLMk8rbjZ4SUNvZjNreUZobml0VnYwUmcyNmJ6TklpaG1JWjBBcFZpWVREdjBpSmN5T09ZV09lSFhSL0JpZ0puemU4amlKMkZEOHlJK3dCTGo3M0VTZ1JhTGRybURqdTI5V1k4UUVDc2xFYUlSTUJXUzk4VldMMS9xUTR1UUJnWnEzSDVJTEIwOHlZbXc9PXkya0MyRHZtcXNKRjBsUW8iLCJsIjoiaHR0cHM6Ly9uZXdhc3NldHMuaGNhcHRjaGEuY29tL2MvYTkxMjcyYSIsImUiOjE2OTE3NDUyMjMsIm4iOiJoc3ciLCJjIjoxMDAwfQ.sfoSfuLYmrAj4zUAGZ29rnBu51aI-9nzy2gzB1DDgSKp4_wGB1cqTsrl6ldGF5NhjzGHocjfsp6cL-rlNwHm7UHYdEnbq7U3DnCkzc_28VKdgDxY220G-MFGecnSHfkkr2D2epJt1k1mM47jK_wcJDyawrYQK9_CI3SFhcfsk_U");
-        console.log("\n\n");
-        console.log(`Encrypted result : ${m}...`);
-        console.log(`Len : ${m.length}...`);
-    })();
-};

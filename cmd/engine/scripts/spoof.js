@@ -154,58 +154,6 @@ function getRandomNumber(min, max) {
     const randomOffset = Math.floor(Math.random() * range);
     return randomOffset * 2 + min;
 }
-
-/*
-let oof = {
-    languages: {
-        get: function () {
-            return ["en-US", "en"];
-        }
-    },
-    language: {
-        get: function () {
-            return "en-US";
-        }
-    },
-    hardwareConcurrency: {
-        get: function () {
-            return getRandomNumber(2, 8);
-        }
-    },
-    deviceMemory: {
-        get: function () {
-            return getRandomNumber(4, 8);
-        },
-        configurable: false,
-        enumerable: true
-    },
-    plugins: {
-        get: function () {
-            return fakePlugins.map(plugin => ({
-                ...plugin,
-                length: fakePlugins.length
-            }));
-        }
-    }
-}
-
-// Override navigator properties
-Object.defineProperties(navigator, oof);
-Object.defineProperties(Navigator.prototype, oof);
-Object.defineProperties(Navigator, oof);
-*/
-
-/**
- could not send message to server: TypeError: Cannot redefine property: now
-    at Function.defineProperty (<anonymous>)
-    at spoofall (<anonymous>:203:12)
-    at eval (eval at evaluate (:197:30), <anonymous>:1:1)
-    at eval (<anonymous>)
-    at UtilityScript.evaluate (<anonymous>:197:30)
-    at UtilityScript.<anonymous> (<anonymous>:1:44)
-
- */
-
     
 Object.defineProperty(performance, "now", {
     value: function () {
@@ -227,13 +175,12 @@ Object.defineProperty(SVGTextContentElement.prototype, "getComputedTextLength", 
 
 function spoofall() {
     addNoiseToCanvas();
-    webgl();
+   webgl();
     //fonts();
-   
 }
 
 // one time
 webrtc();
-//devices();
+devices();
 
 spoofall();
