@@ -11,10 +11,10 @@ import (
 )
 
 var (
-	HSW_VERSION = "a91272a"
+	HSW_VERSION = "6f48ffb"
 
 	ARGS = []string{
-		"--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+		"--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.5672.94 Safari/537.36",
 		"--disable-popup-blocking", // "discord ask access to position, lol?, no way!"
 
 		"--no-sandbox",
@@ -24,7 +24,7 @@ var (
 		"--enable-gpu",
 		//"--headless=new",
 
-		"--disable-software-rasterizer",   // Disable software rasterizer for GPU acceleration
+	/*	"--disable-software-rasterizer",   // Disable software rasterizer for GPU acceleration
 		"--disable-extensions",            // Disable Chrome extensions
 		"--disable-background-networking", // Disable background networking
 		"--disable-default-apps",          // Disable default apps
@@ -33,6 +33,9 @@ var (
 		"--disable-logging",               // Disable logging
 		"--no-first-run",                  // Skip first run tasks
 		"--mute-audio",                    // Mute audio
+		*/
+
+		
 	}
 )
 
@@ -51,8 +54,8 @@ func NewInstance(spoof, headless bool, threads int) (*Instance, error) {
 	}
 
 	context, err := browser.NewContext(playwright.BrowserNewContextOptions{
-		Locale:     playwright.String("en-us"),
-		TimezoneId: playwright.String("America/New_York"),
+		Locale:     playwright.String("fr"),
+		//TimezoneId: playwright.String("America/New_York"),
 		Screen: &playwright.ScreenSize{
 			Width:  playwright.Int(1920),
 			Height: playwright.Int(1080),

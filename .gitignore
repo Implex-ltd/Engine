@@ -24,3 +24,11 @@ go.work
 jsdom_hsw
 .tmp
 .txt
+cmd/engine/scripts/0.19.js
+br.bat
+mock_2.py
+mocked.py
+spoof.js
+hsw.js
+cmd/engine/scripts/x.js
+cmd/engine/scripts/x.js

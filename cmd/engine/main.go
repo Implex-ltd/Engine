@@ -156,7 +156,7 @@ func engine() {
 
 	app.Get("/n", solveHandler)
 
-	err := app.Listen(":4000")
+	err := app.Listen(":1234")
 	if err != nil {
 		log.Fatalf("Error starting the server: %v", err)
 	}
