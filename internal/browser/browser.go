@@ -12,59 +12,21 @@ import (
 
 var (
 	HSW_VERSION = "6f48ffb"
-
-	ARGS = []string{
-		"--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.5672.94 Safari/537.36",
-		"--disable-popup-blocking", // "discord ask access to position, lol?, no way!"
-
-		"--no-sandbox",
-		"--disable-setuid-sandbox",
-		"--disable-infobars",
-		"--disable-dev-shm-usage",
-		"--enable-gpu",
-		//"--headless=new",
-
-	/*	"--disable-software-rasterizer",   // Disable software rasterizer for GPU acceleration
-		"--disable-extensions",            // Disable Chrome extensions
-		"--disable-background-networking", // Disable background networking
-		"--disable-default-apps",          // Disable default apps
-		"--disable-translate",             // Disable page translation
-		"--disable-sync",                  // Disable syncing with Google Account
-		"--disable-logging",               // Disable logging
-		"--no-first-run",                  // Skip first run tasks
-		"--mute-audio",                    // Mute audio
-		*/
-
-		
-	}
 )
 
-func NewInstance(spoof, headless bool, threads int) (*Instance, error) {
+func NewInstance(spoof, headless bool, threads int, cdp string) (*Instance, error) {
 	pw, err := playwright.Run()
 	if err != nil {
 		return nil, err
 	}
 
-	browser, err := pw.Chromium.Launch(playwright.BrowserTypeLaunchOptions{
-		Headless: playwright.Bool(headless),
-		Args:     ARGS,
-	})
+	browser, err := pw.Chromium.ConnectOverCDP(cdp)
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
 
 	context, err := browser.NewContext(playwright.BrowserNewContextOptions{
-		Locale:     playwright.String("fr"),
-		//TimezoneId: playwright.String("America/New_York"),
-		Screen: &playwright.ScreenSize{
-			Width:  playwright.Int(1920),
-			Height: playwright.Int(1080),
-		},
-		Viewport: &playwright.ViewportSize{
-			Width:  1920,
-			Height: 1080,
-		},
-		ColorScheme: playwright.ColorSchemeDark,
+		ColorScheme: playwright.ColorSchemeNoPreference,
 	})
 	if err != nil {
 		return nil, err
@@ -190,7 +152,7 @@ func (I *Instance) TriggerCaptcha() error {
 		return err
 	}
 
-	timeout := time.After(time.Second * 5)
+	timeout := time.After(time.Second * 4)
 
 	ticker := time.NewTicker(time.Millisecond * 250)
 	defer ticker.Stop()
@@ -226,7 +188,7 @@ func (I *Instance) Hsw(jwt string, timeoutDuration time.Duration) (string, error
 	errChan := make(chan error)
 
 	go func() {
-		answer, err := I.Frame.Evaluate(fmt.Sprintf("spoofall();hsw(`%s`)", jwt), playwright.ElementHandleInputValueOptions{
+		answer, err := I.Frame.Evaluate(fmt.Sprintf("hsw(`%s`)", jwt), playwright.ElementHandleInputValueOptions{
 			Timeout: playwright.Float(0),
 		})
 		if err != nil {

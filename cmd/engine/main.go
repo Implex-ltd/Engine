@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -8,6 +9,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/Implex-ltd/engine/internal/api"
 	"github.com/Implex-ltd/engine/internal/browser"
 
 	"github.com/BurntSushi/toml"
@@ -35,7 +37,6 @@ func next() *browser.Instance {
 			curr = 0
 		}
 
-		
 		c := pool[curr]
 		mt.Unlock()
 		curr++
@@ -51,11 +52,41 @@ func next() *browser.Instance {
 func initBrowser() {
 	c := goccm.New(Config.Engine.BrowserCount)
 
+	i := 0.0
+	j := 0
 	for {
 		c.Wait()
 
-		go func() {
-			client, err := browser.NewInstance(true, false, Config.Engine.BrowserHswThreadCount)
+		go func(i float64) {
+			H := api.NewHidenium(api.CreateBrowserPayload{
+				Os:                "win",
+				Version:           "115.0.0.0",
+				UserAgent:         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+				Canvas:            "noise",
+				WebGLImage:        "false",
+				WebGLMetadata:     "true",
+				AudioContext:      "true",
+				ClientRectsEnable: "true",
+				NoiseFont:         "true",
+				Languages:         "fr-fr;q=0.9",
+				Resolution:        "1920x1080",
+			})
+
+			uuid, err := H.Create()
+			if err != nil {
+				log.Println(err)
+				return
+			}
+
+			cdp, err := H.Start(uuid)
+			if err != nil {
+				log.Println(err)
+				return
+			}
+
+			defer H.Close(uuid)
+
+			client, err := browser.NewInstance(true, false, Config.Engine.BrowserHswThreadCount, cdp)
 			if err != nil {
 				log.Println(err)
 				return
@@ -85,8 +116,6 @@ func initBrowser() {
 				defer mt.Unlock()
 				defer c.Done()
 
-				fmt.Println("REMOVE")
-
 				for i, c := range pool {
 					if c == client {
 						pool = append(pool[:i], pool[i+1:]...)
@@ -96,31 +125,54 @@ func initBrowser() {
 			}()
 
 			t := time.NewTicker(time.Second)
+			st := time.Now()
 			defer t.Stop()
 
 			for client.Online {
 				select {
 				case <-t.C:
+					if time.Since(st).Seconds() > (60 + i) {
+						log.Println("restarting")
+						client.Online = false
+						break
+					}
+
 					if !client.Online {
 						log.Println("browser crashed, restarting")
 						break
 					}
 				}
 			}
-		}()
+		}(i)
+
+		i += 10
+		j++
+
+		if j >= Config.Engine.BrowserCount {
+			i = 0.0
+			j = 0
+		}
 	}
 }
 
 func solveHandler(c *fiber.Ctx) error {
-	token := c.Query("req")
 
-	if token == "" {
+	var b Payload
+	if err := json.Unmarshal(c.Body(), &b); err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"success": false,
+			"message": "Review your input",
+			"data":    err.Error(),
+		})
+	}
+
+	if b.Jwt == "" {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "Token is missing",
 		})
 	}
 
-	if len(token) < 61 {
+	if len(b.Jwt) < 61 {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "Token is invalid",
 		})
@@ -131,7 +183,7 @@ func solveHandler(c *fiber.Ctx) error {
 	t := time.Now()
 	browser := next()
 
-	pow, err := browser.Hsw(token, timeout)
+	pow, err := browser.Hsw(b.Jwt, timeout)
 	if err != nil {
 		browser.Online = false
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
@@ -154,7 +206,7 @@ func engine() {
 
 	app := fiber.New()
 
-	app.Get("/n", solveHandler)
+	app.Post("/n", solveHandler)
 
 	err := app.Listen(":1234")
 	if err != nil {
@@ -178,7 +230,7 @@ func crawl(url string, headless bool) {
 		name = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.Split(url, "://")[1], ".", ""), "/", ""), ":", "")
 	}
 
-	client, err := browser.NewInstance(true, headless, Config.Engine.BrowserHswThreadCount)
+	client, err := browser.NewInstance(true, headless, Config.Engine.BrowserHswThreadCount, "")
 	if err != nil {
 		log.Println(err)
 		return
@@ -203,7 +255,8 @@ func debug() {
 	log.Println("ctrl+c to exit.")
 
 	gotos := []string{
-		"https://browserleaks.com/webgl",
+		"https://www.browserscan.net/",
+		/*"https://browserleaks.com/webgl",
 		"https://browserleaks.com/webrtc",
 		"https://browserleaks.com/canvas",
 		"https://browserleaks.com/webgl",
@@ -212,7 +265,7 @@ func debug() {
 		"https://browserleaks.com/fonts",
 		"https://browserleaks.com/ip",
 		"https://bot.sannysoft.com/",
-		"https://abrahamjuliot.github.io/creepjs/",
+		"https://abrahamjuliot.github.io/creepjs/",*/
 	}
 
 	c := goccm.New(len(gotos))
