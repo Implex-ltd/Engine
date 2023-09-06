@@ -4,12 +4,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"math/rand"
 	"os"
 	"strings"
 	"sync"
 	"time"
 
-	"github.com/Implex-ltd/engine/internal/api"
+	_ "github.com/Implex-ltd/engine/internal/api"
 	"github.com/Implex-ltd/engine/internal/browser"
 
 	"github.com/BurntSushi/toml"
@@ -22,6 +23,8 @@ var (
 	pool []*browser.Instance
 	mt   sync.Mutex
 	curr = 0
+
+	rotate = 15.0
 
 	timeout = 10 * time.Second
 )
@@ -58,15 +61,15 @@ func initBrowser() {
 		c.Wait()
 
 		go func(i float64) {
-			H := api.NewHidenium(api.CreateBrowserPayload{
+			/*H := api.NewHidenium(api.CreateBrowserPayload{
 				Os:                "win",
-				Version:           "115.0.0.0",
+				Version:           "115.0.5790.99",
 				UserAgent:         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
 				Canvas:            "noise",
-				WebGLImage:        "false",
+				WebGLImage:        "true",
 				WebGLMetadata:     "true",
 				AudioContext:      "true",
-				ClientRectsEnable: "true",
+				ClientRectsEnable: "false",
 				NoiseFont:         "true",
 				Languages:         "fr-fr;q=0.9",
 				Resolution:        "1920x1080",
@@ -84,7 +87,8 @@ func initBrowser() {
 				return
 			}
 
-			defer H.Close(uuid)
+			defer H.Close(uuid)*/
+			cdp := ""
 
 			client, err := browser.NewInstance(true, false, Config.Engine.BrowserHswThreadCount, cdp)
 			if err != nil {
@@ -131,7 +135,7 @@ func initBrowser() {
 			for client.Online {
 				select {
 				case <-t.C:
-					if time.Since(st).Seconds() > (60 + i) {
+					if time.Since(st).Seconds() > (rotate + i) {
 						log.Println("restarting")
 						client.Online = false
 						break
@@ -285,6 +289,8 @@ func debug() {
 }
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
+	os.RemoveAll(`C:\\Users\\arm\\Desktop\\MYBROWSER\\gologin\\prof\\`)
 	if _, err := toml.DecodeFile("../../scripts/config.toml", &Config); err != nil {
 		panic(err)
 	}

@@ -65,6 +65,8 @@ func (H *Hidenium) Start(uuid string) (string, error) {
 		return "", err
 	}
 
+	time.Sleep(5 * time.Second)
+
 	return fmt.Sprintf("http://127.0.0.1:%d", data.Data.RemotePort), nil
 }
 

@@ -3,10 +3,11 @@ package browser
 import (
 	"errors"
 	"fmt"
-	"log"
 	"os"
+	"strings"
 	"time"
 
+	"github.com/Implex-ltd/engine/internal/gologin"
 	"github.com/playwright-community/playwright-go"
 )
 
@@ -15,26 +16,36 @@ var (
 )
 
 func NewInstance(spoof, headless bool, threads int, cdp string) (*Instance, error) {
-	pw, err := playwright.Run()
+	pw, err := playwright.Run(&playwright.RunOptions{})
 	if err != nil {
 		return nil, err
 	}
 
-	browser, err := pw.Chromium.ConnectOverCDP(cdp)
+	gologpath, err := gologin.Setup()
 	if err != nil {
 		panic(err)
 	}
 
-	context, err := browser.NewContext(playwright.BrowserNewContextOptions{
-		ColorScheme: playwright.ColorSchemeNoPreference,
+	context, err := pw.Chromium.LaunchPersistentContext(gologpath, playwright.BrowserTypeLaunchPersistentContextOptions{
+		ExecutablePath: playwright.String("../../assets/gologin/orbita/chrome.exe"),
+		Headless:       playwright.Bool(false),
+		ColorScheme:    playwright.ColorSchemeDark,
+		Args: []string{
+			"--lang=fr-FR",
+			"--disable-encryption",
+			"--font-masking-mode=3",
+			"--flag-switches-begin",
+			"--flag-switches-end",
+			"--enable-quic",
+			"--enable-tcp-fast-open",
+			"--disable-remote-fonts",
+			"--disable-background-networking",
+			"--disable-extensions",
+			"--no-first-run",
+		},
 	})
 	if err != nil {
-		return nil, err
-	}
-
-	hsw, err := os.ReadFile("../../cmd/engine/scripts/hsw.js")
-	if err != nil {
-		return nil, err
+		panic(err)
 	}
 
 	context.Route("**https://discord.com/api/v9/auth/register**", func(r playwright.Route) {
@@ -45,14 +56,20 @@ func NewInstance(spoof, headless bool, threads int, cdp string) (*Instance, erro
 		})
 	})
 
-	context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsw.js**", HSW_VERSION), func(r playwright.Route) {
-		log.Println("Injected !")
+	/*
+		hsw, err := os.ReadFile("../../cmd/engine/scripts/hsw.js")
+		if err != nil {
+			return nil, err
+		}
 
-		r.Fulfill(playwright.RouteFulfillOptions{
-			Status: playwright.Int(200),
-			Body:   hsw,
-		})
-	})
+		context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsw.js**", HSW_VERSION), func(r playwright.Route) {
+			log.Println("Injected !")
+
+			r.Fulfill(playwright.RouteFulfillOptions{
+				Status: playwright.Int(200),
+				Body:   hsw,
+			})
+		})*/
 
 	page, err := context.NewPage()
 	if err != nil {
@@ -70,21 +87,44 @@ func NewInstance(spoof, headless bool, threads int, cdp string) (*Instance, erro
 	return &Instance{
 		Online:  false,
 		Pw:      pw,
-		Br:      browser,
+		Br:      context.Browser(),
 		Page:    page,
 		Manager: make(chan struct{}, threads),
+		Path:    strings.ReplaceAll(gologpath, `\`, `\\`),
 	}, nil
 }
 
 func (I *Instance) CloseInstance() error {
-	if err := I.Page.Close(); err != nil {
-		return err
+	var errList []error
+
+	defer func() {
+		fmt.Println(I.Path)
+		fmt.Println(os.RemoveAll(I.Path))
+	}()
+
+	if I.Page != nil {
+		if err := I.Page.Close(); err != nil {
+			errList = append(errList, err)
+		}
 	}
-	if err := I.Br.Close(); err != nil {
-		return err
+
+	/*
+		// make crash
+		if I.Br != nil {
+				if err := I.Br.Close(); err != nil {
+					errList = append(errList, err)
+				}
+			}
+	*/
+
+	if I.Pw != nil {
+		if err := I.Pw.Stop(); err != nil {
+			errList = append(errList, err)
+		}
 	}
-	if err := I.Pw.Stop(); err != nil {
-		return err
+
+	if len(errList) > 0 {
+		return fmt.Errorf("closing instance failed: %v", errList)
 	}
 
 	return nil
@@ -97,6 +137,8 @@ func (I *Instance) NavigateToDiscord() error {
 	}); err != nil {
 		return err
 	}
+
+	time.Sleep(time.Second)
 
 	bl, err := I.Page.WaitForSelector(BUTTON_LOGIN, playwright.PageWaitForSelectorOptions{
 		State:   playwright.WaitForSelectorStateAttached,
@@ -144,7 +186,7 @@ func (I *Instance) TriggerCaptcha() error {
 		return err
 	}
 
-	time.Sleep(time.Second * 5)
+	time.Sleep(time.Second * 2)
 
 	if err := bl.Click(playwright.ElementHandleClickOptions{
 		Timeout: playwright.Float(3000),
@@ -152,7 +194,7 @@ func (I *Instance) TriggerCaptcha() error {
 		return err
 	}
 
-	timeout := time.After(time.Second * 4)
+	timeout := time.After(time.Second * 2)
 
 	ticker := time.NewTicker(time.Millisecond * 250)
 	defer ticker.Stop()
@@ -189,7 +231,7 @@ func (I *Instance) Hsw(jwt string, timeoutDuration time.Duration) (string, error
 
 	go func() {
 		answer, err := I.Frame.Evaluate(fmt.Sprintf("hsw(`%s`)", jwt), playwright.ElementHandleInputValueOptions{
-			Timeout: playwright.Float(0),
+			Timeout: playwright.Float(10000),
 		})
 		if err != nil {
 			errChan <- err
