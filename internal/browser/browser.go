@@ -23,7 +23,7 @@ func NewInstance(spoof, headless bool, threads int, cdp string) (*Instance, erro
 
 	gologpath, err := gologin.Setup()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	context, err := pw.Chromium.LaunchPersistentContext(gologpath, playwright.BrowserTypeLaunchPersistentContextOptions{
@@ -45,7 +45,7 @@ func NewInstance(spoof, headless bool, threads int, cdp string) (*Instance, erro
 		},
 	})
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	context.Route("**https://discord.com/api/v9/auth/register**", func(r playwright.Route) {

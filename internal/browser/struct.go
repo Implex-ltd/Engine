@@ -9,7 +9,7 @@ var (
 	CHECKBOX_TOS   = `#app-mount > div > div > div.grid-3d2PVT.heroBackground-itJzsn > div.row-31oovZ.heroContainer-3YphMz > div > div.formContainer-1Mw7aR > div > div > div`
 	USERNAME_INPUT = `#app-mount > div > div > div.grid-3d2PVT.heroBackground-itJzsn > div.row-31oovZ.heroContainer-3YphMz > div > div.formContainer-1Mw7aR > form > input`
 	BUTTON_SUBMIT  = `#app-mount > div > div > div.grid-3d2PVT.heroBackground-itJzsn > div.row-31oovZ.heroContainer-3YphMz > div > div.formContainer-1Mw7aR > form > button > img`
-	HCAPTCHA_FRAME = `//iframe[contains(@title,'Widget contenant une case à cocher pour le défi de sécurité hCaptcha')]` //iframe[contains(@title,'Widget containing checkbox for hCaptcha security challenge')]`
+	HCAPTCHA_FRAME = `//iframe[contains(@title,'Widget contenant une case à cocher pour le défi de sécurité hCaptcha')]`
 )
 
 type Instance struct {

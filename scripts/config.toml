@@ -3,5 +3,5 @@ goroutines = 5
 debug = false
 
 [engine]
-browserHswThreadCount = 120
-browserCount = 5
+browserHswThreadCount = 15
+browserCount = 7

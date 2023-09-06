@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"math/rand"
 	"os"
 	"path/filepath"
@@ -1375,23 +1374,17 @@ func GetFingerprint() ([]byte, error) {
 }
 
 func Setup() (string, error) {
-
-	// Generate a random MD5 hash
-
 	randomMD5 := generateRandomMD5()
 
-	// Define source and destination directories
 	sourceDir := "C:\\Users\\arm\\Desktop\\MYBROWSER\\gologin\\base"
 	destinationDir := fmt.Sprintf("C:\\Users\\arm\\Desktop\\MYBROWSER\\gologin\\prof\\%s", randomMD5)
 
-	// Copy the source directory to the destination
 	err := copyDir(sourceDir, destinationDir)
 	if err != nil {
 		fmt.Println("Error copying directory:", err)
 		return "", err
 	}
 
-	// Create a subdirectory "Default" inside the destination directory
 	defaultDir := filepath.Join(destinationDir, "Default")
 	err = os.Mkdir(defaultDir, os.ModePerm)
 	if err != nil {
@@ -1399,13 +1392,11 @@ func Setup() (string, error) {
 		return "", err
 	}
 
-	// Define JSON data (replace 'a' with your JSON data)
 	jsondata, err := GetFingerprint()
 	if err != nil {
-		panic(err)
+		return "", err
 	}
 
-	// Write JSON data to Preferences file
 	preferencesFile := filepath.Join(defaultDir, "Preferences")
 	err = writeJSONToFile(jsondata, preferencesFile)
 	if err != nil {
@@ -1413,7 +1404,6 @@ func Setup() (string, error) {
 		return "", err
 	}
 
-	// Remove random files from the "fonts" subdirectory
 	fontsDir := filepath.Join(destinationDir, "fonts")
 	err = removeRandomFiles(fontsDir, 64)
 	if err != nil {
@@ -1425,14 +1415,12 @@ func Setup() (string, error) {
 	return destinationDir, nil
 }
 
-// generateRandomMD5 generates a random MD5 hash.
 func generateRandomMD5() string {
 	h := md5.New()
 	_, _ = io.WriteString(h, randStringBytes(32))
 	return fmt.Sprintf("%x", h.Sum(nil))
 }
 
-// randStringBytes generates a random string of a given length.
 func randStringBytes(n int) string {
 	const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	b := make([]byte, n)
@@ -1442,7 +1430,6 @@ func randStringBytes(n int) string {
 	return string(b)
 }
 
-// copyDir copies a directory and its contents to a destination directory.
 func copyDir(src, dest string) error {
 	info, err := os.Stat(src)
 	if err != nil {
@@ -1454,7 +1441,7 @@ func copyDir(src, dest string) error {
 		return err
 	}
 
-	entries, err := ioutil.ReadDir(src)
+	entries, err := os.ReadDir(src)
 	if err != nil {
 		return err
 	}
@@ -1477,7 +1464,6 @@ func copyDir(src, dest string) error {
 	return nil
 }
 
-// copyFile copies a file from source to destination.
 func copyFile(src, dest string) error {
 	sourceFile, err := os.Open(src)
 	if err != nil {
@@ -1495,14 +1481,12 @@ func copyFile(src, dest string) error {
 	return err
 }
 
-// writeJSONToFile writes JSON data to a file.
 func writeJSONToFile(data []byte, filePath string) error {
-	return ioutil.WriteFile(filePath, data, 0644)
+	return os.WriteFile(filePath, data, 0644)
 }
 
-// removeRandomFiles removes a specified number of random files from a directory.
 func removeRandomFiles(dirPath string, numFiles int) error {
-	entries, err := ioutil.ReadDir(dirPath)
+	entries, err := os.ReadDir(dirPath)
 	if err != nil {
 		return err
 	}
@@ -1527,15 +1511,11 @@ func removeRandomFiles(dirPath string, numFiles int) error {
 }
 
 func generateRandomIP() string {
-
-	// Generate four random numbers for each octet
-	// Ensure that each octet is in the range 0-255
 	octet1 := rand.Intn(256)
 	octet2 := rand.Intn(256)
 	octet3 := rand.Intn(256)
 	octet4 := rand.Intn(256)
 
-	// Format the IP address as a string
 	ipAddress := fmt.Sprintf("%d.%d.%d.%d", octet1, octet2, octet3, octet4)
 
 	return ipAddress
@@ -1560,29 +1540,22 @@ func randomKey(m map[string][]string) string {
 }
 
 func getRandomVendorRenderer() (string, string) {
-	// Get the slice of strings from the map
 	el := randomKey(gpuData)
 	gpuSlice := gpuData[el]
 
-	// Check if the slice is empty
 	if len(gpuSlice) == 0 {
 		return "", ""
 	}
 
-	// Get random vendor and renderer
 	renderer := randomElement(gpuSlice)
 
 	return el, renderer
 }
 
 func randomHex(length int) string {
-	// Create a byte slice to hold random bytes
 	bytes := make([]byte, length/2)
-
-	// Read random bytes into the slice
 	rand.Read(bytes)
 
-	// Convert the bytes to a hexadecimal string
 	hexString := hex.EncodeToString(bytes)
 
 	return hexString

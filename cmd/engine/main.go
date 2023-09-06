@@ -24,8 +24,7 @@ var (
 	mt   sync.Mutex
 	curr = 0
 
-	rotate = 15.0
-
+	rotate = 30.0
 	timeout = 10 * time.Second
 )
 
@@ -41,8 +40,8 @@ func next() *browser.Instance {
 		}
 
 		c := pool[curr]
-		mt.Unlock()
 		curr++
+		mt.Unlock()
 
 		if !c.Online {
 			continue
@@ -182,8 +181,6 @@ func solveHandler(c *fiber.Ctx) error {
 		})
 	}
 
-	//log.Println("recv", token[:61])
-
 	t := time.Now()
 	browser := next()
 
@@ -260,16 +257,18 @@ func debug() {
 
 	gotos := []string{
 		"https://www.browserscan.net/",
-		/*"https://browserleaks.com/webgl",
-		"https://browserleaks.com/webrtc",
-		"https://browserleaks.com/canvas",
-		"https://browserleaks.com/webgl",
-		"https://browserleaks.com/tls",
-		"https://browserleaks.com/javascript",
-		"https://browserleaks.com/fonts",
-		"https://browserleaks.com/ip",
-		"https://bot.sannysoft.com/",
-		"https://abrahamjuliot.github.io/creepjs/",*/
+		/*
+			"https://browserleaks.com/webgl",
+			"https://browserleaks.com/webrtc",
+			"https://browserleaks.com/canvas",
+			"https://browserleaks.com/webgl",
+			"https://browserleaks.com/tls",
+			"https://browserleaks.com/javascript",
+			"https://browserleaks.com/fonts",
+			"https://browserleaks.com/ip",
+			"https://bot.sannysoft.com/",
+			"https://abrahamjuliot.github.io/creepjs/",
+		*/
 	}
 
 	c := goccm.New(len(gotos))
@@ -289,8 +288,9 @@ func debug() {
 }
 
 func main() {
+	playwright.Install()
 	rand.Seed(time.Now().UnixNano())
-	os.RemoveAll(`C:\\Users\\arm\\Desktop\\MYBROWSER\\gologin\\prof\\`)
+
 	if _, err := toml.DecodeFile("../../scripts/config.toml", &Config); err != nil {
 		panic(err)
 	}
