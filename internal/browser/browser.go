@@ -3,6 +3,7 @@ package browser
 import (
 	"errors"
 	"fmt"
+	"log"
 	"os"
 	"strings"
 	"time"
@@ -11,12 +12,8 @@ import (
 	"github.com/playwright-community/playwright-go"
 )
 
-var (
-	HSW_VERSION = "6f48ffb"
-)
-
-func NewInstance(spoof, headless bool, threads int, cdp string) (*Instance, error) {
-	pw, err := playwright.Run(&playwright.RunOptions{})
+func NewInstance(spoof, headless bool, threads int, cdp string, inject bool, version string) (*Instance, error) {
+	pw, err := playwright.Run()
 	if err != nil {
 		return nil, err
 	}
@@ -48,28 +45,31 @@ func NewInstance(spoof, headless bool, threads int, cdp string) (*Instance, erro
 		return nil, err
 	}
 
-	context.Route("**https://discord.com/api/v9/auth/register**", func(r playwright.Route) {
+	if err := context.Route("**https://discord.com/api/v9/auth/register**", func(r playwright.Route) {
 		r.Fulfill(playwright.RouteFulfillOptions{
 			Status:      playwright.Int(400),
 			ContentType: playwright.String("application/json"),
 			Body:        []byte(`{"captcha_key": ["captcha-required"],"captcha_sitekey": "4c672d35-0701-42b2-88c3-78380b0db560","captcha_service": "hcaptcha"}`),
 		})
-	})
+	}); err != nil {
+		return nil, err 
+	}
 
-	/*
+	if inject {
 		hsw, err := os.ReadFile("../../cmd/engine/scripts/hsw.js")
 		if err != nil {
 			return nil, err
 		}
 
-		context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsw.js**", HSW_VERSION), func(r playwright.Route) {
+		context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsw.js**", version), func(r playwright.Route) {
 			log.Println("Injected !")
 
 			r.Fulfill(playwright.RouteFulfillOptions{
 				Status: playwright.Int(200),
 				Body:   hsw,
 			})
-		})*/
+		})
+	}
 
 	page, err := context.NewPage()
 	if err != nil {
@@ -138,7 +138,7 @@ func (I *Instance) NavigateToDiscord() error {
 		return err
 	}
 
-	time.Sleep(time.Second)
+	//time.Sleep(time.Second)
 
 	bl, err := I.Page.WaitForSelector(BUTTON_LOGIN, playwright.PageWaitForSelectorOptions{
 		State:   playwright.WaitForSelectorStateAttached,
@@ -150,25 +150,27 @@ func (I *Instance) NavigateToDiscord() error {
 	}
 
 	if err := bl.Click(playwright.ElementHandleClickOptions{
-		Timeout: playwright.Float(2500),
+		Timeout: playwright.Float(3000),
 	}); err != nil {
 		return err
 	}
 
 	if err := I.Page.Type(USERNAME_INPUT, "vichyontop1337", playwright.PageTypeOptions{
-		Timeout: playwright.Float(2500),
+		Timeout: playwright.Float(3000),
 		Delay:   playwright.Float(0),
 	}); err != nil {
 		return err
 	}
 
-	I.Page.Click(CHECKBOX_TOS, playwright.PageClickOptions{
-		Timeout: playwright.Float(2500),
+	if err := I.Page.Click(CHECKBOX_TOS, playwright.PageClickOptions{
+		Timeout: playwright.Float(3000),
 		Delay:   playwright.Float(0),
-	})
+	}); err != nil {
+		return err
+	}
 
 	if err := I.Page.Click(BUTTON_SUBMIT, playwright.PageClickOptions{
-		Timeout: playwright.Float(2500),
+		Timeout: playwright.Float(3000),
 		Delay:   playwright.Float(0),
 	}); err != nil {
 		return err
@@ -186,15 +188,15 @@ func (I *Instance) TriggerCaptcha() error {
 		return err
 	}
 
-	time.Sleep(time.Second * 2)
+	//time.Sleep(time.Second * 2)
 
 	if err := bl.Click(playwright.ElementHandleClickOptions{
-		Timeout: playwright.Float(3000),
+		Timeout: playwright.Float(5000),
 	}); err != nil {
 		return err
 	}
 
-	timeout := time.After(time.Second * 2)
+	timeout := time.After(time.Second * 3)
 
 	ticker := time.NewTicker(time.Millisecond * 250)
 	defer ticker.Stop()

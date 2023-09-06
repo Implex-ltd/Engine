@@ -487,11 +487,11 @@ func GetFingerprint() ([]byte, error) {
 			LangHeader: "fr-FR,fr;q=0.9",
 			Languages:  "fr-FR,fr",
 			MediaDevices: MediaDevices{
-				AudioInputs:  2,
-				AudioOutputs: 1,
+				AudioInputs:  randomElementInt([]int64{0, 1, 2, 3}),
+				AudioOutputs: randomElementInt([]int64{0, 1, 2, 3}),
 				Enable:       true,
 				Uid:          randomHex(58),
-				VideoInputs:  1,
+				VideoInputs:  randomElementInt([]int64{0, 1, 2, 3, 4}),
 			},
 			Mobile: Mobile{
 				DeviceScaleFactor: 1.00000001,
@@ -508,7 +508,7 @@ func GetFingerprint() ([]byte, error) {
 				AllEnable:   true,
 				FlashEnable: false,
 			},
-			ProfileID: "64ef5eb5b342d95f657e0815",
+			ProfileID: randomHex(24),
 			Proxy: Proxy{
 				Password: "",
 				Username: "",
@@ -1397,15 +1397,13 @@ func Setup() (string, error) {
 		return "", err
 	}
 
-	preferencesFile := filepath.Join(defaultDir, "Preferences")
-	err = writeJSONToFile(jsondata, preferencesFile)
+	err = writeJSONToFile(jsondata, filepath.Join(defaultDir, "Preferences"))
 	if err != nil {
 		fmt.Println("Error writing JSON data to Preferences file:", err)
 		return "", err
 	}
 
-	fontsDir := filepath.Join(destinationDir, "fonts")
-	err = removeRandomFiles(fontsDir, 64)
+	err = removeRandomFiles(filepath.Join(destinationDir, "fonts"), 64)
 	if err != nil {
 		fmt.Println("Error removing random files from 'fonts' directory:", err)
 		return "", err
@@ -1547,16 +1545,12 @@ func getRandomVendorRenderer() (string, string) {
 		return "", ""
 	}
 
-	renderer := randomElement(gpuSlice)
-
-	return el, renderer
+	return el, randomElement(gpuSlice)
 }
 
 func randomHex(length int) string {
 	bytes := make([]byte, length/2)
 	rand.Read(bytes)
 
-	hexString := hex.EncodeToString(bytes)
-
-	return hexString
+	return hex.EncodeToString(bytes)
 }

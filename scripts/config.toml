@@ -1,7 +1,14 @@
-[performances]
-goroutines = 5
-debug = false
-
 [engine]
 browserHswThreadCount = 15
 browserCount = 7
+hidenium = false
+rotation = 15.0
+rotation_wait = 10.0
+
+[mock]
+hsw = false
+spoofing = false
+version = "6f48ffb"
+
+[server]
+port = 1234
