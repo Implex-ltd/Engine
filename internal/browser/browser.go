@@ -3,35 +3,43 @@ package browser
 import (
 	"errors"
 	"fmt"
+	"log"
 	"os"
-	"strings"
 	"time"
 
-	"github.com/Implex-ltd/engine/internal/gologin"
+	_"github.com/Implex-ltd/engine/internal/gologin"
 	"github.com/playwright-community/playwright-go"
 )
 
-var (
-	HSW_VERSION = "6f48ffb"
-)
-
-func NewInstance(spoof, headless bool, threads int, cdp string) (*Instance, error) {
-	pw, err := playwright.Run(&playwright.RunOptions{})
+func NewInstance(spoof, headless bool, threads int, cdp string, inject bool, version string) (*Instance, error) {
+	pw, err := playwright.Run()
 	if err != nil {
 		return nil, err
 	}
 
-	gologpath, err := gologin.Setup()
+	browser, err := pw.Chromium.ConnectOverCDP(cdp)
 	if err != nil {
 		panic(err)
 	}
 
+	context, err := browser.NewContext(playwright.BrowserNewContextOptions{
+		ColorScheme: playwright.ColorSchemeNoPreference,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	/*gologpath, err := gologin.Setup()
+	if err != nil {
+		return nil, err
+	}
+
 	context, err := pw.Chromium.LaunchPersistentContext(gologpath, playwright.BrowserTypeLaunchPersistentContextOptions{
-		ExecutablePath: playwright.String("../../assets/gologin/orbita/chrome.exe"),
+		ExecutablePath: playwright.String("C:\\Users\\arm\\Desktop\\MYBROWSER\\gologin\\orbita\\chrome.exe"),
 		Headless:       playwright.Bool(false),
 		ColorScheme:    playwright.ColorSchemeDark,
 		Args: []string{
-			"--lang=fr-FR",
+			"--lang=fr-FR", // fr-FR
 			"--disable-encryption",
 			"--font-masking-mode=3",
 			"--flag-switches-begin",
@@ -42,34 +50,39 @@ func NewInstance(spoof, headless bool, threads int, cdp string) (*Instance, erro
 			"--disable-background-networking",
 			"--disable-extensions",
 			"--no-first-run",
+
+			//"--headless=new",
 		},
 	})
 	if err != nil {
-		panic(err)
-	}
+		return nil, err
+	}*/
 
-	context.Route("**https://discord.com/api/v9/auth/register**", func(r playwright.Route) {
+	if err := context.Route("**https://discord.com/api/v9/auth/register**", func(r playwright.Route) {
 		r.Fulfill(playwright.RouteFulfillOptions{
 			Status:      playwright.Int(400),
 			ContentType: playwright.String("application/json"),
 			Body:        []byte(`{"captcha_key": ["captcha-required"],"captcha_sitekey": "4c672d35-0701-42b2-88c3-78380b0db560","captcha_service": "hcaptcha"}`),
 		})
-	})
+	}); err != nil {
+		return nil, err
+	}
 
-	/*
+	if inject {
 		hsw, err := os.ReadFile("../../cmd/engine/scripts/hsw.js")
 		if err != nil {
 			return nil, err
 		}
 
-		context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsw.js**", HSW_VERSION), func(r playwright.Route) {
+		context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsw.js**", version), func(r playwright.Route) {
 			log.Println("Injected !")
 
 			r.Fulfill(playwright.RouteFulfillOptions{
 				Status: playwright.Int(200),
 				Body:   hsw,
 			})
-		})*/
+		})
+	}
 
 	page, err := context.NewPage()
 	if err != nil {
@@ -90,7 +103,7 @@ func NewInstance(spoof, headless bool, threads int, cdp string) (*Instance, erro
 		Br:      context.Browser(),
 		Page:    page,
 		Manager: make(chan struct{}, threads),
-		Path:    strings.ReplaceAll(gologpath, `\`, `\\`),
+		Path:    "", //strings.ReplaceAll(gologpath, `\`, `\\`),
 	}, nil
 }
 
@@ -98,8 +111,10 @@ func (I *Instance) CloseInstance() error {
 	var errList []error
 
 	defer func() {
-		fmt.Println(I.Path)
-		fmt.Println(os.RemoveAll(I.Path))
+		if I.Path != "" {
+			fmt.Println(I.Path)
+			fmt.Println(os.RemoveAll(I.Path))
+		}
 	}()
 
 	if I.Page != nil {
@@ -138,7 +153,7 @@ func (I *Instance) NavigateToDiscord() error {
 		return err
 	}
 
-	time.Sleep(time.Second)
+	time.Sleep(time.Second * 2)
 
 	bl, err := I.Page.WaitForSelector(BUTTON_LOGIN, playwright.PageWaitForSelectorOptions{
 		State:   playwright.WaitForSelectorStateAttached,
@@ -150,25 +165,27 @@ func (I *Instance) NavigateToDiscord() error {
 	}
 
 	if err := bl.Click(playwright.ElementHandleClickOptions{
-		Timeout: playwright.Float(2500),
+		Timeout: playwright.Float(3000),
 	}); err != nil {
 		return err
 	}
 
 	if err := I.Page.Type(USERNAME_INPUT, "vichyontop1337", playwright.PageTypeOptions{
-		Timeout: playwright.Float(2500),
+		Timeout: playwright.Float(3000),
 		Delay:   playwright.Float(0),
 	}); err != nil {
 		return err
 	}
 
-	I.Page.Click(CHECKBOX_TOS, playwright.PageClickOptions{
-		Timeout: playwright.Float(2500),
+	if err := I.Page.Click(CHECKBOX_TOS, playwright.PageClickOptions{
+		Timeout: playwright.Float(3000),
 		Delay:   playwright.Float(0),
-	})
+	}); err != nil {
+		return err
+	}
 
 	if err := I.Page.Click(BUTTON_SUBMIT, playwright.PageClickOptions{
-		Timeout: playwright.Float(2500),
+		Timeout: playwright.Float(3000),
 		Delay:   playwright.Float(0),
 	}); err != nil {
 		return err
@@ -189,12 +206,12 @@ func (I *Instance) TriggerCaptcha() error {
 	time.Sleep(time.Second * 2)
 
 	if err := bl.Click(playwright.ElementHandleClickOptions{
-		Timeout: playwright.Float(3000),
+		Timeout: playwright.Float(5000),
 	}); err != nil {
 		return err
 	}
 
-	timeout := time.After(time.Second * 2)
+	timeout := time.After(time.Second * 3)
 
 	ticker := time.NewTicker(time.Millisecond * 250)
 	defer ticker.Stop()
@@ -230,7 +247,7 @@ func (I *Instance) Hsw(jwt string, timeoutDuration time.Duration) (string, error
 	errChan := make(chan error)
 
 	go func() {
-		answer, err := I.Frame.Evaluate(fmt.Sprintf("hsw(`%s`)", jwt), playwright.ElementHandleInputValueOptions{
+		answer, err := I.Frame.Evaluate(fmt.Sprintf("spoofall();hsw(`%s`)", jwt), playwright.ElementHandleInputValueOptions{
 			Timeout: playwright.Float(10000),
 		})
 		if err != nil {

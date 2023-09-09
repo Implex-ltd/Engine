@@ -6,10 +6,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"math/rand"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/google/uuid"
@@ -277,20 +277,21 @@ func GetFingerprint() ([]byte, error) {
 
 	data, err := json.Marshal(&Fingerprint{
 		NewTabPage: NewTabPage{
-			PrevNavigationTime: "13338424201908559",
+			PrevNavigationTime: "13338531332965699",
 		},
-		AccountTrackerServiceLastUpdate: "13338423195083573",
+		AccountIdMigrationState:         2,
+		AccountTrackerServiceLastUpdate: "13338531333004494",
 		ACKExistingNTPExtensions:        true,
 		AlternateErrorPages: AlternateErrorPages{
 			Backup: true,
 		},
-		AnnouncementNotificationServiceFirstRunTime: "13337882905385312",
+		AnnouncementNotificationServiceFirstRunTime: "13338531332855366",
 		Apps: FingerprintApps{
 			ShortcutsArch:    "",
 			ShortcutsVersion: 0,
 		},
 		Autocomplete: Autocomplete{
-			RetentionPolicyLastVersion: 113,
+			RetentionPolicyLastVersion: 115,
 		},
 		Autofill: Autofill{
 			OrphanRowsRemoved: true,
@@ -302,17 +303,17 @@ func GetFingerprint() ([]byte, error) {
 			ExpandedNodes: []interface{}{},
 		},
 		Bookmarks: Bookmarks{
-			EditingEnabled: true,
+			EditingEnabled: false,
 		},
 		Browser: Browser{
 			EnableSpellchecking: false,
 			HasSeenWelcomePage:  false,
 			WindowPlacement: WindowPlacement{
-				Bottom:         1258,
-				Left:           740,
+				Bottom:         1310,
+				Left:           758,
 				Maximized:      false,
-				Right:          2036,
-				Top:            404,
+				Right:          2678,
+				Top:            230,
 				WorkAreaBottom: 1392,
 				WorkAreaLeft:   0,
 				WorkAreaRight:  3440,
@@ -328,7 +329,7 @@ func GetFingerprint() ([]byte, error) {
 			},
 		},
 		CountryidAtInstall:       21077,
-		CredentialsEnableService: true,
+		CredentialsEnableService: false,
 		CustomLinks: CustomLinks{
 			Initialized: true,
 			List: []List{
@@ -425,9 +426,9 @@ func GetFingerprint() ([]byte, error) {
 				ColorFormat:     "\"original\"",
 			},
 		},
-		DipsTimerLastUpdate: "13338423195033904",
+		DipsTimerLastUpdate: "13338531332959012",
 		DomainDiversity: DomainDiversity{
-			LastReportingTimestamp: "13338423195084226",
+			LastReportingTimestamp: "13338531333004017",
 		},
 		Extensions: Extensions{
 			Alerts: Alerts{
@@ -437,17 +438,17 @@ func GetFingerprint() ([]byte, error) {
 			Commands: map[string]Command{
 				"windows:Ctrl+Shift+F": {
 					CommandName: "humanTyping",
-					Extension:   "lmccpkjihdfknjbpkilmbinhljdkcbak",
+					Extension:   "mnldjpplkbaacjnffmcjmedffbaekgko",
 					Global:      false,
 				},
 				"windows:Ctrl+Shift+Q": {
 					CommandName: "automationTask",
 
-					Extension: "lmccpkjihdfknjbpkilmbinhljdkcbak",
+					Extension: "mnldjpplkbaacjnffmcjmedffbaekgko",
 					Global:    false,
 				},
 			},
-			LastChromeVersion: "113.0.5672.92",
+			LastChromeVersion: "115.0.5790.82",
 			Settings:          ExtensionsSettings{},
 		},
 		GaiaCookie: GaiaCookie{
@@ -465,14 +466,14 @@ func GetFingerprint() ([]byte, error) {
 			},
 			CanvasMode:             "noise",
 			CanvasNoise:            rand.Float64(),
-			ClientRectsNoiseEnable: false,
+			ClientRectsNoiseEnable: false, // fuck
 			DeviceMemory:           8192,
 			DNS:                    "",
 			DoNotTrack:             false,
 			GeoLocation: GeoLocation{
 				Accuracy:  100,
-				Latitude:  47.8573,
-				Longitude: 3.9769,
+				Latitude:  49.4429,
+				Longitude: 1.1003,
 				Mode:      "prompt",
 			},
 			GetClientRectsNoice: rand.Float64(),
@@ -480,19 +481,20 @@ func GetFingerprint() ([]byte, error) {
 			HardwareConcurrency: randomElementInt([]int64{4, 6, 8, 12, 16, 32, 64}),
 			Icon: Icon{
 				Avatar: Avatar{
-					Enabled: true,
+					Enabled:  true,
+					FullSize: true,
 				},
-				Text: generateRandomMD5(),
+				Text: "",
 			},
 			IsM1:       false,
-			LangHeader: "fr-FR,fr;q=0.9",
-			Languages:  "fr-FR,fr",
+			LangHeader: "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7",
+			Languages:  "fr-FR,fr,en-US,en",
 			MediaDevices: MediaDevices{
-				AudioInputs:  2,
-				AudioOutputs: 1,
+				AudioInputs:  randomElementInt([]int64{0, 1, 2, 3}),
+				AudioOutputs: randomElementInt([]int64{0, 1, 2, 3}),
 				Enable:       true,
 				Uid:          randomHex(58),
-				VideoInputs:  1,
+				VideoInputs:  randomElementInt([]int64{0, 1, 2, 3, 4}),
 			},
 			Mobile: Mobile{
 				DeviceScaleFactor: 1.00000001,
@@ -506,10 +508,10 @@ func GetFingerprint() ([]byte, error) {
 				Platform:       "Win32",
 			},
 			Plugins: Plugins{
-				AllEnable:   true,
-				FlashEnable: false,
+				AllEnable:   false,
+				FlashEnable: true,
 			},
-			ProfileID: "64ef5eb5b342d95f657e0815",
+			ProfileID: randomHex(24),
 			Proxy: Proxy{
 				Password: "",
 				Username: "",
@@ -530,17 +532,17 @@ func GetFingerprint() ([]byte, error) {
 			UnpinableExtensionNames: []string{
 				"passwords-ext",
 			},
-			UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
+			UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
 			WebGl: WebGl{
 				Mode:     true,
 				Renderer: renderer,
 				Vendor:   vendor,
 			},
 			WebRTC: WebRTC{
-				FillBasedOnIP:  false,
+				FillBasedOnIP:  true,
 				LocalIPMasking: true,
 				Mode:           "public",
-				PublicIP:       generateRandomIP(),
+				PublicIP:       "",
 			},
 			Webgl: Webgl{
 				Metadata: WebGl{
@@ -582,7 +584,7 @@ func GetFingerprint() ([]byte, error) {
 					},
 					{
 						Name:  "ALIASED_POINT_SIZE_RANGE",
-						Value: map[string]int64{"0": 1, "1": 64},
+						Value: map[string]int64{"0": 1, "1": 1024},
 					},
 					{
 						Name:  []string{"DEPTH_BITS", "STENCIL_BITS"},
@@ -718,7 +720,7 @@ func GetFingerprint() ([]byte, error) {
 					},
 					{
 						Name:  "MAX_VIEWPORT_DIMS",
-						Value: map[string]int64{"0": 21826, "1": 82568},
+						Value: map[string]int{"0": rand.Intn(100000) + 1, "1": rand.Intn(100000) + 1},
 					},
 					{
 						Name:  "MIN_PROGRAM_TEXEL_OFFSET",
@@ -1117,11 +1119,11 @@ func GetFingerprint() ([]byte, error) {
 			},
 		},
 		History: History{
-			SavingDisabled: false,
+			SavingDisabled: true,
 		},
 		Intl: Intl{
-			AcceptLanguages:   "fr-FR,fr",
-			SelectedLanguages: "fr-FR,fr",
+			AcceptLanguages:   "en-US,en",
+			SelectedLanguages: "en-US,en",
 		},
 		Invalidation: Invalidation{
 			PerSenderTopicsToHandler: map[string]TranslateSiteBlacklistWithTime{
@@ -1130,23 +1132,23 @@ func GetFingerprint() ([]byte, error) {
 			},
 		},
 		Media: Media{
-			DeviceIDSalt: "5A63EA96076FE1C229C12EE8C2B9DD88",
+			DeviceIDSalt: strings.ToUpper(randStringBytes(32)),
 			Engagement: Engagement{
 				SchemaVersion: 5,
 			},
 		},
 		MediaRouter: MediaRouter{
-			ReceiverIDHashToken: "Gkb6cqJJ2D5bkFpwIWyFM8DUF9k93XyAUyCexMJxToGC/5EnIaowUBoHzadGtNsR8jnxm/2eHrZkCY531TMxSg==",
+			ReceiverIDHashToken: "Gk7tpVqhLJPezOj91Ls8wsRjia/sqLrzVD9BJwhV2BXYYx+TOsbyA4McT+pdBxOXiDfwMVVXak0x/1g8tdWYcg==",
 		},
 		NTP: NTP{
 			NumPersonalSuggestions: 10,
 		},
 		OptimizationGuide: OptimizationGuide{
 			Hintsfetcher: Fetcher{
-				LastFetchAttempt: "13337883014209791",
+				LastFetchAttempt: "13338531345761512",
 			},
 			Predictionmodelfetcher: Fetcher{
-				LastFetchAttempt: "13338424215008485",
+				LastFetchAttempt: "13338531345761512",
 			},
 			PreviouslyRegisteredOptimizationTypes: PreviouslyRegisteredOptimizationTypes{
 				AboutThisSite:   true,
@@ -1154,7 +1156,7 @@ func GetFingerprint() ([]byte, error) {
 			},
 			StoreFilePathsToDelete: TranslateSiteBlacklistWithTime{},
 		},
-		Prefetch: Prefetch{
+		/*Prefetch: Prefetch{
 			SearchPrefetch: SearchPrefetch{
 				Cache: Cache{
 					HTTPSWWWGoogleCOMSearchQCreepjsOqCreepjsAqsChrome69I57J0I19I512L2J0I10I19I512L2J0I19I512J46I19I512J0I19I512J46I10I19I512L2991J0J7SourceidChromeIeUTF8: []string{
@@ -1163,7 +1165,7 @@ func GetFingerprint() ([]byte, error) {
 					},
 				},
 			},
-		},
+		},*/
 		PrivacySandbox: PrivacySandbox{
 			AntiAbuseInitialized: true,
 		},
@@ -1174,7 +1176,7 @@ func GetFingerprint() ([]byte, error) {
 					Notifications: 1,
 				},
 				Exceptions: Exceptions{
-					ClientHints: ClientHints{
+					/*ClientHints: ClientHints{
 						HTTPSWWWGoogleCOM443: HTTPSWWWGoogleCOM443{
 							LastModified: "13337882802178698",
 							Setting: HTTPSWWWGoogleCOM443_Setting{
@@ -1190,8 +1192,8 @@ func GetFingerprint() ([]byte, error) {
 								},
 							},
 						},
-					},
-					MediaEngagement: map[string]MediaEngagement{
+					},*/
+					/*MediaEngagement: map[string]MediaEngagement{
 						"https://abrahamjuliot.github.io:443,*": MediaEngagement{
 							Expiration:   "13345659587492709",
 							LastModified: "13337883587492715",
@@ -1270,14 +1272,14 @@ func GetFingerprint() ([]byte, error) {
 								RawScore:               3.0,
 							},
 						},
-					},
+					},*/
 				},
 				PrefVersion: 1,
 			},
 			CreatedByVersion:                       "103.0.5060.53",
 			CreationTime:                           "13302807096310804",
-			ExitType:                               "Normal",
-			LastEngagementTime:                     "13338424236855626",
+			ExitType:                               "Crashed",
+			LastEngagementTime:                     "13302807261018135",
 			LastTimeObsoleteHTTPCredentialsRemoved: float64(time.Now().Unix()),
 			LastTimePasswordStoreMetricsReported:   float64(time.Now().Unix()),
 			ManagedUserID:                          "",
@@ -1285,10 +1287,10 @@ func GetFingerprint() ([]byte, error) {
 			WereOldGoogleLoginsRemoved:             true,
 		},
 		Safebrowsing: Safebrowsing{
-			MetricsLastLogTime: "13338423195",
+			MetricsLastLogTime: "13338531332",
 		},
 		SegmentationPlatform: SegmentationPlatform{
-			ClientResultPrefs: "ClAKDXNob3BwaW5nX3VzZXISPwo0DQAAAAAQgYmt1eHc2BcaJAocChoNAAAAPxIMU2hvcHBpbmdVc2VyGgVPdGhlchIEEAcYBBDUxdut4dzYFwpXChFjcm9zc19kZXZpY2VfdXNlchJCCjcNAACAPxCaia3V4dzYFxonCh8KHQ0AAAA/Eg9Dcm9zc0RldmljZVVzZXIaBU90aGVyEgQQBxgEENbG263h3NgX",
+			//ClientResultPrefs: "ClAKDXNob3BwaW5nX3VzZXISPwo0DQAAAAAQgYmt1eHc2BcaJAocChoNAAAAPxIMU2hvcHBpbmdVc2VyGgVPdGhlchIEEAcYBBDUxdut4dzYFwpXChFjcm9zc19kZXZpY2VfdXNlchJCCjcNAACAPxCaia3V4dzYFxonCh8KHQ0AAAA/Eg9Dcm9zc0RldmljZVVzZXIaBU90aGVyEgQQBxgEENbG263h3NgX",
 			DeviceSwitcherUtil: DeviceSwitcherUtil{
 				Result: Result{
 					Labels: []string{
@@ -1296,8 +1298,8 @@ func GetFingerprint() ([]byte, error) {
 					},
 				},
 			},
-			LastDBCompactionTime: "13338259199000000",
-			SegmentationResult: SegmentationResult{
+			LastDBCompactionTime: "13338431999000000",
+			/*SegmentationResult: SegmentationResult{
 				CrossDeviceUser: User{
 					InUse:         false,
 					SegmentID:     1001,
@@ -1310,10 +1312,10 @@ func GetFingerprint() ([]byte, error) {
 					SegmentRank:   1,
 					SelectionTime: "13338064251708116",
 				},
-			},
+			},*/
 		},
 		Sessions: Sessions{
-			SessionDataStatus: 5,
+			SessionDataStatus: 1,
 		},
 		Settings: FingerprintSettings{
 			A11Y: A11Y{
@@ -1329,7 +1331,7 @@ func GetFingerprint() ([]byte, error) {
 		},
 		SupervisedUser: SupervisedUser{
 			Metrics: Metrics{
-				DayID: 154378,
+				DayID: 154380,
 			},
 		},
 		Sync: Sync{
@@ -1338,7 +1340,7 @@ func GetFingerprint() ([]byte, error) {
 		UnifiedConsent: UnifiedConsent{
 			MigrationState: 10,
 		},
-		Updateclientdata: Updateclientdata{
+		/*Updateclientdata: Updateclientdata{
 			Apps: UpdateclientdataApps{
 				Ihcjicgdanjaechkgeegckofjjedodee: Ihcjicgdanjaechkgeegckofjjedodee{
 					Cohort:      "1::",
@@ -1348,17 +1350,17 @@ func GetFingerprint() ([]byte, error) {
 					Pf:          uuid.NewString(),
 				},
 			},
-		},
+		},*/
 		WebApps: WebApps{
 			DidMigrateDefaultChromeApps: []string{
 				"MigrateDefaultChromeAppToWebAppsGSuite",
 				"MigrateDefaultChromeAppToWebAppsNonGSuite",
 			},
-			LastPreinstallSynchronizeVersion:  "113",
+			LastPreinstallSynchronizeVersion:  "115",
 			SystemWebAppFailureCount:          0,
-			SystemWebAppLastAttemptedLanguage: "fr-FR",
+			SystemWebAppLastAttemptedLanguage: "en-US",
 			SystemWebAppLastAttemptedUpdate:   "103.0.5060.53",
-			SystemWebAppLastInstalledLanguage: "fr-FR",
+			SystemWebAppLastInstalledLanguage: "en-US",
 			SystemWebAppLastUpdate:            "103.0.5060.53",
 		},
 		Webauthn: Webauthn{
@@ -1367,7 +1369,7 @@ func GetFingerprint() ([]byte, error) {
 			},
 		},
 		Zerosuggest: Zerosuggest{
-			Cachedresults: ")]}'\n[\"\",[\"rafael nadal\",\"joao felix fc barcelone\",\"tapis rouge mostra de venise\",\"sepp kuss\",\"luis enrique psg\",\"radeon rx 7800 xt\",\"incendie marseille entrepot\",\"rc strasbourg\"],[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],[],{\"google:clientdata\":{\"bpc\":false,\"tlw\":false},\"google:groupsinfo\":\"ChwIkk4SFwoVUmVjaGVyY2hlcyBwb3B1bGFpcmVz\",\"google:suggestdetail\":[{\"google:entityinfo\":\"CgkvbS8wNTFxMzkSGUpvdWV1ciBkZSB0ZW5uaXMgZXNwYWdub2wy7w5kYXRhOmltYWdlL2pwZWc7YmFzZTY0LC85ai80QUFRU2taSlJnQUJBUUFBQVFBQkFBRC8yd0NFQUFrR0J3Z0hCZ2tJQndnS0Nna0xEUllQRFF3TURSc1VGUkFXSUIwaUlpQWRIeDhrS0RRc0pDWXhKeDhmTFQwdE1UVTNPam82SXlzL1JEODRRelE1T2pjQkNnb0tEUXdOR2c4UEdqY2xIeVUzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM04vL0FBQkVJQUVBQVFBTUJJZ0FDRVFFREVRSC94QUFiQUFBQ0F3RUJBUUFBQUFBQUFBQUFBQUFGQmdNRUJ3SUJBUC9FQURBUUFBSUJBd0lGQXdNQ0J3RUFBQUFBQUFFQ0F3QUVFUVVTQmhNaE1VRWlVV0Z4Z2FFVk1pTXpRbEt4MGZBVS84UUFHUUVBQWdNQkFBQUFBQUFBQUFBQUFBQUFBd1VCQWdRQS84UUFJUkVBQWdNQUFnSUNBd0FBQUFBQUFBQUFBUUlBQXhFU0lRUXhJa0ZSWWNILzJnQU1Bd0VBQWhFREVRQS9BREdpNnRLR3ZvcFRoV2NrSDROSm5FbXZRL3FFRnRBY2lOd3pueDNxM2M2azJuMnAzbzI0L3VJNjBvYWxLbDFLSlVYYUQ1N1ZkQjhpUkp1Q3JnQjJhc21xUlM2WXJLNmdoZTVvRGQ2eExkMnJXMGVwN2M5c0xrSDR4M29WUGVnaGRQc2NNeDlCSUhUSHhVa1BDbXJwR2Y4QXpRTHRCNitvWm9GbHU5UXRkTThuRjFGQVJic2toQTlXMG5PUGZCcjdnclcwMC9pRldWTnp5RGFjZUtzUjZOclVSWS9wMGo3UFZrUGcvYXF0cGJSWE9zV3N0dXZMSmwvaURPTnA4OVBIYnQ3MU5WZzNKMXFOeDdtd25XSG4ybFJ0WS9OV1UxSzZXTW1VQUR4UTRXTUloajNTYld3S2cxU0dTRzF4RklXeldrK3BtNVRNdFJlUVdEUGNxRG52Z2RxV1lvRnVFMnFjRFBmMnJidEowTzJ2TjViREsxSWZIZWdKb04yWklla1V2WUFZd2E1RUNlanNwYnJPRGtWdUc1YmlIakRseUtXQ0Z0b0k4WTZmakZhSXV0MjRrNWN0L0NySHNxU0Evd0NLV05OaHR4RkZkN1ZhV2VMbCtqb1ZKNk1EODV6WGsvQzJrcThidzNCNWpNTnE3em5QdDdVcHRJWnU0K3FyeGV1eEhJOFEyTm9GTXQraXNlZzNOZ1VwM2o3T01aYnEyYU5yU2NSeW95SDBzVDBPUHVEVjNVOUgwU2VheXVycWFNRUlJajVYZDE3ajVydlZZN0tHMHQwc1dSbGdrWGFGOXZVVCtUK2F2NDV4d0puODRjS1dmOFJ0dWJ3Y2lONUNjQUNwN2VXYlVJbWEyQlpFcEx2TmY1bG9JeEdjcVBJcnpobmphVFN5OGNrVytKejQ3aW1HTVcvVVUxM1Z2WDhmY3UyUEhFMmpwREE5akk2WTZzckNyZkV2RlZscldqR0piT1JwcE9paGtIUW1sV1c3dHhLeVM0M0FrZGE2czcyS2VSSVlNRmczWDdWVWp2VENjc1hvUzEraDNsbHcvY1RUQlNpam1MdEhxVDMvQU8rS1hiZU5weXpQTXZMY2JYM2sra2ZHS2JOZTR1dDlQUnROdVltZUtTQW84aW45akVlUjVwQUY1UHAwclMycFNlM2ZzRDFCK2xZN2xMSGxHbmlXaFZLeGdHbDI2MmpKWTNjVW5tVGFwUFFlUDNVWWowdVMxMEsxdW1CQ3lrc1VidUZKNmZqRkFOSTFHNjFUTVhLaHQ0bUlCRWE5WHozeWFjcE5adDlWdERHR0hLSktaUDhBU1FjRWZVRVYxUzlrbVI1amMxQ2ZSZzZTMFdXemJsUkZpUjNwTm1TVzBsTWM2Rkd6a0Exb0ZyY1Iyc1pnam1VNHBWNHJZM1U2T29YMCsxYTY3RHl3eGMxRk5hQVZMbjlrZHZhcWxqTnFHb3VUSTdrUXdLd1hkN2tud0s0ZzFrV2dLMnR2RERudTRiZitUL3FvTmZ2ZHVvelJLY0pFeFFEMnhRN2ZISU9vaUJQa2pyOTZKZ2drMEtKN2VRdmVzekNVU00zVTd1LzF5T2hvT2kzTmhLUW5yako5VVQ5alJPUnR2OGlXTlpWNnI2dlAzODFMelZ1NHdaRVV1UmhsWlIzSGNFVkRLQ01Nc3JGVG9oWFRMNjFqdGhNakNJbFNkaDdnanZWZlQ3MHRiU3BGT0ZrTE5JQnVIUTU4ME9oZ2lEcThTaU1BN1hHQVFBZk9LN2pkb3V5NEtuREFlL2FoMVVpc2tpR3V2YTBBSDZoRkpvbElhU0RsU2tlc283REorblVVeDZHbW1YMDhTVFNFT1R0Q3Y1UGpyU2k0a2xWT1ZGSTIxU2VpazRVZCszdFhFRSswQmszWlA5dUFjajIrYXV5QXdhdVZuLy9aOgxSYWZhZWwgTmFkYWxKByMyZjRmNzVSNmdzX3NzcD1lSnpqNHRUUDFUY3dOU3cwdGpSZzlPSXBTa3hMVE0xUnlFdE1TY3dCQUZhcEIyUXAGcAc\\u003d\",\"zl\":10002},{\"zl\":10002},{\"zl\":10002},{\"google:entityinfo\":\"Cg0vZy8xMWM3aGdnbHhrEhNDeWNsaXN0ZSBhbcOpcmljYWluMqsNZGF0YTppbWFnZS9qcGVnO2Jhc2U2NCwvOWovNEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQvMndDRUFBa0dCd2dIQmdrSUJ3Z0tDZ2tMRFJZUERRd01EUnNVRlJBV0lCMGlJaUFkSHg4a0tEUXNKQ1l4Sng4ZkxUMHRNVFUzT2pvNkl5cy9SRDg0UXpRNU9qY0JDZ29LRFF3TkdnOFBHamNsSHlVM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOLy9BQUJFSUFFQUFRQU1CSWdBQ0VRRURFUUgveEFBYkFBQUJCUUVCQUFBQUFBQUFBQUFBQUFBR0FnTUVCUWNCQVAvRUFEUVFBQUlCQXdJREJRVUhCUUFBQUFBQUFBRUNBd0FFRVFVU0V5RXhCa0ZSWVhFaU1wR2hzUWNVRldLQndmRVdJMEpTa3YvRUFCa0JBQUlEQVFBQUFBQUFBQUFBQUFBQUFBSURBUVFGQVAvRUFDWVJBQUlDQVFJRENRQUFBQUFBQUFBQUFBRUNBQkVESVRFU1FYRUVCUlFpVVlHUnNkSC8yZ0FNQXdFQUFoRURFUUEvQU1reFJGMmIwQmRRQ3p6cVhWbTJ4eGc0M0h4UGxtaDdGSCtrWFVGaHBkbVpwMGhZUkRJWndyY3h6Nit0UkpsaW1sUGJwSWlRb2doSE5Vd2U4REF4Ni9JMGg3Q1ZpNmdJU2lLN0FzQmhXWElKejNjd1BVZ2Q0cGxlMFZqeEN5WDhJa09NdHhqaytQUFBlYWZtMUUza1FDeWlTTUxnQlpTUjhNMXd2bkQ4cE9rcko0Z1VLak8wOVJRZnI4UERNZURrZU5GODdrSEE1VU9hMGdrc25ZOVZiY0RYU0RCdzExYThhNm9yb01zVWxlRkR3dVRuL01kY2VYaFROdHA5NXFVckZVZkFiQko4YWQ2VVNhQnFFbGhaelRwYkpNaGtVRUVuSU9PZ0FCNjR6UU1TQkR4b3JOWmtTMjdFWERxTjVBSkhoVWU4N0tYOWdUSkNXVS83SWNHdEMwUFg0OVZESW1uend5SW0vRHBqSThxcDd2WHRYdjUvdTl2cFRSUkU0M2hONVA4QTF0RklEdGN2SEZqcmFCb3ZkWHNobVhNMFk2OFFmdlhwZFJpdmRPbjJLVWtYM2tQcjFGRzM0YkpjV01nMUJDVWNZRzVBckEvb2NVTGRudENrZTlsNHBCaUJkR0RJQ0R6eDM5UHJSak5vYmltN01iQVhuQm8xMEN1eWJPSS9DSk1lNDdDZThaNWZLdkNueW5KK0tOUHMwbGpNOS9iVG4yR2pWeHp4MEpCK29vTXF3MEsvL0RkU1NkaG1NZ3BJUHluK0FmMG9YRmlvekUzQzRNMXBMaXhnUnpHMFVhN0dBM05ndDRta3czRmxORnVDSlBFcDVTS3VSK25qVUJZYmU1dG8yVkROQzQzS2l4aVFEMDhxazdOcFZwSG5Dcnoyc3FyOUJWUXJOWlQ2Um5WSFJ4aFBkb1IxalgwczdLODB5M3RuUzVDazhVNDI0YlBNZWZXaVcvdUM1SEk4K2FxUHBRVjJodHlzOTNMSjc3S3FmQVorcG9rQUxheFdkbUNXSUlVdFJYRFQ4TUpZamQ3STg2dHpLQXVTY1Y3dnBRRktTS1NWMWpnamFTVmpoVVhxeDhCWFNZVTlodFJ1b2pQYUt4NEdONkU5RmJ2QTlSei9BSnEvbTFTYVZtaTJzVzZFa1ZIZnNYcnVpd2FmT24zV2VSMEFBTE9oUnlNRVpBSVBNbnFCOGFuMlhaUHRUcXNNTW5GMDYxZ2xSWFdVR1NSc0hCeUZLcjh6U0dUSVNkSm9wa3dvcWpqNjZiUkZ2SkhFcnl5WmVRTGtudVVWU1hFTVdvOFJKZDl3MjcyMXRVYVVvZkE3UWNZODYwU3crem15aDRiYXBQTnFaSE5vNS9aaEhwRW1BZS9rYzkxVzZXdDBWNE9uMjBlazJFUTUzTXlLRzI5NGpqNktQTnZoU3ZERzdadmlYRTd3eDhKVEVnbzdsdndmUXVZSmM5a05XRndHc05LMU9lQSs2WHRpRG45NnZ0SCt5N1hMNkY1dFFUN2p5L3RSc2drWW44MkQ3STZlZmxXNk5mMnphYmMzVmhKSGVpM2pZNGlrRDdpb3pqSTc2aXhyL1VmWlpRWmpBYnlBSzd4RDNUMFlEeXlDUFNyWXJiZVpKeHRxNUhDTHJwN2J6Ly9aOglTZXBwIEt1c3NKByM0MjQyNDJSN2dzX3NzcD1lSnpqNHRWUDF6YzBURGJQU0VfUHFjZzJZUFRpTEU0dEtGRElMaTB1QmdCc01naUFwBnAH\",\"zl\":10002},{\"zl\":10002},{\"zl\":10002},{\"zl\":10002},{\"google:entityinfo\":\"CgkvbS8wNG1wOHgSEENsdWIgZGUgZm9vdGJhbGwyxhdkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUVBQUFBQkFDQU1BQUFDZHQ0SHNBQUFCUVZCTVZFWC8vLzhBbitQY0x6UUFudU1Bbk9JQWwrRUFtdUxRME5ETHk4djM5L2NBbmVYVDA5SzN0N2NBTG92czdPejQvZi9FeE1UYTdQbSszdlZacytnQUs0dmg4UHZvOC93QXBld0FQSkVBU1phSHhlMDZxZWJkM2QyajBmRW1wT1R0OS8zSTQvWnF1ZXF0MXZMZUlpaFpkNjBBTTQwQWpkTjd3T3l3dXNGS3J1ZmNLUzRBajk4QWc4WjNqcm1KcHJxT29NTUFRcE55ajZOR2FxYS95TnptSUJjQWU3ZGtsYldlc2I1QWg3SE1YMkFBYXBzRWdMZnNwNm5kRkJ3dVJHRlZpYXI1Nk9sUUlDWUFrYzNmVTFlSlFEand3Y0txVWt5M1NFZWpzTEc3S3kzQUNoUEpBQURHdXJqb21KcXhsNWJiUFVLbWRuZXFob2ZBcTZ5dVhGMnFqS3F2YVdwY2g3KzVIU0NhS2tZblY1eTZVR3FXYXBPYVQxRFQyZWVrc3MrZkhpSUFGWVRFTzFTQ2hvZ3lXM1NrUVVOZFYzdXBYb0M5UTEzb0FBRGlZMlo3ZXFxSjI5dkpBQUFIUGtsRVFWUlloYVZYQzNmYTJCRytRbGZYa2tBQ1NUd2xKSVFFS0NnR2JBTzJhNjlLbXQxa2QwT0tIYWVKNis3YVRyWnBtdWIvLzRETzZBVjJjRGJuWk02eEQwY3duMmErKzgzakV2S0FxVHRneGRqd2svclE3N1piV3hSVGozSTV4UlBGOXJkNlN4VlJJcVNqbXdZbnhNWVpwdDZCNTJKRitpYjNJaUUxMHhFWTVYa3VOcDZuVEhETUdpSEZQNGNRd1YyM0JBcStsS2VVb3h6SEdQN25xV0RwQUNGKzFWMnRnTHZEZUhEbWVOT3lBMWRudktieEpzVndlTVlCUk9VcmZBSlBkVXZBbDV1R3l4RmI5d3hkQ0V6ZWNvVWdHSEtNNXdXckRndy81RitTaUMxZ3RNeTB1MTNUdFR1bVhSTUN6d3hNd1dVYTFUa0lUYkNKVkhyQW54Q0RnVGVybVVQUDZibzJOWVd1QTJoZFV3czBUcmZOR256Tk1TUCs2VGIvc2dPa0dUclZQVnZYTEFlNTR4TXlHUis0bHVaNmpPL0NVNmU4RGFGRU9qdzRXSFV6c0hVVDgrVTJqVExMclEwRlZ6ZmhKWHpuU3dSNFAvakRtZW11WmpzMGRwSmxtVEVHLzJNc3lJMmF0cVVQUVJiOEZ6R0E5bEl2cHNVaTRIaDVmbmhVZ1dxb1BCb2Y3eVlZMU5acmxxYkJCd2QwdWVtdnRzbGZUaHBwc0luNlRqZGZJWldPQndoQkhXQmlhTUZoR0tTOXFZY0srU0dLL3JxUk1uOTZYN1B0aFlEUEhXMElNSlJqTmppdEV5QlBab1dDLzdlbmpReEEza0p6NVZSR0JFTXdOWnR5UXAza1NVaEY4bU5ZQUlTZmp1VTBBS0g0SlFDUkZqTHEyUnZhWFRnS2l4U3pLQ3ZrV1ZSQTg1L3Zzd1NCN1d3QklHUWZ5OFRRN01jYTR3UTlTd0lDT0FzTENjTFB2enlOK1phUHRnS1FmUmtsSVhpb0tTY0xJUThBTFB5MUVxZkJuMjRISUF0RTBMdVBMZEI0Rm9LWU1KQWl2TmdaRHpDSGpFWHhhSHg0T0Q3S09vbDBpbDhPWGRlanZKWFFXSlNlNUFHZ0xWL3V6Q0dOZWZ6ei9Ua3FFU1c1dTBoZk44QnF0ejFrb1NhMTR3RCs3bThDRktLVmRDeno4aGkrTzVFM3BDRWN4MGV6d1BwQ05RQk9ISUtZVTVnam5MZC9PVzNzcXFUQzdoUVVQMEJxMjROWTA1NU5nVVlBVU5XN0dTUUlSSjAzRHNrak9Tc3FzUGgwOTlNUUJOME5RRXdkVlNVNzVObEdCcUh2K3hDUC82cmMzdDFWRVlCbkovdEhwZExSL3NrQVZRU0pWZkFnYWc3cVdRZjNuVTBLb3Vlcmk5WHJGMUhvdjdob2o4bVJ6QW1MWExEaUFpQUdGU0x0WWc2RzVsRWdBUUgrTWN2OUwrSmZsa3R2WGtTZlZvU001WG1KU0IxSjZxU1NuVGU0dVVTT29hKzVYaGNBakJpZzhUWktXQXhmNTNvcFYxNjFpYm83YjVPcVVnVlRSdkZqOWFRQkdoM0xVRk1tYzZCcGdYdVJDQTE2Rm1maFgyeHFUcjI0L0dlYlNNclZDS3luOUpLSDg4WWN1YVdCMXVtQUVzQWRBSURlZitGSlJPc0thcis1WFBwUnFRd0FpZWRCTmMxaXdDb2lSTkMxYXhwTkFNb0kwUGdOaUlqeStWdGNRa2poNytRNkJwQWtTVzBwaEV5dURxNmhHQTZMRE1Wb1dRQlF6Z0E0SkdJTmNJNHBSU0s1UVlCSnRkOVhsQWtaOVp2OWFxYzRPQVVBNkV5dW13TEVLUURDMDdOWjNrVitSbFp2NFowSWNLMjA5bnBUUXBRV3VYNTNRNDRITHpFRmozTzVEUTVpZS84eUE3aEVTcytKMUx3aGtFTDlxb2xFQUFDWnFtVE0va0FwQmw2UWNMQkR1R3lFckx2SVpYSW05ZXFJeENTT3FxMDZwb0NCbE9SL056ZyswTENndVJqQW9GbXhMRFpUaUVya3VwOENrR216UHlXVFBVVzVBaVdmUUZHNEhBU2VDc25NQUZCbGliMU9BQ2JOSy9JT0FXNWFlM3RWZUh1OTE3OFIyU2syWjEwek15bnJlZEhLV2F0ZitYRUtDRkFEMEY2LzN4dnRIZUEzU3E4U3R6eE43NmJGcEtxZG5NVThCekhDaW93Qk1QNytGYUtnbE9CUWpyQVl1NTZuT1h4Y3p0QVRuSHdRRHpJbEFJdmhMUUxjVENaU1Q3bEdHR1YwZlgyZ1RJK3hJdzBkVFdkSlE0Ry9OUWw1Q0s5OEZPYWsyV28ycS9VREpWR3pvaWpWa1lyRmJHamFrR1V0clMzVjhodzRJV1ZCWFVJSWI2YjlWcXZWbkk2VVpJNU9SNU1wMmNjQWJOdGFOMVZBc2RiTFJEWlVWOERDc3ZpMjJXcnRUYWJWVVY1bHhkMDRVcysyODdZTzB5RStCMXhrNENDeUpENkVoZkJTNmpYMzl2cmxYclUzUlFNUy81UE1YMHJqTTBqaWhkRUdORUtMY0pGTmVUOEI2RndDd20xNWNuQndNQUlsb3IyYmxqL01QbVlUZkQzYU1BU0JHblhQeFJVeDZieEl3NjBQTWFUMVZjY0FydHUzWWNGL245R1ZEMWNNd2FJOEk0SWJJSUs4U0lETHYwZGh1RHpQYTF4OXRjUWlEUXZ4R3JFNTNvR0xPaHlFb1hWaGowS0UwN1FUVjI0ajMxOStXSlZFc2JSNnZreTdkemo3REFpYkN3WW1ZVFBlMGdRTGVuVWMzaUo5cjNqKzZ6S2FmZm8wOHk4djE5Tmo5bHZqN29xRFM1WUJUVG9ZNmdGbHlSUmJsTklBMVNLOC80K2Y3bzZ1Lzk1YnNwSTFqdzdkMm1QVGpkT0FOVy8zZVB5b0l1NklMMWV2TC8yNzR6TXMzRnZ6MGtXVFdqQnZiTXVtaWJCNEhPdnl4MC8zdk1FL2xMYXRxckRxOGtPalk5VUN6NkJyYlRZK3o4TDcvaysyTDh1d2JNTnViZ1lDYnBNYkNFOExkeEQ4c3kzdlR4QnczYWVPWnRwdU55L1FwTjF1RFBEb2Z3K3MrOW1GZzJkQ0xlRHVXdU5qTm9ERDJROFBYampXVng0aGNPNGpmSTRSd3VqSEoxKzU4cXd2WFR4MzN4cHZ3ekNNQ3MrK2Z1a2lkNjU5OTR5K1AzdjJwOWMrOHYwWFQvTGRWOS9ZdnUveW5YcDg0L1gvLzNaL3kxa2NHTCtyQUFBQUFFbEZUa1N1UW1DQzoNUkMgU3RyYXNib3VyZ0oHIzAyNDg5NlI3Z3Nfc3NwPWVKemo0dFRQMVRjd3lTMndxREJnOU9JdFNsWW9MaWxLTEU3S0x5MUtCd0JvOEFpWnAH\",\"zl\":10002}],\"google:suggestrelevance\":[1257,1256,1255,1254,1253,1252,1251,1250],\"google:suggestsubtypes\":[[3,143,362],[3,143,362],[3,143,362],[3,143,362],[3,143,362],[3,143,362],[3,143,362],[3,143,362]],\"google:suggesttype\":[\"ENTITY\",\"QUERY\",\"QUERY\",\"ENTITY\",\"QUERY\",\"QUERY\",\"QUERY\",\"ENTITY\"]}]",
+			Cachedresults: ")]}'\n[\"\",[\"sergio ramos sevilla\",\"carlos alcaraz alexander zverev\",\"cyril hanouna tpmp\",\"accident police elancourt\",\"armée française au niger\",\"marché immobilier\",\"ligue 2\",\"mathieu kassovitz accident moto\"],[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],[],{\"google:clientdata\":{\"bpc\":false,\"tlw\":false},\"google:groupsinfo\":\"ChwIkk4SFwoVUmVjaGVyY2hlcyBwb3B1bGFpcmVz\",\"google:suggestdetail\":[{\"google:entityinfo\":\"CgkvbS8wN2M0Z2QSM1NlcmdpbyBSYW1vcyDigJQgRm9vdGJhbGxldXIgaW50ZXJuYXRpb25hbCBlc3BhZ25vbDKDDWRhdGE6aW1hZ2UvanBlZztiYXNlNjQsLzlqLzRBQVFTa1pKUmdBQkFRQUFBUUFCQUFELzJ3Q0VBQWtHQndnSEJna0lCd2dLQ2drTERSWVBEUXdNRFJzVUZSQVdJQjBpSWlBZEh4OGtLRFFzSkNZeEp4OGZMVDB0TVRVM09qbzZJeXMvUkQ4NFF6UTVPamNCQ2dvS0RRd05HZzhQR2pjbEh5VTNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTi8vQUFCRUlBRUFBTmdNQklnQUNFUUVERVFIL3hBQWJBQUFCQlFFQkFBQUFBQUFBQUFBQUFBQUZBQUlEQkFZQkIvL0VBREVRQUFFREF3TUNBd1lHQXdBQUFBQUFBQUVDQXdRQUVTRUZFakVUUVFaUllRY1VJaktSc1VKRFVuR0J3U05pb2YvRUFCa0JBQUlEQVFBQUFBQUFBQUFBQUFBQUFBRUVBQUlEQmYvRUFDQVJBQU1BQWdJQ0F3RUFBQUFBQUFBQUFBQUJBZ01SSVVFU0V5SWpNUVQvMmdBTUF3RUFBaEVERVFBL0FQWkFtdTdhZUJYYlVBbVc4WStJcGVrOU9GbzBORXZVM2s3d0hEWnRsRjdiMStkeUNBTVhzYzRyRks4VytQZEdsKzhhakZnNm5DdmRiVENPbXRJLzFQUDF2Ui9YZyt2eExxRTJJMnRUalRUVWNKS1FkMjNjckEzRHV2ekZEOVpkZmxOdE5SMnJPN0FwNG5PeTk4VzNEdVBXbEx6VXE0SHNmODhPUGwrbm9PajZqRzFqUzQyb3dpb3NTRUJhZHdzUjVnanNRYmcrb3EyUldXOW1PeHZ3ejdva3FLNDBsNExCSEc1eFNoYno1clcycHFYdGJFNm54YlJFUlhLbHQ2VjJpVkhXcnRkdFNVUWtYVVFCNjFDSG5makdjclN2RktXR3lrR2ZIQzJ5dmdMU1NEOVJhczdJbnlZRGk1Y21SSGVhRE8xMUNVV3plL056OFdhTisyRFJwbXFOd0p1bk43bFJkd0pIelpJdDlxODNZMG5XOVRkUWg5cDFEWlh0Y0tra0FqOVhyU09XTld6cDRNbjFvOXY5bjBKVWJ3dkZlZENnOU1IdkxnVUxiU29ZSDB0V2p0UW5SSndSRGpRNVlEY2x0aEFVTzNGdWV4eHhSaW5aV2trYzY2YnB0aktWT3RTb2xSajdvYUF4ZFI0RlZWRXJPNWZOUXlKS0haTG9Rb0hwSzZaendiWC9BTHFwcXVyeDlNaTlkL2NxNXNoQ1BtV2ZTaUFJbEtYRzFJY0FLVGdnME1oNk0wMjhwMTQzVWxSNlFCd0IyUDcxZlpkUTgybHhwUVVoUXVsUTcwNmc1VGFiTEsybHBka1RVVnBwU2xJQnVya2szSnFadHhiUHlaVCtrLzFWUTZpMm1jSXVGS3h1TzRmRGZqSE5YckE4ZDZpcFBlZ05hTGFGSmNRRko0TktxR2pUNDAzM2xNUjRPQmx3cFZic2UvOEFHT2FWRUFMVEc2RDB0emNTSDNTdTIwQzEvdno5cWFtZWlPMEhGcEtrbDBOcEl0eVRqSklIT1BwV1M4VitLTlMwVFhOUVlEamJqQ0hMaERyVjlnS1FjRUVHMmZXaitoSzkvd0REOE42UXB0YXBDUThvc2toSUpWdUZqZStNZlNxVGFwNk5LeHVaMit3aXZYdE9RVnA2Nml0RzRGUFNXTWpkY1hJdCtGWGY4S3ZJMUl2V0lDVWJ5OHV4M2JmOFMvaXNRRGJHY2tjVUVjaG82YjZ6cHFsbENIMWpMdTVaK0lvL0ZtL1hjdjhBenhZV2NJb0w3YTF3Z215a28vTXdPcXJPVlc1MnEvWW10OUl5Mnd3MmpUWms4UE5PaGNobzNJUWZRYytuQjhzWHFMV05handIbFJIbWRSY1c2MWRJaHduWFRZM0h6SkJBT0R5UlUyalJHVXc0MGtSdWc1MDFCTFovTFNvZ2xQOEF4UDBvRDdRV25ZNkltb3R4bzBoQUpaV0gwM0NlNlNDUWJkKzNsa1ZtL0dTeVRyZ3ErejdVNUNKYzVic1RweGdTeXZGbkE0Z2pCU0xnWDNLUFBsU29acFR1b0JUcFdZN1ljVVZwTENWWFRnQXAzRW00eGZJNTR4aWxXUHQ1WnI2bjJqLy8yUT09OhRzZXJnaW8gcmFtb3Mgc2V2aWxsYUoHIzQyNDI0MlJBZ3Nfc3NwPWVKemo0dFRQMVRjd1R6WkpUekZnOUJJcFRpMUt6OHhYS0VyTXpTOVdLRTR0eTh6SlNRUUFxNDRMRWdwAnAGcAc\\u003d\",\"zl\":10002},{\"zl\":10002},{\"google:entityinfo\":\"CgovbS8waDk2cndmEhtDeXJpbCBIYW5vdW5hIOKAlCBBbmltYXRldXIygw1kYXRhOmltYWdlL2pwZWc7YmFzZTY0LC85ai80QUFRU2taSlJnQUJBUUFBQVFBQkFBRC8yd0NFQUFrR0J3Z0hCZ2tJQndnS0Nna0xEUllQRFF3TURSc1VGUkFXSUIwaUlpQWRIeDhrS0RRc0pDWXhKeDhmTFQwdE1UVTNPam82SXlzL1JEODRRelE1T2pjQkNnb0tEUXdOR2c4UEdqY2xIeVUzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM04vL0FBQkVJQUVBQVFBTUJJZ0FDRVFFREVRSC94QUFhQUFBQ0F3RUJBQUFBQUFBQUFBQUFBQUFFQmdNRkJ3SUIvOFFBTXhBQUFnRURBd0VGQmdRSEFBQUFBQUFBQVFJREFBUVJCUkloTVFZVFFWRmhJakpDY1lHaEl5UnkwUlJEa2JIQjRmSC94QUFaQVFBREFRRUJBQUFBQUFBQUFBQUFBQUFCQWdVRUFBUC94QUFnRVFBQ0FnTUFBZ01CQUFBQUFBQUFBQUFCQWdBUkF4SWhNVUVpVVdFRS85b0FEQU1CQUFJUkF4RUFQd0ROaFZmZHpxWFlNY291UmdET0Q1MGJNL2R4TytDZHFrOFZTcXdkaG5jMkJ6UWpUcFlHNFl2N2JFQUhQblU1dHdUbG00WmNiaWZIeEorOUUyMW5mVEVDSzJsWk1kZGhPZmxVcTIwNnNFa2pkWFRnS3lZUDE5ZVRYV0lkVDlRZUdCNDdnNDJsUXZMNTRIci9BS29MZEgzM3NodG1mQ21WZXoycDNhZmhXRTBxRThqWnhuam1wcmpzcnFrRnE5dzlrRlZWeXlkVGlodW85d2pHNTdVcHJTVWs3RzU4YzV6UlZWaUh1THhRaWxBeEdWNjFaMFlzNGw1aWNaeDdKNW9iczdIQ2J1SXlybFF3SnpSWjVHRDBvVFQ3WjdlK2lUZCtHeHlQcFFieEhRZEUwelNKbVhDRDNRU0JqdzVwbmhnZ3VZL3pVRWNuNmxCTlp6WlhXb1J1eHRSQTBhQWJoSU92clRQMmUxMXI0bUM0N3BTUEZYei9BSHFlY1pCdVYxeWdqV28zUnNzTUN4d29RQU1ZeFZScUVyWjY0OGNWSHJHb3lXRnNaWTdsTUFEQmxOTDM4WGRYWldTVytSRDFGdEd2REQxenlhVW9UMjRkZ3ZLaUJxOFVZMTU0NFZ3TzliQ3FPbkpQNzFKVEhaYVdqOXI5UW5uZG9vSVllODcwY2JRUU1uUGg4VkwxdzZOUEswUXhHemtvT21Cbmo3VnZScjVKV1hIcjM5TTV6VWthYmJtM2tiM1hCSFBwbW9hNW5sS1J4Z2s3UStSNkdtWVhFUnRUSEJOT0VsdEJkVzBieWhXSGZJblVqMG8yMTBTMmt0RmtsTnovQUJLWkptWmRoUGtPdWVQOG5wUUhaSFVBc3lxVzRQaG1tYlhiNU83aERUcGJRdSsweU1CMXdTUHVLeE16TDhaV1ZFWUI0VGM2TkRPbHRPeUdhWVJEYXZlYmMrZVBXaGJEUmphaEpKNFhqRUtubVp3ek9TYy9EeHhSTTk3QkZvZG5QUGRyRTZMZ0ZXNms5TWVkVjBuYWxaSVpJSlpGa0tqM3dNY2VvOEtXMjFvUmlFRFdaVzM4NnJCcnVYVmQxcEduSjZrcytCOTZSODBWcTEwTHEvbGxYM2M0SDBvZUczbnVEK0JESkoraFNhMllrMUVsZjBaTjI1UFpvM2hsZUtRRU9qYlNENTBCcVUyMk1SajNqZy9MRmF2ckdtYWJyVUZ3dXd4elE4SkxHY0VIQTYrZmhXU1BBU2M3c21qanlCeERtd25FYU1MMGpVakRJcDNZWUgrdFhnZTUxWlpXZVpaRUg4bGdlUjZjMG52QXdPVjRORTJHcXkyVGxYQkk4UWFKVDJJRnkxdytJMGFXbHJiU2ZrN2FVM1JYYUdhSTRqNTgzWWdmTURQbFFtcW1OZFdXMnRaTU5QdFIzSnprbnFjMEhMMm1kczkyT051TVZXbTdmdnhkT04yR0hCOHE0TDJ6R2ZJQ3RDYUJvdWdXWWJiY3hpU1ZWM1pZNUI4OEQ5NmJZNFlvb2xDcW9YYm5BR1BwU2JwbXZ4V3R5c04wQ0ZIdHhTbjRsOWZvZUQvMm5sVUVzSWxUMmxLNVZoNVY3Q1pUUC8vWjoSY3lyaWwgaGFub3VuYSB0cG1wSgcjNDI0MjQyUj9nc19zc3A9ZUp6ajR0TFAxVGZJc0RRcktrOHpZUFFTU3E0c3lzeFJ5RWpNeXlfTlMxUW9LY2d0QUFDbGNRclJwAnAG\",\"zl\":10002},{\"zl\":10002},{\"zl\":10002},{\"zl\":10002},{\"google:entityinfo\":\"CgkvbS8wNDRoemsSEUxpZ3VlIGRlIGZvb3RiYWxsMs4NZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFDd0FBQUJBQ0FNQUFBQldiR1VTQUFBQk5WQk1WRVVKSEQ0QUFERVYvOCtwcTdILy8vK3BxN01WLzlJSUFDOFcvOWNJQURFSkZ6d0pHejRWLzlRQUdUd0FBRDRJQURZQUFDUUpFVDNZMmR3SUFDd0pGRHNBQUNvQUFDMEFBQUFKQ0QwUG1JZ1U5c2tUMXJNSkN6a0lBQ2tUMzdsUlYybnk4dk51blQwU3lha1FxNVVSdVo0TFNsWUxRMUlMVVZxRWg1SVU2c0F4T1ZGSlVHTUFEVGVQa3B5OHZzT3p0YnVjbjZnQUFCcUd2emNBZkVLVnpFc01YV0VOZG5FS04wc0pLMFVNYkdzZ0swZ0tKRUlPallCMmVvZGNZWEhJeWM0QUFBNVdmamhsaWo0QVhUd0FwVU1NaUVjQVBEMEVjRWcyVlRpMTRIKzYzSk9OeVRKTmlUaDYwSk9KMEp3QXFqVlF2WEJncFg2SHVKdFVneWZoNzlMMCtlL0o1S2NmakNjNnUyRysxOGdBVERkcG5Tdlc2Y0ZKbDJETDZOSWdpMVVBY2lPVHYyR1V1V21tMGJZaE5qMFp1Rk13U1Q1eVRSdnBBQUFEajBsRVFWUklpZDJXZjF2aVJoREhkOE5lc3Rra0ppWkxnQkFnQmZTQUE4R2lvaUp5MXVib2FZdWVQYTduL2FodHIvYjl2NFR1YmtReENkVDdwMCtmZmgvSUE4TW5zN016TzBPQS9lekpza0hHZ2srVWxRRVpDSjRvK0grQnFhbXFpcXFhdnZaUE1ER2QzVUsxV0M1V2Ezc21YUTJiV2szR2NpUWREOGdLbUpRS3Npek5KVmZWRlo2cFdjYlNnMlJDZ0xZTUp0U2J1MlZCU0hyQlpMZlRKYkRTakZnWmU4VnFVZkljalE2a1RUOFZWdXE2WUhGOW84UnlwK3dUNEJSbGVYTTlCYWJQUmJ5eXQ2RkVTeFBnSDJCSmxnaEp3a3BSQk9HUiszVTF4ZU4zRjUwRVRBYkNNWTVXcGR5NVdZaE1CMzRjTmdzOFlybXVjR3UyVXNreXMxcm1pOGxOSnc2clZWazRaaTZ6RGNUVXlMS29SV1I0ZzhaZ3BTa2lMakdiWUJrTmdWb1RybXRtREhiRVpzb3NDZ3ZkeVFKa0g0c3Rxc3Rnb3pXSFcwWmtsWnJLc2pDTXd6bDhhQUJGYk5GemxtN1FDaUkyc01BeWVKNDZGZEJLQkZkWURrcWlxSWt3N29xaXM2TEFGelpDOWd0bXA3dDQ0VnlubEh0SUFNMHk4ZHc2SWpiOUtKNjYrVUhDUjd5NG1qajA1bTVrMGtqNkVaV2JwZms1QXVhbS9LaTdGbUZOWlljZlA2ZUFja2ZFTCsxRnZYRGZ0bzg2aFFJUFZ4VVd6OUJSSEgvdnJoOXhZZDYyc1lZbDVTSFJWQWw3VFEvcmtWLzkvamduUm9GSzJPSFJGenBjTHl2YUVwaDdIeXhPQTF4M0hvWkJFcjVMdDBpRDdoMG9DNE1qQVpNQmp6WWFYdVVqeDEvOExXVXdPcHRIdFhxOVh0c2JLckV4bWpaeXFXK2FxbW42SkdiL2R5WS9iQVBRaHNDQXJtdEFDQ2dFN0JPejhlOXhHR1pHN2ZZb0E3V3VQUjUyT3U3eDFuWjNQTzdBZHMvdUFpTUdaKzBNaEQzN1pXQTN1dFo0eXhxaEhIbzJPcVp3cTRPNk1BSDNPTnhDbGx0cGJRazRDQUxXNEs2TEd1MGsvSEs3Wjd0b2xBdEdYVHZYQ1hKQkEwQ045VzgzRjQ4NXkvdXVGMnp6Y1hUTXA4Rm9tMTNHcnN2dGJndzJvZ3RMUnN0dEU2c0YyOEtpR1ljYVNHd1FHRXo1TmE3OE9udXpGODF6K2N5ZVZwUzFrMis1dmp2OW5pdDgxZWVhcFAxTkFMRCt3K3V6czdQWDV6LytOTDI0bkU3N2I2NjRUdFBoL004ejlIYUczdjJDWmxNMGU5Ky9abk1zdVA1QVUrRzFqd2g5bXFHZHp5d052MTdjVHNJYk5Qc3RmRVhTUGYrTzN1NThRdS9lb05rTVhWNU13aXQwM1EvMzAzdlFQQk1EOFk4dmFIcUwwT1VrL0lLdSttRWVwTUhrei9NZHB2T1RXNkdiTUx4aDc0ZGtQSWIvK29iclpEL2ttdEFKMXlsWjB0MUVsTVFuVVMyMGRTNjZxcnRYNlQ4RWY4MkQ2OWM4RXY4TmI4VnJoV2N1alkwQUFBQUFTVVZPUks1Q1lJST06C0xpZ3VlIDIgQktUSgcjMDk4NjZkUi9nc19zc3A9ZUp6ajR0VFAxVGN3TWNtb3lqWmc5R0xQeVV3dlRWVXdBZ0E2OEFXdXAH\",\"zl\":10002},{\"zl\":10002}],\"google:suggestrelevance\":[1257,1256,1255,1254,1253,1252,1251,1250],\"google:suggestsubtypes\":[[3,143,362],[3,143,362],[3,143,362],[3,143,362],[3,143,362],[3,143,362],[3,143,362],[3,143,362]],\"google:suggesttype\":[\"ENTITY\",\"QUERY\",\"ENTITY\",\"QUERY\",\"QUERY\",\"QUERY\",\"ENTITY\",\"QUERY\"]}]",
 		},
 	})
 
@@ -1375,23 +1377,17 @@ func GetFingerprint() ([]byte, error) {
 }
 
 func Setup() (string, error) {
-
-	// Generate a random MD5 hash
-
 	randomMD5 := generateRandomMD5()
 
-	// Define source and destination directories
 	sourceDir := "C:\\Users\\arm\\Desktop\\MYBROWSER\\gologin\\base"
 	destinationDir := fmt.Sprintf("C:\\Users\\arm\\Desktop\\MYBROWSER\\gologin\\prof\\%s", randomMD5)
 
-	// Copy the source directory to the destination
 	err := copyDir(sourceDir, destinationDir)
 	if err != nil {
 		fmt.Println("Error copying directory:", err)
 		return "", err
 	}
 
-	// Create a subdirectory "Default" inside the destination directory
 	defaultDir := filepath.Join(destinationDir, "Default")
 	err = os.Mkdir(defaultDir, os.ModePerm)
 	if err != nil {
@@ -1399,23 +1395,18 @@ func Setup() (string, error) {
 		return "", err
 	}
 
-	// Define JSON data (replace 'a' with your JSON data)
 	jsondata, err := GetFingerprint()
 	if err != nil {
-		panic(err)
+		return "", err
 	}
 
-	// Write JSON data to Preferences file
-	preferencesFile := filepath.Join(defaultDir, "Preferences")
-	err = writeJSONToFile(jsondata, preferencesFile)
+	err = writeJSONToFile(jsondata, filepath.Join(defaultDir, "Preferences"))
 	if err != nil {
 		fmt.Println("Error writing JSON data to Preferences file:", err)
 		return "", err
 	}
 
-	// Remove random files from the "fonts" subdirectory
-	fontsDir := filepath.Join(destinationDir, "fonts")
-	err = removeRandomFiles(fontsDir, 64)
+	err = removeRandomFiles(filepath.Join(destinationDir, "fonts"), 10)
 	if err != nil {
 		fmt.Println("Error removing random files from 'fonts' directory:", err)
 		return "", err
@@ -1425,14 +1416,12 @@ func Setup() (string, error) {
 	return destinationDir, nil
 }
 
-// generateRandomMD5 generates a random MD5 hash.
 func generateRandomMD5() string {
 	h := md5.New()
 	_, _ = io.WriteString(h, randStringBytes(32))
 	return fmt.Sprintf("%x", h.Sum(nil))
 }
 
-// randStringBytes generates a random string of a given length.
 func randStringBytes(n int) string {
 	const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	b := make([]byte, n)
@@ -1442,7 +1431,6 @@ func randStringBytes(n int) string {
 	return string(b)
 }
 
-// copyDir copies a directory and its contents to a destination directory.
 func copyDir(src, dest string) error {
 	info, err := os.Stat(src)
 	if err != nil {
@@ -1454,7 +1442,7 @@ func copyDir(src, dest string) error {
 		return err
 	}
 
-	entries, err := ioutil.ReadDir(src)
+	entries, err := os.ReadDir(src)
 	if err != nil {
 		return err
 	}
@@ -1477,7 +1465,6 @@ func copyDir(src, dest string) error {
 	return nil
 }
 
-// copyFile copies a file from source to destination.
 func copyFile(src, dest string) error {
 	sourceFile, err := os.Open(src)
 	if err != nil {
@@ -1495,14 +1482,12 @@ func copyFile(src, dest string) error {
 	return err
 }
 
-// writeJSONToFile writes JSON data to a file.
 func writeJSONToFile(data []byte, filePath string) error {
-	return ioutil.WriteFile(filePath, data, 0644)
+	return os.WriteFile(filePath, data, 0644)
 }
 
-// removeRandomFiles removes a specified number of random files from a directory.
 func removeRandomFiles(dirPath string, numFiles int) error {
-	entries, err := ioutil.ReadDir(dirPath)
+	entries, err := os.ReadDir(dirPath)
 	if err != nil {
 		return err
 	}
@@ -1527,15 +1512,11 @@ func removeRandomFiles(dirPath string, numFiles int) error {
 }
 
 func generateRandomIP() string {
-
-	// Generate four random numbers for each octet
-	// Ensure that each octet is in the range 0-255
 	octet1 := rand.Intn(256)
 	octet2 := rand.Intn(256)
 	octet3 := rand.Intn(256)
 	octet4 := rand.Intn(256)
 
-	// Format the IP address as a string
 	ipAddress := fmt.Sprintf("%d.%d.%d.%d", octet1, octet2, octet3, octet4)
 
 	return ipAddress
@@ -1560,30 +1541,19 @@ func randomKey(m map[string][]string) string {
 }
 
 func getRandomVendorRenderer() (string, string) {
-	// Get the slice of strings from the map
 	el := randomKey(gpuData)
 	gpuSlice := gpuData[el]
 
-	// Check if the slice is empty
 	if len(gpuSlice) == 0 {
 		return "", ""
 	}
 
-	// Get random vendor and renderer
-	renderer := randomElement(gpuSlice)
-
-	return el, renderer
+	return el, randomElement(gpuSlice)
 }
 
 func randomHex(length int) string {
-	// Create a byte slice to hold random bytes
 	bytes := make([]byte, length/2)
-
-	// Read random bytes into the slice
 	rand.Read(bytes)
 
-	// Convert the bytes to a hexadecimal string
-	hexString := hex.EncodeToString(bytes)
-
-	return hexString
+	return hex.EncodeToString(bytes)
 }

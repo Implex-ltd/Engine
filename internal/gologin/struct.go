@@ -2,6 +2,7 @@ package gologin
 
 type Fingerprint struct {
 	NewTabPage                                  NewTabPage                     `json:"NewTabPage"`
+	AccountIdMigrationState                     int                            `json:"account_id_migration_state"`
 	AccountTrackerServiceLastUpdate             string                         `json:"account_tracker_service_last_update"`
 	ACKExistingNTPExtensions                    bool                           `json:"ack_existing_ntp_extensions"`
 	AlternateErrorPages                         AlternateErrorPages            `json:"alternate_error_pages"`
@@ -33,7 +34,7 @@ type Fingerprint struct {
 	MediaRouter                                 MediaRouter                    `json:"media_router"`
 	NTP                                         NTP                            `json:"ntp"`
 	OptimizationGuide                           OptimizationGuide              `json:"optimization_guide"`
-	Prefetch                                    Prefetch                       `json:"prefetch"`
+	//Prefetch                                    Prefetch                       `json:"prefetch"`
 	PrivacySandbox                              PrivacySandbox                 `json:"privacy_sandbox"`
 	Profile                                     Profile                        `json:"profile"`
 	Safebrowsing                                Safebrowsing                   `json:"safebrowsing"`
@@ -403,6 +404,7 @@ type Icon struct {
 
 type Avatar struct {
 	Enabled bool `json:"enabled"`
+	FullSize bool `json:"full_size"`
 }
 
 type MediaDevices struct {
