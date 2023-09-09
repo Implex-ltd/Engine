@@ -7,7 +7,7 @@ rotation = 30
 rotation_wait = 10
 
 [mock]
-hsw = true
+hsw = false
 spoofing = true
 version = "6f48ffb"
 

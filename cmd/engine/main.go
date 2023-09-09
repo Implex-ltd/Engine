@@ -320,7 +320,86 @@ func crawl(url string, headless bool) {
 		name = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.Split(url, "://")[1], ".", ""), "/", ""), ":", "")
 	}
 
-	client, err := browser.NewInstance(Config.Mock.Spoofing, headless, Config.Engine.BrowserHswThreadCount, "", Config.Mock.Hsw, Config.Mock.Version)
+	G := api.NewGologin()
+
+				fp, err := G.GetFingerprint()
+				if err != nil {
+					panic(err)
+					return
+				}
+
+				G.ApplyConfig(api.GologinCreateBrowserPayload{
+					DevicePixelRatio: int(fp.DevicePixelRatio),
+					Name:             "default_name",
+					Notes:            "auto generated",
+					OS:               fp.OS,
+					BrowserType:      "chrome",
+					Navigator: api.Navigator{
+						UserAgent:           "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+						Resolution:          fp.Navigator.Resolution,
+						Language:            "fr-FR",
+						Platform:            fp.Navigator.Platform,
+						HardwareConcurrency: strconv.Itoa(fp.Navigator.HardwareConcurrency),
+						DeviceMemory:        strconv.Itoa(fp.Navigator.DeviceMemory),
+						MaxTouchPoints:      0,
+					},
+					Timezone: api.Timezone{
+						Enabled:       true,
+						FillBasedOnIP: true,
+					},
+					AudioContext: api.AudioContext{
+						Mode: "noise",
+					},
+					Canvas: api.AudioContext{
+						Mode: "noise",
+					},
+					Fonts: api.Fonts{
+						EnableMasking: true,
+						EnableDOMRect: true,
+						Families:      fp.Fonts,
+					},
+					MediaDevices: fp.MediaDevices,
+					WebGL: api.WebGL{
+						Mode: "off",
+						//GetClientRectsNoise: 0,
+					},
+					ClientRects: api.AudioContext{
+						Mode: "off",
+					},
+					WebGLMetadata: api.WebGLMetadata{
+						Mode:     "mask",
+						Vendor:   fp.WebGLMetadata.Vendor,
+						Renderer: fp.WebGLMetadata.Renderer,
+					},
+					ProxyEnabled: false,
+					Proxy: api.Proxy{
+						Mode: "none",
+					},
+					WebRTC: api.WebRTC{
+						Mode: "real",
+					},
+					WebglParams: fp.WebglParams,
+					A:           []any{},
+					B:           []any{},
+					AutoLang:    true,
+				})
+
+				uuid, err := G.Create()
+				if err != nil {
+					log.Println(err)
+					return
+				}
+
+				cdp, err := G.Start(uuid)
+				if err != nil {
+					log.Println(err)
+					panic(err)
+					return
+				}
+
+				defer G.Close(uuid)
+
+	client, err := browser.NewInstance(Config.Mock.Spoofing, headless, Config.Engine.BrowserHswThreadCount, cdp, Config.Mock.Hsw, Config.Mock.Version)
 	if err != nil {
 		log.Println(err)
 		return
