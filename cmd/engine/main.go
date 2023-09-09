@@ -107,7 +107,7 @@ func initBrowser() {
 					OS:               fp.OS,
 					BrowserType:      "chrome",
 					Navigator: api.Navigator{
-						UserAgent:           "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+						UserAgent:           "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
 						Resolution:          fp.Navigator.Resolution,
 						Language:            "fr-FR",
 						Platform:            fp.Navigator.Platform,
