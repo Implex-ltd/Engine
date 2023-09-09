@@ -1,13 +1,14 @@
 [engine]
-browserHswThreadCount = 15
-browserCount = 7
+browserHswThreadCount = 10
+browserCount = 6
 hidenium = false
-rotation = 15.0
-rotation_wait = 10.0
+gologin = true
+rotation = 30
+rotation_wait = 10
 
 [mock]
-hsw = false
-spoofing = false
+hsw = true
+spoofing = true
 version = "6f48ffb"
 
 [server]

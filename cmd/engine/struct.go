@@ -9,6 +9,7 @@ type Cfg struct {
 		BrowserHswThreadCount int  `toml:"browserHswThreadCount"`
 		BrowserCount          int  `toml:"browserCount"`
 		Hidenium              bool `toml:"hidenium"`
+		Gologin               bool `toml:"gologin"`
 		Rotation              int  `toml:"rotation"`
 		RotationWait          int  `toml:"rotation_wait"`
 	} `toml:"engine"`

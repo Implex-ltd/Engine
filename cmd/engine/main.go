@@ -6,6 +6,7 @@ import (
 	"log"
 	"math/rand"
 	"os"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -61,7 +62,7 @@ func initBrowser() {
 			cdp := ""
 
 			if Config.Engine.Hidenium {
-				H := api.NewHidenium(api.CreateBrowserPayload{
+				H := api.NewHidenium(api.HideniumCreateBrowserPayload{
 					Os:                "win",
 					Version:           "115.0.5790.99",
 					UserAgent:         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
@@ -88,6 +89,87 @@ func initBrowser() {
 				}
 
 				defer H.Close(uuid)
+			}
+
+			if Config.Engine.Gologin {
+				G := api.NewGologin()
+
+				fp, err := G.GetFingerprint()
+				if err != nil {
+					panic(err)
+					return
+				}
+
+				G.ApplyConfig(api.GologinCreateBrowserPayload{
+					DevicePixelRatio: int(fp.DevicePixelRatio),
+					Name:             "default_name",
+					Notes:            "auto generated",
+					OS:               fp.OS,
+					BrowserType:      "chrome",
+					Navigator: api.Navigator{
+						UserAgent:           "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+						Resolution:          fp.Navigator.Resolution,
+						Language:            "fr-FR",
+						Platform:            fp.Navigator.Platform,
+						HardwareConcurrency: strconv.Itoa(fp.Navigator.HardwareConcurrency),
+						DeviceMemory:        strconv.Itoa(fp.Navigator.DeviceMemory),
+						MaxTouchPoints:      0,
+					},
+					Timezone: api.Timezone{
+						Enabled:       true,
+						FillBasedOnIP: true,
+					},
+					AudioContext: api.AudioContext{
+						Mode: "noise",
+					},
+					Canvas: api.AudioContext{
+						Mode: "noise",
+					},
+					Fonts: api.Fonts{
+						EnableMasking: true,
+						EnableDOMRect: true,
+						Families:      fp.Fonts,
+					},
+					MediaDevices: fp.MediaDevices,
+					WebGL: api.WebGL{
+						Mode: "noise",
+						//GetClientRectsNoise: 0,
+					},
+					ClientRects: api.AudioContext{
+						Mode: "off",
+					},
+					WebGLMetadata: api.WebGLMetadata{
+						Mode:     "mask",
+						Vendor:   fp.WebGLMetadata.Vendor,
+						Renderer: fp.WebGLMetadata.Renderer,
+					},
+					ProxyEnabled: false,
+					Proxy: api.Proxy{
+						Mode: "none",
+					},
+					WebRTC: api.WebRTC{
+						Mode: "real",
+					},
+					WebglParams: fp.WebglParams,
+					A:           []any{},
+					B:           []any{},
+					AutoLang:    true,
+				})
+
+				uuid, err := G.Create()
+				if err != nil {
+					log.Println(err)
+					return
+				}
+
+				cdp, err = G.Start(uuid)
+				if err != nil {
+					log.Println(err)
+					panic(err)
+					return
+				}
+
+				defer G.Close(uuid)
 			}
 
 			client, err := browser.NewInstance(Config.Mock.Spoofing, false, Config.Engine.BrowserHswThreadCount, cdp, Config.Mock.Hsw, Config.Mock.Version)
@@ -188,7 +270,7 @@ func solveHandler(c *fiber.Ctx) error {
 	t := time.Now()
 	browser := next()
 
-	pow, err := browser.Hsw(b.Jwt, 10 * time.Second)
+	pow, err := browser.Hsw(b.Jwt, 10*time.Second)
 	if err != nil {
 		browser.Online = false
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
@@ -263,18 +345,19 @@ func debug() {
 	log.Println("ctrl+c to exit.")
 
 	gotos := []string{
-		"https://www.browserscan.net/",
+		"https://abrahamjuliot.github.io/creepjs/",
 		/*
-			"https://browserleaks.com/webgl",
-			"https://browserleaks.com/webrtc",
-			"https://browserleaks.com/canvas",
-			"https://browserleaks.com/webgl",
-			"https://browserleaks.com/tls",
-			"https://browserleaks.com/javascript",
-			"https://browserleaks.com/fonts",
-			"https://browserleaks.com/ip",
-			"https://bot.sannysoft.com/",
-			"https://abrahamjuliot.github.io/creepjs/",
+			"https://www.browserscan.net/",
+				"https://browserleaks.com/webgl",
+				"https://browserleaks.com/webrtc",
+				"https://browserleaks.com/canvas",
+				"https://browserleaks.com/webgl",
+				"https://browserleaks.com/tls",
+				"https://browserleaks.com/javascript",
+				"https://browserleaks.com/fonts",
+				"https://browserleaks.com/ip",
+				"https://bot.sannysoft.com/",
+				"https://abrahamjuliot.github.io/creepjs/",
 		*/
 	}
 
