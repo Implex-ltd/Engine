@@ -54,6 +54,7 @@ func NewInstance(config *InstanceConfig) (*Instance, error) {
 
 		context, err = browser.NewContext(playwright.BrowserNewContextOptions{
 			ColorScheme: playwright.ColorSchemeNoPreference,
+			Locale:      playwright.String("fr-FR"),
 		})
 		if err != nil {
 			return nil, err

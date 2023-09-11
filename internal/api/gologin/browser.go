@@ -13,7 +13,7 @@ import (
 
 var (
 	gologinendpoint = "http://127.0.0.1:36912"
-	token           = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGY5NDQ3OTJkODg2OTcwNjQxNTI4YzkiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2NGY5ZGM2NTJkODg2OTg2MmMyZThlMTAifQ.bSHwQHLII7fF4utjDQx5HQLDDyWZSlx6ZeZkINwBzWM" //"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGZjNWFlYTZhMWI0ZjQ2YmJhMzEwMTgiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2NGZjNWFmMDA1MDJkYjA3MTk0MDE3MDYifQ.d6DWwRrNLzYym8aJGQuoZBAHNxPH0CRSahKbRENqebU"
+	token           = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGZlOTYxNGI4NDU5YjYxYzc2ZGM0OWIiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2NGZlOTYxZWI4NDU5YjYyNTU2ZGM1NjUifQ.AqN21xvaANsyGV9oRdY6ME9BL-MvFIyFZ-eOCNyC5Ls" //"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGZjNWFlYTZhMWI0ZjQ2YmJhMzEwMTgiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2NGZjNWFmMDA1MDJkYjA3MTk0MDE3MDYifQ.d6DWwRrNLzYym8aJGQuoZBAHNxPH0CRSahKbRENqebU"
 )
 
 func NewGologin(UserAgent, Os string) (*Gologin, error) {
@@ -88,7 +88,7 @@ func NewGologin(UserAgent, Os string) (*Gologin, error) {
 }
 
 func (G *Gologin) GetFingerprint(Os string) (*GologinGetFingerprintResponse, error) {
-	req, err := http.NewRequest("GET", fmt.Sprintf("https://gologin.com/browser/fingerprint?os=%s", Os), nil)
+	req, err := http.NewRequest("GET", fmt.Sprintf("https://api.gologin.com/browser/fingerprint?os=%s", Os), nil)
 	if err != nil {
 		return nil, err
 	}
@@ -109,6 +109,7 @@ func (G *Gologin) GetFingerprint(Os string) (*GologinGetFingerprintResponse, err
 
 	var data GologinGetFingerprintResponse
 	if err := json.Unmarshal(body, &data); err != nil {
+		panic(err)
 		return nil, err
 	}
 
@@ -121,7 +122,7 @@ func (G *Gologin) Create() error {
 		return err
 	}
 
-	req, err := http.NewRequest("POST", "https://gologin.com/browser", bytes.NewReader(Payload))
+	req, err := http.NewRequest("POST", "https://api.gologin.com/browser", bytes.NewReader(Payload))
 	if err != nil {
 		return err
 	}
@@ -142,6 +143,7 @@ func (G *Gologin) Create() error {
 
 	var data GologinCreateBrowserResponse
 	if err := json.Unmarshal(body, &data); err != nil {
+		panic(err)
 		return err
 	}
 
@@ -186,13 +188,14 @@ func (G *Gologin) Close() error {
 func (G *Gologin) Delete() error {
 	client := http.Client{}
 
-	req, err := http.NewRequest("DELETE", fmt.Sprint("https://gologin.com/browser/%s", G.UUID), nil)
+	req, err := http.NewRequest("DELETE", fmt.Sprintf("https://api.gologin.com/browser/%s", G.UUID), nil)
 	if err != nil {
 		return err
 	}
 
 	resp, err := client.Do(req)
 	if err != nil {
+		panic(err)
 		return err
 	}
 

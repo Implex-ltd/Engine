@@ -307,11 +307,16 @@ func debug() {
 	log.Println("Done.")
 }
 
+func cgfHandler(c *fiber.Ctx) error {
+	return c.SendString(fmt.Sprintf(`{"useragent": "%s"}`, Config.Browser.Useragent))
+}
+
 func engine() {
 	go initBrowser()
 
 	app := fiber.New()
 	app.Post("/n", solveHandler)
+	app.Post("/config", cgfHandler)
 
 	err := app.Listen(fmt.Sprintf(`:%d`, Config.Server.Port))
 	if err != nil {
