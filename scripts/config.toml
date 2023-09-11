@@ -14,7 +14,7 @@ headless = false
 inject_hsw = false
 inject_spoof = false
 block_register = true
-hsw_version = "6f48ffb"
+hsw_version = "31892fb"
 
 [server]
 port = 1234

@@ -1,5 +1,7 @@
 delete Object.getPrototypeOf(navigator).webdriver;
-navigator.webdriver = false;
+if (navigator && navigator.webdriver !== undefined) {
+    Object.defineProperty(navigator, "webdriver", { value: false });
+}
 
 const randomOffset = (x) => Math.random() * x - 1;
 
