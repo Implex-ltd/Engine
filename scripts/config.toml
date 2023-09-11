@@ -1,6 +1,6 @@
 [engine]
 browserHswThreadCount = 10
-browserCount = 5
+browserCount = 3
 rotation = 300
 rotation_wait = 10
 
@@ -12,7 +12,7 @@ headless = false
 
 [mock]
 inject_hsw = false
-inject_spoof = true
+inject_spoof = false
 block_register = true
 hsw_version = "6f48ffb"
 
