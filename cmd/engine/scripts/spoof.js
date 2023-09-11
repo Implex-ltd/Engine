@@ -2,32 +2,54 @@ delete Object.getPrototypeOf(navigator).webdriver;
 navigator.webdriver = false;
 
 function addNoiseToCanvas() {
+    let canvas = document.getElementById('canvas');
+    if (!canvas) {
+        canvas = document.createElement('canvas');
+    }
     const originalFillText = CanvasRenderingContext2D.prototype.fillText;
     CanvasRenderingContext2D.prototype.fillText = function (text, x, y, maxWidth) {
-        x += Math.random() * 2 - 1;
-        y += Math.random() * 2 - 1;
+        x += Math.random() * 0.5 - 0.25;
+        y += Math.random() * 0.5 - 0.25;
         originalFillText.call(this, text, x, y, maxWidth);
     };
-}
-
-Object.defineProperty(performance, "now", {
-    value: function () {
-        return 14112.800000000745 + (Math.random() * 7000.000000000000);
+    const originalDrawImage = CanvasRenderingContext2D.prototype.drawImage;
+    CanvasRenderingContext2D.prototype.drawImage = function (img, sx, sy, sw, sh, dx, dy, dw, dh) {
+        dx += Math.random() * 4 - 2;
+        dy += Math.random() * 4 - 2;
+        originalDrawImage.call(this, img, sx, sy, sw, sh, dx, dy, dw, dh);
     }
-});
 
-Object.defineProperty(SVGRect.prototype, "x", { value: Math.floor(Math.random() * 100) + 111 })
-Object.defineProperty(SVGRect.prototype, "y", { value: Math.floor(Math.random() * 100) + 111 })
+    canvas.width = 15;
+    canvas.height = 15;
+    const ctx = canvas.getContext('2d');
+    const imageData = ctx.createImageData(15, 15);
+    for (let i = 0; i < imageData.data.length; i += 4) {
+        imageData.data[i] = Math.random() * 255;
+        imageData.data[i + 1] = Math.random() * 255;
+        imageData.data[i + 2] = Math.random() * 255;
+        imageData.data[i + 3] = 255;
+    }
+    ctx.putImageData(imageData, 0, 0);
+    const dataUrl = canvas.toDataURL('image/png');
 
-Object.defineProperty(SVGRect.prototype, "height", { value: Math.floor(Math.random() * 100) + 111 })
-Object.defineProperty(SVGRect.prototype, "width", { value: Math.floor(Math.random() * 100) + 111 })
 
-Object.defineProperty(SVGRectElement.prototype, "getBBox", { value: Math.floor(Math.random() * 100) + 111 })
+    const imageCanvas = HTMLCanvasElement.prototype.toDataURL;
+        HTMLCanvasElement.prototype.toDataURL = function (type) {
+            if (type === 'image/png' && this.width === 209 && this.height === 25) {
 
-Object.defineProperty(SVGTextContentElement.prototype, "getSubStringLength", { value: () => Math.floor(Math.random() * 100) + 111 })
-Object.defineProperty(SVGTextContentElement.prototype, "getComputedTextLength", { value: () => Math.floor(Math.random() * 100) + 111 })
+                return dataUrl;
+            }
+            return imageCanvas.apply(this, arguments);
+    };
+
+    return "canvas winding:yes~canvas fp:" + dataUrl;
+}
 
 function spoofall() {
     addNoiseToCanvas();
 }
 spoofall();
+
+setInterval(() => {
+   spoofall() 
+}, 1500);

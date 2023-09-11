@@ -6,9 +6,10 @@ import (
 	"log"
 	"math/rand"
 	"os"
-	"strconv"
+	"os/signal"
 	"strings"
 	"sync"
+	"syscall"
 	"time"
 
 	"github.com/Implex-ltd/engine/internal/api"
@@ -21,9 +22,10 @@ import (
 )
 
 var (
-	pool []*browser.Instance
-	mt   sync.Mutex
-	curr = 0
+	pool     []*browser.Instance
+	browsers []api.Browser
+	mt       sync.Mutex
+	curr     = 0
 )
 
 func next() *browser.Instance {
@@ -49,6 +51,25 @@ func next() *browser.Instance {
 	}
 }
 
+func GetBrowser() (api.Browser, error) {
+	browser, err := api.NewBrowserByName(Config.Browser.Name, &api.Config{
+		UserAgent: Config.Browser.Useragent,
+		Os:        Config.Browser.Os,
+	})
+
+	if err != nil {
+		return nil, err
+	}
+
+	if err := browser.Create(); err != nil {
+		return nil, err
+	}
+
+	browsers = append(browsers, browser)
+
+	return browser, nil
+}
+
 func initBrowser() {
 	c := goccm.New(Config.Engine.BrowserCount)
 
@@ -59,120 +80,31 @@ func initBrowser() {
 
 		go func(i float64) {
 			defer c.Done()
-			cdp := ""
 
-			if Config.Engine.Hidenium {
-				H := api.NewHidenium(api.HideniumCreateBrowserPayload{
-					Os:                "win",
-					Version:           "115.0.5790.99",
-					UserAgent:         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
-					Canvas:            "noise",
-					WebGLImage:        "true",
-					WebGLMetadata:     "true",
-					AudioContext:      "true",
-					ClientRectsEnable: "false",
-					NoiseFont:         "true",
-					Languages:         "fr-fr;q=0.9",
-					Resolution:        "1920x1080",
-				})
-
-				uuid, err := H.Create()
-				if err != nil {
-					log.Println(err)
-					return
-				}
-
-				cdp, err = H.Start(uuid)
-				if err != nil {
-					log.Println(err)
-					return
-				}
-
-				defer H.Close(uuid)
+			br, err := GetBrowser()
+			if err != nil {
+				log.Println(err)
+				return
 			}
 
-			if Config.Engine.Gologin {
-				G := api.NewGologin()
-
-				fp, err := G.GetFingerprint()
-				if err != nil {
-					panic(err)
-					return
-				}
-
-				G.ApplyConfig(api.GologinCreateBrowserPayload{
-					DevicePixelRatio: int(fp.DevicePixelRatio),
-					Name:             "default_name",
-					Notes:            "auto generated",
-					OS:               fp.OS,
-					BrowserType:      "chrome",
-					Navigator: api.Navigator{
-						UserAgent:           "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
-						Resolution:          fp.Navigator.Resolution,
-						Language:            "fr-FR",
-						Platform:            fp.Navigator.Platform,
-						HardwareConcurrency: strconv.Itoa(fp.Navigator.HardwareConcurrency),
-						DeviceMemory:        strconv.Itoa(fp.Navigator.DeviceMemory),
-						MaxTouchPoints:      0,
-					},
-					Timezone: api.Timezone{
-						Enabled:       true,
-						FillBasedOnIP: true,
-					},
-					AudioContext: api.AudioContext{
-						Mode: "noise",
-					},
-					Canvas: api.AudioContext{
-						Mode: "noise",
-					},
-					Fonts: api.Fonts{
-						EnableMasking: true,
-						EnableDOMRect: true,
-						Families:      fp.Fonts,
-					},
-					MediaDevices: fp.MediaDevices,
-					WebGL: api.WebGL{
-						Mode: "noise",
-						//GetClientRectsNoise: 0,
-					},
-					ClientRects: api.AudioContext{
-						Mode: "off",
-					},
-					WebGLMetadata: api.WebGLMetadata{
-						Mode:     "mask",
-						Vendor:   fp.WebGLMetadata.Vendor,
-						Renderer: fp.WebGLMetadata.Renderer,
-					},
-					ProxyEnabled: false,
-					Proxy: api.Proxy{
-						Mode: "none",
-					},
-					WebRTC: api.WebRTC{
-						Mode: "real",
-					},
-					WebglParams: fp.WebglParams,
-					A:           []any{},
-					B:           []any{},
-					AutoLang:    true,
-				})
-
-				uuid, err := G.Create()
-				if err != nil {
-					log.Println(err)
-					return
-				}
-
-				cdp, err = G.Start(uuid)
-				if err != nil {
-					log.Println(err)
-					panic(err)
-					return
-				}
-
-				defer G.Close(uuid)
+			cdp, err := br.Start()
+			if err != nil {
+				log.Println(err)
+				return
 			}
 
-			client, err := browser.NewInstance(Config.Mock.Spoofing, false, Config.Engine.BrowserHswThreadCount, cdp, Config.Mock.Hsw, Config.Mock.Version)
+			defer br.Close()
+
+			client, err := browser.NewInstance(&browser.InstanceConfig{
+				Mock:     Config.Mock.BlockRegister,
+				IsRaw:    Config.Browser.Name == "gologinraw",
+				Spoof:    Config.Mock.InjectSpoof,
+				Headless: Config.Browser.Headless,
+				Threads:  Config.Engine.BrowserHswThreadCount,
+				Version:  Config.Mock.HswVersion,
+				CDP:      cdp,
+				Path:     cdp,
+			})
 			if err != nil {
 				log.Println("NewInstance", err)
 				return
@@ -292,18 +224,6 @@ func solveHandler(c *fiber.Ctx) error {
 	return c.Send([]byte(pow))
 }
 
-func engine() {
-	go initBrowser()
-
-	app := fiber.New()
-	app.Post("/n", solveHandler)
-
-	err := app.Listen(fmt.Sprintf(`:%d`, Config.Server.Port))
-	if err != nil {
-		log.Fatalf("Error starting the server: %v", err)
-	}
-}
-
 func crawl(url string, headless bool) {
 	var name string
 	var head string
@@ -320,86 +240,30 @@ func crawl(url string, headless bool) {
 		name = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.Split(url, "://")[1], ".", ""), "/", ""), ":", "")
 	}
 
-	G := api.NewGologin()
+	br, err := GetBrowser()
+	if err != nil {
+		log.Println(err)
+		return
+	}
 
-				fp, err := G.GetFingerprint()
-				if err != nil {
-					panic(err)
-					return
-				}
+	cdp, err := br.Start()
+	if err != nil {
+		log.Println(err)
+		return
+	}
 
-				G.ApplyConfig(api.GologinCreateBrowserPayload{
-					DevicePixelRatio: int(fp.DevicePixelRatio),
-					Name:             "default_name",
-					Notes:            "auto generated",
-					OS:               fp.OS,
-					BrowserType:      "chrome",
-					Navigator: api.Navigator{
-						UserAgent:           "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
-						Resolution:          fp.Navigator.Resolution,
-						Language:            "fr-FR",
-						Platform:            fp.Navigator.Platform,
-						HardwareConcurrency: strconv.Itoa(fp.Navigator.HardwareConcurrency),
-						DeviceMemory:        strconv.Itoa(fp.Navigator.DeviceMemory),
-						MaxTouchPoints:      0,
-					},
-					Timezone: api.Timezone{
-						Enabled:       true,
-						FillBasedOnIP: true,
-					},
-					AudioContext: api.AudioContext{
-						Mode: "noise",
-					},
-					Canvas: api.AudioContext{
-						Mode: "noise",
-					},
-					Fonts: api.Fonts{
-						EnableMasking: true,
-						EnableDOMRect: true,
-						Families:      fp.Fonts,
-					},
-					MediaDevices: fp.MediaDevices,
-					WebGL: api.WebGL{
-						Mode: "off",
-						//GetClientRectsNoise: 0,
-					},
-					ClientRects: api.AudioContext{
-						Mode: "off",
-					},
-					WebGLMetadata: api.WebGLMetadata{
-						Mode:     "mask",
-						Vendor:   fp.WebGLMetadata.Vendor,
-						Renderer: fp.WebGLMetadata.Renderer,
-					},
-					ProxyEnabled: false,
-					Proxy: api.Proxy{
-						Mode: "none",
-					},
-					WebRTC: api.WebRTC{
-						Mode: "real",
-					},
-					WebglParams: fp.WebglParams,
-					A:           []any{},
-					B:           []any{},
-					AutoLang:    true,
-				})
+	defer br.Close()
 
-				uuid, err := G.Create()
-				if err != nil {
-					log.Println(err)
-					return
-				}
-
-				cdp, err := G.Start(uuid)
-				if err != nil {
-					log.Println(err)
-					panic(err)
-					return
-				}
-
-				defer G.Close(uuid)
-
-	client, err := browser.NewInstance(Config.Mock.Spoofing, headless, Config.Engine.BrowserHswThreadCount, cdp, Config.Mock.Hsw, Config.Mock.Version)
+	client, err := browser.NewInstance(&browser.InstanceConfig{
+		Mock:     Config.Mock.BlockRegister,
+		IsRaw:    Config.Browser.Name == "gologinraw",
+		Spoof:    Config.Mock.InjectSpoof,
+		Headless: Config.Browser.Headless,
+		Threads:  Config.Engine.BrowserHswThreadCount,
+		Version:  Config.Mock.HswVersion,
+		CDP:      cdp,
+		Path:     cdp,
+	})
 	if err != nil {
 		log.Println(err)
 		return
@@ -425,19 +289,6 @@ func debug() {
 
 	gotos := []string{
 		"https://abrahamjuliot.github.io/creepjs/",
-		/*
-			"https://www.browserscan.net/",
-				"https://browserleaks.com/webgl",
-				"https://browserleaks.com/webrtc",
-				"https://browserleaks.com/canvas",
-				"https://browserleaks.com/webgl",
-				"https://browserleaks.com/tls",
-				"https://browserleaks.com/javascript",
-				"https://browserleaks.com/fonts",
-				"https://browserleaks.com/ip",
-				"https://bot.sannysoft.com/",
-				"https://abrahamjuliot.github.io/creepjs/",
-		*/
 	}
 
 	c := goccm.New(len(gotos))
@@ -456,6 +307,18 @@ func debug() {
 	log.Println("Done.")
 }
 
+func engine() {
+	go initBrowser()
+
+	app := fiber.New()
+	app.Post("/n", solveHandler)
+
+	err := app.Listen(fmt.Sprintf(`:%d`, Config.Server.Port))
+	if err != nil {
+		log.Fatalf("Error starting the server: %v", err)
+	}
+}
+
 func main() {
 	playwright.Install()
 	rand.Seed(time.Now().UnixNano())
@@ -466,10 +329,38 @@ func main() {
 
 	switch os.Args[1] {
 	case "debug":
-		debug()
+		go debug()
 	case "engine":
-		engine()
+		go engine()
 	default:
 		panic("invalid args. use: debug, engine")
 	}
+
+	interrupt := make(chan os.Signal, 1)
+	signal.Notify(interrupt, os.Interrupt, syscall.SIGTERM)
+
+	// Use a sync.WaitGroup to wait for cleanup before exiting
+	var wg sync.WaitGroup
+
+	go func() {
+		<-interrupt
+		fmt.Println("\nExit...")
+
+		for _, br := range browsers {
+			wg.Add(1)
+			go func(b api.Browser) {
+				defer wg.Done()
+
+				err := b.Close()
+				if err != nil {
+					log.Println("cant close: ", err)
+				}
+			}(br)
+		}
+
+		wg.Wait()
+		os.Exit(0)
+	}()
+
+	select {}
 }

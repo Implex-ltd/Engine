@@ -19,5 +19,16 @@ type Instance struct {
 	Frame   playwright.Frame
 	Manager chan struct{}
 	Online  bool
-	Path    string
+}
+
+type InstanceConfig struct {
+	Mock     bool
+	IsRaw    bool
+	Spoof    bool
+	Headless bool
+	Inject   bool
+	Threads  int
+	Version  string
+	CDP      string
+	Path     string
 }
