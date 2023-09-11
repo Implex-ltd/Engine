@@ -3,6 +3,8 @@ package gologin
 import (
 	"net/http"
 	"time"
+
+	"github.com/Implex-ltd/engine/internal/ratelimiter"
 )
 
 type GologinCreateBrowserPayload struct {
@@ -137,9 +139,10 @@ type WebRTC struct {
 // gologin
 
 type Gologin struct {
-	Config GologinCreateBrowserPayload
-	Client http.Client
-	UUID   string
+	Config  GologinCreateBrowserPayload
+	Client  http.Client
+	UUID    string
+	Limiter *ratelimiter.Limiter
 }
 
 type GologinCreateBrowserResponse struct {

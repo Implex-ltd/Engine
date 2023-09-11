@@ -9,6 +9,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/Implex-ltd/engine/internal/ratelimiter"
 )
 
 var (
@@ -21,6 +23,7 @@ func NewGologin(UserAgent, Os string) (*Gologin, error) {
 		Client: http.Client{
 			Timeout: 10 * time.Second,
 		},
+		Limiter: ratelimiter.NewLimiter(300, time.Minute),
 	}
 
 	fp, err := Self.GetFingerprint(Os)
@@ -88,6 +91,8 @@ func NewGologin(UserAgent, Os string) (*Gologin, error) {
 }
 
 func (G *Gologin) GetFingerprint(Os string) (*GologinGetFingerprintResponse, error) {
+	G.Limiter.Wait()
+
 	req, err := http.NewRequest("GET", fmt.Sprintf("https://api.gologin.com/browser/fingerprint?os=%s", Os), nil)
 	if err != nil {
 		return nil, err
@@ -117,6 +122,8 @@ func (G *Gologin) GetFingerprint(Os string) (*GologinGetFingerprintResponse, err
 }
 
 func (G *Gologin) Create() error {
+	G.Limiter.Wait()
+
 	Payload, err := json.Marshal(G.Config)
 	if err != nil {
 		return err
@@ -186,6 +193,8 @@ func (G *Gologin) Close() error {
 }
 
 func (G *Gologin) Delete() error {
+	G.Limiter.Wait()
+
 	client := http.Client{}
 
 	req, err := http.NewRequest("DELETE", fmt.Sprintf("https://api.gologin.com/browser/%s", G.UUID), nil)
@@ -195,7 +204,6 @@ func (G *Gologin) Delete() error {
 
 	resp, err := client.Do(req)
 	if err != nil {
-		panic(err)
 		return err
 	}
 
