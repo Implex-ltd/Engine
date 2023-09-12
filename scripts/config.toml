@@ -1,15 +1,35 @@
 [engine]
-browserHswThreadCount = 10
-browserCount = 6
-hidenium = false
-gologin = true
+browserHswThreadCount = 30
+browserCount = 5
 rotation = 30
 rotation_wait = 10
 
+[browser]
+name = "gologin"
+useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+os = "win"
+headless = false
+
 [mock]
-hsw = true
-spoofing = true
-version = "6f48ffb"
+inject_hsw = true
+inject_spoof = false
+block_register = true
+hsw_version = "31892fb"
 
 [server]
 port = 1234
+
+[debug]
+gotos = [
+	"https://www.browserscan.net/",
+	"https://browserleaks.com/webgl",
+	"https://browserleaks.com/webrtc",
+	"https://browserleaks.com/canvas",
+	"https://browserleaks.com/webgl",
+	"https://browserleaks.com/tls",
+	"https://browserleaks.com/javascript",
+	"https://browserleaks.com/fonts",
+	"https://browserleaks.com/ip",
+	"https://bot.sannysoft.com/",
+	"https://abrahamjuliot.github.io/creepjs/",
+]

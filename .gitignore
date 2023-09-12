@@ -24,3 +24,4 @@ go.work
 assets
 .tmp
 .DS_Store
+.idea
