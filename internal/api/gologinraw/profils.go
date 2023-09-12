@@ -301,7 +301,7 @@ func GetFingerprint(UserAgent, Os string) ([]byte, error) {
 			ShortcutsVersion: 0,
 		},
 		Autocomplete: Autocomplete{
-			RetentionPolicyLastVersion: 115,
+			RetentionPolicyLastVersion: 116,
 		},
 		Autofill: Autofill{
 			OrphanRowsRemoved: true,
@@ -1366,7 +1366,7 @@ func GetFingerprint(UserAgent, Os string) ([]byte, error) {
 				"MigrateDefaultChromeAppToWebAppsGSuite",
 				"MigrateDefaultChromeAppToWebAppsNonGSuite",
 			},
-			LastPreinstallSynchronizeVersion:  "115",
+			LastPreinstallSynchronizeVersion:  "116",
 			SystemWebAppFailureCount:          0,
 			SystemWebAppLastAttemptedLanguage: "en-US",
 			SystemWebAppLastAttemptedUpdate:   "103.0.5060.53",

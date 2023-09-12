@@ -202,6 +202,8 @@ func (G *Gologin) Delete() error {
 		return err
 	}
 
+	req.Header.Add("authorization", fmt.Sprintf(`Bearer %s`, token))
+
 	resp, err := client.Do(req)
 	if err != nil {
 		return err
