@@ -23,7 +23,7 @@ func NewGologin(UserAgent, Os string) (*Gologin, error) {
 		Client: http.Client{
 			Timeout: 10 * time.Second,
 		},
-		Limiter: ratelimiter.NewLimiter(300, time.Minute),
+		Limiter: ratelimiter.NewLimiter(150, time.Minute),
 	}
 
 	fp, err := Self.GetFingerprint(Os)

@@ -104,6 +104,7 @@ func initBrowser() {
 				Version:  Config.Mock.HswVersion,
 				CDP:      cdp,
 				Path:     cdp,
+				Inject:   Config.Mock.InjectHsw,
 			})
 			if err != nil {
 				log.Println("NewInstance", err)
@@ -298,8 +299,7 @@ func debug() {
 
 		go func(url string) {
 			defer c.Done()
-			go crawl(url, false)
-			crawl(url, true)
+			crawl(url, false)
 		}(page)
 	}
 
