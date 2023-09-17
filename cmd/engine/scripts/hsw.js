@@ -1098,7 +1098,7 @@ const dump = {
         "webkitRequestFileSystem",
         "webkitResolveLocalFileSystemURL"
     ],
-    "437": [
+   /* "437": [
         [
             "HTML",
             2
@@ -2704,8 +2704,8 @@ const dump = {
             0,
             51
         ]
-    ],
-    "550": [
+    ],*/
+   /* "550": [
         [
             192,
             [
@@ -2821,7 +2821,7 @@ const dump = {
                 ]
             ]
         ]
-    ],
+    ],*/
     "616": [
         "Europe/Paris",
         -60,
@@ -2830,7 +2830,7 @@ const dump = {
         "heure d’été d’Europe centrale",
         "fr-FR"
     ],
-    "622": 1097,
+    //"622": 1097,
     "648": [
         "granted",
         "TypeError",
@@ -2863,7 +2863,7 @@ const dump = {
         "TypeError",
         "denied"
     ],
-    "745": [
+   /* "745": [
         4,
         120,
         4
@@ -2894,21 +2894,21 @@ const dump = {
             39,
             75
         ]
-    ],
+    ],*/
    /* "845": [
         "Google Inc. (Intel)",
         "ANGLE (Intel, Intel(R) HD Graphics 530 Direct3D11 vs_5_0 ps_5_0, D3D11)"
     ],*/
-    "72b": 965.3000000007451,
-    "ade": 57,
-    "42f": [
+   // "72b": 965.3000000007451,
+   // "ade": 57,
+    /*"42f": [
         "-0.7108118501064332,1.9275814160560204e-50,-0.7181630308570678,1.6182817135715877",
         37,
         "toString() radix argument must be between 2 and 36",
         "Invalid array length"
-    ],
-    "1d6": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAR9JREFUOE/N1MEqRVEUxvHfHRoYMZOSiaEH8AgewAAzpZBShpQYGijFC2DgDTCVBzA08QbGplo6S7vt3NqnrnJGp9Na3/p/69v7jEz4GU1YzxDBFVxhDbM4xjo+Sqghgk1mUnAGd13HFo6w0BEEzT128VKpBmU877jFRgoudU3LeO1svRXN2XhWfIueExxiFTfx3md5qiu6LvYTzZfYRw6KIUGWzr5nlYJRcNoRPOEBF2Mok25vXCghNocDfKJMNIlKkZ0+uiTssxO2g+65shSDpzGPX3QpGDSbBV26jDO2iDqISPy83l02xQ6HCObxiiH1EfoJZYjlJsFQrkMJu7GG+mo1C2YI290uHvvuKZoFm+5pS9Gf/RxahjfV/H/CL60pQ+2uFC+LAAAAAElFTkSuQmCC",
-    "5ed": [
+    ],*/
+    /*"1d6": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAR9JREFUOE/N1MEqRVEUxvHfHRoYMZOSiaEH8AgewAAzpZBShpQYGijFC2DgDTCVBzA08QbGplo6S7vt3NqnrnJGp9Na3/p/69v7jEz4GU1YzxDBFVxhDbM4xjo+Sqghgk1mUnAGd13HFo6w0BEEzT128VKpBmU877jFRgoudU3LeO1svRXN2XhWfIueExxiFTfx3md5qiu6LvYTzZfYRw6KIUGWzr5nlYJRcNoRPOEBF2Mok25vXCghNocDfKJMNIlKkZ0+uiTssxO2g+65shSDpzGPX3QpGDSbBV26jDO2iDqISPy83l02xQ6HCObxiiH1EfoJZYjlJsFQrkMJu7GG+mo1C2YI290uHvvuKZoFm+5pS9Gf/RxahjfV/H/CL60pQ+2uFC+LAAAAAElFTkSuQmCC",*/
+   /* "5ed": [
         255,
         255,
         255,
@@ -2925,8 +2925,8 @@ const dump = {
         48,
         48,
         255
-    ],
-    "e67": [
+    ],*/
+   /* "e67": [
         14,
         4,
         1,
@@ -2934,7 +2934,7 @@ const dump = {
         17,
         4,
         44.2890625
-    ],
+    ],*/
    /* "37e": [
         274.609375,
         266,
@@ -3121,7 +3121,8 @@ const dump = {
         274.609375,
         266
     ],
-   */ "07b": [
+   
+    "07b": [
         "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
         8,
@@ -3237,10 +3238,12 @@ const dump = {
         "small-caption": "12px \"Segoe UI\"",
         "status-bar": "12px \"Segoe UI\""
     },
+    */
     "4c7": [
         "Arial",
         "\"Segoe UI\""
     ],
+    /*
     "4e0": [
         "cssText",
         "length",
@@ -3849,16 +3852,18 @@ const dump = {
         "zoom"
     ],
     "ce8": 605,
+    */
     "7f8": "Europe/Paris",
   /* "66e": [
         "KMl8KeXhmc=QEDX52bKZ",
         "19",
         "a",
         "AXJTFVXOKDGIK"
-    ],*/
+    ],
     "a9d": 1694696002590.8,
     "0fb": 12.299999998882413,
     "ac4": 27.249999998137355,
+    */
     "d5a": [
         [
             "loadTimes",
@@ -3881,7 +3886,7 @@ const dump = {
             "Raven",
             "_sharedLibs",
             "__wdata",
-            "hsj"
+           // "hsw"
         ],
         [
             [
@@ -4192,7 +4197,7 @@ const dump = {
         2147483647,
         4294967294
     ],
-    "8ef": [
+   /* "8ef": [
         2147483647,
         2147483647,
         4294967294
@@ -4265,7 +4270,7 @@ const dump = {
         0,
         11433,
         11433
-    ],
+    ],*/
     "8b9": [
         [
             true,
@@ -4445,7 +4450,7 @@ const dump = {
             "Microsoft Paul - French (France)"
         ]
     ],
-    "016": [
+   /* "016": [
         2130931776,
         2130931776,
         null,
@@ -4455,7 +4460,7 @@ const dump = {
         true,
         true,
         null
-    ],
+    ],*/
    /* "8e5": [
         "xmdm5mtm3cjn==gm",
         "19",
@@ -4474,163 +4479,9 @@ const dump = {
         "denied",
         "denied"
     ],
-    "15e": 231.29999999701977
+    //"15e": 231.29999999701977
 }
 
-const webgl_xr = [
-    [
-        [
-            "Google Inc. (NVIDIA)",
-            "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11)"
-        ],
-        [
-            "ANGLE_instanced_arrays",
-            "EXT_blend_minmax",
-            "EXT_color_buffer_half_float",
-            "EXT_disjoint_timer_query",
-            "EXT_float_blend",
-            "EXT_frag_depth",
-            "EXT_shader_texture_lod",
-            "EXT_texture_compression_bptc",
-            "EXT_texture_compression_rgtc",
-            "EXT_texture_filter_anisotropic",
-            "EXT_sRGB",
-            "KHR_parallel_shader_compile",
-            "OES_element_index_uint",
-            "OES_fbo_render_mipmap",
-            "OES_standard_derivatives",
-            "OES_texture_float",
-            "OES_texture_float_linear",
-            "OES_texture_half_float",
-            "OES_texture_half_float_linear",
-            "OES_vertex_array_object",
-            "WEBGL_color_buffer_float",
-            "WEBGL_compressed_texture_s3tc",
-            "WEBGL_compressed_texture_s3tc_srgb",
-            "WEBGL_debug_renderer_info",
-            "WEBGL_debug_shaders",
-            "WEBGL_depth_texture",
-            "WEBGL_draw_buffers",
-            "WEBGL_lose_context",
-            "WEBGL_multi_draw"
-        ],
-        [
-            [
-                1,
-                1024
-            ],
-            [
-                1,
-                1
-            ],
-            2147483647,
-            2147483647,
-            2147483647,
-            2147483647,
-            16384,
-            [
-                32767,
-                32767
-            ],
-            4,
-            16,
-            4095,
-            30,
-            32,
-            16,
-            16,
-            1024,
-            "WebGL GLSL ES 1.0 (OpenGL ES GLSL ES 1.0 Chromium)",
-            "WebKit",
-            "WebKit WebGL",
-            "WebGL 1.0 (OpenGL ES 2.0 Chromium)",
-            16384,
-            16384,
-            [
-                [
-                    23,
-                    127,
-                    127
-                ],
-                [
-                    23,
-                    127,
-                    127
-                ],
-                [
-                    23,
-                    127,
-                    127
-                ],
-                [
-                    0,
-                    30,
-                    31
-                ]
-            ],
-            [
-                [
-                    23,
-                    127,
-                    127
-                ],
-                [
-                    23,
-                    127,
-                    127
-                ],
-                [
-                    23,
-                    127,
-                    127
-                ],
-                [
-                    0,
-                    30,
-                    31
-                ]
-            ],
-            16,
-            8,
-            true
-        ]
-    ],
-    [
-        [
-            1,
-            1024,
-            1,
-            1,
-            2147483647,
-            2147483647,
-            2147483647,
-            2147483647,
-            16384,
-            32767,
-            32767,
-            4,
-            16,
-            4095,
-            30,
-            32,
-            16,
-            16,
-            1024,
-            16384,
-            16384,
-            23,
-            127,
-            127,
-            23,
-            127,
-            127,
-            16,
-            8
-        ],
-        [],
-        true
-    ]
-]
 
 var hsw = function () {
     "use strict";
@@ -7319,14 +7170,7 @@ var hsw = function () {
                 var I = Q.a;
                 Q.a = 0;
                 try {
-                    let fp = {
-                        fp_id: args[0],
-                        fp_value: args[1]
-                    }
-                    
-                    if (dump[fp.fp_id] !== undefined) {
-                        args[1] = dump[fp.fp_id]
-                    }
+                    args[1] = dump[args[0]] !== undefined ? dump[args[0]] : args[1];
 
                     //(args)
 
