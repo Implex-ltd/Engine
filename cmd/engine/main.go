@@ -221,7 +221,7 @@ func solveHandler(c *fiber.Ctx) error {
 		})
 	}
 
-	log.Printf("solved (%dms): %s\n", time.Since(t).Milliseconds(), pow[:50])
+	log.Printf("solved (%dms) (%d): %s\n", time.Since(t).Milliseconds(), len(pow), pow[:50])
 	return c.Send([]byte(pow))
 }
 

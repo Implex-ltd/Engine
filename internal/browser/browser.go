@@ -74,15 +74,15 @@ func NewInstance(config *InstanceConfig) (*Instance, error) {
 	}
 
 	if config.Inject {
-		if err := context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsw.js**", config.Version), func(r playwright.Route) {
+		/*if err := context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsw.js**", config.Version), func(r playwright.Route) {
 			r.Fulfill(playwright.RouteFulfillOptions{
 				Status: playwright.Int(400),
 			})
 		}); err != nil {
 			return nil, err
-		}
+		}*/
 
-		/*hsw, err := os.ReadFile("../../cmd/engine/scripts/hsw.js")
+		hsw, err := os.ReadFile("../../cmd/engine/scripts/hsw.js")
 		if err != nil {
 			return nil, err
 		}
@@ -94,7 +94,7 @@ func NewInstance(config *InstanceConfig) (*Instance, error) {
 				Status: playwright.Int(200),
 				Body:   hsw,
 			})
-		})*/
+		})
 
 		hsj, err := os.ReadFile("../../cmd/engine/scripts/hsj.js")
 		if err != nil {
