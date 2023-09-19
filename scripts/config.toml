@@ -1,11 +1,11 @@
 [engine]
 browserHswThreadCount = 10
-browserCount = 3
+browserCount = 1
 rotation = 15
 rotation_wait = 15
 
 [browser]
-name = "gologin"
+name = "dolphin"
 useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
 os = "win"
 headless = false
