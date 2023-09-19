@@ -1,8 +1,8 @@
 [engine]
 browserHswThreadCount = 10
-browserCount = 5
-rotation = 30
-rotation_wait = 10
+browserCount = 3
+rotation = 15
+rotation_wait = 15
 
 [browser]
 name = "gologin"
@@ -11,6 +11,7 @@ os = "win"
 headless = false
 
 [mock]
+enable_hsj = false
 inject_hsw = true
 inject_spoof = false
 block_register = true
@@ -21,15 +22,15 @@ port = 1234
 
 [debug]
 gotos = [
-	"https://www.browserscan.net/",
-	"https://browserleaks.com/webgl",
-	"https://browserleaks.com/webrtc",
-	"https://browserleaks.com/canvas",
-	"https://browserleaks.com/webgl",
-	"https://browserleaks.com/tls",
-	"https://browserleaks.com/javascript",
-	"https://browserleaks.com/fonts",
-	"https://browserleaks.com/ip",
-	"https://bot.sannysoft.com/",
-	"https://abrahamjuliot.github.io/creepjs/",
+    "https://www.browserscan.net/",
+    "https://browserleaks.com/webgl",
+    "https://browserleaks.com/webrtc",
+    "https://browserleaks.com/canvas",
+    "https://browserleaks.com/webgl",
+    "https://browserleaks.com/tls",
+    "https://browserleaks.com/javascript",
+    "https://browserleaks.com/fonts",
+    "https://browserleaks.com/ip",
+    "https://bot.sannysoft.com/",
+    "https://abrahamjuliot.github.io/creepjs/",
 ]

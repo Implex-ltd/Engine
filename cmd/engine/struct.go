@@ -4,6 +4,10 @@ var (
 	Config = Cfg{}
 )
 
+type Payload struct {
+	Jwt string `json:"jwt"`
+}
+
 type Cfg struct {
 	Engine struct {
 		BrowserHswThreadCount int `toml:"browserHswThreadCount"`
