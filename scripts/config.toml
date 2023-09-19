@@ -1,11 +1,11 @@
 [engine]
 browserHswThreadCount = 10
-browserCount = 1
-rotation = 15
+browserCount = 2
+rotation = 30
 rotation_wait = 15
 
 [browser]
-name = "dolphin"
+name = "gologin"
 useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
 os = "win"
 headless = false
@@ -15,7 +15,7 @@ enable_hsj = false
 inject_hsw = true
 inject_spoof = false
 block_register = true
-hsw_version = "31892fb"
+hsw_version = "bf600bd"
 
 [server]
 port = 1234

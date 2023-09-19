@@ -105,8 +105,6 @@ func (D *Dolphin) Create() error {
 		return err
 	}
 
-	fmt.Println(string(body))
-
 	var data DolphinCreateBrowserResponse
 	if err := json.Unmarshal(body, &data); err != nil {
 		return err
@@ -117,19 +115,17 @@ func (D *Dolphin) Create() error {
 }
 
 func (D *Dolphin) Start() (string, error) {
-	fmt.Println(D.UUID)
 	resp, err := D.Client.Get(fmt.Sprintf("%s/browser_profiles/%s/start?automation=1", endpoint, D.UUID))
 	if err != nil {
 		return "", err
 	}
+
 	defer resp.Body.Close()
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return "", err
 	}
-
-	fmt.Println(string(body))
 
 	var data DolphinStartBrowserResponse
 	if err := json.Unmarshal(body, &data); err != nil {

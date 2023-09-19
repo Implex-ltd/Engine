@@ -15,9 +15,8 @@ import (
 
 var (
 	gologinendpoint = "http://127.0.0.1:36912"
-	token           = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTA3MjRmMjFkNGY3NzA0Y2JmNDRlNjMiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2NTA3MjRmZmE2YTY4NTc2YTY0YjY3MjgifQ.cmMWi1GRtnHwZJlNsLfaxxzc8TGUIIeANu354o9G_9g"
-
-	Limiter = ratelimiter.NewLimiter(150, time.Minute)
+	token           = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTA5OGQwMWY0ZjM1NzJiYTI5ZWRmNjAiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2NTA5OGQwNzNhYzk1YjJiZjBkZWE5NTMifQ.YNNua5NQfEylbquQjaEkZ0H6bwdYsfZDxmShCBpwTeA"
+	Limiter         = ratelimiter.NewLimiter(150, time.Minute)
 )
 
 func NewGologin(UserAgent, Os string) (*Gologin, error) {

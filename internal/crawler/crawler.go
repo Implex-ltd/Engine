@@ -58,6 +58,8 @@ func (C *Crawler) Crawl(url string) error {
 
 	defer client.CloseInstance()
 
+	time.Sleep(time.Second)
+
 	_, err = client.Page.Goto(url)
 	if err != nil {
 		return err
@@ -102,6 +104,8 @@ func (C *Crawler) Crawl(url string) error {
 func (C *Crawler) Run() (errors map[string]error, err error) {
 	c := goccm.New(C.Threads)
 	mut := sync.Mutex{}
+
+	errors = map[string]error{}
 
 	for _, url := range C.Gotos {
 		c.Wait()

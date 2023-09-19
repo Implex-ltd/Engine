@@ -2,6 +2,7 @@ package api
 
 import (
 	"errors"
+	"github.com/Implex-ltd/engine/internal/api/octo"
 
 	dolphin "github.com/Implex-ltd/engine/internal/api/dolphin"
 	gologin "github.com/Implex-ltd/engine/internal/api/gologin"
@@ -36,6 +37,10 @@ func NewHideniumConstructor(config *Config) (Browser, error) {
 
 func NewDolphinConstructor(config *Config) (Browser, error) {
 	return dolphin.NewDolphin(config.UserAgent, config.Os)
+}
+
+func NewOctoConstructor(config *Config) (Browser, error) {
+	return octo.NewOcto(config.UserAgent, config.Os)
 }
 
 func GetBrowser(name, ua, os string) (Browser, error) {
