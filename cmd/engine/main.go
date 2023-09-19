@@ -3,11 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Implex-ltd/engine/internal/crawler"
 	"log"
 	"math/rand"
 	"os"
 	"os/signal"
-	"strings"
 	"sync"
 	"syscall"
 	"time"
@@ -51,25 +51,6 @@ func next() *browser.Instance {
 	}
 }
 
-func GetBrowser() (api.Browser, error) {
-	browser, err := api.NewBrowserByName(Config.Browser.Name, &api.Config{
-		UserAgent: Config.Browser.Useragent,
-		Os:        Config.Browser.Os,
-	})
-
-	if err != nil {
-		return nil, err
-	}
-
-	if err := browser.Create(); err != nil {
-		return nil, err
-	}
-
-	browsers = append(browsers, browser)
-
-	return browser, nil
-}
-
 func initBrowser() {
 	c := goccm.New(Config.Engine.BrowserCount)
 
@@ -81,11 +62,13 @@ func initBrowser() {
 		go func(i float64) {
 			defer c.Done()
 
-			br, err := GetBrowser()
+			br, err := api.GetBrowser(Config.Browser.Name, Config.Browser.Useragent, Config.Browser.Os)
 			if err != nil {
 				log.Println(err)
 				return
 			}
+
+			browsers = append(browsers, br)
 
 			cdp, err := br.Start()
 			if err != nil {
@@ -112,7 +95,12 @@ func initBrowser() {
 				return
 			}
 
-			defer client.CloseInstance()
+			defer func(client *browser.Instance) {
+				err := client.CloseInstance()
+				if err != nil {
+					log.Println(err)
+				}
+			}(client)
 
 			if err := client.NavigateToDiscord(); err != nil {
 				log.Println("NavigateToDiscord", err)
@@ -202,11 +190,11 @@ func solveHandler(c *fiber.Ctx) error {
 	}
 
 	t := time.Now()
-	browser := next()
+	currBrowser := next()
 
-	pow, err := browser.Hsw(b.Jwt, 10*time.Second)
+	pow, err := currBrowser.Hsw(b.Jwt, 10*time.Second)
 	if err != nil {
-		browser.Online = false
+		currBrowser.Online = false
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"success": false,
 			"message": "cant eval",
@@ -226,87 +214,22 @@ func solveHandler(c *fiber.Ctx) error {
 	return c.Send([]byte(pow))
 }
 
-func crawl(url string, headless bool) {
-	var name string
-	var head string
-
-	if headless {
-		head = "headless"
-	} else {
-		head = "headfull"
-	}
-
-	if strings.Contains(url, "browserleaks") {
-		name = strings.Split(url, "browserleaks.com/")[1]
-	} else {
-		name = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.Split(url, "://")[1], ".", ""), "/", ""), ":", "")
-	}
-
-	br, err := GetBrowser()
-	if err != nil {
-		log.Println(err)
-		return
-	}
-
-	cdp, err := br.Start()
-	if err != nil {
-		log.Println(err)
-		return
-	}
-
-	defer br.Close()
-
-	client, err := browser.NewInstance(&browser.InstanceConfig{
-		Mock:     Config.Mock.BlockRegister,
-		IsRaw:    Config.Browser.Name == "gologinraw",
-		Spoof:    Config.Mock.InjectSpoof,
-		Headless: Config.Browser.Headless,
-		Threads:  Config.Engine.BrowserHswThreadCount,
-		Version:  Config.Mock.HswVersion,
-		CDP:      cdp,
-		Path:     cdp,
-		Hsj:      Config.Mock.EnableHsj,
-	})
-	if err != nil {
-		log.Println(err)
-		return
-	}
-
-	defer client.CloseInstance()
-	client.Page.Goto(url)
-
-	log.Println("Loaded", url)
-	defer log.Println("Done", url)
-
-	time.Sleep(5 * time.Second)
-	client.Page.Screenshot(playwright.PageScreenshotOptions{
-		FullPage: playwright.Bool(true),
-		Path:     playwright.String(fmt.Sprintf("./img/%s/%s.png", head, name)),
-	})
-
-	select {}
-}
-
 func debug() {
 	log.Println("ctrl+c to exit.")
 
 	gotos := []string{
 		"https://abrahamjuliot.github.io/creepjs/",
 	}
+	lock := false
 
-	c := goccm.New(len(gotos))
+	c := crawler.NewCrawler(Config.Mock.HswVersion, Config.Browser.Name, Config.Browser.Useragent, Config.Browser.Os, gotos, lock, Config.Mock.InjectSpoof, Config.Mock.EnableHsj, Config.Browser.Headless, Config.Mock.InjectHsw)
 
-	for _, page := range gotos {
-		c.Wait()
+	out, err := c.Run()
+	log.Println(out)
 
-		go func(url string) {
-			defer c.Done()
-			crawl(url, false)
-		}(page)
+	if err != nil {
+		panic(err)
 	}
-
-	c.WaitAllDone()
-	log.Println("Done.")
 }
 
 func cgfHandler(c *fiber.Ctx) error {
@@ -327,8 +250,11 @@ func engine() {
 }
 
 func main() {
-	playwright.Install()
-	rand.Seed(time.Now().UnixNano())
+	err := playwright.Install()
+	if err != nil {
+		panic(err)
+	}
+	rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	if _, err := toml.DecodeFile("../../scripts/config.toml", &Config); err != nil {
 		panic(err)

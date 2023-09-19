@@ -37,3 +37,20 @@ func NewHideniumConstructor(config *Config) (Browser, error) {
 func NewDolphinConstructor(config *Config) (Browser, error) {
 	return dolphin.NewDolphin(config.UserAgent, config.Os)
 }
+
+func GetBrowser(name, ua, os string) (Browser, error) {
+	browser, err := NewBrowserByName(name, &Config{
+		UserAgent: ua,
+		Os:        os,
+	})
+
+	if err != nil {
+		return nil, err
+	}
+
+	if err := browser.Create(); err != nil {
+		return nil, err
+	}
+
+	return browser, nil
+}
