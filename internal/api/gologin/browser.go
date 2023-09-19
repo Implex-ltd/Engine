@@ -16,6 +16,8 @@ import (
 var (
 	gologinendpoint = "http://127.0.0.1:36912"
 	token           = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTA3MjRmMjFkNGY3NzA0Y2JmNDRlNjMiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2NTA3MjRmZmE2YTY4NTc2YTY0YjY3MjgifQ.cmMWi1GRtnHwZJlNsLfaxxzc8TGUIIeANu354o9G_9g"
+
+	Limiter = ratelimiter.NewLimiter(150, time.Minute)
 )
 
 func NewGologin(UserAgent, Os string) (*Gologin, error) {
@@ -23,7 +25,7 @@ func NewGologin(UserAgent, Os string) (*Gologin, error) {
 		Client: http.Client{
 			Timeout: 10 * time.Second,
 		},
-		Limiter: ratelimiter.NewLimiter(150, time.Minute),
+		Limiter: Limiter,
 	}
 
 	fp, err := Self.GetFingerprint(Os)

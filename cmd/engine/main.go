@@ -93,7 +93,7 @@ func initBrowser() {
 				return
 			}
 
-			defer br.Close()
+			//defer br.Close()
 
 			client, err := browser.NewInstance(&browser.InstanceConfig{
 				Mock:     Config.Mock.BlockRegister,

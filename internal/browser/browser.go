@@ -142,14 +142,12 @@ func (I *Instance) CloseInstance() error {
 		}
 	}
 
-	/*
-		// make crash
-		if I.Br != nil {
-				if err := I.Br.Close(); err != nil {
-					errList = append(errList, err)
-				}
-			}
-	*/
+	// make crash ?
+	if I.Br != nil {
+		if err := I.Br.Close(); err != nil {
+			errList = append(errList, err)
+		}
+	}
 
 	if I.Pw != nil {
 		if err := I.Pw.Stop(); err != nil {
