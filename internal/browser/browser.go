@@ -74,41 +74,43 @@ func NewInstance(config *InstanceConfig) (*Instance, error) {
 	}
 
 	if config.Inject {
-		/*if err := context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsw.js**", config.Version), func(r playwright.Route) {
-			r.Fulfill(playwright.RouteFulfillOptions{
-				Status: playwright.Int(400),
-			})
-		}); err != nil {
-			return nil, err
-		}*/
+		if config.Hsj {
+			if err := context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsw.js**", config.Version), func(r playwright.Route) {
+				r.Fulfill(playwright.RouteFulfillOptions{
+					Status: playwright.Int(400),
+				})
+			}); err != nil {
+				return nil, err
+			}
 
-		hsw, err := os.ReadFile("../../cmd/engine/scripts/hsw.js")
-		if err != nil {
-			return nil, err
+			hsj, err := os.ReadFile("../../cmd/engine/scripts/hsj.js")
+			if err != nil {
+				return nil, err
+			}
+
+			context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsj.js**", config.Version), func(r playwright.Route) {
+				log.Println("hsj Injected !")
+
+				r.Fulfill(playwright.RouteFulfillOptions{
+					Status: playwright.Int(200),
+					Body:   hsj,
+				})
+			})
+		} else {
+			hsw, err := os.ReadFile("../../cmd/engine/scripts/hsw.js")
+			if err != nil {
+				return nil, err
+			}
+
+			context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsw.js**", config.Version), func(r playwright.Route) {
+				log.Println("hsw Injected !")
+
+				r.Fulfill(playwright.RouteFulfillOptions{
+					Status: playwright.Int(200),
+					Body:   hsw,
+				})
+			})
 		}
-
-		context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsw.js**", config.Version), func(r playwright.Route) {
-			log.Println("hsw Injected !")
-
-			r.Fulfill(playwright.RouteFulfillOptions{
-				Status: playwright.Int(200),
-				Body:   hsw,
-			})
-		})
-
-		hsj, err := os.ReadFile("../../cmd/engine/scripts/hsj.js")
-		if err != nil {
-			return nil, err
-		}
-
-		context.Route(fmt.Sprintf("**https://newassets.hcaptcha.com/c/%s/hsj.js**", config.Version), func(r playwright.Route) {
-			log.Println("hsj Injected !")
-
-			r.Fulfill(playwright.RouteFulfillOptions{
-				Status: playwright.Int(200),
-				Body:   hsj,
-			})
-		})
 	}
 
 	page, err := context.NewPage()
@@ -163,7 +165,7 @@ func (I *Instance) CloseInstance() error {
 }
 
 func (I *Instance) NavigateToDiscord() error {
-	if _, err := I.Page.Goto("https://discord.gg/r8Qhh5Wf", playwright.PageGotoOptions{
+	if _, err := I.Page.Goto("https://discord.com", playwright.PageGotoOptions{
 		Timeout:   playwright.Float(10000),
 		WaitUntil: playwright.WaitUntilStateDomcontentloaded,
 	}); err != nil {
@@ -172,7 +174,7 @@ func (I *Instance) NavigateToDiscord() error {
 
 	time.Sleep(time.Second * 2)
 
-	/*bl, err := I.Page.WaitForSelector(BUTTON_LOGIN, playwright.PageWaitForSelectorOptions{
+	bl, err := I.Page.WaitForSelector(BUTTON_LOGIN, playwright.PageWaitForSelectorOptions{
 		State:   playwright.WaitForSelectorStateAttached,
 		Timeout: playwright.Float(5000),
 	})
@@ -185,7 +187,7 @@ func (I *Instance) NavigateToDiscord() error {
 		Timeout: playwright.Float(3000),
 	}); err != nil {
 		return err
-	}*/
+	}
 
 	if err := I.Page.Type(USERNAME_INPUT, "vichyontop1337", playwright.PageTypeOptions{
 		Timeout: playwright.Float(3000),

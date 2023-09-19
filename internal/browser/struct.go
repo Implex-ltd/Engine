@@ -42,4 +42,5 @@ type InstanceConfig struct {
 	Version  string
 	CDP      string
 	Path     string
+	Hsj      bool
 }

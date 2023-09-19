@@ -105,6 +105,7 @@ func initBrowser() {
 				CDP:      cdp,
 				Path:     cdp,
 				Inject:   Config.Mock.InjectHsw,
+				Hsj:      Config.Mock.EnableHsj,
 			})
 			if err != nil {
 				log.Println("NewInstance", err)
@@ -264,6 +265,7 @@ func crawl(url string, headless bool) {
 		Version:  Config.Mock.HswVersion,
 		CDP:      cdp,
 		Path:     cdp,
+		Hsj:      Config.Mock.EnableHsj,
 	})
 	if err != nil {
 		log.Println(err)
