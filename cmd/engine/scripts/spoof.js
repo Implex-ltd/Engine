@@ -21,8 +21,9 @@ CanvasRenderingContext2D.prototype.drawImage = function (img, sx, sy, sw, sh, dx
     originalDrawImage.call(this, img, sx, sy, sw, sh, dx, dy, dw, dh);
 }
 
+/*
 CanvasRenderingContext2D.prototype.fillRect = function (x, y, w, h) {
     x += randomOffset(2);
     y += randomOffset(2);
     originalfillRect.call(this, x, y, w, h);
-};
+};*/

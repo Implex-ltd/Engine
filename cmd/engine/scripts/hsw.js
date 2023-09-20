@@ -1,1104 +1,462 @@
 const dump = {
-    "197": [
-        "Object",
-        "Function",
-        "Array",
-        "Number",
-        "parseFloat",
-        "parseInt",
-        "Infinity",
-        "NaN",
-        "undefined",
-        "Boolean",
-        "String",
-        "Symbol",
-        "Date",
-        "Promise",
-        "RegExp",
-        "Error",
-        "AggregateError",
-        "EvalError",
-        "RangeError",
-        "ReferenceError",
-        "SyntaxError",
-        "TypeError",
-        "URIError",
-        "globalThis",
-        "JSON",
-        "Math",
-        "Intl",
-        "ArrayBuffer",
-        "Uint8Array",
-        "Int8Array",
-        "Uint16Array",
-        "Int16Array",
-        "Uint32Array",
-        "Int32Array",
-        "Float32Array",
-        "Float64Array",
-        "Uint8ClampedArray",
-        "BigUint64Array",
-        "BigInt64Array",
-        "DataView",
-        "Map",
-        "BigInt",
-        "Set",
-        "WeakMap",
-        "WeakSet",
-        "Proxy",
-        "Reflect",
-        "FinalizationRegistry",
-        "WeakRef",
-        "decodeURI",
-        "decodeURIComponent",
-        "encodeURI",
-        "encodeURIComponent",
-        "escape",
-        "unescape",
-        "eval",
-        "isFinite",
-        "isNaN",
-        "console",
-        "Option",
-        "Image",
-        "Audio",
-        "webkitURL",
-        "webkitRTCPeerConnection",
-        "webkitMediaStream",
-        "WebKitMutationObserver",
-        "WebKitCSSMatrix",
-        "XSLTProcessor",
-        "XPathResult",
-        "XPathExpression",
-        "XPathEvaluator",
-        "XMLSerializer",
-        "XMLHttpRequestUpload",
-        "XMLHttpRequestEventTarget",
-        "XMLHttpRequest",
-        "XMLDocument",
-        "WritableStreamDefaultWriter",
-        "WritableStreamDefaultController",
-        "WritableStream",
-        "Worker",
-        "Window",
-        "WheelEvent",
-        "WebSocket",
-        "WebGLVertexArrayObject",
-        "WebGLUniformLocation",
-        "WebGLTransformFeedback",
-        "WebGLTexture",
-        "WebGLSync",
-        "WebGLShaderPrecisionFormat",
-        "WebGLShader",
-        "WebGLSampler",
-        "WebGLRenderingContext",
-        "WebGLRenderbuffer",
-        "WebGLQuery",
-        "WebGLProgram",
-        "WebGLFramebuffer",
-        "WebGLContextEvent",
-        "WebGLBuffer",
-        "WebGLActiveInfo",
-        "WebGL2RenderingContext",
-        "WaveShaperNode",
-        "VisualViewport",
-        "VirtualKeyboardGeometryChangeEvent",
-        "ValidityState",
-        "VTTCue",
-        "UserActivation",
-        "URLSearchParams",
-        "URLPattern",
-        "URL",
-        "UIEvent",
-        "TrustedTypePolicyFactory",
-        "TrustedTypePolicy",
-        "TrustedScriptURL",
-        "TrustedScript",
-        "TrustedHTML",
-        "TreeWalker",
-        "TransitionEvent",
-        "TransformStreamDefaultController",
-        "TransformStream",
-        "TrackEvent",
-        "TouchList",
-        "TouchEvent",
-        "Touch",
-        "TimeRanges",
-        "TextTrackList",
-        "TextTrackCueList",
-        "TextTrackCue",
-        "TextTrack",
-        "TextMetrics",
-        "TextEvent",
-        "TextEncoderStream",
-        "TextEncoder",
-        "TextDecoderStream",
-        "TextDecoder",
-        "Text",
-        "TaskSignal",
-        "TaskPriorityChangeEvent",
-        "TaskController",
-        "TaskAttributionTiming",
-        "SyncManager",
-        "SubmitEvent",
-        "StyleSheetList",
-        "StyleSheet",
-        "StylePropertyMapReadOnly",
-        "StylePropertyMap",
-        "StorageEvent",
-        "Storage",
-        "StereoPannerNode",
-        "StaticRange",
-        "ShadowRoot",
-        "Selection",
-        "SecurityPolicyViolationEvent",
-        "ScriptProcessorNode",
-        "ScreenOrientation",
-        "Screen",
-        "Scheduling",
-        "Scheduler",
-        "SVGViewElement",
-        "SVGUseElement",
-        "SVGUnitTypes",
-        "SVGTransformList",
-        "SVGTransform",
-        "SVGTitleElement",
-        "SVGTextPositioningElement",
-        "SVGTextPathElement",
-        "SVGTextElement",
-        "SVGTextContentElement",
-        "SVGTSpanElement",
-        "SVGSymbolElement",
-        "SVGSwitchElement",
-        "SVGStyleElement",
-        "SVGStringList",
-        "SVGStopElement",
-        "SVGSetElement",
-        "SVGScriptElement",
-        "SVGSVGElement",
-        "SVGRectElement",
-        "SVGRect",
-        "SVGRadialGradientElement",
-        "SVGPreserveAspectRatio",
-        "SVGPolylineElement",
-        "SVGPolygonElement",
-        "SVGPointList",
-        "SVGPoint",
-        "SVGPatternElement",
-        "SVGPathElement",
-        "SVGNumberList",
-        "SVGNumber",
-        "SVGMetadataElement",
-        "SVGMatrix",
-        "SVGMaskElement",
-        "SVGMarkerElement",
-        "SVGMPathElement",
-        "SVGLinearGradientElement",
-        "SVGLineElement",
-        "SVGLengthList",
-        "SVGLength",
-        "SVGImageElement",
-        "SVGGraphicsElement",
-        "SVGGradientElement",
-        "SVGGeometryElement",
-        "SVGGElement",
-        "SVGForeignObjectElement",
-        "SVGFilterElement",
-        "SVGFETurbulenceElement",
-        "SVGFETileElement",
-        "SVGFESpotLightElement",
-        "SVGFESpecularLightingElement",
-        "SVGFEPointLightElement",
-        "SVGFEOffsetElement",
-        "SVGFEMorphologyElement",
-        "SVGFEMergeNodeElement",
-        "SVGFEMergeElement",
-        "SVGFEImageElement",
-        "SVGFEGaussianBlurElement",
-        "SVGFEFuncRElement",
-        "SVGFEFuncGElement",
-        "SVGFEFuncBElement",
-        "SVGFEFuncAElement",
-        "SVGFEFloodElement",
-        "SVGFEDropShadowElement",
-        "SVGFEDistantLightElement",
-        "SVGFEDisplacementMapElement",
-        "SVGFEDiffuseLightingElement",
-        "SVGFEConvolveMatrixElement",
-        "SVGFECompositeElement",
-        "SVGFEComponentTransferElement",
-        "SVGFEColorMatrixElement",
-        "SVGFEBlendElement",
-        "SVGEllipseElement",
-        "SVGElement",
-        "SVGDescElement",
-        "SVGDefsElement",
-        "SVGComponentTransferFunctionElement",
-        "SVGClipPathElement",
-        "SVGCircleElement",
-        "SVGAnimationElement",
-        "SVGAnimatedTransformList",
-        "SVGAnimatedString",
-        "SVGAnimatedRect",
-        "SVGAnimatedPreserveAspectRatio",
-        "SVGAnimatedNumberList",
-        "SVGAnimatedNumber",
-        "SVGAnimatedLengthList",
-        "SVGAnimatedLength",
-        "SVGAnimatedInteger",
-        "SVGAnimatedEnumeration",
-        "SVGAnimatedBoolean",
-        "SVGAnimatedAngle",
-        "SVGAnimateTransformElement",
-        "SVGAnimateMotionElement",
-        "SVGAnimateElement",
-        "SVGAngle",
-        "SVGAElement",
-        "Response",
-        "ResizeObserverSize",
-        "ResizeObserverEntry",
-        "ResizeObserver",
-        "Request",
-        "ReportingObserver",
-        "ReadableStreamDefaultReader",
-        "ReadableStreamDefaultController",
-        "ReadableStreamBYOBRequest",
-        "ReadableStreamBYOBReader",
-        "ReadableStream",
-        "ReadableByteStreamController",
-        "Range",
-        "RadioNodeList",
-        "RTCTrackEvent",
-        "RTCStatsReport",
-        "RTCSessionDescription",
-        "RTCSctpTransport",
-        "RTCRtpTransceiver",
-        "RTCRtpSender",
-        "RTCRtpReceiver",
-        "RTCPeerConnectionIceEvent",
-        "RTCPeerConnectionIceErrorEvent",
-        "RTCPeerConnection",
-        "RTCIceTransport",
-        "RTCIceCandidate",
-        "RTCErrorEvent",
-        "RTCError",
-        "RTCEncodedVideoFrame",
-        "RTCEncodedAudioFrame",
-        "RTCDtlsTransport",
-        "RTCDataChannelEvent",
-        "RTCDataChannel",
-        "RTCDTMFToneChangeEvent",
-        "RTCDTMFSender",
-        "RTCCertificate",
-        "PromiseRejectionEvent",
-        "ProgressEvent",
-        "Profiler",
-        "ProcessingInstruction",
-        "PopStateEvent",
-        "PointerEvent",
-        "PluginArray",
-        "Plugin",
-        "PictureInPictureWindow",
-        "PictureInPictureEvent",
-        "PeriodicWave",
-        "PerformanceTiming",
-        "PerformanceServerTiming",
-        "PerformanceResourceTiming",
-        "PerformancePaintTiming",
-        "PerformanceObserverEntryList",
-        "PerformanceObserver",
-        "PerformanceNavigationTiming",
-        "PerformanceNavigation",
-        "PerformanceMeasure",
-        "PerformanceMark",
-        "PerformanceLongTaskTiming",
-        "PerformanceEventTiming",
-        "PerformanceEntry",
-        "PerformanceElementTiming",
-        "Performance",
-        "Path2D",
-        "PannerNode",
-        "PageTransitionEvent",
-        "OverconstrainedError",
-        "OscillatorNode",
-        "OffscreenCanvasRenderingContext2D",
-        "OffscreenCanvas",
-        "OfflineAudioContext",
-        "OfflineAudioCompletionEvent",
-        "NodeList",
-        "NodeIterator",
-        "NodeFilter",
-        "Node",
-        "NetworkInformation",
-        "Navigator",
-        "NavigationTransition",
-        "NavigationHistoryEntry",
-        "NavigationDestination",
-        "NavigationCurrentEntryChangeEvent",
-        "Navigation",
-        "NavigateEvent",
-        "NamedNodeMap",
-        "MutationRecord",
-        "MutationObserver",
-        "MutationEvent",
-        "MouseEvent",
-        "MimeTypeArray",
-        "MimeType",
-        "MessagePort",
-        "MessageEvent",
-        "MessageChannel",
-        "MediaStreamTrackProcessor",
-        "MediaStreamTrackGenerator",
-        "MediaStreamTrackEvent",
-        "MediaStreamTrack",
-        "MediaStreamEvent",
-        "MediaStreamAudioSourceNode",
-        "MediaStreamAudioDestinationNode",
-        "MediaStream",
-        "MediaRecorder",
-        "MediaQueryListEvent",
-        "MediaQueryList",
-        "MediaList",
-        "MediaError",
-        "MediaEncryptedEvent",
-        "MediaElementAudioSourceNode",
-        "MediaCapabilities",
-        "Location",
-        "LayoutShiftAttribution",
-        "LayoutShift",
-        "LargestContentfulPaint",
-        "KeyframeEffect",
-        "KeyboardEvent",
-        "IntersectionObserverEntry",
-        "IntersectionObserver",
-        "InputEvent",
-        "InputDeviceInfo",
-        "InputDeviceCapabilities",
-        "ImageData",
-        "ImageCapture",
-        "ImageBitmapRenderingContext",
-        "ImageBitmap",
-        "IdleDeadline",
-        "IIRFilterNode",
-        "IDBVersionChangeEvent",
-        "IDBTransaction",
-        "IDBRequest",
-        "IDBOpenDBRequest",
-        "IDBObjectStore",
-        "IDBKeyRange",
-        "IDBIndex",
-        "IDBFactory",
-        "IDBDatabase",
-        "IDBCursorWithValue",
-        "IDBCursor",
-        "History",
-        "Headers",
-        "HashChangeEvent",
-        "HTMLVideoElement",
-        "HTMLUnknownElement",
-        "HTMLUListElement",
-        "HTMLTrackElement",
-        "HTMLTitleElement",
-        "HTMLTimeElement",
-        "HTMLTextAreaElement",
-        "HTMLTemplateElement",
-        "HTMLTableSectionElement",
-        "HTMLTableRowElement",
-        "HTMLTableElement",
-        "HTMLTableColElement",
-        "HTMLTableCellElement",
-        "HTMLTableCaptionElement",
-        "HTMLStyleElement",
-        "HTMLSpanElement",
-        "HTMLSourceElement",
-        "HTMLSlotElement",
-        "HTMLSelectElement",
-        "HTMLScriptElement",
-        "HTMLQuoteElement",
-        "HTMLProgressElement",
-        "HTMLPreElement",
-        "HTMLPictureElement",
-        "HTMLParamElement",
-        "HTMLParagraphElement",
-        "HTMLOutputElement",
-        "HTMLOptionsCollection",
-        "HTMLOptionElement",
-        "HTMLOptGroupElement",
-        "HTMLObjectElement",
-        "HTMLOListElement",
-        "HTMLModElement",
-        "HTMLMeterElement",
-        "HTMLMetaElement",
-        "HTMLMenuElement",
-        "HTMLMediaElement",
-        "HTMLMarqueeElement",
-        "HTMLMapElement",
-        "HTMLLinkElement",
-        "HTMLLegendElement",
-        "HTMLLabelElement",
-        "HTMLLIElement",
-        "HTMLInputElement",
-        "HTMLImageElement",
-        "HTMLIFrameElement",
-        "HTMLHtmlElement",
-        "HTMLHeadingElement",
-        "HTMLHeadElement",
-        "HTMLHRElement",
-        "HTMLFrameSetElement",
-        "HTMLFrameElement",
-        "HTMLFormElement",
-        "HTMLFormControlsCollection",
-        "HTMLFontElement",
-        "HTMLFieldSetElement",
-        "HTMLEmbedElement",
-        "HTMLElement",
-        "HTMLDocument",
-        "HTMLDivElement",
-        "HTMLDirectoryElement",
-        "HTMLDialogElement",
-        "HTMLDetailsElement",
-        "HTMLDataListElement",
-        "HTMLDataElement",
-        "HTMLDListElement",
-        "HTMLCollection",
-        "HTMLCanvasElement",
-        "HTMLButtonElement",
-        "HTMLBodyElement",
-        "HTMLBaseElement",
-        "HTMLBRElement",
-        "HTMLAudioElement",
-        "HTMLAreaElement",
-        "HTMLAnchorElement",
-        "HTMLAllCollection",
-        "GeolocationPositionError",
-        "GeolocationPosition",
-        "GeolocationCoordinates",
-        "Geolocation",
-        "GamepadHapticActuator",
-        "GamepadEvent",
-        "GamepadButton",
-        "Gamepad",
-        "GainNode",
-        "FormDataEvent",
-        "FormData",
-        "FontFaceSetLoadEvent",
-        "FontFace",
-        "FocusEvent",
-        "FileReader",
-        "FileList",
-        "File",
-        "FeaturePolicy",
-        "External",
-        "EventTarget",
-        "EventSource",
-        "EventCounts",
-        "Event",
-        "ErrorEvent",
-        "ElementInternals",
-        "Element",
-        "DynamicsCompressorNode",
-        "DragEvent",
-        "DocumentType",
-        "DocumentFragment",
-        "Document",
-        "DelayNode",
-        "DecompressionStream",
-        "DataTransferItemList",
-        "DataTransferItem",
-        "DataTransfer",
-        "DOMTokenList",
-        "DOMStringMap",
-        "DOMStringList",
-        "DOMRectReadOnly",
-        "DOMRectList",
-        "DOMRect",
-        "DOMQuad",
-        "DOMPointReadOnly",
-        "DOMPoint",
-        "DOMParser",
-        "DOMMatrixReadOnly",
-        "DOMMatrix",
-        "DOMImplementation",
-        "DOMException",
-        "DOMError",
-        "CustomStateSet",
-        "CustomEvent",
-        "CustomElementRegistry",
-        "Crypto",
-        "CountQueuingStrategy",
-        "ConvolverNode",
-        "ConstantSourceNode",
-        "CompressionStream",
-        "CompositionEvent",
-        "Comment",
-        "CloseEvent",
-        "ClipboardEvent",
-        "CharacterData",
-        "ChannelSplitterNode",
-        "ChannelMergerNode",
-        "CanvasRenderingContext2D",
-        "CanvasPattern",
-        "CanvasGradient",
-        "CanvasCaptureMediaStreamTrack",
-        "CSSVariableReferenceValue",
-        "CSSUnparsedValue",
-        "CSSUnitValue",
-        "CSSTranslate",
-        "CSSTransformValue",
-        "CSSTransformComponent",
-        "CSSSupportsRule",
-        "CSSStyleValue",
-        "CSSStyleSheet",
-        "CSSStyleRule",
-        "CSSStyleDeclaration",
-        "CSSSkewY",
-        "CSSSkewX",
-        "CSSSkew",
-        "CSSScale",
-        "CSSRuleList",
-        "CSSRule",
-        "CSSRotate",
-        "CSSPropertyRule",
-        "CSSPositionValue",
-        "CSSPerspective",
-        "CSSPageRule",
-        "CSSNumericValue",
-        "CSSNumericArray",
-        "CSSNamespaceRule",
-        "CSSMediaRule",
-        "CSSMatrixComponent",
-        "CSSMathValue",
-        "CSSMathSum",
-        "CSSMathProduct",
-        "CSSMathNegate",
-        "CSSMathMin",
-        "CSSMathMax",
-        "CSSMathInvert",
-        "CSSMathClamp",
-        "CSSLayerStatementRule",
-        "CSSLayerBlockRule",
-        "CSSKeywordValue",
-        "CSSKeyframesRule",
-        "CSSKeyframeRule",
-        "CSSImportRule",
-        "CSSImageValue",
-        "CSSGroupingRule",
-        "CSSFontPaletteValuesRule",
-        "CSSFontFaceRule",
-        "CSSCounterStyleRule",
-        "CSSContainerRule",
-        "CSSConditionRule",
-        "CSS",
-        "CDATASection",
-        "ByteLengthQueuingStrategy",
-        "BroadcastChannel",
-        "BlobEvent",
-        "Blob",
-        "BiquadFilterNode",
-        "BeforeUnloadEvent",
-        "BeforeInstallPromptEvent",
-        "BaseAudioContext",
-        "BarProp",
-        "AudioWorkletNode",
-        "AudioSinkInfo",
-        "AudioScheduledSourceNode",
-        "AudioProcessingEvent",
-        "AudioParamMap",
-        "AudioParam",
-        "AudioNode",
-        "AudioListener",
-        "AudioDestinationNode",
-        "AudioContext",
-        "AudioBufferSourceNode",
-        "AudioBuffer",
-        "Attr",
-        "AnimationEvent",
-        "AnimationEffect",
-        "Animation",
-        "AnalyserNode",
-        "AbstractRange",
-        "AbortSignal",
-        "AbortController",
-        "window",
-        "self",
-        "document",
-        "name",
-        "location",
-        "customElements",
-        "history",
-        "navigation",
-        "locationbar",
-        "menubar",
-        "personalbar",
-        "scrollbars",
-        "statusbar",
-        "toolbar",
-        "status",
-        "closed",
-        "frames",
-        "length",
-        "top",
-        "opener",
-        "parent",
-        "frameElement",
-        "navigator",
-        "origin",
-        "external",
-        "screen",
-        "innerWidth",
-        "innerHeight",
-        "scrollX",
-        "pageXOffset",
-        "scrollY",
-        "pageYOffset",
-        "visualViewport",
-        "screenX",
-        "screenY",
-        "outerWidth",
-        "outerHeight",
-        "devicePixelRatio",
-        "event",
-        "clientInformation",
-        "offscreenBuffering",
-        "screenLeft",
-        "screenTop",
-        "styleMedia",
-        "onsearch",
-        "isSecureContext",
-        "trustedTypes",
-        "performance",
-        "onappinstalled",
-        "onbeforeinstallprompt",
-        "crypto",
-        "indexedDB",
-        "sessionStorage",
-        "localStorage",
-        "onbeforexrselect",
-        "onabort",
-        "onbeforeinput",
-        "onblur",
-        "oncancel",
-        "oncanplay",
-        "oncanplaythrough",
-        "onchange",
-        "onclick",
-        "onclose",
-        "oncontextlost",
-        "oncontextmenu",
-        "oncontextrestored",
-        "oncuechange",
-        "ondblclick",
-        "ondrag",
-        "ondragend",
-        "ondragenter",
-        "ondragleave",
-        "ondragover",
-        "ondragstart",
-        "ondrop",
-        "ondurationchange",
-        "onemptied",
-        "onended",
-        "onerror",
-        "onfocus",
-        "onformdata",
-        "oninput",
-        "oninvalid",
-        "onkeydown",
-        "onkeypress",
-        "onkeyup",
-        "onload",
-        "onloadeddata",
-        "onloadedmetadata",
-        "onloadstart",
-        "onmousedown",
-        "onmouseenter",
-        "onmouseleave",
-        "onmousemove",
-        "onmouseout",
-        "onmouseover",
-        "onmouseup",
-        "onmousewheel",
-        "onpause",
-        "onplay",
-        "onplaying",
-        "onprogress",
-        "onratechange",
-        "onreset",
-        "onresize",
-        "onscroll",
-        "onsecuritypolicyviolation",
-        "onseeked",
-        "onseeking",
-        "onselect",
-        "onslotchange",
-        "onstalled",
-        "onsubmit",
-        "onsuspend",
-        "ontimeupdate",
-        "ontoggle",
-        "onvolumechange",
-        "onwaiting",
-        "onwebkitanimationend",
-        "onwebkitanimationiteration",
-        "onwebkitanimationstart",
-        "onwebkittransitionend",
-        "onwheel",
-        "onauxclick",
-        "ongotpointercapture",
-        "onlostpointercapture",
-        "onpointerdown",
-        "onpointermove",
-        "onpointerrawupdate",
-        "onpointerup",
-        "onpointercancel",
-        "onpointerover",
-        "onpointerout",
-        "onpointerenter",
-        "onpointerleave",
-        "onselectstart",
-        "onselectionchange",
-        "onanimationend",
-        "onanimationiteration",
-        "onanimationstart",
-        "ontransitionrun",
-        "ontransitionstart",
-        "ontransitionend",
-        "ontransitioncancel",
-        "onafterprint",
-        "onbeforeprint",
-        "onbeforeunload",
-        "onhashchange",
-        "onlanguagechange",
-        "onmessage",
-        "onmessageerror",
-        "onoffline",
-        "ononline",
-        "onpagehide",
-        "onpageshow",
-        "onpopstate",
-        "onrejectionhandled",
-        "onstorage",
-        "onunhandledrejection",
-        "onunload",
-        "crossOriginIsolated",
-        "scheduler",
-        "alert",
-        "atob",
-        "blur",
-        "btoa",
-        "cancelAnimationFrame",
-        "cancelIdleCallback",
-        "captureEvents",
-        "clearInterval",
-        "clearTimeout",
-        "close",
-        "confirm",
-        "createImageBitmap",
-        "fetch",
-        "find",
-        "focus",
-        "getComputedStyle",
-        "getSelection",
-        "matchMedia",
-        "moveBy",
-        "moveTo",
-        "open",
-        "postMessage",
-        "print",
-        "prompt",
-        "queueMicrotask",
-        "releaseEvents",
-        "reportError",
-        "requestAnimationFrame",
-        "requestIdleCallback",
-        "resizeBy",
-        "resizeTo",
-        "scroll",
-        "scrollBy",
-        "scrollTo",
-        "setInterval",
-        "setTimeout",
-        "stop",
-        "structuredClone",
-        "webkitCancelAnimationFrame",
-        "webkitRequestAnimationFrame",
-        "Atomics",
-        "chrome",
-        "WebAssembly",
-        "credentialless",
-        "caches",
-        "cookieStore",
-        "ondevicemotion",
-        "ondeviceorientation",
-        "ondeviceorientationabsolute",
-        "launchQueue",
-        "onbeforematch",
-        "AbsoluteOrientationSensor",
-        "Accelerometer",
-        "AudioWorklet",
-        "BatteryManager",
-        "Cache",
-        "CacheStorage",
-        "Clipboard",
-        "ClipboardItem",
-        "CookieChangeEvent",
-        "CookieStore",
-        "CookieStoreManager",
-        "Credential",
-        "CredentialsContainer",
-        "CryptoKey",
-        "DeviceMotionEvent",
-        "DeviceMotionEventAcceleration",
-        "DeviceMotionEventRotationRate",
-        "DeviceOrientationEvent",
-        "FederatedCredential",
-        "GravitySensor",
-        "Gyroscope",
-        "Keyboard",
-        "KeyboardLayoutMap",
-        "LinearAccelerationSensor",
-        "Lock",
-        "LockManager",
-        "MIDIAccess",
-        "MIDIConnectionEvent",
-        "MIDIInput",
-        "MIDIInputMap",
-        "MIDIMessageEvent",
-        "MIDIOutput",
-        "MIDIOutputMap",
-        "MIDIPort",
-        "MediaDeviceInfo",
-        "MediaDevices",
-        "MediaKeyMessageEvent",
-        "MediaKeySession",
-        "MediaKeyStatusMap",
-        "MediaKeySystemAccess",
-        "MediaKeys",
-        "NavigationPreloadManager",
-        "NavigatorManagedData",
-        "OrientationSensor",
-        "PasswordCredential",
-        "RelativeOrientationSensor",
-        "Sanitizer",
-        "ScreenDetailed",
-        "ScreenDetails",
-        "Sensor",
-        "SensorErrorEvent",
-        "ServiceWorker",
-        "ServiceWorkerContainer",
-        "ServiceWorkerRegistration",
-        "StorageManager",
-        "SubtleCrypto",
-        "VirtualKeyboard",
-        "WebTransport",
-        "WebTransportBidirectionalStream",
-        "WebTransportDatagramDuplexStream",
-        "WebTransportError",
-        "Worklet",
-        "XRDOMOverlayState",
-        "XRLayer",
-        "XRWebGLBinding",
-        "AudioData",
-        "EncodedAudioChunk",
-        "EncodedVideoChunk",
-        "ImageTrack",
-        "ImageTrackList",
-        "VideoColorSpace",
-        "VideoFrame",
-        "AudioDecoder",
-        "AudioEncoder",
-        "ImageDecoder",
-        "VideoDecoder",
-        "VideoEncoder",
-        "AuthenticatorAssertionResponse",
-        "AuthenticatorAttestationResponse",
-        "AuthenticatorResponse",
-        "PublicKeyCredential",
-        "Bluetooth",
-        "BluetoothCharacteristicProperties",
-        "BluetoothDevice",
-        "BluetoothRemoteGATTCharacteristic",
-        "BluetoothRemoteGATTDescriptor",
-        "BluetoothRemoteGATTServer",
-        "BluetoothRemoteGATTService",
-        "CaptureController",
-        "EyeDropper",
-        "FileSystemDirectoryHandle",
-        "FileSystemFileHandle",
-        "FileSystemHandle",
-        "FileSystemWritableFileStream",
-        "FontData",
-        "FragmentDirective",
-        "GPU",
-        "GPUAdapter",
-        "GPUAdapterInfo",
-        "GPUBindGroup",
-        "GPUBindGroupLayout",
-        "GPUBuffer",
-        "GPUBufferUsage",
-        "GPUCanvasContext",
-        "GPUColorWrite",
-        "GPUCommandBuffer",
-        "GPUCommandEncoder",
-        "GPUCompilationInfo",
-        "GPUCompilationMessage",
-        "GPUComputePassEncoder",
-        "GPUComputePipeline",
-        "GPUDevice",
-        "GPUDeviceLostInfo",
-        "GPUError",
-        "GPUExternalTexture",
-        "GPUInternalError",
-        "GPUMapMode",
-        "GPUOutOfMemoryError",
-        "GPUPipelineError",
-        "GPUPipelineLayout",
-        "GPUQuerySet",
-        "GPUQueue",
-        "GPURenderBundle",
-        "GPURenderBundleEncoder",
-        "GPURenderPassEncoder",
-        "GPURenderPipeline",
-        "GPUSampler",
-        "GPUShaderModule",
-        "GPUShaderStage",
-        "GPUSupportedFeatures",
-        "GPUSupportedLimits",
-        "GPUTexture",
-        "GPUTextureUsage",
-        "GPUTextureView",
-        "GPUUncapturedErrorEvent",
-        "GPUValidationError",
-        "HID",
-        "HIDConnectionEvent",
-        "HIDDevice",
-        "HIDInputReportEvent",
-        "IdentityCredential",
-        "IdleDetector",
-        "LaunchParams",
-        "LaunchQueue",
-        "OTPCredential",
-        "PaymentAddress",
-        "PaymentRequest",
-        "PaymentResponse",
-        "PaymentMethodChangeEvent",
-        "Presentation",
-        "PresentationAvailability",
-        "PresentationConnection",
-        "PresentationConnectionAvailableEvent",
-        "PresentationConnectionCloseEvent",
-        "PresentationConnectionList",
-        "PresentationReceiver",
-        "PresentationRequest",
-        "Serial",
-        "SerialPort",
-        "USB",
-        "USBAlternateInterface",
-        "USBConfiguration",
-        "USBConnectionEvent",
-        "USBDevice",
-        "USBEndpoint",
-        "USBInTransferResult",
-        "USBInterface",
-        "USBIsochronousInTransferPacket",
-        "USBIsochronousInTransferResult",
-        "USBIsochronousOutTransferPacket",
-        "USBIsochronousOutTransferResult",
-        "USBOutTransferResult",
-        "WakeLock",
-        "WakeLockSentinel",
-        "WindowControlsOverlay",
-        "WindowControlsOverlayGeometryChangeEvent",
-        "XRAnchor",
-        "XRAnchorSet",
-        "XRBoundedReferenceSpace",
-        "XRCPUDepthInformation",
-        "XRCamera",
-        "XRDepthInformation",
-        "XRFrame",
-        "XRHitTestResult",
-        "XRHitTestSource",
-        "XRInputSource",
-        "XRInputSourceArray",
-        "XRInputSourceEvent",
-        "XRInputSourcesChangeEvent",
-        "XRLightEstimate",
-        "XRLightProbe",
-        "XRPose",
-        "XRRay",
-        "XRReferenceSpace",
-        "XRReferenceSpaceEvent",
-        "XRRenderState",
-        "XRRigidTransform",
-        "XRSession",
-        "XRSessionEvent",
-        "XRSpace",
-        "XRSystem",
-        "XRTransientInputHitTestResult",
-        "XRTransientInputHitTestSource",
-        "XRView",
-        "XRViewerPose",
-        "XRViewport",
-        "XRWebGLDepthInformation",
-        "XRWebGLLayer",
-        "getScreenDetails",
-        "queryLocalFonts",
-        "showDirectoryPicker",
-        "showOpenFilePicker",
-        "showSaveFilePicker",
-        "originAgentCluster",
-        "speechSynthesis",
-        "oncontentvisibilityautostatechange",
-        "AnimationPlaybackEvent",
-        "AnimationTimeline",
-        "CSSAnimation",
-        "CSSTransition",
-        "DocumentTimeline",
-        "BackgroundFetchManager",
-        "BackgroundFetchRecord",
-        "BackgroundFetchRegistration",
-        "BluetoothUUID",
-        "BrowserCaptureMediaStreamTrack",
-        "CropTarget",
-        "ContentVisibilityAutoStateChangeEvent",
-        "DelegatedInkTrailPresenter",
-        "Ink",
-        "Highlight",
-        "HighlightRegistry",
-        "MathMLElement",
-        "MediaMetadata",
-        "MediaSession",
-        "MediaSource",
-        "SourceBuffer",
-        "SourceBufferList",
-        "MediaSourceHandle",
-        "NavigatorUAData",
-        "Notification",
-        "PaymentManager",
-        "PaymentRequestUpdateEvent",
-        "PeriodicSyncManager",
-        "PermissionStatus",
-        "Permissions",
-        "PushManager",
-        "PushSubscription",
-        "PushSubscriptionOptions",
-        "RemotePlayback",
-        "SharedWorker",
-        "SpeechSynthesisErrorEvent",
-        "SpeechSynthesisEvent",
-        "SpeechSynthesisUtterance",
-        "VideoPlaybackQuality",
-        "ViewTransition",
-        "webkitSpeechGrammar",
-        "webkitSpeechGrammarList",
-        "webkitSpeechRecognition",
-        "webkitSpeechRecognitionError",
-        "webkitSpeechRecognitionEvent",
-        "openDatabase",
-        "webkitRequestFileSystem",
-        "webkitResolveLocalFileSystemURL"
+    
+    "123": [
+        16,
+        1024,
+        4096,
+        7,
+        12,
+        120,
+        [
+            23,
+            127,
+            127
+        ]
     ],
-    /*"437": [
+    "307": [
+        1,
+        1024,
+        1,
+        1,
+        4
+    ],
+    "464": [
+        255,
+        255,
+        255,
+        255,
+        192,
+        192,
+        192,
+        255,
+        244,
+        244,
+        244,
+        255,
+        53,
+        53,
+        53,
+        255
+    ],
+    
+    /*
+    "513": [
+        "YUdN2adMWgtOxqZM",
+        "d",
+        "4",
+        "QZDEQZRLATWYT"
+    ],
+    */
+    "687": [
+        "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
+        8,
+        16,
+        "fr-FR",
+        [
+            "fr-FR",
+            "fr",
+            "en-US",
+            "en"
+        ],
+        "Win32",
+        null,
+        [
+            "Google Chrome 117",
+            "Not;A=Brand 8",
+            "Chromium 117"
+        ],
+        false,
+        "Windows",
+        2,
+        5,
+        true,
+        false,
+        0,
+        false,
+        false,
+        true,
+        "[object Keyboard]",
+        false,
+        false
+    ],
+    //"701": 1116,
+    "787": [
+        "Europe/Paris",
+        -60,
+        -60,
+        -3203647761000,
+        "heure d’été d’Europe centrale",
+        "fr"
+    ],
+    /*
+    "820": [
+        [
+            211,
+            [
+                211,
+                211,
+                211,
+                255,
+                211,
+                211,
+                211,
+                255,
+                211,
+                211,
+                211,
+                255,
+                211,
+                211,
+                211,
+                255
+            ]
+        ],
+        [
+            [
+                11,
+                0,
+                0,
+                95.96875,
+                15,
+                4,
+                96.765625
+            ],
+            [
+                [
+                    12,
+                    0,
+                    -1,
+                    113.125,
+                    17,
+                    4,
+                    113
+                ],
+                [
+                    11,
+                    0,
+                    0,
+                    111,
+                    12,
+                    4,
+                    111
+                ],
+                [
+                    11,
+                    0,
+                    0,
+                    95.96875,
+                    15,
+                    4,
+                    96.765625
+                ],
+                [
+                    11,
+                    0,
+                    0,
+                    95.96875,
+                    15,
+                    4,
+                    96.765625
+                ],
+                [
+                    11,
+                    0,
+                    0,
+                    95.96875,
+                    15,
+                    4,
+                    96.765625
+                ],
+                [
+                    11,
+                    0,
+                    0,
+                    95.96875,
+                    15,
+                    4,
+                    96.765625
+                ],
+                [
+                    11,
+                    0,
+                    0,
+                    95.96875,
+                    15,
+                    4,
+                    96.765625
+                ],
+                [
+                    11,
+                    0,
+                    0,
+                    95.96875,
+                    15,
+                    4,
+                    96.765625
+                ],
+                [
+                    12,
+                    0,
+                    0,
+                    109.640625,
+                    14,
+                    3,
+                    110.1953125
+                ]
+            ]
+        ]
+    ],
+    */
+    //"845": 9446.59999999404,
+    /*
+    "935": [
+        "e3RXdQzkMlulz35Ge=ok",
+        "5",
+        "3",
+        "QHAUUUQQJSZVI"
+    ],
+    */
+    /*
+    "59f": 57,
+    "1ab": [
+        "-0.7108118501064332,1.9275814160560204e-50,-0.7181630308570678,1.6182817135715877",
+        37,
+        "toString() radix argument must be between 2 and 36",
+        "Invalid array length"
+    ],
+    */
+    /*
+    "46e": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAR9JREFUOE/N1MEqRVEUxvHfHRoYMZOSiaEH8AgewAAzpZBShpQYGijFC2DgDTCVBzA08QbGplo6S7vt3NqnrnJGp9Na3/p/69v7jEz4GU1YzxDBFVxhDbM4xjo+Sqghgk1mUnAGd13HFo6w0BEEzT128VKpBmU877jFRgoudU3LeO1svRXN2XhWfIueExxiFTfx3md5qiu6LvYTzZfYRw6KIUGWzr5nlYJRcNoRPOEBF2Mok25vXCghNocDfKJMNIlKkZ0+uiTssxO2g+65shSDpzGPX3QpGDSbBV26jDO2iDqISPy83l02xQ6HCObxiiH1EfoJZYjlJsFQrkMJu7GG+mo1C2YI290uHvvuKZoFm+5pS9Gf/RxahjfV/H/CL60pQ+2uFC+LAAAAAElFTkSuQmCC",
+    */
+    
+    "8f4": [
+        14,
+        4,
+        1,
+        41.3203125,
+        17,
+        4,
+        44.2890625
+    ],
+    
+    /*
+    "7ac": [
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        288.671875,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        324.609375,
+        266,
+        297.953125,
+        266,
+        252.734375,
+        266,
+        274.609375,
+        266,
+        187.609375,
+        266,
+        187.609375,
+        266,
+        154.40625,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        172.265625,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266,
+        274.609375,
+        266
+    ],
+    "5f1": [
+        -6.172840118408203,
+        -20.710678100585938,
+        120.71067810058594,
+        -20.710678100585938,
+        141.42135620117188,
+        120.71067810058594,
+        -20.710678100585938,
+        141.42135620117188,
+        -20.710678100585938,
+        -20.710678100585938,
+        0,
+        0,
+        520,
+        636,
+        false,
+        [
+            0,
+            15,
+            33,
+            34,
+            35,
+            37,
+            39,
+            75
+        ]
+    ],
+    */
+    /*
+    "0fe": [
         [
             "HTML",
             2
@@ -1129,7 +487,7 @@ const dump = {
         ],
         [
             "BODY",
-            3
+            2
         ],
         [
             "SCRIPT",
@@ -1141,6 +499,74 @@ const dump = {
         ],
         [
             "DIV",
+            1
+        ],
+        [
+            "DIV",
+            1
+        ],
+        [
+            "DIV",
+            4
+        ],
+        [
+            "DIV",
+            2
+        ],
+        [
+            "H2",
+            0
+        ],
+        [
+            "DIV",
+            0
+        ],
+        [
+            "DIV",
+            1
+        ],
+        [
+            "DIV",
+            3
+        ],
+        [
+            "DIV",
+            1
+        ],
+        [
+            "DIV",
+            0
+        ],
+        [
+            "DIV",
+            1
+        ],
+        [
+            "DIV",
+            0
+        ],
+        [
+            "DIV",
+            1
+        ],
+        [
+            "DIV",
+            0
+        ],
+        [
+            "CANVAS",
+            0
+        ],
+        [
+            "DIV",
+            2
+        ],
+        [
+            "DIV",
+            0
+        ],
+        [
+            "SPAN",
             0
         ],
         [
@@ -2509,10 +1935,42 @@ const dump = {
         ],
         [
             "DIV",
+            1
+        ],
+        [
+            "svg",
+            3
+        ],
+        [
+            "circle",
+            0
+        ],
+        [
+            "circle",
+            0
+        ],
+        [
+            "circle",
             0
         ],
         [
             "DIV",
+            1
+        ],
+        [
+            "svg",
+            3
+        ],
+        [
+            "circle",
+            0
+        ],
+        [
+            "circle",
+            0
+        ],
+        [
+            "circle",
             0
         ],
         [
@@ -2533,10 +1991,34 @@ const dump = {
         ],
         [
             "DIV",
+            1
+        ],
+        [
+            "svg",
+            2
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
             0
         ],
         [
             "DIV",
+            1
+        ],
+        [
+            "svg",
+            2
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
             0
         ],
         [
@@ -2549,11 +2031,243 @@ const dump = {
         ],
         [
             "DIV",
+            1
+        ],
+        [
+            "svg",
+            53
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
+            0
+        ],
+        [
+            "path",
             0
         ],
         [
             "DIV",
             3
+        ],
+        [
+            "DIV",
+            1
+        ],
+        [
+            "DIV",
+            0
+        ],
+        [
+            "DIV",
+            1
+        ],
+        [
+            "DIV",
+            2
         ],
         [
             "DIV",
@@ -2613,32 +2327,39 @@ const dump = {
         ],
         [
             "DIV",
+            1
+        ],
+        [
+            "svg",
+            1
+        ],
+        [
+            "path",
             0
         ],
         [
             "DIV",
+            1
+        ],
+        [
+            "svg",
+            1
+        ],
+        [
+            "path",
             0
         ],
         [
             "DIV",
-            0
-        ],
-        [
-            "SCRIPT",
             0
         ]
     ],
-    "461": [
+    "d02": [
         [
             [
-                "https://newassets.hcaptcha.com/captcha/v1/19148ad/hcaptcha.js",
+                "https://newassets.hcaptcha.com/captcha/v1/9d7eeee/hcaptcha.js",
                 0,
                 5
-            ],
-            [
-                "https://newassets.hcaptcha.com/c/31892fb/hsw.js",
-                0,
-                2
             ]
         ],
         [
@@ -2649,11 +2370,8 @@ const dump = {
             ]
         ]
     ],
-    "482": [
-        0.09999999776482582,
-        30
-    ],
-    "501": [
+    */
+    "07c": [
         1,
         4,
         5,
@@ -2666,533 +2384,63 @@ const dump = {
         25,
         29
     ],
-    "519": [
-        277114314523,
-        277114314530,
-        277114314521,
-        357114314526,
-        277114314522,
-        554228629038,
-        57114314513,
-        717114314588,
-        554228629037,
-        277114314526,
-        1108457258142,
-        277114314520,
-        554228629059,
-        277114314530,
-        277114314521
+
+    "2b7": [
+        277114314453,
+        277114314460,
+        277114314451,
+        357114314456,
+        277114314452,
+        554228628898,
+        57114314443,
+        717114314371391,
+        554228628897,
+        277114314456,
+        1108457257862,
+        277114314450,
+        554228628919,
+        277114314460,
+        277114314451
     ],
-    "532": [
+    "a10": [
         [
-            "navigation:newassets.hcaptcha.com",
-            12.099999997764826,
-            18.400000002235174
-        ],
-        [
-            "script:newassets.hcaptcha.com",
-            12.5,
-            21.399999998509884
-        ],
-        [
-            "xmlhttprequest:api2.hcaptcha.com",
-            0,
-            48.399999998509884
-        ],
-        [
-            "xmlhttprequest:hcaptcha.com",
-            0,
-            51
-        ]
-    ],
-    "550": [
-        [
-            192,
-            [
-                192,
-                192,
-                192,
-                255,
-                192,
-                192,
-                192,
-                255,
-                192,
-                192,
-                192,
-                255,
-                192,
-                192,
-                192,
-                255
-            ]
-        ],
-        [
-            [
-                11,
-                0,
-                0,
-                95.96875,
-                15,
-                4,
-                96.765625
-            ],
-            [
-                [
-                    12,
-                    0,
-                    -1,
-                    113.125,
-                    17,
-                    4,
-                    113
-                ],
-                [
-                    11,
-                    0,
-                    0,
-                    111,
-                    12,
-                    4,
-                    111
-                ],
-                [
-                    11,
-                    0,
-                    0,
-                    95.96875,
-                    15,
-                    4,
-                    96.765625
-                ],
-                [
-                    11,
-                    0,
-                    0,
-                    95.96875,
-                    15,
-                    4,
-                    96.765625
-                ],
-                [
-                    11,
-                    0,
-                    0,
-                    95.96875,
-                    15,
-                    4,
-                    96.765625
-                ],
-                [
-                    11,
-                    0,
-                    0,
-                    95.96875,
-                    15,
-                    4,
-                    96.765625
-                ],
-                [
-                    11,
-                    0,
-                    0,
-                    95.96875,
-                    15,
-                    4,
-                    96.765625
-                ],
-                [
-                    11,
-                    0,
-                    0,
-                    95.96875,
-                    15,
-                    4,
-                    96.765625
-                ],
-                [
-                    12,
-                    0,
-                    0,
-                    109.640625,
-                    14,
-                    3,
-                    110.1953125
-                ]
-            ]
-        ]
-    ],
-    */
-    "616": [
-        "Europe/Paris",
-        -60,
-        -60,
-        -3203647761000,
-        "heure d’été d’Europe centrale",
-        "fr-FR"
-    ],
-    "622": 1097,
-    "648": [
-        "granted",
-        "TypeError",
-        "TypeError",
-        "prompt",
-        "granted",
-        "TypeError",
-        "denied",
-        "TypeError",
-        "denied",
-        "denied",
-        "TypeError",
-        "denied",
-        "TypeError",
-        "denied",
-        "granted",
-        "denied",
-        "granted",
-        "denied",
-        "denied",
-        "TypeError",
-        "denied",
-        "granted",
-        "denied",
-        "prompt",
-        "NotSupportedError",
-        "denied",
-        "TypeError",
-        "TypeError",
-        "TypeError",
-        "denied"
-    ],
-   /* "745": [
-        4,
-        120,
-        4
-    ],
-    "806": [
-        -6.172840118408203,
-        -20.710678100585938,
-        120.71067810058594,
-        -20.710678100585938,
-        141.42135620117188,
-        120.71067810058594,
-        -20.710678100585938,
-        141.42135620117188,
-        -20.710678100585938,
-        -20.710678100585938,
-        0,
-        0,
-        300,
-        150,
-        false,
-        [
-            0,
-            15,
-            33,
-            34,
-            35,
-            37,
-            39,
-            75
-        ]
-    ],
-    "845": [
-        "Google Inc. (Intel)",
-        "ANGLE (Intel, Intel(R) HD Graphics 530 Direct3D11 vs_5_0 ps_5_0, D3D11)"
-    ],
-    "72b": 965.3000000007451,
-    "ade": 57,
-    "42f": [
-        "-0.7108118501064332,1.9275814160560204e-50,-0.7181630308570678,1.6182817135715877",
-        37,
-        "toString() radix argument must be between 2 and 36",
-        "Invalid array length"
-    ],
-    "1d6": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAR9JREFUOE/N1MEqRVEUxvHfHRoYMZOSiaEH8AgewAAzpZBShpQYGijFC2DgDTCVBzA08QbGplo6S7vt3NqnrnJGp9Na3/p/69v7jEz4GU1YzxDBFVxhDbM4xjo+Sqghgk1mUnAGd13HFo6w0BEEzT128VKpBmU877jFRgoudU3LeO1svRXN2XhWfIueExxiFTfx3md5qiu6LvYTzZfYRw6KIUGWzr5nlYJRcNoRPOEBF2Mok25vXCghNocDfKJMNIlKkZ0+uiTssxO2g+65shSDpzGPX3QpGDSbBV26jDO2iDqISPy83l02xQ6HCObxiiH1EfoJZYjlJsFQrkMJu7GG+mo1C2YI290uHvvuKZoFm+5pS9Gf/RxahjfV/H/CL60pQ+2uFC+LAAAAAElFTkSuQmCC",
-    "5ed": [
-        255,
-        255,
-        255,
-        255,
-        192,
-        192,
-        192,
-        255,
-        240,
-        240,
-        240,
-        255,
-        48,
-        48,
-        48,
-        255
-    ],
-    "e67": [
-        14,
-        4,
-        1,
-        41.3203125,
-        17,
-        4,
-        44.2890625
-    ],
-    "37e": [
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        288.671875,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        324.609375,
-        266,
-        297.953125,
-        266,
-        252.734375,
-        266,
-        274.609375,
-        266,
-        187.609375,
-        266,
-        187.609375,
-        266,
-        154.40625,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        172.265625,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266,
-        274.609375,
-        266
-    ],
-    "07b": [
-        "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
-        8,
-        8,
-        "fr-FR",
-        [
-            "fr-FR",
-            "fr",
-            "en-US",
-            "en"
-        ],
-        "Win32",
-        null,
-        [
-            "Google Chrome 113",
-            "Chromium 113",
-            "Not-A.Brand 24"
-        ],
-        false,
-        "Windows",
-        2,
-        5,
-        true,
-        false,
-        0,
-        false,
-        false,
-        true,
-        "[object Keyboard]",
-        false,
-        false
-    ],
-    "cb0": [
-        [
-            277114314523,
-            277114314530,
-            277114314521,
-            357114314526,
-            277114314522,
-            554228629038,
-            57114314513,
-            717114314588,
-            554228629037,
-            277114314526,
-            1108457258142,
-            277114314520,
-            554228629059,
-            277114314530,
-            277114314521
+            277114314453,
+            277114314460,
+            277114314451,
+            357114314456,
+            277114314452,
+            554228628898,
+            57114314443,
+            717114314371391,
+            554228628897,
+            277114314456,
+            1108457257862,
+            277114314450,
+            554228628919,
+            277114314460,
+            277114314451
         ],
         false
     ],
-    "4aa": [
-        1536,
-        864,
-        1536,
-        864,
+    "f99": [
+        3440,
+        1440,
+        3440,
+        1392,
         24,
         24,
         false,
         0,
         1,
-        2881,
-        1259,
+        1749,
+        1399,
         true,
         true,
         true,
         false
-    ],*/
-    "ba7": {
+    ],
+    
+    "d97": {
         "ActiveBorder": "rgb(0, 0, 0)",
         "ActiveCaption": "rgb(0, 0, 0)",
         "ActiveText": "rgb(0, 102, 204)",
@@ -3238,11 +2486,11 @@ const dump = {
         "small-caption": "12px \"Segoe UI\"",
         "status-bar": "12px \"Segoe UI\""
     },
-    "4c7": [
+    "89d": [
         "Arial",
         "\"Segoe UI\""
     ],
-    "4e0": [
+    "19e": [
         "cssText",
         "length",
         "parentRule",
@@ -3269,6 +2517,10 @@ const dump = {
         "animationIterationCount",
         "animationName",
         "animationPlayState",
+        "animationRange",
+        "animationRangeEnd",
+        "animationRangeStart",
+        "animationTimeline",
         "animationTimingFunction",
         "appRegion",
         "appearance",
@@ -3441,6 +2693,7 @@ const dump = {
         "fontVariantEastAsian",
         "fontVariantLigatures",
         "fontVariantNumeric",
+        "fontVariantPosition",
         "fontVariationSettings",
         "fontWeight",
         "forcedColorAdjust",
@@ -3528,8 +2781,10 @@ const dump = {
         "objectPosition",
         "objectViewBox",
         "offset",
+        "offsetAnchor",
         "offsetDistance",
         "offsetPath",
+        "offsetPosition",
         "offsetRotate",
         "opacity",
         "order",
@@ -3545,6 +2800,7 @@ const dump = {
         "overflowWrap",
         "overflowX",
         "overflowY",
+        "overlay",
         "overrideColors",
         "overscrollBehavior",
         "overscrollBehaviorBlock",
@@ -3614,6 +2870,9 @@ const dump = {
         "scrollSnapAlign",
         "scrollSnapStop",
         "scrollSnapType",
+        "scrollTimeline",
+        "scrollTimelineAxis",
+        "scrollTimelineName",
         "scrollbarGutter",
         "shapeImageThreshold",
         "shapeMargin",
@@ -3663,6 +2922,8 @@ const dump = {
         "textTransform",
         "textUnderlineOffset",
         "textUnderlinePosition",
+        "textWrap",
+        "timelineScope",
         "top",
         "touchAction",
         "transform",
@@ -3670,6 +2931,7 @@ const dump = {
         "transformOrigin",
         "transformStyle",
         "transition",
+        "transitionBehavior",
         "transitionDelay",
         "transitionDuration",
         "transitionProperty",
@@ -3680,6 +2942,10 @@ const dump = {
         "userSelect",
         "vectorEffect",
         "verticalAlign",
+        "viewTimeline",
+        "viewTimelineAxis",
+        "viewTimelineInset",
+        "viewTimelineName",
         "viewTransitionName",
         "visibility",
         "webkitAlignContent",
@@ -3757,7 +3023,6 @@ const dump = {
         "webkitFlexWrap",
         "webkitFontFeatureSettings",
         "webkitFontSmoothing",
-        "webkitHighlight",
         "webkitHyphenateCharacter",
         "webkitJustifyContent",
         "webkitLineBreak",
@@ -3837,6 +3102,7 @@ const dump = {
         "webkitUserSelect",
         "webkitWritingMode",
         "whiteSpace",
+        "whiteSpaceCollapse",
         "widows",
         "width",
         "willChange",
@@ -3849,18 +3115,1164 @@ const dump = {
         "zIndex",
         "zoom"
     ],
-    "ce8": 605,
-    "7f8": "Europe/Paris",
-    /*"66e": [
-        "KMl8KeXhmc=QEDX52bKZ",
-        "19",
-        "a",
-        "AXJTFVXOKDGIK"
+    "67e": 623,
+    "b2e": "Europe/Paris",
+    
+    "63e": 1695226655095.8,
+    "ba2": [
+        [
+            "img:imgs.hcaptcha.com",
+            0,
+            35.44999999552965
+        ],
+        [
+            "navigation:newassets.hcaptcha.com",
+            0.09999999403953552,
+            8.299999997019768
+        ],
+        [
+            "script:newassets.hcaptcha.com",
+            9.25,
+            3.7999999970197678
+        ],
+        [
+            "xmlhttprequest:api2.hcaptcha.com",
+            0,
+            69.20000000298023
+        ],
+        [
+            "xmlhttprequest:hcaptcha.com",
+            0,
+            222.5
+        ]
     ],
-    "a9d": 1694696002590.8,
-    "0fb": 12.299999998882413,
-    "ac4": 27.249999998137355,*/
-    "d5a": [
+    "8b0": 0.10000000894069672,
+    "61e": 30.399999998509884,
+    "6f5": [
+        0.09999999403953552,
+        27
+    ],
+    
+    "7e0": [
+        "Object",
+        "Function",
+        "Array",
+        "Number",
+        "parseFloat",
+        "parseInt",
+        "Infinity",
+        "NaN",
+        "undefined",
+        "Boolean",
+        "String",
+        "Symbol",
+        "Date",
+        "Promise",
+        "RegExp",
+        "Error",
+        "AggregateError",
+        "EvalError",
+        "RangeError",
+        "ReferenceError",
+        "SyntaxError",
+        "TypeError",
+        "URIError",
+        "globalThis",
+        "JSON",
+        "Math",
+        "Intl",
+        "ArrayBuffer",
+        "Atomics",
+        "Uint8Array",
+        "Int8Array",
+        "Uint16Array",
+        "Int16Array",
+        "Uint32Array",
+        "Int32Array",
+        "Float32Array",
+        "Float64Array",
+        "Uint8ClampedArray",
+        "BigUint64Array",
+        "BigInt64Array",
+        "DataView",
+        "Map",
+        "BigInt",
+        "Set",
+        "WeakMap",
+        "WeakSet",
+        "Proxy",
+        "Reflect",
+        "FinalizationRegistry",
+        "WeakRef",
+        "decodeURI",
+        "decodeURIComponent",
+        "encodeURI",
+        "encodeURIComponent",
+        "escape",
+        "unescape",
+        "eval",
+        "isFinite",
+        "isNaN",
+        "console",
+        "Option",
+        "Image",
+        "Audio",
+        "webkitURL",
+        "webkitRTCPeerConnection",
+        "webkitMediaStream",
+        "WebKitMutationObserver",
+        "WebKitCSSMatrix",
+        "XSLTProcessor",
+        "XPathResult",
+        "XPathExpression",
+        "XPathEvaluator",
+        "XMLSerializer",
+        "XMLHttpRequestUpload",
+        "XMLHttpRequestEventTarget",
+        "XMLHttpRequest",
+        "XMLDocument",
+        "WritableStreamDefaultWriter",
+        "WritableStreamDefaultController",
+        "WritableStream",
+        "Worker",
+        "Window",
+        "WheelEvent",
+        "WebSocket",
+        "WebGLVertexArrayObject",
+        "WebGLUniformLocation",
+        "WebGLTransformFeedback",
+        "WebGLTexture",
+        "WebGLSync",
+        "WebGLShaderPrecisionFormat",
+        "WebGLShader",
+        "WebGLSampler",
+        "WebGLRenderingContext",
+        "WebGLRenderbuffer",
+        "WebGLQuery",
+        "WebGLProgram",
+        "WebGLFramebuffer",
+        "WebGLContextEvent",
+        "WebGLBuffer",
+        "WebGLActiveInfo",
+        "WebGL2RenderingContext",
+        "WaveShaperNode",
+        "VisualViewport",
+        "VirtualKeyboardGeometryChangeEvent",
+        "ValidityState",
+        "VTTCue",
+        "UserActivation",
+        "URLSearchParams",
+        "URLPattern",
+        "URL",
+        "UIEvent",
+        "TrustedTypePolicyFactory",
+        "TrustedTypePolicy",
+        "TrustedScriptURL",
+        "TrustedScript",
+        "TrustedHTML",
+        "TreeWalker",
+        "TransitionEvent",
+        "TransformStreamDefaultController",
+        "TransformStream",
+        "TrackEvent",
+        "TouchList",
+        "TouchEvent",
+        "Touch",
+        "TimeRanges",
+        "TextTrackList",
+        "TextTrackCueList",
+        "TextTrackCue",
+        "TextTrack",
+        "TextMetrics",
+        "TextEvent",
+        "TextEncoderStream",
+        "TextEncoder",
+        "TextDecoderStream",
+        "TextDecoder",
+        "Text",
+        "TaskSignal",
+        "TaskPriorityChangeEvent",
+        "TaskController",
+        "TaskAttributionTiming",
+        "SyncManager",
+        "SubmitEvent",
+        "StyleSheetList",
+        "StyleSheet",
+        "StylePropertyMapReadOnly",
+        "StylePropertyMap",
+        "StorageEvent",
+        "Storage",
+        "StereoPannerNode",
+        "StaticRange",
+        "SourceBufferList",
+        "SourceBuffer",
+        "ShadowRoot",
+        "Selection",
+        "SecurityPolicyViolationEvent",
+        "ScriptProcessorNode",
+        "ScreenOrientation",
+        "Screen",
+        "Scheduling",
+        "Scheduler",
+        "SVGViewElement",
+        "SVGUseElement",
+        "SVGUnitTypes",
+        "SVGTransformList",
+        "SVGTransform",
+        "SVGTitleElement",
+        "SVGTextPositioningElement",
+        "SVGTextPathElement",
+        "SVGTextElement",
+        "SVGTextContentElement",
+        "SVGTSpanElement",
+        "SVGSymbolElement",
+        "SVGSwitchElement",
+        "SVGStyleElement",
+        "SVGStringList",
+        "SVGStopElement",
+        "SVGSetElement",
+        "SVGScriptElement",
+        "SVGSVGElement",
+        "SVGRectElement",
+        "SVGRect",
+        "SVGRadialGradientElement",
+        "SVGPreserveAspectRatio",
+        "SVGPolylineElement",
+        "SVGPolygonElement",
+        "SVGPointList",
+        "SVGPoint",
+        "SVGPatternElement",
+        "SVGPathElement",
+        "SVGNumberList",
+        "SVGNumber",
+        "SVGMetadataElement",
+        "SVGMatrix",
+        "SVGMaskElement",
+        "SVGMarkerElement",
+        "SVGMPathElement",
+        "SVGLinearGradientElement",
+        "SVGLineElement",
+        "SVGLengthList",
+        "SVGLength",
+        "SVGImageElement",
+        "SVGGraphicsElement",
+        "SVGGradientElement",
+        "SVGGeometryElement",
+        "SVGGElement",
+        "SVGForeignObjectElement",
+        "SVGFilterElement",
+        "SVGFETurbulenceElement",
+        "SVGFETileElement",
+        "SVGFESpotLightElement",
+        "SVGFESpecularLightingElement",
+        "SVGFEPointLightElement",
+        "SVGFEOffsetElement",
+        "SVGFEMorphologyElement",
+        "SVGFEMergeNodeElement",
+        "SVGFEMergeElement",
+        "SVGFEImageElement",
+        "SVGFEGaussianBlurElement",
+        "SVGFEFuncRElement",
+        "SVGFEFuncGElement",
+        "SVGFEFuncBElement",
+        "SVGFEFuncAElement",
+        "SVGFEFloodElement",
+        "SVGFEDropShadowElement",
+        "SVGFEDistantLightElement",
+        "SVGFEDisplacementMapElement",
+        "SVGFEDiffuseLightingElement",
+        "SVGFEConvolveMatrixElement",
+        "SVGFECompositeElement",
+        "SVGFEComponentTransferElement",
+        "SVGFEColorMatrixElement",
+        "SVGFEBlendElement",
+        "SVGEllipseElement",
+        "SVGElement",
+        "SVGDescElement",
+        "SVGDefsElement",
+        "SVGComponentTransferFunctionElement",
+        "SVGClipPathElement",
+        "SVGCircleElement",
+        "SVGAnimationElement",
+        "SVGAnimatedTransformList",
+        "SVGAnimatedString",
+        "SVGAnimatedRect",
+        "SVGAnimatedPreserveAspectRatio",
+        "SVGAnimatedNumberList",
+        "SVGAnimatedNumber",
+        "SVGAnimatedLengthList",
+        "SVGAnimatedLength",
+        "SVGAnimatedInteger",
+        "SVGAnimatedEnumeration",
+        "SVGAnimatedBoolean",
+        "SVGAnimatedAngle",
+        "SVGAnimateTransformElement",
+        "SVGAnimateMotionElement",
+        "SVGAnimateElement",
+        "SVGAngle",
+        "SVGAElement",
+        "Response",
+        "ResizeObserverSize",
+        "ResizeObserverEntry",
+        "ResizeObserver",
+        "Request",
+        "ReportingObserver",
+        "ReadableStreamDefaultReader",
+        "ReadableStreamDefaultController",
+        "ReadableStreamBYOBRequest",
+        "ReadableStreamBYOBReader",
+        "ReadableStream",
+        "ReadableByteStreamController",
+        "Range",
+        "RadioNodeList",
+        "RTCTrackEvent",
+        "RTCStatsReport",
+        "RTCSessionDescription",
+        "RTCSctpTransport",
+        "RTCRtpTransceiver",
+        "RTCRtpSender",
+        "RTCRtpReceiver",
+        "RTCPeerConnectionIceEvent",
+        "RTCPeerConnectionIceErrorEvent",
+        "RTCPeerConnection",
+        "RTCIceTransport",
+        "RTCIceCandidate",
+        "RTCErrorEvent",
+        "RTCError",
+        "RTCEncodedVideoFrame",
+        "RTCEncodedAudioFrame",
+        "RTCDtlsTransport",
+        "RTCDataChannelEvent",
+        "RTCDataChannel",
+        "RTCDTMFToneChangeEvent",
+        "RTCDTMFSender",
+        "RTCCertificate",
+        "PromiseRejectionEvent",
+        "ProgressEvent",
+        "Profiler",
+        "ProcessingInstruction",
+        "PopStateEvent",
+        "PointerEvent",
+        "PluginArray",
+        "Plugin",
+        "PictureInPictureWindow",
+        "PictureInPictureEvent",
+        "PeriodicWave",
+        "PerformanceTiming",
+        "PerformanceServerTiming",
+        "PerformanceResourceTiming",
+        "PerformancePaintTiming",
+        "PerformanceObserverEntryList",
+        "PerformanceObserver",
+        "PerformanceNavigationTiming",
+        "PerformanceNavigation",
+        "PerformanceMeasure",
+        "PerformanceMark",
+        "PerformanceLongTaskTiming",
+        "PerformanceEventTiming",
+        "PerformanceEntry",
+        "PerformanceElementTiming",
+        "Performance",
+        "Path2D",
+        "PannerNode",
+        "PageTransitionEvent",
+        "OverconstrainedError",
+        "OscillatorNode",
+        "OffscreenCanvasRenderingContext2D",
+        "OffscreenCanvas",
+        "OfflineAudioContext",
+        "OfflineAudioCompletionEvent",
+        "NodeList",
+        "NodeIterator",
+        "NodeFilter",
+        "Node",
+        "NetworkInformation",
+        "Navigator",
+        "NavigationTransition",
+        "NavigationHistoryEntry",
+        "NavigationDestination",
+        "NavigationCurrentEntryChangeEvent",
+        "Navigation",
+        "NavigateEvent",
+        "NamedNodeMap",
+        "MutationRecord",
+        "MutationObserver",
+        "MouseEvent",
+        "MimeTypeArray",
+        "MimeType",
+        "MessagePort",
+        "MessageEvent",
+        "MessageChannel",
+        "MediaStreamTrackProcessor",
+        "MediaStreamTrackGenerator",
+        "MediaStreamTrackEvent",
+        "MediaStreamTrack",
+        "MediaStreamEvent",
+        "MediaStreamAudioSourceNode",
+        "MediaStreamAudioDestinationNode",
+        "MediaStream",
+        "MediaSourceHandle",
+        "MediaSource",
+        "MediaRecorder",
+        "MediaQueryListEvent",
+        "MediaQueryList",
+        "MediaList",
+        "MediaError",
+        "MediaEncryptedEvent",
+        "MediaElementAudioSourceNode",
+        "MediaCapabilities",
+        "MathMLElement",
+        "Location",
+        "LayoutShiftAttribution",
+        "LayoutShift",
+        "LargestContentfulPaint",
+        "KeyframeEffect",
+        "KeyboardEvent",
+        "IntersectionObserverEntry",
+        "IntersectionObserver",
+        "InputEvent",
+        "InputDeviceInfo",
+        "InputDeviceCapabilities",
+        "ImageData",
+        "ImageCapture",
+        "ImageBitmapRenderingContext",
+        "ImageBitmap",
+        "IdleDeadline",
+        "IIRFilterNode",
+        "IDBVersionChangeEvent",
+        "IDBTransaction",
+        "IDBRequest",
+        "IDBOpenDBRequest",
+        "IDBObjectStore",
+        "IDBKeyRange",
+        "IDBIndex",
+        "IDBFactory",
+        "IDBDatabase",
+        "IDBCursorWithValue",
+        "IDBCursor",
+        "History",
+        "Headers",
+        "HashChangeEvent",
+        "HTMLVideoElement",
+        "HTMLUnknownElement",
+        "HTMLUListElement",
+        "HTMLTrackElement",
+        "HTMLTitleElement",
+        "HTMLTimeElement",
+        "HTMLTextAreaElement",
+        "HTMLTemplateElement",
+        "HTMLTableSectionElement",
+        "HTMLTableRowElement",
+        "HTMLTableElement",
+        "HTMLTableColElement",
+        "HTMLTableCellElement",
+        "HTMLTableCaptionElement",
+        "HTMLStyleElement",
+        "HTMLSpanElement",
+        "HTMLSourceElement",
+        "HTMLSlotElement",
+        "HTMLSelectElement",
+        "HTMLScriptElement",
+        "HTMLQuoteElement",
+        "HTMLProgressElement",
+        "HTMLPreElement",
+        "HTMLPictureElement",
+        "HTMLParamElement",
+        "HTMLParagraphElement",
+        "HTMLOutputElement",
+        "HTMLOptionsCollection",
+        "HTMLOptionElement",
+        "HTMLOptGroupElement",
+        "HTMLObjectElement",
+        "HTMLOListElement",
+        "HTMLModElement",
+        "HTMLMeterElement",
+        "HTMLMetaElement",
+        "HTMLMenuElement",
+        "HTMLMediaElement",
+        "HTMLMarqueeElement",
+        "HTMLMapElement",
+        "HTMLLinkElement",
+        "HTMLLegendElement",
+        "HTMLLabelElement",
+        "HTMLLIElement",
+        "HTMLInputElement",
+        "HTMLImageElement",
+        "HTMLIFrameElement",
+        "HTMLHtmlElement",
+        "HTMLHeadingElement",
+        "HTMLHeadElement",
+        "HTMLHRElement",
+        "HTMLFrameSetElement",
+        "HTMLFrameElement",
+        "HTMLFormElement",
+        "HTMLFormControlsCollection",
+        "HTMLFontElement",
+        "HTMLFieldSetElement",
+        "HTMLEmbedElement",
+        "HTMLElement",
+        "HTMLDocument",
+        "HTMLDivElement",
+        "HTMLDirectoryElement",
+        "HTMLDialogElement",
+        "HTMLDetailsElement",
+        "HTMLDataListElement",
+        "HTMLDataElement",
+        "HTMLDListElement",
+        "HTMLCollection",
+        "HTMLCanvasElement",
+        "HTMLButtonElement",
+        "HTMLBodyElement",
+        "HTMLBaseElement",
+        "HTMLBRElement",
+        "HTMLAudioElement",
+        "HTMLAreaElement",
+        "HTMLAnchorElement",
+        "HTMLAllCollection",
+        "GeolocationPositionError",
+        "GeolocationPosition",
+        "GeolocationCoordinates",
+        "Geolocation",
+        "GamepadHapticActuator",
+        "GamepadEvent",
+        "GamepadButton",
+        "Gamepad",
+        "GainNode",
+        "FormDataEvent",
+        "FormData",
+        "FontFaceSetLoadEvent",
+        "FontFace",
+        "FocusEvent",
+        "FileReader",
+        "FileList",
+        "File",
+        "FeaturePolicy",
+        "External",
+        "EventTarget",
+        "EventSource",
+        "EventCounts",
+        "Event",
+        "ErrorEvent",
+        "ElementInternals",
+        "Element",
+        "DynamicsCompressorNode",
+        "DragEvent",
+        "DocumentType",
+        "DocumentFragment",
+        "Document",
+        "DelayNode",
+        "DecompressionStream",
+        "DataTransferItemList",
+        "DataTransferItem",
+        "DataTransfer",
+        "DOMTokenList",
+        "DOMStringMap",
+        "DOMStringList",
+        "DOMRectReadOnly",
+        "DOMRectList",
+        "DOMRect",
+        "DOMQuad",
+        "DOMPointReadOnly",
+        "DOMPoint",
+        "DOMParser",
+        "DOMMatrixReadOnly",
+        "DOMMatrix",
+        "DOMImplementation",
+        "DOMException",
+        "DOMError",
+        "CustomStateSet",
+        "CustomEvent",
+        "CustomElementRegistry",
+        "Crypto",
+        "CountQueuingStrategy",
+        "ConvolverNode",
+        "ConstantSourceNode",
+        "CompressionStream",
+        "CompositionEvent",
+        "Comment",
+        "CloseEvent",
+        "ClipboardEvent",
+        "CharacterData",
+        "ChannelSplitterNode",
+        "ChannelMergerNode",
+        "CanvasRenderingContext2D",
+        "CanvasPattern",
+        "CanvasGradient",
+        "CanvasCaptureMediaStreamTrack",
+        "CSSVariableReferenceValue",
+        "CSSUnparsedValue",
+        "CSSUnitValue",
+        "CSSTranslate",
+        "CSSTransformValue",
+        "CSSTransformComponent",
+        "CSSSupportsRule",
+        "CSSStyleValue",
+        "CSSStyleSheet",
+        "CSSStyleRule",
+        "CSSStyleDeclaration",
+        "CSSSkewY",
+        "CSSSkewX",
+        "CSSSkew",
+        "CSSScale",
+        "CSSRuleList",
+        "CSSRule",
+        "CSSRotate",
+        "CSSPropertyRule",
+        "CSSPositionValue",
+        "CSSPerspective",
+        "CSSPageRule",
+        "CSSNumericValue",
+        "CSSNumericArray",
+        "CSSNamespaceRule",
+        "CSSMediaRule",
+        "CSSMatrixComponent",
+        "CSSMathValue",
+        "CSSMathSum",
+        "CSSMathProduct",
+        "CSSMathNegate",
+        "CSSMathMin",
+        "CSSMathMax",
+        "CSSMathInvert",
+        "CSSMathClamp",
+        "CSSLayerStatementRule",
+        "CSSLayerBlockRule",
+        "CSSKeywordValue",
+        "CSSKeyframesRule",
+        "CSSKeyframeRule",
+        "CSSImportRule",
+        "CSSImageValue",
+        "CSSGroupingRule",
+        "CSSFontPaletteValuesRule",
+        "CSSFontFaceRule",
+        "CSSCounterStyleRule",
+        "CSSContainerRule",
+        "CSSConditionRule",
+        "CSS",
+        "CDATASection",
+        "ByteLengthQueuingStrategy",
+        "BroadcastChannel",
+        "BlobEvent",
+        "Blob",
+        "BiquadFilterNode",
+        "BeforeUnloadEvent",
+        "BeforeInstallPromptEvent",
+        "BaseAudioContext",
+        "BarProp",
+        "AudioWorkletNode",
+        "AudioSinkInfo",
+        "AudioScheduledSourceNode",
+        "AudioProcessingEvent",
+        "AudioParamMap",
+        "AudioParam",
+        "AudioNode",
+        "AudioListener",
+        "AudioDestinationNode",
+        "AudioContext",
+        "AudioBufferSourceNode",
+        "AudioBuffer",
+        "Attr",
+        "AnimationEvent",
+        "AnimationEffect",
+        "Animation",
+        "AnalyserNode",
+        "AbstractRange",
+        "AbortSignal",
+        "AbortController",
+        "window",
+        "self",
+        "document",
+        "name",
+        "location",
+        "customElements",
+        "history",
+        "navigation",
+        "locationbar",
+        "menubar",
+        "personalbar",
+        "scrollbars",
+        "statusbar",
+        "toolbar",
+        "status",
+        "closed",
+        "frames",
+        "length",
+        "top",
+        "opener",
+        "parent",
+        "frameElement",
+        "navigator",
+        "origin",
+        "external",
+        "screen",
+        "innerWidth",
+        "innerHeight",
+        "scrollX",
+        "pageXOffset",
+        "scrollY",
+        "pageYOffset",
+        "visualViewport",
+        "screenX",
+        "screenY",
+        "outerWidth",
+        "outerHeight",
+        "devicePixelRatio",
+        "event",
+        "clientInformation",
+        "offscreenBuffering",
+        "screenLeft",
+        "screenTop",
+        "styleMedia",
+        "onsearch",
+        "isSecureContext",
+        "trustedTypes",
+        "performance",
+        "onappinstalled",
+        "onbeforeinstallprompt",
+        "crypto",
+        "indexedDB",
+        "sessionStorage",
+        "localStorage",
+        "onbeforexrselect",
+        "onabort",
+        "onbeforeinput",
+        "onblur",
+        "oncancel",
+        "oncanplay",
+        "oncanplaythrough",
+        "onchange",
+        "onclick",
+        "onclose",
+        "oncontextlost",
+        "oncontextmenu",
+        "oncontextrestored",
+        "oncuechange",
+        "ondblclick",
+        "ondrag",
+        "ondragend",
+        "ondragenter",
+        "ondragleave",
+        "ondragover",
+        "ondragstart",
+        "ondrop",
+        "ondurationchange",
+        "onemptied",
+        "onended",
+        "onerror",
+        "onfocus",
+        "onformdata",
+        "oninput",
+        "oninvalid",
+        "onkeydown",
+        "onkeypress",
+        "onkeyup",
+        "onload",
+        "onloadeddata",
+        "onloadedmetadata",
+        "onloadstart",
+        "onmousedown",
+        "onmouseenter",
+        "onmouseleave",
+        "onmousemove",
+        "onmouseout",
+        "onmouseover",
+        "onmouseup",
+        "onmousewheel",
+        "onpause",
+        "onplay",
+        "onplaying",
+        "onprogress",
+        "onratechange",
+        "onreset",
+        "onresize",
+        "onscroll",
+        "onsecuritypolicyviolation",
+        "onseeked",
+        "onseeking",
+        "onselect",
+        "onslotchange",
+        "onstalled",
+        "onsubmit",
+        "onsuspend",
+        "ontimeupdate",
+        "ontoggle",
+        "onvolumechange",
+        "onwaiting",
+        "onwebkitanimationend",
+        "onwebkitanimationiteration",
+        "onwebkitanimationstart",
+        "onwebkittransitionend",
+        "onwheel",
+        "onauxclick",
+        "ongotpointercapture",
+        "onlostpointercapture",
+        "onpointerdown",
+        "onpointermove",
+        "onpointerrawupdate",
+        "onpointerup",
+        "onpointercancel",
+        "onpointerover",
+        "onpointerout",
+        "onpointerenter",
+        "onpointerleave",
+        "onselectstart",
+        "onselectionchange",
+        "onanimationend",
+        "onanimationiteration",
+        "onanimationstart",
+        "ontransitionrun",
+        "ontransitionstart",
+        "ontransitionend",
+        "ontransitioncancel",
+        "onafterprint",
+        "onbeforeprint",
+        "onbeforeunload",
+        "onhashchange",
+        "onlanguagechange",
+        "onmessage",
+        "onmessageerror",
+        "onoffline",
+        "ononline",
+        "onpagehide",
+        "onpageshow",
+        "onpopstate",
+        "onrejectionhandled",
+        "onstorage",
+        "onunhandledrejection",
+        "onunload",
+        "crossOriginIsolated",
+        "scheduler",
+        "alert",
+        "atob",
+        "blur",
+        "btoa",
+        "cancelAnimationFrame",
+        "cancelIdleCallback",
+        "captureEvents",
+        "clearInterval",
+        "clearTimeout",
+        "close",
+        "confirm",
+        "createImageBitmap",
+        "fetch",
+        "find",
+        "focus",
+        "getComputedStyle",
+        "getSelection",
+        "matchMedia",
+        "moveBy",
+        "moveTo",
+        "open",
+        "postMessage",
+        "print",
+        "prompt",
+        "queueMicrotask",
+        "releaseEvents",
+        "reportError",
+        "requestAnimationFrame",
+        "requestIdleCallback",
+        "resizeBy",
+        "resizeTo",
+        "scroll",
+        "scrollBy",
+        "scrollTo",
+        "setInterval",
+        "setTimeout",
+        "stop",
+        "structuredClone",
+        "webkitCancelAnimationFrame",
+        "webkitRequestAnimationFrame",
+        "chrome",
+        "WebAssembly",
+        "fence",
+        "caches",
+        "cookieStore",
+        "ondevicemotion",
+        "ondeviceorientation",
+        "ondeviceorientationabsolute",
+        "launchQueue",
+        "sharedStorage",
+        "documentPictureInPicture",
+        "onbeforematch",
+        "onbeforetoggle",
+        "AbsoluteOrientationSensor",
+        "Accelerometer",
+        "AudioWorklet",
+        "BatteryManager",
+        "Cache",
+        "CacheStorage",
+        "Clipboard",
+        "ClipboardItem",
+        "CookieChangeEvent",
+        "CookieStore",
+        "CookieStoreManager",
+        "Credential",
+        "CredentialsContainer",
+        "CryptoKey",
+        "DeviceMotionEvent",
+        "DeviceMotionEventAcceleration",
+        "DeviceMotionEventRotationRate",
+        "DeviceOrientationEvent",
+        "FederatedCredential",
+        "GPU",
+        "GPUAdapter",
+        "GPUAdapterInfo",
+        "GPUBindGroup",
+        "GPUBindGroupLayout",
+        "GPUBuffer",
+        "GPUBufferUsage",
+        "GPUCanvasContext",
+        "GPUColorWrite",
+        "GPUCommandBuffer",
+        "GPUCommandEncoder",
+        "GPUCompilationInfo",
+        "GPUCompilationMessage",
+        "GPUComputePassEncoder",
+        "GPUComputePipeline",
+        "GPUDevice",
+        "GPUDeviceLostInfo",
+        "GPUError",
+        "GPUExternalTexture",
+        "GPUInternalError",
+        "GPUMapMode",
+        "GPUOutOfMemoryError",
+        "GPUPipelineError",
+        "GPUPipelineLayout",
+        "GPUQuerySet",
+        "GPUQueue",
+        "GPURenderBundle",
+        "GPURenderBundleEncoder",
+        "GPURenderPassEncoder",
+        "GPURenderPipeline",
+        "GPUSampler",
+        "GPUShaderModule",
+        "GPUShaderStage",
+        "GPUSupportedFeatures",
+        "GPUSupportedLimits",
+        "GPUTexture",
+        "GPUTextureUsage",
+        "GPUTextureView",
+        "GPUUncapturedErrorEvent",
+        "GPUValidationError",
+        "GravitySensor",
+        "Gyroscope",
+        "Keyboard",
+        "KeyboardLayoutMap",
+        "LinearAccelerationSensor",
+        "Lock",
+        "LockManager",
+        "MIDIAccess",
+        "MIDIConnectionEvent",
+        "MIDIInput",
+        "MIDIInputMap",
+        "MIDIMessageEvent",
+        "MIDIOutput",
+        "MIDIOutputMap",
+        "MIDIPort",
+        "MediaDeviceInfo",
+        "MediaDevices",
+        "MediaKeyMessageEvent",
+        "MediaKeySession",
+        "MediaKeyStatusMap",
+        "MediaKeySystemAccess",
+        "MediaKeys",
+        "NavigationPreloadManager",
+        "NavigatorManagedData",
+        "OrientationSensor",
+        "PasswordCredential",
+        "RelativeOrientationSensor",
+        "Sanitizer",
+        "ScreenDetailed",
+        "ScreenDetails",
+        "Sensor",
+        "SensorErrorEvent",
+        "ServiceWorker",
+        "ServiceWorkerContainer",
+        "ServiceWorkerRegistration",
+        "StorageManager",
+        "SubtleCrypto",
+        "VirtualKeyboard",
+        "WGSLLanguageFeatures",
+        "WebTransport",
+        "WebTransportBidirectionalStream",
+        "WebTransportDatagramDuplexStream",
+        "WebTransportError",
+        "Worklet",
+        "XRDOMOverlayState",
+        "XRLayer",
+        "XRWebGLBinding",
+        "AudioData",
+        "EncodedAudioChunk",
+        "EncodedVideoChunk",
+        "ImageTrack",
+        "ImageTrackList",
+        "VideoColorSpace",
+        "VideoFrame",
+        "AudioDecoder",
+        "AudioEncoder",
+        "ImageDecoder",
+        "VideoDecoder",
+        "VideoEncoder",
+        "AuthenticatorAssertionResponse",
+        "AuthenticatorAttestationResponse",
+        "AuthenticatorResponse",
+        "PublicKeyCredential",
+        "Bluetooth",
+        "BluetoothCharacteristicProperties",
+        "BluetoothDevice",
+        "BluetoothRemoteGATTCharacteristic",
+        "BluetoothRemoteGATTDescriptor",
+        "BluetoothRemoteGATTServer",
+        "BluetoothRemoteGATTService",
+        "CaptureController",
+        "DocumentPictureInPicture",
+        "EyeDropper",
+        "Fence",
+        "FencedFrameConfig",
+        "HTMLFencedFrameElement",
+        "FileSystemDirectoryHandle",
+        "FileSystemFileHandle",
+        "FileSystemHandle",
+        "FileSystemWritableFileStream",
+        "FontData",
+        "FragmentDirective",
+        "HID",
+        "HIDConnectionEvent",
+        "HIDDevice",
+        "HIDInputReportEvent",
+        "IdentityCredential",
+        "IdentityProvider",
+        "IdleDetector",
+        "LaunchParams",
+        "LaunchQueue",
+        "OTPCredential",
+        "PaymentAddress",
+        "PaymentRequest",
+        "PaymentResponse",
+        "PaymentMethodChangeEvent",
+        "Presentation",
+        "PresentationAvailability",
+        "PresentationConnection",
+        "PresentationConnectionAvailableEvent",
+        "PresentationConnectionCloseEvent",
+        "PresentationConnectionList",
+        "PresentationReceiver",
+        "PresentationRequest",
+        "Serial",
+        "SerialPort",
+        "SharedStorage",
+        "SharedStorageWorklet",
+        "ToggleEvent",
+        "USB",
+        "USBAlternateInterface",
+        "USBConfiguration",
+        "USBConnectionEvent",
+        "USBDevice",
+        "USBEndpoint",
+        "USBInTransferResult",
+        "USBInterface",
+        "USBIsochronousInTransferPacket",
+        "USBIsochronousInTransferResult",
+        "USBIsochronousOutTransferPacket",
+        "USBIsochronousOutTransferResult",
+        "USBOutTransferResult",
+        "WakeLock",
+        "WakeLockSentinel",
+        "WindowControlsOverlay",
+        "WindowControlsOverlayGeometryChangeEvent",
+        "XRAnchor",
+        "XRAnchorSet",
+        "XRBoundedReferenceSpace",
+        "XRCPUDepthInformation",
+        "XRCamera",
+        "XRDepthInformation",
+        "XRFrame",
+        "XRHitTestResult",
+        "XRHitTestSource",
+        "XRInputSource",
+        "XRInputSourceArray",
+        "XRInputSourceEvent",
+        "XRInputSourcesChangeEvent",
+        "XRLightEstimate",
+        "XRLightProbe",
+        "XRPose",
+        "XRRay",
+        "XRReferenceSpace",
+        "XRReferenceSpaceEvent",
+        "XRRenderState",
+        "XRRigidTransform",
+        "XRSession",
+        "XRSessionEvent",
+        "XRSpace",
+        "XRSystem",
+        "XRTransientInputHitTestResult",
+        "XRTransientInputHitTestSource",
+        "XRView",
+        "XRViewerPose",
+        "XRViewport",
+        "XRWebGLDepthInformation",
+        "XRWebGLLayer",
+        "getScreenDetails",
+        "openDatabase",
+        "queryLocalFonts",
+        "showDirectoryPicker",
+        "showOpenFilePicker",
+        "showSaveFilePicker",
+        "originAgentCluster",
+        "credentialless",
+        "speechSynthesis",
+        "oncontentvisibilityautostatechange",
+        "onscrollend",
+        "AnimationPlaybackEvent",
+        "AnimationTimeline",
+        "CSSAnimation",
+        "CSSTransition",
+        "DocumentTimeline",
+        "BackgroundFetchManager",
+        "BackgroundFetchRecord",
+        "BackgroundFetchRegistration",
+        "BluetoothUUID",
+        "BrowserCaptureMediaStreamTrack",
+        "CropTarget",
+        "CSSStartingStyleRule",
+        "ContentVisibilityAutoStateChangeEvent",
+        "DelegatedInkTrailPresenter",
+        "Ink",
+        "DocumentPictureInPictureEvent",
+        "Highlight",
+        "HighlightRegistry",
+        "MediaMetadata",
+        "MediaSession",
+        "MutationEvent",
+        "NavigatorUAData",
+        "Notification",
+        "PaymentManager",
+        "PaymentRequestUpdateEvent",
+        "PeriodicSyncManager",
+        "PermissionStatus",
+        "Permissions",
+        "PushManager",
+        "PushSubscription",
+        "PushSubscriptionOptions",
+        "RemotePlayback",
+        "ScrollTimeline",
+        "ViewTimeline",
+        "SharedWorker",
+        "SpeechSynthesisErrorEvent",
+        "SpeechSynthesisEvent",
+        "SpeechSynthesisUtterance",
+        "VideoPlaybackQuality",
+        "ViewTransition",
+        "VisibilityStateEntry",
+        "webkitSpeechGrammar",
+        "webkitSpeechGrammarList",
+        "webkitSpeechRecognition",
+        "webkitSpeechRecognitionError",
+        "webkitSpeechRecognitionEvent",
+        "webkitRequestFileSystem",
+        "webkitResolveLocalFileSystemURL"
+    ],
+    
+    "68c": [
         [
             "loadTimes",
             "csi",
@@ -3881,8 +4293,9 @@ const dump = {
         [
             "Raven",
             "_sharedLibs",
+            "hsw",
             "__wdata",
-            "hsw"
+            "image_label_area_select"
         ],
         [
             [
@@ -3902,55 +4315,93 @@ const dump = {
                 []
             ]
         ],
-        [
-            2
-        ],
+        [],
         true
-    ],/*
-    "f28": [
+    ],
+    
+    "07a": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true
+    ],
+    
+    /*
+    "29e": [
+        "Google Inc. (NVIDIA)",
+        "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    ],
+    
+    "e02": [
         [
-            "StJmLwITJg5mBmtgZ=GcStNHZrlcMyuc",
-            "19",
-            "f",
-            "EFBGXXCBUEGGX"
+            "tCDlqUlCMYUIqnZnLwitjahGa6vGEOc0",
+            "13",
+            "3",
+            "YJEDXQTOIYRVJ"
         ],
         [
-            "TJwiTJLJ2X18fmwiTJnJXYux2Yz0UmxAjmLUzmwAjmLAVYQLXcyxMYwiTJR1emyUIU3nMB1hsqpAjmLgIU3nMB1nKmLAjmLo0VqVLTnnTTxeTkwiTJ5J2X18fmdJ",
-            "9",
+            "TjkjVRaV0VwITjOOKUfpVRXnKmLAJmLcLsDhUQ=O1mafTmpAJmLw2bFVzXwmKmLAJmLI3bFVzXwAJmLOVZufWEwnJWxeDmYUCULBJmLmDm2ADmYUiTQRfmYUYQhj0auLXywI",
             "16",
-            "SFDBLNEIEQKMQ"
+            "5e",
+            "JSKFYOSELMNSY"
         ]
     ],
-    "7b5": [
-        "Google Inc. (Intel)",
-        "ANGLE (Intel, Intel(R) HD Graphics 530 Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    
+    "3a5": [
+        "Google Inc. (NVIDIA)",
+        "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11)"
     ],
-    "b5a": [
+    "b38": [
         [
             [
-                "Google Inc. (Intel)",
-                "ANGLE (Intel, Intel(R) HD Graphics 530 Direct3D11 vs_5_0 ps_5_0, D3D11)"
+                "Google Inc. (NVIDIA)",
+                "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11)"
             ],
             [
-                "EXT_color_buffer_float",
+                "ANGLE_instanced_arrays",
+                "EXT_blend_minmax",
                 "EXT_color_buffer_half_float",
-                "EXT_disjoint_timer_query_webgl2",
+                "EXT_disjoint_timer_query",
                 "EXT_float_blend",
+                "EXT_frag_depth",
+                "EXT_shader_texture_lod",
                 "EXT_texture_compression_bptc",
                 "EXT_texture_compression_rgtc",
                 "EXT_texture_filter_anisotropic",
-                "EXT_texture_norm16",
+                "EXT_sRGB",
                 "KHR_parallel_shader_compile",
-                "OES_draw_buffers_indexed",
+                "OES_element_index_uint",
+                "OES_fbo_render_mipmap",
+                "OES_standard_derivatives",
+                "OES_texture_float",
                 "OES_texture_float_linear",
-                "OVR_multiview2",
+                "OES_texture_half_float",
+                "OES_texture_half_float_linear",
+                "OES_vertex_array_object",
+                "WEBGL_color_buffer_float",
                 "WEBGL_compressed_texture_s3tc",
                 "WEBGL_compressed_texture_s3tc_srgb",
                 "WEBGL_debug_renderer_info",
                 "WEBGL_debug_shaders",
+                "WEBGL_depth_texture",
+                "WEBGL_draw_buffers",
                 "WEBGL_lose_context",
-                "WEBGL_multi_draw",
-                "WEBGL_provoking_vertex"
+                "WEBGL_multi_draw"
             ],
             [
                 [
@@ -3972,16 +4423,16 @@ const dump = {
                 ],
                 4,
                 16,
-                4096,
+                4095,
                 30,
                 32,
                 16,
                 16,
                 1024,
-                "WebGL GLSL ES 3.00 (OpenGL ES GLSL ES 3.0 Chromium)",
+                "WebGL GLSL ES 1.0 (OpenGL ES GLSL ES 1.0 Chromium)",
                 "WebKit",
                 "WebKit WebGL",
-                "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+                "WebGL 1.0 (OpenGL ES 2.0 Chromium)",
                 16384,
                 16384,
                 [
@@ -4035,8 +4486,8 @@ const dump = {
         ],
         [
             [
-                "Google Inc. (Intel)",
-                "ANGLE (Intel, Intel(R) HD Graphics 530 Direct3D11 vs_5_0 ps_5_0, D3D11)"
+                "Google Inc. (NVIDIA)",
+                "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11)"
             ],
             [
                 "EXT_color_buffer_float",
@@ -4079,7 +4530,7 @@ const dump = {
                 ],
                 4,
                 16,
-                4096,
+                4095,
                 30,
                 32,
                 16,
@@ -4097,7 +4548,7 @@ const dump = {
                 2,
                 8,
                 4096,
-                16384,
+                16380,
                 2048,
                 7,
                 120,
@@ -4105,13 +4556,13 @@ const dump = {
                 120,
                 4,
                 8,
-                16,
+                8,
                 12,
                 12,
                 24,
                 24,
                 65536,
-                212992,
+                212988,
                 200704,
                 120,
                 120,
@@ -4166,8 +4617,9 @@ const dump = {
             ]
         ]
     ],
-    "df4": true,*/
-    "79f": [
+    "da4": true,
+    */
+    "3c5": [
         0,
         1,
         2,
@@ -4184,55 +4636,38 @@ const dump = {
         127,
         1024,
         2048,
+        4095,
         4096,
+        16380,
         16384,
         32767,
         65536,
         200704,
-        212992,
+        212988,
         2147483647,
         4294967294
     ],
-   /* "8ef": [
+    /*
+    "b61": [
         2147483647,
         2147483647,
         4294967294
     ],
-    "1b5": [
-        16,
-        1024,
-        4096,
-        7,
-        12,
-        120,
-        [
-            23,
-            127,
-            127
-        ]
-    ],
-    "e32": [
+    "e7d": [
         32767,
         32767,
         16384,
         8,
         8,
-        16
+        8
     ],
-    "d7c": [
-        1,
-        1024,
-        1,
-        1,
-        4
-    ],
-    "14e": [
+    "d5a": [
         2147483647,
         2147483647,
         2147483647,
         2147483647
     ],
-    "ebf": [
+    "1f9": [
         16384,
         32,
         16384,
@@ -4240,19 +4675,24 @@ const dump = {
         2,
         2048
     ],
-    "a4c": [
+    "45a": [
+        4,
+        120,
+        4
+    ],
+    "a25": [
         24,
         24,
         65536,
-        212992,
+        212988,
         200704
     ],
-    "b1d": [
+    "026": [
         16,
-        4096,
+        4095,
         30,
         16,
-        16384,
+        16380,
         120,
         12,
         120,
@@ -4262,12 +4702,9 @@ const dump = {
             127
         ]
     ],
-    "8bb": [
-        0,
-        11433,
-        11433
-    ],*/
-    "8b9": [
+    */
+    
+    "f20": [
         [
             true,
             "fr-FR",
@@ -4405,15 +4842,15 @@ const dump = {
             false,
             "zh-CN",
             false,
-            "Google 普通话（中国大陆）",
-            "Google 普通话（中国大陆）"
+            "Google 普通话（中国大陆）",
+            "Google 普通话（中国大陆）"
         ],
         [
             false,
             "zh-HK",
             false,
-            "Google 粤語（香港）",
-            "Google 粤語（香港）"
+            "Google 粤語（香港）",
+            "Google 粤語（香港）"
         ],
         [
             false,
@@ -4423,7 +4860,7 @@ const dump = {
             "Google 國語（臺灣）"
         ]
     ],
-    "6c7": [
+    "e03": [
         [
             true,
             "fr-FR",
@@ -4446,9 +4883,23 @@ const dump = {
             "Microsoft Paul - French (France)"
         ]
     ],
-   /* "016": [
-        2130931776,
-        2130931776,
+    "39b": [
+        0,
+        1,
+        2,
+        3,
+        4
+    ],
+    
+    
+    "fd2": [
+        0,
+        11411,
+        11411
+    ],
+    "c0d": [
+        143254600089,
+        143254600089,
         null,
         null,
         4294705152,
@@ -4457,181 +4908,55 @@ const dump = {
         true,
         null
     ],
-    "8e5": [
-        "xmdm5mtm3cjn==gm",
-        "19",
-        "4",
-        "LKDMINQTDVRBQ"
-    ],*/
-    "ca6": [
+    
+    "1a3": [
         "Windows",
-        "10.0.0",
+        "15.0.0",
         null,
         "64",
         "x86",
-        "113.0.0.0"
+        "117.0.5938.88"
     ],
-    "eda": [
+    
+    "7ec": [
+        "granted",
+        "TypeError",
+        "TypeError",
+        "prompt",
+        "granted",
+        "TypeError",
+        "denied",
+        "TypeError",
+        "denied",
+        "denied",
+        "TypeError",
+        "denied",
+        "TypeError",
+        "denied",
+        "granted",
+        "denied",
+        "granted",
+        "denied",
+        "denied",
+        "TypeError",
+        "denied",
+        "granted",
+        "denied",
+        "prompt",
+        "NotSupportedError",
+        "denied",
+        "TypeError",
+        "TypeError",
+        "TypeError",
+        "denied"
+    ],
+    
+    "7b7": [
         "denied",
         "denied"
     ],
-   // "15e": 231.29999999701977
+    //"02f": 63
 }
-
-const webgl_xr = [
-    [
-        [
-            "Google Inc. (NVIDIA)",
-            "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11)"
-        ],
-        [
-            "ANGLE_instanced_arrays",
-            "EXT_blend_minmax",
-            "EXT_color_buffer_half_float",
-            "EXT_disjoint_timer_query",
-            "EXT_float_blend",
-            "EXT_frag_depth",
-            "EXT_shader_texture_lod",
-            "EXT_texture_compression_bptc",
-            "EXT_texture_compression_rgtc",
-            "EXT_texture_filter_anisotropic",
-            "EXT_sRGB",
-            "KHR_parallel_shader_compile",
-            "OES_element_index_uint",
-            "OES_fbo_render_mipmap",
-            "OES_standard_derivatives",
-            "OES_texture_float",
-            "OES_texture_float_linear",
-            "OES_texture_half_float",
-            "OES_texture_half_float_linear",
-            "OES_vertex_array_object",
-            "WEBGL_color_buffer_float",
-            "WEBGL_compressed_texture_s3tc",
-            "WEBGL_compressed_texture_s3tc_srgb",
-            "WEBGL_debug_renderer_info",
-            "WEBGL_debug_shaders",
-            "WEBGL_depth_texture",
-            "WEBGL_draw_buffers",
-            "WEBGL_lose_context",
-            "WEBGL_multi_draw"
-        ],
-        [
-            [
-                1,
-                1024
-            ],
-            [
-                1,
-                1
-            ],
-            2147483647,
-            2147483647,
-            2147483647,
-            2147483647,
-            16384,
-            [
-                32767,
-                32767
-            ],
-            4,
-            16,
-            4095,
-            30,
-            32,
-            16,
-            16,
-            1024,
-            "WebGL GLSL ES 1.0 (OpenGL ES GLSL ES 1.0 Chromium)",
-            "WebKit",
-            "WebKit WebGL",
-            "WebGL 1.0 (OpenGL ES 2.0 Chromium)",
-            16384,
-            16384,
-            [
-                [
-                    23,
-                    127,
-                    127
-                ],
-                [
-                    23,
-                    127,
-                    127
-                ],
-                [
-                    23,
-                    127,
-                    127
-                ],
-                [
-                    0,
-                    30,
-                    31
-                ]
-            ],
-            [
-                [
-                    23,
-                    127,
-                    127
-                ],
-                [
-                    23,
-                    127,
-                    127
-                ],
-                [
-                    23,
-                    127,
-                    127
-                ],
-                [
-                    0,
-                    30,
-                    31
-                ]
-            ],
-            16,
-            8,
-            true
-        ]
-    ],
-    [
-        [
-            1,
-            1024,
-            1,
-            1,
-            2147483647,
-            2147483647,
-            2147483647,
-            2147483647,
-            16384,
-            32767,
-            32767,
-            4,
-            16,
-            4095,
-            30,
-            32,
-            16,
-            16,
-            1024,
-            16384,
-            16384,
-            23,
-            127,
-            127,
-            23,
-            127,
-            127,
-            16,
-            8
-        ],
-        [],
-        true
-    ]
-]
 
 
 var hsw = function () {
@@ -4647,8 +4972,8 @@ var hsw = function () {
         throw TypeError("Could not convert argument to dictionary")
     }
     var I = function (A) {
-            return A >= 0 && A <= 127
-        },
+        return A >= 0 && A <= 127
+    },
         B = -1;
 
     function Q(A) {
@@ -4697,10 +5022,10 @@ var hsw = function () {
         }))
     }));
     var w, o, M, N = {
-            "UTF-8": function (A) {
-                return new c(A)
-            }
-        },
+        "UTF-8": function (A) {
+            return new c(A)
+        }
+    },
         G = {
             "UTF-8": function (A) {
                 return new L(A)
@@ -4889,8 +5214,8 @@ var hsw = function () {
         var Q = 176;
         return new (I || (I = Promise))((function (C, E) {
             var D = {
-                    _0x2859a6: 834
-                },
+                _0x2859a6: 834
+            },
                 i = k;
 
             function w(A) {
@@ -4996,8 +5321,8 @@ var hsw = function () {
                     } catch (A) {
                         E = [6, A], B = 0
                     } finally {
-                        I = Q = 0
-                    }
+                            I = Q = 0
+                        }
                     if (5 & E[0]) throw E[1];
                     var F = {};
                     return F[i(N)] = E[0] ? E[1] : void 0, F[i(754)] = !0, F
@@ -5143,39 +5468,39 @@ var hsw = function () {
         }))
     }
     var l = z(h(850), (function (A, g, I) {
-            return Y(void 0, void 0, void 0, (function () {
-                var B, Q, C, E, D, i, w, o, M, N, G = 172,
-                    y = 232,
-                    a = 580,
-                    n = 689;
-                return F(this, (function (L) {
-                    var c, h, Y = 415,
-                        F = 675,
-                        s = 450,
-                        J = k;
-                    switch (L[J(304)]) {
-                        case 0:
-                            return q(Z, J(G)), Q = (B = g).d, q((C = B.c) && Q, J(y)), Q < 13 ? [2] : (E = new e, h = null, D = [function (A) {
-                                var g = J;
-                                null !== h && (clearTimeout(h), h = null), g(525) == typeof A && (h = setTimeout(c, A))
-                            }, new Promise((function (A) {
-                                c = A
-                            }))], w = D[1], (i = D[0])(300), E[J(189)]([C, Q]), o = H(), M = 0, [4, I(Promise[J(a)]([w[J(520)]((function () {
-                                var A = J;
-                                throw new Error(A(F)[A(s)](M, A(490)))
-                            })), m(E, (function (A, g) {
-                                var I = J;
-                                2 !== M ? (0 === M ? i(20) : i(), M += 1) : g(A[I(Y)])
-                            }))]))[J(554)]((function () {
-                                var A = J;
-                                i(), E[A(330)]()
-                            }))]);
-                        case 1:
-                            return N = L[J(n)](), A(J(342), N), A(J(300), o()), [2]
-                    }
-                }))
+        return Y(void 0, void 0, void 0, (function () {
+            var B, Q, C, E, D, i, w, o, M, N, G = 172,
+                y = 232,
+                a = 580,
+                n = 689;
+            return F(this, (function (L) {
+                var c, h, Y = 415,
+                    F = 675,
+                    s = 450,
+                    J = k;
+                switch (L[J(304)]) {
+                    case 0:
+                        return q(Z, J(G)), Q = (B = g).d, q((C = B.c) && Q, J(y)), Q < 13 ? [2] : (E = new e, h = null, D = [function (A) {
+                            var g = J;
+                            null !== h && (clearTimeout(h), h = null), g(525) == typeof A && (h = setTimeout(c, A))
+                        }, new Promise((function (A) {
+                            c = A
+                        }))], w = D[1], (i = D[0])(300), E[J(189)]([C, Q]), o = H(), M = 0, [4, I(Promise[J(a)]([w[J(520)]((function () {
+                            var A = J;
+                            throw new Error(A(F)[A(s)](M, A(490)))
+                        })), m(E, (function (A, g) {
+                            var I = J;
+                            2 !== M ? (0 === M ? i(20) : i(), M += 1) : g(A[I(Y)])
+                        }))]))[J(554)]((function () {
+                            var A = J;
+                            i(), E[A(330)]()
+                        }))]);
+                    case 1:
+                        return N = L[J(n)](), A(J(342), N), A(J(300), o()), [2]
+                }
             }))
-        })),
+        }))
+    })),
         j = h(416),
         x = [h(440), h(461), h(502), h(405), h(475), h(395), h(629), h(360), "Arial"][h(797)]((function (A) {
             var g = h;
@@ -5206,32 +5531,32 @@ var hsw = function () {
         return g[i(656)] = i(268)[i(450)](w, ", ")[i(C)](w, ", ").concat(w, ", 1)"), g[i(E)](0, 0, 2, 2), [w, s([], g[i(D)](0, 0, 2, 2).data, !0)]
     }
     var b = z(h(302), (function (A) {
-            var g = 497,
-                I = 701,
-                B = 755,
-                Q = 448,
-                C = 532,
-                E = 656,
-                D = 371,
-                i = 334,
-                w = 522,
-                o = 656,
-                M = 334,
-                N = 552,
-                G = 415,
-                y = 522,
-                a = 522,
-                n = 364,
-                L = 509,
-                c = h,
-                Y = {};
-            Y[c(727)] = !0;
-            var F, k, J, t, r, H, K, R, e = document[c(g)]("canvas"),
-                S = e[c(I)]("2d", Y);
-            S && (H = e, R = c, (K = S) && (H[R(y)] = 20, H.height = 20, K.clearRect(0, 0, H[R(a)], H[R(n)]), K.font = R(L), K[R(539)]("ðŸ˜€", 0, 15)), A(c(B), e.toDataURL()), A(c(Q), (J = e, r = c, (t = S) ? (t.clearRect(0, 0, J[r(522)], J[r(364)]), J[r(522)] = 2, J[r(364)] = 2, t[r(E)] = r(D), t[r(i)](0, 0, J[r(w)], J[r(364)]), t[r(o)] = r(614), t[r(M)](2, 2, 1, 1), t.beginPath(), t.arc(0, 0, 2, 0, 1, !0), t[r(N)](), t[r(366)](), s([], t.getImageData(0, 0, 2, 2)[r(G)], !0)) : null)), A(c(235), T(S, c(C), c(409)[c(450)](String[c(593)](55357, 56835)))), A("820", [X(e, S), (F = S, k = h, [T(F, j), x[k(797)]((function (A) {
-                return T(F, A)
-            }))])]))
-        })),
+        var g = 497,
+            I = 701,
+            B = 755,
+            Q = 448,
+            C = 532,
+            E = 656,
+            D = 371,
+            i = 334,
+            w = 522,
+            o = 656,
+            M = 334,
+            N = 552,
+            G = 415,
+            y = 522,
+            a = 522,
+            n = 364,
+            L = 509,
+            c = h,
+            Y = {};
+        Y[c(727)] = !0;
+        var F, k, J, t, r, H, K, R, e = document[c(g)]("canvas"),
+            S = e[c(I)]("2d", Y);
+        S && (H = e, R = c, (K = S) && (H[R(y)] = 20, H.height = 20, K.clearRect(0, 0, H[R(a)], H[R(n)]), K.font = R(L), K[R(539)]("ðŸ˜€", 0, 15)), A(c(B), e.toDataURL()), A(c(Q), (J = e, r = c, (t = S) ? (t.clearRect(0, 0, J[r(522)], J[r(364)]), J[r(522)] = 2, J[r(364)] = 2, t[r(E)] = r(D), t[r(i)](0, 0, J[r(w)], J[r(364)]), t[r(o)] = r(614), t[r(M)](2, 2, 1, 1), t.beginPath(), t.arc(0, 0, 2, 0, 1, !0), t[r(N)](), t[r(366)](), s([], t.getImageData(0, 0, 2, 2)[r(G)], !0)) : null)), A(c(235), T(S, c(C), c(409)[c(450)](String[c(593)](55357, 56835)))), A("820", [X(e, S), (F = S, k = h, [T(F, j), x[k(797)]((function (A) {
+            return T(F, A)
+        }))])]))
+    })),
         p = [
             [55357, 56832],
             [9786],
@@ -5355,74 +5680,74 @@ var hsw = function () {
         return N
     }
     var P, _ = z(h(488), (function (A) {
-            var g, I, B = 638,
-                Q = 820,
-                C = 718,
-                E = 801,
-                D = 207,
-                i = 638,
-                w = 479,
-                o = 282,
-                M = 240,
-                N = 559,
-                G = 770,
-                y = 601,
-                a = 423,
-                n = 835,
-                L = 181,
-                c = 835,
-                Y = 466,
-                F = 700,
-                s = 501,
-                k = 524,
-                t = 364,
-                r = 200,
-                H = 687,
-                K = 840,
-                R = 835,
-                e = 769,
-                S = 769,
-                U = 450,
-                z = h,
-                f = O(),
-                q = O(),
-                d = O(),
-                u = O(),
-                v = document,
-                Z = v[z(533)],
-                m = V(P || (P = J([z(B), '">\n      <style>\n        #', " #", z(282), " .", z(240), " #", ",\n        #", " #", " {\n          top: 0 !important;\n          left: 0 !important;\n        }\n        #", " #", z(Q), " #", z(559), " #", z(C), " .", z(E), ';\n          font-size: 200px !important;\n          font-style: normal !important;\n          font-weight: normal !important;\n          height: auto !important;\n          letter-spacing: normal !important;\n          line-break: auto !important;\n          line-height: normal !important;\n          text-transform: none !important;\n          text-align: left !important;\n          text-decoration: none !important;\n          text-shadow: none !important;\n          white-space: normal !important;\n          width: auto !important;\n          word-break: normal !important;\n          word-spacing: normal !important;\n        }\n      </style>\n      <div id="', z(D), z(770), z(601)], [z(i), z(w), " #", z(o), " .", z(M), " #", ",\n        #", " #", " {\n          top: 0 !important;\n          left: 0 !important;\n        }\n        #", " #", z(820), " #", z(N), " #", z(C), " .", z(801), ';\n          font-size: 200px !important;\n          font-style: normal !important;\n          font-weight: normal !important;\n          height: auto !important;\n          letter-spacing: normal !important;\n          line-break: auto !important;\n          line-height: normal !important;\n          text-transform: none !important;\n          text-align: left !important;\n          text-decoration: none !important;\n          text-shadow: none !important;\n          white-space: normal !important;\n          width: auto !important;\n          word-break: normal !important;\n          word-spacing: normal !important;\n        }\n      </style>\n      <div id="', z(207), z(G), z(y)])), f, f, d, f, q, f, d, f, u, f, d, f, u, f, d, f, q, W, d, u, p.map((function (A) {
-                    var g = z;
-                    return '<div class="'.concat(q, '">')[g(U)](A, g(211))
-                })).join(""));
-            Z[z(744)](m);
-            try {
-                var l = function (A) {
-                        for (var g = z, I = document.getElementsByClassName(A), B = [], Q = [], C = [], E = 0, D = I[g(238)]; E < D; E += 1) {
-                            var i = I[E][g(R)]()[0];
-                            if (i) {
-                                var w = i[g(522)],
-                                    o = i[g(364)];
-                                B[g(e)](w, o);
-                                var M = ""[g(450)](w, "x")[g(450)](o); - 1 === Q[g(588)](M) && (Q[g(S)](M), C.push(E))
-                            }
-                        }
-                        return [B, C]
-                    }(q),
-                    j = l[0],
-                    x = l[1];
-                0 !== j.length && A(z(a), j);
-                var T = v.getElementById(d),
-                    X = T[z(n)]()[0],
-                    b = v[z(687)](u)[z(835)]()[0],
-                    _ = Z[z(835)]()[0];
-                T[z(L)][z(436)](z(466));
-                var $ = null === (g = T[z(c)]()[0]) || void 0 === g ? void 0 : g[z(700)];
-                T[z(181)].remove(z(Y)), A("5f1", [$, null === (I = T[z(n)]()[0]) || void 0 === I ? void 0 : I[z(F)], null == X ? void 0 : X[z(s)], null == X ? void 0 : X[z(k)], null == X ? void 0 : X.width, null == X ? void 0 : X[z(184)], null == X ? void 0 : X[z(700)], null == X ? void 0 : X[z(364)], null == X ? void 0 : X.x, null == X ? void 0 : X.y, null == b ? void 0 : b[z(522)], null == b ? void 0 : b[z(t)], null == _ ? void 0 : _[z(522)], null == _ ? void 0 : _.height, v[z(r)](), x])
-            } finally {
-                var AA = v[z(H)](f);
-                Z[z(K)](AA)
-            }
-        })),
+        var g, I, B = 638,
+            Q = 820,
+            C = 718,
+            E = 801,
+            D = 207,
+            i = 638,
+            w = 479,
+            o = 282,
+            M = 240,
+            N = 559,
+            G = 770,
+            y = 601,
+            a = 423,
+            n = 835,
+            L = 181,
+            c = 835,
+            Y = 466,
+            F = 700,
+            s = 501,
+            k = 524,
+            t = 364,
+            r = 200,
+            H = 687,
+            K = 840,
+            R = 835,
+            e = 769,
+            S = 769,
+            U = 450,
+            z = h,
+            f = O(),
+            q = O(),
+            d = O(),
+            u = O(),
+            v = document,
+            Z = v[z(533)],
+            m = V(P || (P = J([z(B), '">\n      <style>\n        #', " #", z(282), " .", z(240), " #", ",\n        #", " #", " {\n          top: 0 !important;\n          left: 0 !important;\n        }\n        #", " #", z(Q), " #", z(559), " #", z(C), " .", z(E), ';\n          font-size: 200px !important;\n          font-style: normal !important;\n          font-weight: normal !important;\n          height: auto !important;\n          letter-spacing: normal !important;\n          line-break: auto !important;\n          line-height: normal !important;\n          text-transform: none !important;\n          text-align: left !important;\n          text-decoration: none !important;\n          text-shadow: none !important;\n          white-space: normal !important;\n          width: auto !important;\n          word-break: normal !important;\n          word-spacing: normal !important;\n        }\n      </style>\n      <div id="', z(D), z(770), z(601)], [z(i), z(w), " #", z(o), " .", z(M), " #", ",\n        #", " #", " {\n          top: 0 !important;\n          left: 0 !important;\n        }\n        #", " #", z(820), " #", z(N), " #", z(C), " .", z(801), ';\n          font-size: 200px !important;\n          font-style: normal !important;\n          font-weight: normal !important;\n          height: auto !important;\n          letter-spacing: normal !important;\n          line-break: auto !important;\n          line-height: normal !important;\n          text-transform: none !important;\n          text-align: left !important;\n          text-decoration: none !important;\n          text-shadow: none !important;\n          white-space: normal !important;\n          width: auto !important;\n          word-break: normal !important;\n          word-spacing: normal !important;\n        }\n      </style>\n      <div id="', z(207), z(G), z(y)])), f, f, d, f, q, f, d, f, u, f, d, f, u, f, d, f, q, W, d, u, p.map((function (A) {
+                var g = z;
+                return '<div class="'.concat(q, '">')[g(U)](A, g(211))
+            })).join(""));
+        Z[z(744)](m);
+        try {
+            var l = function (A) {
+                for (var g = z, I = document.getElementsByClassName(A), B = [], Q = [], C = [], E = 0, D = I[g(238)]; E < D; E += 1) {
+                    var i = I[E][g(R)]()[0];
+                    if (i) {
+                        var w = i[g(522)],
+                            o = i[g(364)];
+                        B[g(e)](w, o);
+                        var M = ""[g(450)](w, "x")[g(450)](o); - 1 === Q[g(588)](M) && (Q[g(S)](M), C.push(E))
+                    }
+                }
+                return [B, C]
+            }(q),
+                j = l[0],
+                x = l[1];
+            0 !== j.length && A(z(a), j);
+            var T = v.getElementById(d),
+                X = T[z(n)]()[0],
+                b = v[z(687)](u)[z(835)]()[0],
+                _ = Z[z(835)]()[0];
+            T[z(L)][z(436)](z(466));
+            var $ = null === (g = T[z(c)]()[0]) || void 0 === g ? void 0 : g[z(700)];
+            T[z(181)].remove(z(Y)), A("5f1", [$, null === (I = T[z(n)]()[0]) || void 0 === I ? void 0 : I[z(F)], null == X ? void 0 : X[z(s)], null == X ? void 0 : X[z(k)], null == X ? void 0 : X.width, null == X ? void 0 : X[z(184)], null == X ? void 0 : X[z(700)], null == X ? void 0 : X[z(364)], null == X ? void 0 : X.x, null == X ? void 0 : X.y, null == b ? void 0 : b[z(522)], null == b ? void 0 : b[z(t)], null == _ ? void 0 : _[z(522)], null == _ ? void 0 : _.height, v[z(r)](), x])
+        } finally {
+            var AA = v[z(H)](f);
+            Z[z(K)](AA)
+        }
+    })),
         $ = [h(571), "HoloLens MDL2 Assets", h(484), "Nirmala UI", h(461), "Chakra Petch", h(293), "InaiMathi Bold", h(818), h(719), h(217), h(502), h(405), h(255), h(654), "Roboto", h(629), h(819), "ZWAdobeF", h(729), h(849)];
 
     function AA() {
@@ -5461,19 +5786,19 @@ var hsw = function () {
         }))
     }
     var gA = z(h(598), (function (A) {
-            return Y(void 0, void 0, void 0, (function () {
-                var g, I = 238;
-                return F(this, (function (B) {
-                    var Q = k;
-                    switch (B[Q(304)]) {
-                        case 0:
-                            return q("FontFace" in window, Q(531)), [4, AA()];
-                        case 1:
-                            return (g = B[Q(689)]())[Q(I)] ? (A("39b", g), [2]) : [2]
-                    }
-                }))
+        return Y(void 0, void 0, void 0, (function () {
+            var g, I = 238;
+            return F(this, (function (B) {
+                var Q = k;
+                switch (B[Q(304)]) {
+                    case 0:
+                        return q("FontFace" in window, Q(531)), [4, AA()];
+                    case 1:
+                        return (g = B[Q(689)]())[Q(I)] ? (A("39b", g), [2]) : [2]
+                }
             }))
-        })),
+        }))
+    })),
         IA = function () {
             var A = 457,
                 g = 238,
@@ -5500,12 +5825,12 @@ var hsw = function () {
 
     function iA() {
         var A, g, I = function () {
-                try {
-                    return 1 + I()
-                } catch (A) {
-                    return 1
-                }
-            },
+            try {
+                return 1 + I()
+            } catch (A) {
+                return 1
+            }
+        },
             B = function () {
                 try {
                     return 1 + B()
@@ -5518,35 +5843,35 @@ var hsw = function () {
         return [(A = Q, g = C, A === g ? 0 : 8 * g / (A - g)), Q, C]
     }
     var wA = z(h(693), (function (A) {
-            return Y(void 0, void 0, void 0, (function () {
-                var g, I, B = 304,
-                    Q = 272,
-                    C = 306,
-                    E = 768,
-                    D = 238,
-                    i = 205,
-                    w = 570;
-                return F(this, (function (o) {
-                    var M, N = k;
-                    switch (o[N(B)]) {
-                        case 0:
-                            return g = [String([Math.cos(13 * Math.E), Math[N(Q)](Math.PI, -100), Math[N(C)](39 * Math.E), Math[N(838)](6 * Math.LN2)]), Function[N(E)]()[N(D)], DA((function () {
-                                return 1[N(768)](-1)
-                            })), DA((function () {
-                                return new Array(-1)
-                            }))], A(N(i), IA), A("1ab", g), BA ? [4, (M = iA, new Promise((function (A) {
-                                setTimeout((function () {
-                                    return A(M())
-                                }))
-                            })))] : [3, 2];
-                        case 1:
-                            I = o.sent(), A(N(w), I), o[N(304)] = 2;
-                        case 2:
-                            return [2]
-                    }
-                }))
+        return Y(void 0, void 0, void 0, (function () {
+            var g, I, B = 304,
+                Q = 272,
+                C = 306,
+                E = 768,
+                D = 238,
+                i = 205,
+                w = 570;
+            return F(this, (function (o) {
+                var M, N = k;
+                switch (o[N(B)]) {
+                    case 0:
+                        return g = [String([Math.cos(13 * Math.E), Math[N(Q)](Math.PI, -100), Math[N(C)](39 * Math.E), Math[N(838)](6 * Math.LN2)]), Function[N(E)]()[N(D)], DA((function () {
+                            return 1[N(768)](-1)
+                        })), DA((function () {
+                            return new Array(-1)
+                        }))], A(N(i), IA), A("1ab", g), BA ? [4, (M = iA, new Promise((function (A) {
+                            setTimeout((function () {
+                                return A(M())
+                            }))
+                        })))] : [3, 2];
+                    case 1:
+                        I = o.sent(), A(N(w), I), o[N(304)] = 2;
+                    case 2:
+                        return [2]
+                }
             }))
-        })),
+        }))
+    })),
         oA = ["".concat(h(270)), ""[h(450)](h(270), ":0"), "".concat(h(839), ":rec2020"), "".concat(h(839), h(621)), ""[h(450)](h(839), h(266)), ""[h(450)]("any-hover", h(389)), ""[h(450)](h(641), h(283)), ""[h(450)](h(496), ":hover"), "".concat(h(496), h(283)), ""[h(450)](h(411), h(628)), ""[h(450)](h(411), ":coarse"), "".concat(h(411), ":none"), ""[h(450)]("pointer", h(628)), ""[h(450)](h(429), h(441)), "".concat(h(429), h(283)), ""[h(450)](h(526), h(794)), ""[h(450)](h(526), ":none"), ""[h(450)](h(384), h(368)), ""[h(450)](h(384), ":standalone"), ""[h(450)](h(384), ":minimal-ui"), "".concat(h(384), h(365)), ""[h(450)](h(726), h(283)), "".concat("forced-colors", h(733)), ""[h(450)]("prefers-color-scheme", ":light"), ""[h(450)]("prefers-color-scheme", ":dark"), ""[h(450)](h(658), h(491)), "".concat("prefers-contrast", h(791)), ""[h(450)](h(658), h(551)), ""[h(450)]("prefers-contrast", ":custom"), ""[h(450)](h(876), ":no-preference"), ""[h(450)]("prefers-reduced-motion", h(567)), "".concat(h(385), ":no-preference"), ""[h(450)](h(385), h(567))],
         MA = z("c57", (function (A) {
             var g = 450,
@@ -5635,27 +5960,27 @@ var hsw = function () {
             document[a(Q)][a(744)](n);
             try {
                 var L = function (A) {
-                        var g = 450,
-                            I = 450,
-                            B = a,
-                            Q = {},
-                            C = [];
-                        yA.forEach((function (g) {
-                            var I = k;
-                            A[I(M)](I(N), I(788).concat(g, I(G))), Q[g] = getComputedStyle(A)[I(y)]
-                        })), aA[B(o)]((function (E) {
-                            var D = B;
-                            A.setAttribute(D(697), D(787)[D(g)](E, D(251)));
-                            var i = getComputedStyle(A),
-                                w = i[D(595)],
-                                o = i.fontFamily;
-                            C.push(o), Q[E] = "".concat(w, " ")[D(I)](o)
-                        }));
-                        var E = C.filter((function (A, g, I) {
-                            return I.indexOf(A) === g
-                        }));
-                        return [Q, E]
-                    }(n),
+                    var g = 450,
+                        I = 450,
+                        B = a,
+                        Q = {},
+                        C = [];
+                    yA.forEach((function (g) {
+                        var I = k;
+                        A[I(M)](I(N), I(788).concat(g, I(G))), Q[g] = getComputedStyle(A)[I(y)]
+                    })), aA[B(o)]((function (E) {
+                        var D = B;
+                        A.setAttribute(D(697), D(787)[D(g)](E, D(251)));
+                        var i = getComputedStyle(A),
+                            w = i[D(595)],
+                            o = i.fontFamily;
+                        C.push(o), Q[E] = "".concat(w, " ")[D(I)](o)
+                    }));
+                    var E = C.filter((function (A, g, I) {
+                        return I.indexOf(A) === g
+                    }));
+                    return [Q, E]
+                }(n),
                     c = L[0],
                     Y = L[1];
                 A(a(C), c), A(a(E), Y);
@@ -5733,27 +6058,27 @@ var hsw = function () {
         }
     }
     var kA, JA = z(h(578), (function (A) {
-            var g = 210,
-                I = 446,
-                B = 822,
-                Q = 863,
-                C = 450,
-                E = h,
-                D = function () {
-                    var A = k;
-                    try {
-                        return Intl[A(854)]().resolvedOptions()[A(608)]
-                    } catch (A) {
-                        return null
-                    }
-                }();
-            D && A(E(g), D);
-            var i, w, o, M, N, G, y, a, n, L, c, Y, F = new Date(E(I));
-            A(E(B), [D, (o = F, M = 450, N = h, G = JSON[N(252)](o)[N(671)](1, 11).split("-"), y = G[0], a = G[1], n = G[2], L = "".concat(a, "/")[N(450)](n, "/")[N(M)](y), c = ""[N(450)](y, "-")[N(M)](a, "-")[N(450)](n), Y = +(+new Date(L) - +new Date(c)) / 6e4, Math[N(388)](Y)), F[E(Q)](), [1879, 1921, 1952, 1976, 2018].reduce((function (A, g) {
-                var I = E;
-                return A + Number(new Date(I(577)[I(C)](g)))
-            }), 0), (i = String(new Date), (null === (w = /\((.+)\)/[h(516)](i)) || void 0 === w ? void 0 : w[1]) || ""), sA()]), D && A(E(682), FA(D))
-        })),
+        var g = 210,
+            I = 446,
+            B = 822,
+            Q = 863,
+            C = 450,
+            E = h,
+            D = function () {
+                var A = k;
+                try {
+                    return Intl[A(854)]().resolvedOptions()[A(608)]
+                } catch (A) {
+                    return null
+                }
+            }();
+        D && A(E(g), D);
+        var i, w, o, M, N, G, y, a, n, L, c, Y, F = new Date(E(I));
+        A(E(B), [D, (o = F, M = 450, N = h, G = JSON[N(252)](o)[N(671)](1, 11).split("-"), y = G[0], a = G[1], n = G[2], L = "".concat(a, "/")[N(450)](n, "/")[N(M)](y), c = ""[N(450)](y, "-")[N(M)](a, "-")[N(450)](n), Y = +(+new Date(L) - +new Date(c)) / 6e4, Math[N(388)](Y)), F[E(Q)](), [1879, 1921, 1952, 1976, 2018].reduce((function (A, g) {
+            var I = E;
+            return A + Number(new Date(I(577)[I(C)](g)))
+        }), 0), (i = String(new Date), (null === (w = /\((.+)\)/[h(516)](i)) || void 0 === w ? void 0 : w[1]) || ""), sA()]), D && A(E(682), FA(D))
+    })),
         tA = [h(599), h(277), h(685), h(212), h(245), h(259)],
         rA = z(h(527), (function (A) {
             var g = 745,
@@ -5831,15 +6156,15 @@ var hsw = function () {
             i = E[1];
         if (!D) return null;
         var w, o = function (A) {
-                var C = k;
-                try {
-                    if (QA && C(231) in Object) return [A[C(g)](A[C(182)]), A[C(331)](A[C(258)])];
-                    var E = A[C(341)]("WEBGL_debug_renderer_info");
-                    return E ? [A[C(I)](E[C(B)]), A.getParameter(E[C(Q)])] : null
-                } catch (A) {
-                    return null
-                }
-            }(D),
+            var C = k;
+            try {
+                if (QA && C(231) in Object) return [A[C(g)](A[C(182)]), A[C(331)](A[C(258)])];
+                var E = A[C(341)]("WEBGL_debug_renderer_info");
+                return E ? [A[C(I)](E[C(B)]), A.getParameter(E[C(Q)])] : null
+            } catch (A) {
+                return null
+            }
+        }(D),
             M = (w = D)[k(393)] ? w.getSupportedExtensions() : null,
             N = function (A) {
                 var g = 810,
@@ -5904,55 +6229,55 @@ var hsw = function () {
         ]
     }
     var UA, zA = z(h(636), (function (A) {
-            var g = 797,
-                I = 662,
-                B = 246,
-                Q = 213,
-                C = 379,
-                E = 684,
-                D = 842,
-                i = 772,
-                w = 326,
-                o = 525,
-                M = h,
-                N = SA(M(771)) || [],
-                G = N[0],
-                y = N[1];
-            G && (a = G[0]) && (A(M(774), a), A(M(221), a[M(g)](FA)));
-            var a, n = SA(M(I)) || [],
-                L = n[0],
-                c = n[1];
-            L && (a = L[0]) && A(M(303), a), A(M(596), [G, L]);
-            var Y = y || [],
-                F = Y[0],
-                k = Y[2],
-                J = c || [],
-                t = J[0],
-                r = J[1],
-                H = J[2];
-            void 0 === k && void 0 === H || A(M(B), !!k || !!H);
-            var K = s(s([], F || [], !0), t || [], !0)[M(Q)]((function (A, g, I) {
-                var B = M;
-                return B(o) == typeof A && I[B(588)](A) === g
-            }))[M(C)]((function (A, g) {
-                return A - g
-            }));
-            K[M(238)] && A(M(710), K), r && [
-                [M(E), r[0]],
-                [M(D), r[1]],
-                ["e7d", r[2]],
-                [M(653), r[3]],
-                ["d5a", r[4]],
-                ["1f9", r[5]],
-                [M(340), r[6]],
-                [M(267), r[7]],
-                [M(i), r[8]]
-            ][M(w)]((function (g) {
-                var I = g[0],
-                    B = g[1];
-                return B && A(I, B)
-            }))
-        })),
+        var g = 797,
+            I = 662,
+            B = 246,
+            Q = 213,
+            C = 379,
+            E = 684,
+            D = 842,
+            i = 772,
+            w = 326,
+            o = 525,
+            M = h,
+            N = SA(M(771)) || [],
+            G = N[0],
+            y = N[1];
+        G && (a = G[0]) && (A(M(774), a), A(M(221), a[M(g)](FA)));
+        var a, n = SA(M(I)) || [],
+            L = n[0],
+            c = n[1];
+        L && (a = L[0]) && A(M(303), a), A(M(596), [G, L]);
+        var Y = y || [],
+            F = Y[0],
+            k = Y[2],
+            J = c || [],
+            t = J[0],
+            r = J[1],
+            H = J[2];
+        void 0 === k && void 0 === H || A(M(B), !!k || !!H);
+        var K = s(s([], F || [], !0), t || [], !0)[M(Q)]((function (A, g, I) {
+            var B = M;
+            return B(o) == typeof A && I[B(588)](A) === g
+        }))[M(C)]((function (A, g) {
+            return A - g
+        }));
+        K[M(238)] && A(M(710), K), r && [
+            [M(E), r[0]],
+            [M(D), r[1]],
+            ["e7d", r[2]],
+            [M(653), r[3]],
+            ["d5a", r[4]],
+            ["1f9", r[5]],
+            [M(340), r[6]],
+            [M(267), r[7]],
+            [M(i), r[8]]
+        ][M(w)]((function (g) {
+            var I = g[0],
+                B = g[1];
+            return B && A(I, B)
+        }))
+    })),
         fA = !0,
         qA = Object[h(817)],
         dA = Object[h(798)];
@@ -6365,40 +6690,40 @@ var hsw = function () {
         }))
     }
     var Bg = z(h(305), (function (A) {
-            return Y(void 0, void 0, void 0, (function () {
-                var g, I, B, Q, C, E, D, i, w = 304,
-                    o = 600,
-                    M = 759,
-                    N = 473,
-                    G = 514,
-                    y = 307,
-                    a = 881,
-                    n = 866,
-                    L = 234,
-                    c = 356;
-                return F(this, (function (Y) {
-                    var F, s, J, t, r, H = k;
-                    switch (Y[H(w)]) {
-                        case 0:
-                            return [4, Promise[H(o)]([(t = h, r = navigator.storage, r && t(403) in r ? r[t(403)]().then((function (A) {
-                                return A.quota || null
-                            })) : null), (F = 561, s = h, J = navigator[s(631)], J && s(561) in J ? new Promise((function (A) {
-                                J[s(F)]((function (g, I) {
-                                    A(I || null)
-                                }))
-                            })) : null), "CSS" in window && H(759) in CSS && CSS[H(M)](H(N)) || !(H(G) in window) ? null : new Promise((function (A) {
-                                webkitRequestFileSystem(0, 1, (function () {
-                                    A(!1)
-                                }), (function () {
-                                    A(!0)
-                                }))
-                            })), Ig()])];
-                        case 1:
-                            return g = Y[H(689)](), I = g[0], B = g[1], Q = g[2], C = g[3], E = navigator.connection, D = [I, B, Q, C, "performance" in window && "memory" in window[H(y)] ? performance[H(a)].jsHeapSizeLimit : null, H(n) in window, "PushManager" in window, H(L) in window, (null == E ? void 0 : E[H(655)]) || null], A(H(746), D), (i = B || I) && A(H(c), FA(i)), [2]
-                    }
-                }))
+        return Y(void 0, void 0, void 0, (function () {
+            var g, I, B, Q, C, E, D, i, w = 304,
+                o = 600,
+                M = 759,
+                N = 473,
+                G = 514,
+                y = 307,
+                a = 881,
+                n = 866,
+                L = 234,
+                c = 356;
+            return F(this, (function (Y) {
+                var F, s, J, t, r, H = k;
+                switch (Y[H(w)]) {
+                    case 0:
+                        return [4, Promise[H(o)]([(t = h, r = navigator.storage, r && t(403) in r ? r[t(403)]().then((function (A) {
+                            return A.quota || null
+                        })) : null), (F = 561, s = h, J = navigator[s(631)], J && s(561) in J ? new Promise((function (A) {
+                            J[s(F)]((function (g, I) {
+                                A(I || null)
+                            }))
+                        })) : null), "CSS" in window && H(759) in CSS && CSS[H(M)](H(N)) || !(H(G) in window) ? null : new Promise((function (A) {
+                            webkitRequestFileSystem(0, 1, (function () {
+                                A(!1)
+                            }), (function () {
+                                A(!0)
+                            }))
+                        })), Ig()])];
+                    case 1:
+                        return g = Y[H(689)](), I = g[0], B = g[1], Q = g[2], C = g[3], E = navigator.connection, D = [I, B, Q, C, "performance" in window && "memory" in window[H(y)] ? performance[H(a)].jsHeapSizeLimit : null, H(n) in window, "PushManager" in window, H(L) in window, (null == E ? void 0 : E[H(655)]) || null], A(H(746), D), (i = B || I) && A(H(c), FA(i)), [2]
+                }
             }))
-        })),
+        }))
+    })),
         Qg = z(h(627), (function (A, g, I) {
             var B = 304,
                 Q = 775,
@@ -6503,8 +6828,8 @@ var hsw = function () {
             B = h;
         if (0 === A[B(238)]) return 0;
         var Q = s([], A, !0)[B(g)]((function (A, g) {
-                return A - g
-            })),
+            return A - g
+        })),
             C = Math[B(388)](Q[B(I)] / 2);
         return Q.length % 2 != 0 ? Q[C] : (Q[C - 1] + Q[C]) / 2
     }
@@ -6525,22 +6850,22 @@ var hsw = function () {
         if (c(307) in window) {
             c(E) in performance && A("63e", performance[c(D)]);
             var Y = (g = c, I = performance.getEntries(), B = {}, Q = [], C = [], I[g(326)]((function (A) {
-                    var I = g;
-                    if (A[I(565)]) {
-                        var E = A[I(N)][I(G)]("/")[2],
-                            D = ""[I(450)](A[I(565)], ":")[I(450)](E);
-                        B[D] || (B[D] = [
-                            [],
-                            []
-                        ]);
-                        var i = A[I(y)] - A[I(297)],
-                            w = A[I(721)] - A[I(a)];
-                        i > 0 && (B[D][0][I(n)](i), Q.push(i)), w > 0 && (B[D][1][I(n)](w), C[I(L)](w))
-                    }
-                })), [Object.keys(B)[g(797)]((function (A) {
-                    var g = B[A];
-                    return [A, og(g[0]), og(g[1])]
-                }))[g(M)](), og(Q), og(C)]),
+                var I = g;
+                if (A[I(565)]) {
+                    var E = A[I(N)][I(G)]("/")[2],
+                        D = ""[I(450)](A[I(565)], ":")[I(450)](E);
+                    B[D] || (B[D] = [
+                        [],
+                        []
+                    ]);
+                    var i = A[I(y)] - A[I(297)],
+                        w = A[I(721)] - A[I(a)];
+                    i > 0 && (B[D][0][I(n)](i), Q.push(i)), w > 0 && (B[D][1][I(n)](w), C[I(L)](w))
+                }
+            })), [Object.keys(B)[g(797)]((function (A) {
+                var g = B[A];
+                return [A, og(g[0]), og(g[1])]
+            }))[g(M)](), og(Q), og(C)]),
                 F = Y[0],
                 s = Y[1],
                 k = Y[2];
@@ -6602,21 +6927,21 @@ var hsw = function () {
         }))
     }
     var Gg = z(h(206), (function (A, g, I) {
-            var B = 616,
-                Q = 322;
-            return Y(void 0, void 0, void 0, (function () {
-                var g, C, E, D, i, w;
-                return F(this, (function (o) {
-                    var M = k;
-                    switch (o.label) {
-                        case 0:
-                            return (g = window[M(B)] || window[M(855)]) ? [4, Ng(new g(1, 5e3, 44100), I)] : [2];
-                        case 1:
-                            return C = o[M(689)](), E = C[0], D = C[1], i = C[2], w = C[3], A(M(343), [D && Array[M(322)](D.slice(-500)), i && Array[M(322)](i.slice(-500)), w && Array[M(Q)](w.slice(-500)), E]), [2]
-                    }
-                }))
+        var B = 616,
+            Q = 322;
+        return Y(void 0, void 0, void 0, (function () {
+            var g, C, E, D, i, w;
+            return F(this, (function (o) {
+                var M = k;
+                switch (o.label) {
+                    case 0:
+                        return (g = window[M(B)] || window[M(855)]) ? [4, Ng(new g(1, 5e3, 44100), I)] : [2];
+                    case 1:
+                        return C = o[M(689)](), E = C[0], D = C[1], i = C[2], w = C[3], A(M(343), [D && Array[M(322)](D.slice(-500)), i && Array[M(322)](i.slice(-500)), w && Array[M(Q)](w.slice(-500)), E]), [2]
+                }
             }))
-        })),
+        }))
+    })),
         yg = z(h(250), (function (A) {
             return Y(void 0, void 0, void 0, (function () {
                 var g, I, B, Q = 175,
@@ -6642,54 +6967,54 @@ var hsw = function () {
         return B ? Q : Math[h(388)](Q)
     }
     var Lg, cg = {
-            bezierCurve: function (A, g, I, B) {
-                var Q = 364,
-                    C = 513,
-                    E = 324,
-                    D = 735,
-                    i = h,
-                    w = g[i(522)],
-                    o = g[i(Q)];
-                A[i(C)](), A[i(E)](ng(B(), I, w), ng(B(), I, o)), A[i(D)](ng(B(), I, w), ng(B(), I, o), ng(B(), I, w), ng(B(), I, o), ng(B(), I, w), ng(B(), I, o)), A.stroke()
-            },
-            circularArc: function (A, g, I, B) {
-                var Q = 513,
-                    C = 841,
-                    E = 534,
-                    D = h,
-                    i = g[D(522)],
-                    w = g.height;
-                A[D(Q)](), A[D(C)](ng(B(), I, i), ng(B(), I, w), ng(B(), I, Math[D(E)](i, w)), ng(B(), I, 2 * Math.PI, !0), ng(B(), I, 2 * Math.PI, !0)), A.stroke()
-            },
-            ellipticalArc: function (A, g, I, B) {
-                var Q = h;
-                if (Q(325) in A) {
-                    var C = g.width,
-                        E = g.height;
-                    A[Q(513)](), A[Q(325)](ng(B(), I, C), ng(B(), I, E), ng(B(), I, Math[Q(388)](C / 2)), ng(B(), I, Math.floor(E / 2)), ng(B(), I, 2 * Math.PI, !0), ng(B(), I, 2 * Math.PI, !0), ng(B(), I, 2 * Math.PI, !0)), A[Q(420)]()
-                }
-            },
-            quadraticCurve: function (A, g, I, B) {
-                var Q = 324,
-                    C = 186,
-                    E = h,
-                    D = g[E(522)],
-                    i = g[E(364)];
-                A.beginPath(), A[E(Q)](ng(B(), I, D), ng(B(), I, i)), A[E(C)](ng(B(), I, D), ng(B(), I, i), ng(B(), I, D), ng(B(), I, i)), A[E(420)]()
-            },
-            outlineOfText: function (A, g, I, B) {
-                var Q = 450,
-                    C = 593,
-                    E = 450,
-                    D = 276,
-                    i = h,
-                    w = g[i(522)],
-                    o = g.height,
-                    M = W[i(724)](/!important/gm, ""),
-                    N = i(409)[i(Q)](String[i(C)](55357, 56835, 55357, 56446));
-                A[i(362)] = ""[i(E)](o / 2.99, i(D))[i(450)](M), A[i(713)](N, ng(B(), I, w), ng(B(), I, o), ng(B(), I, w))
+        bezierCurve: function (A, g, I, B) {
+            var Q = 364,
+                C = 513,
+                E = 324,
+                D = 735,
+                i = h,
+                w = g[i(522)],
+                o = g[i(Q)];
+            A[i(C)](), A[i(E)](ng(B(), I, w), ng(B(), I, o)), A[i(D)](ng(B(), I, w), ng(B(), I, o), ng(B(), I, w), ng(B(), I, o), ng(B(), I, w), ng(B(), I, o)), A.stroke()
+        },
+        circularArc: function (A, g, I, B) {
+            var Q = 513,
+                C = 841,
+                E = 534,
+                D = h,
+                i = g[D(522)],
+                w = g.height;
+            A[D(Q)](), A[D(C)](ng(B(), I, i), ng(B(), I, w), ng(B(), I, Math[D(E)](i, w)), ng(B(), I, 2 * Math.PI, !0), ng(B(), I, 2 * Math.PI, !0)), A.stroke()
+        },
+        ellipticalArc: function (A, g, I, B) {
+            var Q = h;
+            if (Q(325) in A) {
+                var C = g.width,
+                    E = g.height;
+                A[Q(513)](), A[Q(325)](ng(B(), I, C), ng(B(), I, E), ng(B(), I, Math[Q(388)](C / 2)), ng(B(), I, Math.floor(E / 2)), ng(B(), I, 2 * Math.PI, !0), ng(B(), I, 2 * Math.PI, !0), ng(B(), I, 2 * Math.PI, !0)), A[Q(420)]()
             }
         },
+        quadraticCurve: function (A, g, I, B) {
+            var Q = 324,
+                C = 186,
+                E = h,
+                D = g[E(522)],
+                i = g[E(364)];
+            A.beginPath(), A[E(Q)](ng(B(), I, D), ng(B(), I, i)), A[E(C)](ng(B(), I, D), ng(B(), I, i), ng(B(), I, D), ng(B(), I, i)), A[E(420)]()
+        },
+        outlineOfText: function (A, g, I, B) {
+            var Q = 450,
+                C = 593,
+                E = 450,
+                D = 276,
+                i = h,
+                w = g[i(522)],
+                o = g.height,
+                M = W[i(724)](/!important/gm, ""),
+                N = i(409)[i(Q)](String[i(C)](55357, 56835, 55357, 56446));
+            A[i(362)] = ""[i(E)](o / 2.99, i(D))[i(450)](M), A[i(713)](N, ng(B(), I, w), ng(B(), I, o), ng(B(), I, w))
+        }
+    },
         hg = z(h(468), (function (A) {
             var g = 522,
                 I = 364,
@@ -7093,20 +7418,20 @@ var hsw = function () {
         }))
     }
     var fg, qg = z(h(260), (function (A, g, I) {
-            return Y(void 0, void 0, void 0, (function () {
-                var g, B = 304,
-                    Q = 779;
-                return F(this, (function (C) {
-                    var E = k;
-                    switch (C[E(B)]) {
-                        case 0:
-                            return [4, zg(I)];
-                        case 1:
-                            return (g = C[E(689)]()) ? (A(E(Q), g), [2]) : [2]
-                    }
-                }))
+        return Y(void 0, void 0, void 0, (function () {
+            var g, B = 304,
+                Q = 779;
+            return F(this, (function (C) {
+                var E = k;
+                switch (C[E(B)]) {
+                    case 0:
+                        return [4, zg(I)];
+                    case 1:
+                        return (g = C[E(689)]()) ? (A(E(Q), g), [2]) : [2]
+                }
             }))
-        })),
+        }))
+    })),
         dg = K(h(214), null, !1),
         ug = z("552", (function (A) {
             var g = 689,
@@ -7155,8 +7480,8 @@ var hsw = function () {
                                 B = Promise[I(580)]([A, G]);
                             if (I(525) == typeof g && g < o) {
                                 var Q = Zg(g, (function (A) {
-                                        return I(M).concat(A, "ms")
-                                    })),
+                                    return I(M).concat(A, "ms")
+                                })),
                                     C = Q[0],
                                     E = Q[1];
                                 return B[I(y)]((function () {
@@ -7321,11 +7646,11 @@ var hsw = function () {
 
     function EI(A, g, I, B) {
         var Q = {
-                a: A,
-                b: g,
-                cnt: 1,
-                dtor: I
-            },
+            a: A,
+            b: g,
+            cnt: 1,
+            dtor: I
+        },
             C = function () {
                 for (var args = [], g = arguments.length; g--;) args[g] = arguments[g];
                 Q.cnt++;
@@ -7336,14 +7661,14 @@ var hsw = function () {
                         fp_id: args[0],
                         fp_value: args[1]
                     }
-                    record_fp.push(fp)
-                    console.log(record_fp)
+                   // record_fp.push(fp)
+                    //console.log(record_fp)
 
                     if (dump[fp.fp_id] !== undefined) {
                         args[1] = dump[fp.fp_id]
                     }
 
-                    console.log(args)
+                    //console.log(args)
 
                     return B.apply(void 0, [I, Q.b].concat(args))
                 } finally {
@@ -7599,9 +7924,9 @@ var hsw = function () {
         __wbg_new_ae366b99da42660b: function (A, g) {
             try {
                 var I = {
-                        a: A,
-                        b: g
-                    },
+                    a: A,
+                    b: g
+                },
                     B = new Promise((function (A, g) {
                         var B = I.a;
                         I.a = 0;
@@ -7838,14 +8163,14 @@ var hsw = function () {
         client: NI
     });
     var aI = {
-            "\b": "\\b",
-            "\t": "\\t",
-            "\n": "\\n",
-            "\f": "\\f",
-            "\r": "\\r",
-            '"': '\\"',
-            "\\": "\\\\"
-        },
+        "\b": "\\b",
+        "\t": "\\t",
+        "\n": "\\n",
+        "\f": "\\f",
+        "\r": "\\r",
+        '"': '\\"',
+        "\\": "\\\\"
+    },
         nI = /[\\"\u0000-\u001f\u007f-\u009f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g;
 
     function LI(A) {
@@ -7951,22 +8276,22 @@ var hsw = function () {
     var JI = function (A) {
         return function (g, I) {
             var B = function (A) {
-                    try {
-                        var g = A.split(".");
-                        return {
-                            header: JSON.parse(atob(g[0])),
-                            payload: JSON.parse(atob(g[1])),
-                            signature: atob(g[2].replace(/_/g, "/").replace(/-/g, "+")),
-                            raw: {
-                                header: g[0],
-                                payload: g[1],
-                                signature: g[2]
-                            }
+                try {
+                    var g = A.split(".");
+                    return {
+                        header: JSON.parse(atob(g[0])),
+                        payload: JSON.parse(atob(g[1])),
+                        signature: atob(g[2].replace(/_/g, "/").replace(/-/g, "+")),
+                        raw: {
+                            header: g[0],
+                            payload: g[1],
+                            signature: g[2]
                         }
-                    } catch (A) {
-                        throw new Error("Token is invalid.")
                     }
-                }(g),
+                } catch (A) {
+                    throw new Error("Token is invalid.")
+                }
+            }(g),
                 Q = B.payload,
                 C = Math.round(Date.now() / 1e3);
             return A(JSON.stringify(Q), C, I)

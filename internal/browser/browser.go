@@ -165,14 +165,14 @@ func (I *Instance) CloseInstance() error {
 }
 
 func (I *Instance) NavigateToDiscord() error {
-	if _, err := I.Page.Goto("https://discord.com", playwright.PageGotoOptions{
+	if _, err := I.Page.Goto("https://discord.gg/yx2HWKwN", playwright.PageGotoOptions{
 		Timeout:   playwright.Float(10000),
 		WaitUntil: playwright.WaitUntilStateDomcontentloaded,
 	}); err != nil {
 		return err
 	}
 
-	time.Sleep(time.Second * 2)
+	/*time.Sleep(time.Second * 2)
 
 	bl, err := I.Page.WaitForSelector(BUTTON_LOGIN, playwright.PageWaitForSelectorOptions{
 		State:   playwright.WaitForSelectorStateAttached,
@@ -187,7 +187,7 @@ func (I *Instance) NavigateToDiscord() error {
 		Timeout: playwright.Float(3000),
 	}); err != nil {
 		return err
-	}
+	}*/
 
 	if err := I.Page.Type(USERNAME_INPUT, "vichyontop1337", playwright.PageTypeOptions{
 		Timeout: playwright.Float(3000),

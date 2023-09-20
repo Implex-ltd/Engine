@@ -1,19 +1,19 @@
 [engine]
-browserHswThreadCount = 10
-browserCount = 2
-rotation = 30
+browserHswThreadCount = 20
+browserCount = 5
+rotation = 15
 rotation_wait = 15
 
 [browser]
-name = "gologin"
-useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+name = "dolphin"
+useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
 os = "win"
 headless = false
 
 [mock]
 enable_hsj = false
 inject_hsw = true
-inject_spoof = false
+inject_spoof = true
 block_register = true
 hsw_version = "bf600bd"
 
