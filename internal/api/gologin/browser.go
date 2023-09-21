@@ -15,7 +15,7 @@ import (
 
 var (
 	gologinendpoint = "http://127.0.0.1:36912"
-	token           = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTA5OGQwMWY0ZjM1NzJiYTI5ZWRmNjAiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2NTA5OGQwNzNhYzk1YjJiZjBkZWE5NTMifQ.YNNua5NQfEylbquQjaEkZ0H6bwdYsfZDxmShCBpwTeA"
+	token           = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTBiNmM4MDQyMTExOTAzNzA2YjUyZmIiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2NTBiNmM4YTk1ZDViNDA3NDAzZDQxMTEifQ.dCl2O6p2DLuKn-NSfbazC60GrBElVahIFYDj_IuFLDY"
 	Limiter         = ratelimiter.NewLimiter(150, time.Minute)
 )
 

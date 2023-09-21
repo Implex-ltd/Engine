@@ -1,5 +1,5 @@
 const dump = {
-    
+    /*
     "123": [
         16,
         1024,
@@ -38,7 +38,7 @@ const dump = {
         53,
         255
     ],
-    
+    */
     /*
     "513": [
         "YUdN2adMWgtOxqZM",
@@ -48,8 +48,8 @@ const dump = {
     ],
     */
     "687": [
-        "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
+        "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
         8,
         16,
         "fr-FR",
@@ -62,9 +62,9 @@ const dump = {
         "Win32",
         null,
         [
-            "Google Chrome 117",
+            "Google Chrome 116",
             "Not;A=Brand 8",
-            "Chromium 117"
+            "Chromium 116"
         ],
         false,
         "Windows",
@@ -230,6 +230,7 @@ const dump = {
     "46e": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAR9JREFUOE/N1MEqRVEUxvHfHRoYMZOSiaEH8AgewAAzpZBShpQYGijFC2DgDTCVBzA08QbGplo6S7vt3NqnrnJGp9Na3/p/69v7jEz4GU1YzxDBFVxhDbM4xjo+Sqghgk1mUnAGd13HFo6w0BEEzT128VKpBmU877jFRgoudU3LeO1svRXN2XhWfIueExxiFTfx3md5qiu6LvYTzZfYRw6KIUGWzr5nlYJRcNoRPOEBF2Mok25vXCghNocDfKJMNIlKkZ0+uiTssxO2g+65shSDpzGPX3QpGDSbBV26jDO2iDqISPy83l02xQ6HCObxiiH1EfoJZYjlJsFQrkMJu7GG+mo1C2YI290uHvvuKZoFm+5pS9Gf/RxahjfV/H/CL60pQ+2uFC+LAAAAAElFTkSuQmCC",
     */
     
+    /*
     "8f4": [
         14,
         4,
@@ -239,6 +240,7 @@ const dump = {
         4,
         44.2890625
     ],
+    */
     
     /*
     "7ac": [
@@ -2357,7 +2359,7 @@ const dump = {
     "d02": [
         [
             [
-                "https://newassets.hcaptcha.com/captcha/v1/9d7eeee/hcaptcha.js",
+                "https://newassets.hcaptcha.com/captcha/v1/12aefcf/hcaptcha.js",
                 0,
                 5
             ]
@@ -2371,6 +2373,7 @@ const dump = {
         ]
     ],
     */
+    
     "07c": [
         1,
         4,
@@ -2385,6 +2388,7 @@ const dump = {
         29
     ],
 
+    /*
     "2b7": [
         277114314453,
         277114314460,
@@ -2439,7 +2443,8 @@ const dump = {
         true,
         false
     ],
-    
+    */
+
     "d97": {
         "ActiveBorder": "rgb(0, 0, 0)",
         "ActiveCaption": "rgb(0, 0, 0)",
@@ -2490,6 +2495,7 @@ const dump = {
         "Arial",
         "\"Segoe UI\""
     ],
+    /*
     "19e": [
         "cssText",
         "length",
@@ -3116,8 +3122,10 @@ const dump = {
         "zoom"
     ],
     "67e": 623,
+    */
     "b2e": "Europe/Paris",
     
+    /*
     "63e": 1695226655095.8,
     "ba2": [
         [
@@ -3152,7 +3160,9 @@ const dump = {
         0.09999999403953552,
         27
     ],
+    */
     
+    /*
     "7e0": [
         "Object",
         "Function",
@@ -4271,7 +4281,8 @@ const dump = {
         "webkitRequestFileSystem",
         "webkitResolveLocalFileSystemURL"
     ],
-    
+    */
+
     "68c": [
         [
             "loadTimes",
@@ -4891,7 +4902,7 @@ const dump = {
         4
     ],
     
-    
+    /*
     "fd2": [
         0,
         11411,
@@ -4917,6 +4928,7 @@ const dump = {
         "x86",
         "117.0.5938.88"
     ],
+    */
     
     "7ec": [
         "granted",
