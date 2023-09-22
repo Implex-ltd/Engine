@@ -62,9 +62,9 @@ const dump = {
         "Win32",
         null,
         [
-            "Google Chrome 116",
+            "Google Chrome 117",
             "Not;A=Brand 8",
-            "Chromium 116"
+            "Chromium 117"
         ],
         false,
         "Windows",
@@ -4715,7 +4715,7 @@ const dump = {
     ],
     */
     
-    "f20": [
+   /* "f20": [
         [
             true,
             "fr-FR",
@@ -4893,14 +4893,14 @@ const dump = {
             "Microsoft Paul - French (France)",
             "Microsoft Paul - French (France)"
         ]
-    ],
-    "39b": [
+    ],*/
+    /*"39b": [
         0,
         1,
         2,
         3,
         4
-    ],
+    ],*/
     
     /*
     "fd2": [
@@ -4919,16 +4919,16 @@ const dump = {
         true,
         null
     ],
-    
-    "1a3": [
+    */
+  /*  "1a3": [
         "Windows",
         "15.0.0",
         null,
         "64",
         "x86",
         "117.0.5938.88"
-    ],
-    */
+    ],*/
+    
     
     "7ec": [
         "granted",

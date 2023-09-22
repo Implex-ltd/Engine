@@ -22,10 +22,9 @@ import (
 )
 
 var (
-	pool     []*browser.Instance
-	browsers []api.Browser
-	mt       sync.Mutex
-	curr     = 0
+	pool []*browser.Instance
+	mt   sync.Mutex
+	curr = 0
 )
 
 func next() *browser.Instance {
@@ -68,15 +67,11 @@ func initBrowser() {
 				return
 			}
 
-			browsers = append(browsers, br)
-
 			cdp, err := br.Start()
 			if err != nil {
 				log.Println(err)
 				return
 			}
-
-			defer br.Close()
 
 			client, err := browser.NewInstance(&browser.InstanceConfig{
 				Mock:     Config.Mock.BlockRegister,
@@ -89,6 +84,7 @@ func initBrowser() {
 				Path:     cdp,
 				Inject:   Config.Mock.InjectHsw,
 				Hsj:      Config.Mock.EnableHsj,
+				API:      br,
 			})
 			if err != nil {
 				log.Println("NewInstance", err)
@@ -102,6 +98,10 @@ func initBrowser() {
 				}
 			}(client)
 
+			mt.Lock()
+			pool = append(pool, client)
+			mt.Unlock()
+
 			if err := client.NavigateToDiscord(); err != nil {
 				log.Println("NavigateToDiscord", err)
 				return
@@ -114,10 +114,6 @@ func initBrowser() {
 
 			log.Println("Hooked!")
 			client.Online = true
-
-			mt.Lock()
-			pool = append(pool, client)
-			mt.Unlock()
 
 			defer func() {
 				mt.Lock()
@@ -220,7 +216,7 @@ func debug() {
 	gotos := []string{
 		"https://abrahamjuliot.github.io/creepjs/",
 	}
-	lock := false
+	lock := true
 
 	c := crawler.NewCrawler(Config.Mock.HswVersion, Config.Browser.Name, Config.Browser.Useragent, Config.Browser.Os, gotos, lock, Config.Mock.InjectSpoof, Config.Mock.EnableHsj, Config.Browser.Headless, Config.Mock.InjectHsw)
 
@@ -272,19 +268,18 @@ func main() {
 	interrupt := make(chan os.Signal, 1)
 	signal.Notify(interrupt, os.Interrupt, syscall.SIGTERM)
 
-	// Use a sync.WaitGroup to wait for cleanup before exiting
 	var wg sync.WaitGroup
 
 	go func() {
 		<-interrupt
 		fmt.Println("\nExit...")
 
-		for _, br := range browsers {
+		for _, br := range pool {
 			wg.Add(1)
-			go func(b api.Browser) {
+			go func(b *browser.Instance) {
 				defer wg.Done()
 
-				err := b.Close()
+				err := b.CloseInstance()
 				if err != nil {
 					log.Println("cant close: ", err)
 				}

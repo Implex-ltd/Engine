@@ -13,7 +13,7 @@ headless = false
 [mock]
 enable_hsj = false
 inject_hsw = true
-inject_spoof = true
+inject_spoof = false
 block_register = true
 hsw_version = "bf600bd"
 

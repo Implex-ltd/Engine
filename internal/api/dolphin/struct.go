@@ -63,8 +63,8 @@ type Audio struct {
 }
 
 type CPU struct {
-	Mode string `json:"mode"`
-	//Value int64  `json:"value"`
+	Mode  string `json:"mode"`
+	Value int64  `json:"value"`
 }
 
 type Geolocation struct {

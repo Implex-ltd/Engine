@@ -20,7 +20,7 @@ func NewInstance(config *InstanceConfig) (*Instance, error) {
 
 	if config.IsRaw {
 		args := []string{
-			"--lang=fr-FR", // fr-FR
+			"--lang=fr-FR",
 			"--disable-encryption",
 			"--font-masking-mode=3",
 			"--flag-switches-begin",
@@ -119,7 +119,7 @@ func NewInstance(config *InstanceConfig) (*Instance, error) {
 	}
 
 	if config.Spoof {
-		if err := page.AddInitScript(playwright.PageAddInitScriptOptions{
+		if err := page.AddInitScript(playwright.Script{
 			Path: playwright.String("./scripts/spoof.js"),
 		}); err != nil {
 			return nil, err
@@ -132,27 +132,36 @@ func NewInstance(config *InstanceConfig) (*Instance, error) {
 		Br:      context.Browser(),
 		Page:    page,
 		Manager: make(chan struct{}, config.Threads),
+		Ctx:     context,
+		API:     config.API,
 	}, nil
 }
 
-func (I *Instance) CloseInstance() error {
+func (i *Instance) CloseInstance() error {
 	var errList []error
 
-	if I.Page != nil {
-		if err := I.Page.Close(); err != nil {
+	defer i.API.Close()
+
+	if i.Ctx != nil {
+		if err := i.Ctx.Close(); err != nil {
 			errList = append(errList, err)
 		}
 	}
 
-	// make crash ?
-	if I.Br != nil {
-		if err := I.Br.Close(); err != nil {
+	if i.Page != nil {
+		if err := i.Page.Close(); err != nil {
 			errList = append(errList, err)
 		}
 	}
 
-	if I.Pw != nil {
-		if err := I.Pw.Stop(); err != nil {
+	if i.Br != nil {
+		if err := i.Br.Close(); err != nil {
+			errList = append(errList, err)
+		}
+	}
+
+	if i.Pw != nil {
+		if err := i.Pw.Stop(); err != nil {
 			errList = append(errList, err)
 		}
 	}

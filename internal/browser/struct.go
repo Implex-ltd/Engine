@@ -1,8 +1,10 @@
 package browser
 
 import (
+	"github.com/Implex-ltd/engine/internal/api"
 	"github.com/playwright-community/playwright-go"
 )
+
 /*
 var (
 	BUTTON_LOGIN   = `#app-mount > div > div > div.grid-3d2PVT.heroBackground-itJzsn > div.row-31oovZ.heroContainer-3YphMz > div > div.ctaContainer-5100Xg > button`
@@ -22,7 +24,6 @@ var (
 	HCAPTCHA_FRAME = `//iframe[contains(@title,'Widget contenant une case à cocher pour le défi de sécurité hCaptcha')]`
 )
 
-
 type Instance struct {
 	Pw      *playwright.Playwright
 	Br      playwright.Browser
@@ -30,6 +31,8 @@ type Instance struct {
 	Frame   playwright.Frame
 	Manager chan struct{}
 	Online  bool
+	Ctx     playwright.BrowserContext
+	API     api.Browser
 }
 
 type InstanceConfig struct {
@@ -43,4 +46,5 @@ type InstanceConfig struct {
 	CDP      string
 	Path     string
 	Hsj      bool
+	API      api.Browser
 }
