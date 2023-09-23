@@ -30,6 +30,6 @@ def test():
 
 if __name__ == "__main__":
 	t = time.time()
-	for _ in range(50):
+	for _ in range(150):
 		threading.Thread(target=test).start()
 	print(time.time() - t)

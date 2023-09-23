@@ -140,7 +140,11 @@ func NewInstance(config *InstanceConfig) (*Instance, error) {
 func (i *Instance) CloseInstance() error {
 	var errList []error
 
-	defer i.API.Close()
+	defer func() {
+		if err := i.API.Close(); err != nil {
+			log.Printf("cant close: %v", err.Error())
+		}
+	}()
 
 	if i.Ctx != nil {
 		if err := i.Ctx.Close(); err != nil {

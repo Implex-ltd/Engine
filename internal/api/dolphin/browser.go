@@ -324,7 +324,7 @@ func NewDolphin(UserAgent, Os string) (*Dolphin, error) {
 		Name:        utils.GenerateRandomString(5),
 		BrowserType: "anty", // Browser type. Available values: ['anty']. really ?????
 		Webrtc: Webrtc{
-			Mode: "altered",
+			Mode: "off",
 		},
 		ProductSub:  "20030107",
 		Vendor:      "Google Inc.",
@@ -347,7 +347,7 @@ func NewDolphin(UserAgent, Os string) (*Dolphin, error) {
 			Renderer: renderer,
 		},
 		ClientRect: Audio{
-			Mode: "noise",
+			Mode: "off",
 		},
 		Memory: CPU{
 			Mode:  "manual",

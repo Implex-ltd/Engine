@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -160,23 +161,29 @@ func (G *Gologin) Create() error {
 }
 
 func (G *Gologin) Start() (string, error) {
-	resp, err := G.Client.Post(fmt.Sprintf("%s/browser/start-profile", gologinendpoint), "application/json", strings.NewReader(fmt.Sprintf(`{"profileId": "%s","sync": true}`, G.UUID)))
-	if err != nil {
-		return "", err
-	}
-	defer resp.Body.Close()
+	for {
+		resp, err := G.Client.Post(fmt.Sprintf("%s/browser/start-profile", gologinendpoint), "application/json", strings.NewReader(fmt.Sprintf(`{"profileId": "%s","sync": true}`, G.UUID)))
+		if err != nil {
+			log.Println(err.Error())
+			time.Sleep(500 * time.Millisecond)
+			continue
+		}
+		defer resp.Body.Close()
 
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return "", err
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			return "", err
+		}
+
+		var data GologinStartBrowserResponse
+		if err := json.Unmarshal(body, &data); err != nil {
+			return "", err
+		}
+
+		return data.WsUrl, nil
 	}
 
-	var data GologinStartBrowserResponse
-	if err := json.Unmarshal(body, &data); err != nil {
-		return "", err
-	}
-
-	return data.WsUrl, nil
+	return "", fmt.Errorf("cant start")
 }
 
 func (G *Gologin) Close() error {

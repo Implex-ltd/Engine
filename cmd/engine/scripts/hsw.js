@@ -47,6 +47,7 @@ const dump = {
         "QZDEQZRLATWYT"
     ],
     */
+    /*
     "687": [
         "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
@@ -62,9 +63,9 @@ const dump = {
         "Win32",
         null,
         [
-            "Google Chrome 117",
+            "Google Chrome 116",
             "Not;A=Brand 8",
-            "Chromium 117"
+            "Chromium 116"
         ],
         false,
         "Windows",
@@ -80,6 +81,7 @@ const dump = {
         false,
         false
     ],
+    */
     //"701": 1116,
     "787": [
         "Europe/Paris",
@@ -229,7 +231,7 @@ const dump = {
     /*
     "46e": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAR9JREFUOE/N1MEqRVEUxvHfHRoYMZOSiaEH8AgewAAzpZBShpQYGijFC2DgDTCVBzA08QbGplo6S7vt3NqnrnJGp9Na3/p/69v7jEz4GU1YzxDBFVxhDbM4xjo+Sqghgk1mUnAGd13HFo6w0BEEzT128VKpBmU877jFRgoudU3LeO1svRXN2XhWfIueExxiFTfx3md5qiu6LvYTzZfYRw6KIUGWzr5nlYJRcNoRPOEBF2Mok25vXCghNocDfKJMNIlKkZ0+uiTssxO2g+65shSDpzGPX3QpGDSbBV26jDO2iDqISPy83l02xQ6HCObxiiH1EfoJZYjlJsFQrkMJu7GG+mo1C2YI290uHvvuKZoFm+5pS9Gf/RxahjfV/H/CL60pQ+2uFC+LAAAAAElFTkSuQmCC",
     */
-    
+
     /*
     "8f4": [
         14,
@@ -241,7 +243,7 @@ const dump = {
         44.2890625
     ],
     */
-    
+
     /*
     "7ac": [
         274.609375,
@@ -2373,7 +2375,7 @@ const dump = {
         ]
     ],
     */
-    
+
     "07c": [
         1,
         4,
@@ -2445,6 +2447,7 @@ const dump = {
     ],
     */
 
+    /*
     "d97": {
         "ActiveBorder": "rgb(0, 0, 0)",
         "ActiveCaption": "rgb(0, 0, 0)",
@@ -2491,6 +2494,7 @@ const dump = {
         "small-caption": "12px \"Segoe UI\"",
         "status-bar": "12px \"Segoe UI\""
     },
+    */
     "89d": [
         "Arial",
         "\"Segoe UI\""
@@ -3124,7 +3128,7 @@ const dump = {
     "67e": 623,
     */
     "b2e": "Europe/Paris",
-    
+
     /*
     "63e": 1695226655095.8,
     "ba2": [
@@ -3161,7 +3165,7 @@ const dump = {
         27
     ],
     */
-    
+
     /*
     "7e0": [
         "Object",
@@ -4283,6 +4287,7 @@ const dump = {
     ],
     */
 
+    /*
     "68c": [
         [
             "loadTimes",
@@ -4329,7 +4334,7 @@ const dump = {
         [],
         true
     ],
-    
+
     "07a": [
         true,
         true,
@@ -4351,7 +4356,8 @@ const dump = {
         true,
         true
     ],
-    
+    */
+
     /*
     "29e": [
         "Google Inc. (NVIDIA)",
@@ -4714,186 +4720,186 @@ const dump = {
         ]
     ],
     */
-    
-   /* "f20": [
-        [
-            true,
-            "fr-FR",
-            true,
-            "Microsoft Hortense - French (France)",
-            "Microsoft Hortense - French (France)"
-        ],
-        [
-            false,
-            "fr-FR",
-            true,
-            "Microsoft Julie - French (France)",
-            "Microsoft Julie - French (France)"
-        ],
-        [
-            false,
-            "fr-FR",
-            true,
-            "Microsoft Paul - French (France)",
-            "Microsoft Paul - French (France)"
-        ],
-        [
-            false,
-            "de-DE",
-            false,
-            "Google Deutsch",
-            "Google Deutsch"
-        ],
-        [
-            false,
-            "en-US",
-            false,
-            "Google US English",
-            "Google US English"
-        ],
-        [
-            false,
-            "en-GB",
-            false,
-            "Google UK English Female",
-            "Google UK English Female"
-        ],
-        [
-            false,
-            "en-GB",
-            false,
-            "Google UK English Male",
-            "Google UK English Male"
-        ],
-        [
-            false,
-            "es-ES",
-            false,
-            "Google español",
-            "Google español"
-        ],
-        [
-            false,
-            "es-US",
-            false,
-            "Google español de Estados Unidos",
-            "Google español de Estados Unidos"
-        ],
-        [
-            false,
-            "fr-FR",
-            false,
-            "Google français",
-            "Google français"
-        ],
-        [
-            false,
-            "hi-IN",
-            false,
-            "Google हिन्दी",
-            "Google हिन्दी"
-        ],
-        [
-            false,
-            "id-ID",
-            false,
-            "Google Bahasa Indonesia",
-            "Google Bahasa Indonesia"
-        ],
-        [
-            false,
-            "it-IT",
-            false,
-            "Google italiano",
-            "Google italiano"
-        ],
-        [
-            false,
-            "ja-JP",
-            false,
-            "Google 日本語",
-            "Google 日本語"
-        ],
-        [
-            false,
-            "ko-KR",
-            false,
-            "Google 한국의",
-            "Google 한국의"
-        ],
-        [
-            false,
-            "nl-NL",
-            false,
-            "Google Nederlands",
-            "Google Nederlands"
-        ],
-        [
-            false,
-            "pl-PL",
-            false,
-            "Google polski",
-            "Google polski"
-        ],
-        [
-            false,
-            "pt-BR",
-            false,
-            "Google português do Brasil",
-            "Google português do Brasil"
-        ],
-        [
-            false,
-            "ru-RU",
-            false,
-            "Google русский",
-            "Google русский"
-        ],
-        [
-            false,
-            "zh-CN",
-            false,
-            "Google 普通话（中国大陆）",
-            "Google 普通话（中国大陆）"
-        ],
-        [
-            false,
-            "zh-HK",
-            false,
-            "Google 粤語（香港）",
-            "Google 粤語（香港）"
-        ],
-        [
-            false,
-            "zh-TW",
-            false,
-            "Google 國語（臺灣）",
-            "Google 國語（臺灣）"
-        ]
-    ],
-    "e03": [
-        [
-            true,
-            "fr-FR",
-            true,
-            "Microsoft Hortense - French (France)",
-            "Microsoft Hortense - French (France)"
-        ],
-        [
-            false,
-            "fr-FR",
-            true,
-            "Microsoft Julie - French (France)",
-            "Microsoft Julie - French (France)"
-        ],
-        [
-            false,
-            "fr-FR",
-            true,
-            "Microsoft Paul - French (France)",
-            "Microsoft Paul - French (France)"
-        ]
-    ],*/
+
+    "f20": [
+         [
+             true,
+             "fr-FR",
+             true,
+             "Microsoft Hortense - French (France)",
+             "Microsoft Hortense - French (France)"
+         ],
+         [
+             false,
+             "fr-FR",
+             true,
+             "Microsoft Julie - French (France)",
+             "Microsoft Julie - French (France)"
+         ],
+         [
+             false,
+             "fr-FR",
+             true,
+             "Microsoft Paul - French (France)",
+             "Microsoft Paul - French (France)"
+         ],
+         [
+             false,
+             "de-DE",
+             false,
+             "Google Deutsch",
+             "Google Deutsch"
+         ],
+         [
+             false,
+             "en-US",
+             false,
+             "Google US English",
+             "Google US English"
+         ],
+         [
+             false,
+             "en-GB",
+             false,
+             "Google UK English Female",
+             "Google UK English Female"
+         ],
+         [
+             false,
+             "en-GB",
+             false,
+             "Google UK English Male",
+             "Google UK English Male"
+         ],
+         [
+             false,
+             "es-ES",
+             false,
+             "Google español",
+             "Google español"
+         ],
+         [
+             false,
+             "es-US",
+             false,
+             "Google español de Estados Unidos",
+             "Google español de Estados Unidos"
+         ],
+         [
+             false,
+             "fr-FR",
+             false,
+             "Google français",
+             "Google français"
+         ],
+         [
+             false,
+             "hi-IN",
+             false,
+             "Google हिन्दी",
+             "Google हिन्दी"
+         ],
+         [
+             false,
+             "id-ID",
+             false,
+             "Google Bahasa Indonesia",
+             "Google Bahasa Indonesia"
+         ],
+         [
+             false,
+             "it-IT",
+             false,
+             "Google italiano",
+             "Google italiano"
+         ],
+         [
+             false,
+             "ja-JP",
+             false,
+             "Google 日本語",
+             "Google 日本語"
+         ],
+         [
+             false,
+             "ko-KR",
+             false,
+             "Google 한국의",
+             "Google 한국의"
+         ],
+         [
+             false,
+             "nl-NL",
+             false,
+             "Google Nederlands",
+             "Google Nederlands"
+         ],
+         [
+             false,
+             "pl-PL",
+             false,
+             "Google polski",
+             "Google polski"
+         ],
+         [
+             false,
+             "pt-BR",
+             false,
+             "Google português do Brasil",
+             "Google português do Brasil"
+         ],
+         [
+             false,
+             "ru-RU",
+             false,
+             "Google русский",
+             "Google русский"
+         ],
+         [
+             false,
+             "zh-CN",
+             false,
+             "Google 普通话（中国大陆）",
+             "Google 普通话（中国大陆）"
+         ],
+         [
+             false,
+             "zh-HK",
+             false,
+             "Google 粤語（香港）",
+             "Google 粤語（香港）"
+         ],
+         [
+             false,
+             "zh-TW",
+             false,
+             "Google 國語（臺灣）",
+             "Google 國語（臺灣）"
+         ]
+     ],
+     "e03": [
+         [
+             true,
+             "fr-FR",
+             true,
+             "Microsoft Hortense - French (France)",
+             "Microsoft Hortense - French (France)"
+         ],
+         [
+             false,
+             "fr-FR",
+             true,
+             "Microsoft Julie - French (France)",
+             "Microsoft Julie - French (France)"
+         ],
+         [
+             false,
+             "fr-FR",
+             true,
+             "Microsoft Paul - French (France)",
+             "Microsoft Paul - French (France)"
+         ]
+     ],
     /*"39b": [
         0,
         1,
@@ -4901,7 +4907,7 @@ const dump = {
         3,
         4
     ],*/
-    
+
     /*
     "fd2": [
         0,
@@ -4920,16 +4926,16 @@ const dump = {
         null
     ],
     */
-  /*  "1a3": [
-        "Windows",
-        "15.0.0",
-        null,
-        "64",
-        "x86",
-        "117.0.5938.88"
-    ],*/
-    
-    
+    /*  "1a3": [
+          "Windows",
+          "15.0.0",
+          null,
+          "64",
+          "x86",
+          "117.0.5938.88"
+      ],*/
+
+
     "7ec": [
         "granted",
         "TypeError",
@@ -4962,7 +4968,7 @@ const dump = {
         "TypeError",
         "denied"
     ],
-    
+
     "7b7": [
         "denied",
         "denied"
@@ -7673,7 +7679,7 @@ var hsw = function () {
                         fp_id: args[0],
                         fp_value: args[1]
                     }
-                   // record_fp.push(fp)
+                    // record_fp.push(fp)
                     //console.log(record_fp)
 
                     if (dump[fp.fp_id] !== undefined) {
