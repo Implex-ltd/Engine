@@ -1,7 +1,7 @@
 [engine]
 browserHswThreadCount = 20
-browserCount = 5
-rotation = 20
+browserCount = 4
+rotation = 15
 rotation_wait = 15
 
 [browser]

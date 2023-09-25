@@ -280,7 +280,7 @@ func (I *Instance) Hsw(jwt string, timeoutDuration time.Duration) (string, error
 
 	go func() {
 		answer, err := I.Frame.Evaluate(fmt.Sprintf("hsw(`%s`)", jwt), playwright.ElementHandleInputValueOptions{
-			Timeout: playwright.Float(10000),
+			Timeout: playwright.Float(1500),
 		})
 		if err != nil {
 			errChan <- err
@@ -293,7 +293,7 @@ func (I *Instance) Hsw(jwt string, timeoutDuration time.Duration) (string, error
 	case result := <-resultChan:
 		return result, nil
 	case err := <-errChan:
-		fmt.Println(err)
+		fmt.Println("eval err:", err)
 		return "", err
 	case <-time.After(timeoutDuration):
 		return "", errors.New("evaluation timed out")

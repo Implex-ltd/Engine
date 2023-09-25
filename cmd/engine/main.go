@@ -23,7 +23,7 @@ import (
 
 var (
 	pool []*browser.Instance
-	mt   sync.Mutex
+	mt   = sync.Mutex{}
 	curr = 0
 )
 
@@ -102,6 +102,18 @@ func initBrowser() {
 			pool = append(pool, client)
 			mt.Unlock()
 
+			defer func() {
+				mt.Lock()
+				defer mt.Unlock()
+
+				for i, c := range pool {
+					if c == client {
+						pool = append(pool[:i], pool[i+1:]...)
+						break
+					}
+				}
+			}()
+
 			if err := client.NavigateToDiscord(); err != nil {
 				log.Println("NavigateToDiscord", err)
 				return
@@ -114,18 +126,6 @@ func initBrowser() {
 
 			log.Println("Hooked!")
 			client.Online = true
-
-			defer func() {
-				mt.Lock()
-				defer mt.Unlock()
-
-				for i, c := range pool {
-					if c == client {
-						pool = append(pool[:i], pool[i+1:]...)
-						break
-					}
-				}
-			}()
 
 			t := time.NewTicker(time.Second)
 			st := time.Now()
@@ -147,6 +147,8 @@ func initBrowser() {
 					}
 				}
 			}
+
+			log.Println("not online")
 		}(i)
 
 		i += float64(Config.Engine.RotationWait)
@@ -246,6 +248,8 @@ func engine() {
 }
 
 func main() {
+	//os.Setenv("DEBUGP", "1")
+
 	err := playwright.Install()
 	if err != nil {
 		panic(err)
