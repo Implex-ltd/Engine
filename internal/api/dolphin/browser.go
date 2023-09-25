@@ -32,7 +32,7 @@ func NewDolphin(UserAgent, Os string) (*Dolphin, error) {
 
 	vendor, renderer := utils.GetRandomVendorRenderer()
 
-	w, h := utils.GenerateRandomBrowserSize(500, 3500)
+	w, h := utils.GenerateRandomBrowserSize(800, 3500)
 
 	Self.Config = DolphinCreateBrowserPayload{
 		Useragent: Locale{

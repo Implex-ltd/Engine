@@ -6,13 +6,13 @@ rotation_wait = 15
 
 [browser]
 name = "dolphin"
-useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
 os = "win"
 headless = false
 
 [mock]
 enable_hsj = false
-inject_hsw = true
+inject_hsw = false
 inject_spoof = false
 block_register = true
 hsw_version = "28ff887"
