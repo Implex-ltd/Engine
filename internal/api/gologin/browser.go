@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -58,7 +57,7 @@ func NewGologin(UserAgent, Os string) (*Gologin, error) {
 		Canvas: AudioContext{
 			Mode: "noise",
 		},
-		Fonts: Fonts{
+		Fonts:  Fonts{
 			EnableMasking: true,
 			EnableDOMRect: true,
 			Families:      fp.Fonts,
@@ -161,29 +160,25 @@ func (G *Gologin) Create() error {
 }
 
 func (G *Gologin) Start() (string, error) {
-	for {
-		resp, err := G.Client.Post(fmt.Sprintf("%s/browser/start-profile", gologinendpoint), "application/json", strings.NewReader(fmt.Sprintf(`{"profileId": "%s","sync": true}`, G.UUID)))
-		if err != nil {
-			log.Println(err.Error())
-			time.Sleep(500 * time.Millisecond)
-			continue
-		}
-		defer resp.Body.Close()
+	resp, err := G.Client.Post(fmt.Sprintf("%s/browser/start-profile", gologinendpoint), "application/json", strings.NewReader(fmt.Sprintf(`{"profileId": "%s","sync": true}`, G.UUID)))
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
 
-		body, err := io.ReadAll(resp.Body)
-		if err != nil {
-			return "", err
-		}
-
-		var data GologinStartBrowserResponse
-		if err := json.Unmarshal(body, &data); err != nil {
-			return "", err
-		}
-
-		return data.WsUrl, nil
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return "", err
 	}
 
-	return "", fmt.Errorf("cant start")
+	var data GologinStartBrowserResponse
+	if err := json.Unmarshal(body, &data); err != nil {
+		return "", err
+	}
+
+	time.Sleep(1 * time.Second)
+
+	return data.WsUrl, nil
 }
 
 func (G *Gologin) Close() error {

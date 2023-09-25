@@ -1,6 +1,5 @@
 const dump = {
-    /*
-    "123": [
+    /*"123": [
         16,
         1024,
         4096,
@@ -37,20 +36,16 @@ const dump = {
         53,
         53,
         255
-    ],
-    */
-    /*
-    "513": [
-        "YUdN2adMWgtOxqZM",
+    ],*/
+   /* "513": [
+        "gTOXQZMYuDN2ADMW",
+        "b",
         "d",
-        "4",
-        "QZDEQZRLATWYT"
-    ],
-    */
-    /*
-    "687": [
-        "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+        "ZSLXLBRUWYKPV"
+    ],*/
+  /*  "687": [
+        "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
         8,
         16,
         "fr-FR",
@@ -63,9 +58,9 @@ const dump = {
         "Win32",
         null,
         [
-            "Google Chrome 116",
+            "Google Chrome 117",
             "Not;A=Brand 8",
-            "Chromium 116"
+            "Chromium 117"
         ],
         false,
         "Windows",
@@ -73,16 +68,15 @@ const dump = {
         5,
         true,
         false,
-        0,
+        50,
         false,
         false,
         true,
         "[object Keyboard]",
         false,
         false
-    ],
-    */
-    //"701": 1116,
+    ],*/
+   // "701": 1116,
     "787": [
         "Europe/Paris",
         -60,
@@ -91,26 +85,25 @@ const dump = {
         "heure d’été d’Europe centrale",
         "fr"
     ],
-    /*
-    "820": [
+   /* "820": [
         [
-            211,
+            242,
             [
-                211,
-                211,
-                211,
+                242,
+                242,
+                242,
                 255,
-                211,
-                211,
-                211,
+                242,
+                242,
+                242,
                 255,
-                211,
-                211,
-                211,
+                242,
+                242,
+                242,
                 255,
-                211,
-                211,
-                211,
+                242,
+                242,
+                242,
                 255
             ]
         ],
@@ -208,32 +201,23 @@ const dump = {
                 ]
             ]
         ]
-    ],
-    */
-    //"845": 9446.59999999404,
-    /*
-    "935": [
-        "e3RXdQzkMlulz35Ge=ok",
+    ],*/
+   // "845": 8243,
+    /*"935": [
+        "5GE=okE3rXDQzkMlulz3",
         "5",
-        "3",
-        "QHAUUUQQJSZVI"
-    ],
-    */
-    /*
-    "59f": 57,
+        "11",
+        "YHZDEQHDSRZCU"
+    ],*/
+   /* "59f": 57,
     "1ab": [
         "-0.7108118501064332,1.9275814160560204e-50,-0.7181630308570678,1.6182817135715877",
         37,
         "toString() radix argument must be between 2 and 36",
         "Invalid array length"
-    ],
-    */
-    /*
-    "46e": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAR9JREFUOE/N1MEqRVEUxvHfHRoYMZOSiaEH8AgewAAzpZBShpQYGijFC2DgDTCVBzA08QbGplo6S7vt3NqnrnJGp9Na3/p/69v7jEz4GU1YzxDBFVxhDbM4xjo+Sqghgk1mUnAGd13HFo6w0BEEzT128VKpBmU877jFRgoudU3LeO1svRXN2XhWfIueExxiFTfx3md5qiu6LvYTzZfYRw6KIUGWzr5nlYJRcNoRPOEBF2Mok25vXCghNocDfKJMNIlKkZ0+uiTssxO2g+65shSDpzGPX3QpGDSbBV26jDO2iDqISPy83l02xQ6HCObxiiH1EfoJZYjlJsFQrkMJu7GG+mo1C2YI290uHvvuKZoFm+5pS9Gf/RxahjfV/H/CL60pQ+2uFC+LAAAAAElFTkSuQmCC",
-    */
-
-    /*
-    "8f4": [
+    ],*/
+    /*"46e": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAR9JREFUOE/N1MEqRVEUxvHfHRoYMZOSiaEH8AgewAAzpZBShpQYGijFC2DgDTCVBzA08QbGplo6S7vt3NqnrnJGp9Na3/p/69v7jEz4GU1YzxDBFVxhDbM4xjo+Sqghgk1mUnAGd13HFo6w0BEEzT128VKpBmU877jFRgoudU3LeO1svRXN2XhWfIueExxiFTfx3md5qiu6LvYTzZfYRw6KIUGWzr5nlYJRcNoRPOEBF2Mok25vXCghNocDfKJMNIlKkZ0+uiTssxO2g+65shSDpzGPX3QpGDSbBV26jDO2iDqISPy83l02xQ6HCObxiiH1EfoJZYjlJsFQrkMJu7GG+mo1C2YI290uHvvuKZoFm+5pS9Gf/RxahjfV/H/CL60pQ+2uFC+LAAAAAElFTkSuQmCC",*/
+  /*  "8f4": [
         14,
         4,
         1,
@@ -242,9 +226,6 @@ const dump = {
         4,
         44.2890625
     ],
-    */
-
-    /*
     "7ac": [
         274.609375,
         266,
@@ -444,8 +425,8 @@ const dump = {
         -20.710678100585938,
         0,
         0,
-        520,
-        636,
+        300,
+        150,
         false,
         [
             0,
@@ -458,8 +439,6 @@ const dump = {
             75
         ]
     ],
-    */
-    /*
     "0fe": [
         [
             "HTML",
@@ -503,74 +482,6 @@ const dump = {
         ],
         [
             "DIV",
-            1
-        ],
-        [
-            "DIV",
-            1
-        ],
-        [
-            "DIV",
-            4
-        ],
-        [
-            "DIV",
-            2
-        ],
-        [
-            "H2",
-            0
-        ],
-        [
-            "DIV",
-            0
-        ],
-        [
-            "DIV",
-            1
-        ],
-        [
-            "DIV",
-            3
-        ],
-        [
-            "DIV",
-            1
-        ],
-        [
-            "DIV",
-            0
-        ],
-        [
-            "DIV",
-            1
-        ],
-        [
-            "DIV",
-            0
-        ],
-        [
-            "DIV",
-            1
-        ],
-        [
-            "DIV",
-            0
-        ],
-        [
-            "CANVAS",
-            0
-        ],
-        [
-            "DIV",
-            2
-        ],
-        [
-            "DIV",
-            0
-        ],
-        [
-            "SPAN",
             0
         ],
         [
@@ -1939,42 +1850,10 @@ const dump = {
         ],
         [
             "DIV",
-            1
-        ],
-        [
-            "svg",
-            3
-        ],
-        [
-            "circle",
-            0
-        ],
-        [
-            "circle",
-            0
-        ],
-        [
-            "circle",
             0
         ],
         [
             "DIV",
-            1
-        ],
-        [
-            "svg",
-            3
-        ],
-        [
-            "circle",
-            0
-        ],
-        [
-            "circle",
-            0
-        ],
-        [
-            "circle",
             0
         ],
         [
@@ -1995,34 +1874,10 @@ const dump = {
         ],
         [
             "DIV",
-            1
-        ],
-        [
-            "svg",
-            2
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
             0
         ],
         [
             "DIV",
-            1
-        ],
-        [
-            "svg",
-            2
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
             0
         ],
         [
@@ -2035,243 +1890,11 @@ const dump = {
         ],
         [
             "DIV",
-            1
-        ],
-        [
-            "svg",
-            53
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
-            0
-        ],
-        [
-            "path",
             0
         ],
         [
             "DIV",
             3
-        ],
-        [
-            "DIV",
-            1
-        ],
-        [
-            "DIV",
-            0
-        ],
-        [
-            "DIV",
-            1
-        ],
-        [
-            "DIV",
-            2
         ],
         [
             "DIV",
@@ -2331,26 +1954,10 @@ const dump = {
         ],
         [
             "DIV",
-            1
-        ],
-        [
-            "svg",
-            1
-        ],
-        [
-            "path",
             0
         ],
         [
             "DIV",
-            1
-        ],
-        [
-            "svg",
-            1
-        ],
-        [
-            "path",
             0
         ],
         [
@@ -2361,7 +1968,7 @@ const dump = {
     "d02": [
         [
             [
-                "https://newassets.hcaptcha.com/captcha/v1/12aefcf/hcaptcha.js",
+                "https://newassets.hcaptcha.com/captcha/v1/28ff887/hcaptcha.js",
                 0,
                 5
             ]
@@ -2374,8 +1981,6 @@ const dump = {
             ]
         ]
     ],
-    */
-
     "07c": [
         1,
         4,
@@ -2389,8 +1994,6 @@ const dump = {
         25,
         29
     ],
-
-    /*
     "2b7": [
         277114314453,
         277114314460,
@@ -2438,16 +2041,13 @@ const dump = {
         false,
         0,
         1,
-        1749,
-        1399,
+        1619,
+        951,
         true,
         true,
         true,
         false
     ],
-    */
-
-    /*
     "d97": {
         "ActiveBorder": "rgb(0, 0, 0)",
         "ActiveCaption": "rgb(0, 0, 0)",
@@ -2494,12 +2094,10 @@ const dump = {
         "small-caption": "12px \"Segoe UI\"",
         "status-bar": "12px \"Segoe UI\""
     },
-    */
     "89d": [
         "Arial",
         "\"Segoe UI\""
     ],
-    /*
     "19e": [
         "cssText",
         "length",
@@ -3124,50 +2722,35 @@ const dump = {
         "y",
         "zIndex",
         "zoom"
-    ],
+    ],*/
     "67e": 623,
-    */
     "b2e": "Europe/Paris",
-
-    /*
-    "63e": 1695226655095.8,
-    "ba2": [
-        [
-            "img:imgs.hcaptcha.com",
-            0,
-            35.44999999552965
-        ],
+    "63e": 1695578978334.8,
+    
+   /* "ba2": [
         [
             "navigation:newassets.hcaptcha.com",
-            0.09999999403953552,
-            8.299999997019768
+            14.700000000186265,
+            38.799999999813735
         ],
         [
             "script:newassets.hcaptcha.com",
-            9.25,
-            3.7999999970197678
-        ],
-        [
-            "xmlhttprequest:api2.hcaptcha.com",
-            0,
-            69.20000000298023
+            14.100000000093132,
+            30.350000000093132
         ],
         [
             "xmlhttprequest:hcaptcha.com",
             0,
-            222.5
+            43
         ]
-    ],
-    "8b0": 0.10000000894069672,
-    "61e": 30.399999998509884,
+    ],*/
+   /* "8b0": 14.700000000186265,
+    "61e": 38.60000000009313,
     "6f5": [
-        0.09999999403953552,
-        27
-    ],
-    */
-
-    /*
-    "7e0": [
+        0.09999999962747097,
+        31
+    ],*/
+   /* "7e0": [
         "Object",
         "Function",
         "Array",
@@ -4284,10 +3867,7 @@ const dump = {
         "webkitSpeechRecognitionEvent",
         "webkitRequestFileSystem",
         "webkitResolveLocalFileSystemURL"
-    ],
-    */
-
-    /*
+    ],*/
     "68c": [
         [
             "loadTimes",
@@ -4309,9 +3889,7 @@ const dump = {
         [
             "Raven",
             "_sharedLibs",
-            "hsw",
-            "__wdata",
-            "image_label_area_select"
+            "hsw"
         ],
         [
             [
@@ -4334,7 +3912,6 @@ const dump = {
         [],
         true
     ],
-
     "07a": [
         true,
         true,
@@ -4356,33 +3933,33 @@ const dump = {
         true,
         true
     ],
-    */
-
     /*
     "29e": [
         "Google Inc. (NVIDIA)",
         "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11)"
-    ],
+    ],*/
     
+    /*
     "e02": [
         [
-            "tCDlqUlCMYUIqnZnLwitjahGa6vGEOc0",
-            "13",
-            "3",
-            "YJEDXQTOIYRVJ"
+            "xboYfRRXUUjlCmyUSU2TMLwitjPd3dvR",
+            "8",
+            "1e",
+            "IJZAMXNGAZTFZ"
         ],
         [
-            "TjkjVRaV0VwITjOOKUfpVRXnKmLAJmLcLsDhUQ=O1mafTmpAJmLw2bFVzXwmKmLAJmLI3bFVzXwAJmLOVZufWEwnJWxeDmYUCULBJmLmDm2ADmYUiTQRfmYUYQhj0auLXywI",
-            "16",
+            "TjTFkTj5kRwITjomVQOlkTgnkmlAJmlY0UmFlS=k0mjFTmpAJmlUhEfVzXwmkmlAJmlegEfVzXwAJmlkkb3pga5nTSxedmyUSWuBJmlmdm2AdmyUyVZnemyUCTqteD3HMawI",
+            "5",
             "5e",
-            "JSKFYOSELMNSY"
+            "GMEDMGDDNHJMN"
         ]
     ],
+    */
     
-    "3a5": [
+    /*"3a5": [
         "Google Inc. (NVIDIA)",
         "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11)"
-    ],
+    ],*
     "b38": [
         [
             [
@@ -4633,9 +4210,9 @@ const dump = {
                 true
             ]
         ]
-    ],
-    "da4": true,
-    */
+    ],*/
+    
+    //"da4": true,
     "3c5": [
         0,
         1,
@@ -4664,8 +4241,8 @@ const dump = {
         2147483647,
         4294967294
     ],
-    /*
-    "b61": [
+    
+   /* "b61": [
         2147483647,
         2147483647,
         4294967294
@@ -4718,198 +4295,195 @@ const dump = {
             127,
             127
         ]
-    ],
-    */
-
+    ],*/
+    
     "f20": [
-         [
-             true,
-             "fr-FR",
-             true,
-             "Microsoft Hortense - French (France)",
-             "Microsoft Hortense - French (France)"
-         ],
-         [
-             false,
-             "fr-FR",
-             true,
-             "Microsoft Julie - French (France)",
-             "Microsoft Julie - French (France)"
-         ],
-         [
-             false,
-             "fr-FR",
-             true,
-             "Microsoft Paul - French (France)",
-             "Microsoft Paul - French (France)"
-         ],
-         [
-             false,
-             "de-DE",
-             false,
-             "Google Deutsch",
-             "Google Deutsch"
-         ],
-         [
-             false,
-             "en-US",
-             false,
-             "Google US English",
-             "Google US English"
-         ],
-         [
-             false,
-             "en-GB",
-             false,
-             "Google UK English Female",
-             "Google UK English Female"
-         ],
-         [
-             false,
-             "en-GB",
-             false,
-             "Google UK English Male",
-             "Google UK English Male"
-         ],
-         [
-             false,
-             "es-ES",
-             false,
-             "Google español",
-             "Google español"
-         ],
-         [
-             false,
-             "es-US",
-             false,
-             "Google español de Estados Unidos",
-             "Google español de Estados Unidos"
-         ],
-         [
-             false,
-             "fr-FR",
-             false,
-             "Google français",
-             "Google français"
-         ],
-         [
-             false,
-             "hi-IN",
-             false,
-             "Google हिन्दी",
-             "Google हिन्दी"
-         ],
-         [
-             false,
-             "id-ID",
-             false,
-             "Google Bahasa Indonesia",
-             "Google Bahasa Indonesia"
-         ],
-         [
-             false,
-             "it-IT",
-             false,
-             "Google italiano",
-             "Google italiano"
-         ],
-         [
-             false,
-             "ja-JP",
-             false,
-             "Google 日本語",
-             "Google 日本語"
-         ],
-         [
-             false,
-             "ko-KR",
-             false,
-             "Google 한국의",
-             "Google 한국의"
-         ],
-         [
-             false,
-             "nl-NL",
-             false,
-             "Google Nederlands",
-             "Google Nederlands"
-         ],
-         [
-             false,
-             "pl-PL",
-             false,
-             "Google polski",
-             "Google polski"
-         ],
-         [
-             false,
-             "pt-BR",
-             false,
-             "Google português do Brasil",
-             "Google português do Brasil"
-         ],
-         [
-             false,
-             "ru-RU",
-             false,
-             "Google русский",
-             "Google русский"
-         ],
-         [
-             false,
-             "zh-CN",
-             false,
-             "Google 普通话（中国大陆）",
-             "Google 普通话（中国大陆）"
-         ],
-         [
-             false,
-             "zh-HK",
-             false,
-             "Google 粤語（香港）",
-             "Google 粤語（香港）"
-         ],
-         [
-             false,
-             "zh-TW",
-             false,
-             "Google 國語（臺灣）",
-             "Google 國語（臺灣）"
-         ]
-     ],
-     "e03": [
-         [
-             true,
-             "fr-FR",
-             true,
-             "Microsoft Hortense - French (France)",
-             "Microsoft Hortense - French (France)"
-         ],
-         [
-             false,
-             "fr-FR",
-             true,
-             "Microsoft Julie - French (France)",
-             "Microsoft Julie - French (France)"
-         ],
-         [
-             false,
-             "fr-FR",
-             true,
-             "Microsoft Paul - French (France)",
-             "Microsoft Paul - French (France)"
-         ]
-     ],
-    /*"39b": [
+        [
+            true,
+            "fr-FR",
+            true,
+            "Microsoft Hortense - French (France)",
+            "Microsoft Hortense - French (France)"
+        ],
+        [
+            false,
+            "fr-FR",
+            true,
+            "Microsoft Julie - French (France)",
+            "Microsoft Julie - French (France)"
+        ],
+        [
+            false,
+            "fr-FR",
+            true,
+            "Microsoft Paul - French (France)",
+            "Microsoft Paul - French (France)"
+        ],
+        [
+            false,
+            "de-DE",
+            false,
+            "Google Deutsch",
+            "Google Deutsch"
+        ],
+        [
+            false,
+            "en-US",
+            false,
+            "Google US English",
+            "Google US English"
+        ],
+        [
+            false,
+            "en-GB",
+            false,
+            "Google UK English Female",
+            "Google UK English Female"
+        ],
+        [
+            false,
+            "en-GB",
+            false,
+            "Google UK English Male",
+            "Google UK English Male"
+        ],
+        [
+            false,
+            "es-ES",
+            false,
+            "Google español",
+            "Google español"
+        ],
+        [
+            false,
+            "es-US",
+            false,
+            "Google español de Estados Unidos",
+            "Google español de Estados Unidos"
+        ],
+        [
+            false,
+            "fr-FR",
+            false,
+            "Google français",
+            "Google français"
+        ],
+        [
+            false,
+            "hi-IN",
+            false,
+            "Google हिन्दी",
+            "Google हिन्दी"
+        ],
+        [
+            false,
+            "id-ID",
+            false,
+            "Google Bahasa Indonesia",
+            "Google Bahasa Indonesia"
+        ],
+        [
+            false,
+            "it-IT",
+            false,
+            "Google italiano",
+            "Google italiano"
+        ],
+        [
+            false,
+            "ja-JP",
+            false,
+            "Google 日本語",
+            "Google 日本語"
+        ],
+        [
+            false,
+            "ko-KR",
+            false,
+            "Google 한국의",
+            "Google 한국의"
+        ],
+        [
+            false,
+            "nl-NL",
+            false,
+            "Google Nederlands",
+            "Google Nederlands"
+        ],
+        [
+            false,
+            "pl-PL",
+            false,
+            "Google polski",
+            "Google polski"
+        ],
+        [
+            false,
+            "pt-BR",
+            false,
+            "Google português do Brasil",
+            "Google português do Brasil"
+        ],
+        [
+            false,
+            "ru-RU",
+            false,
+            "Google русский",
+            "Google русский"
+        ],
+        [
+            false,
+            "zh-CN",
+            false,
+            "Google 普通话（中国大陆）",
+            "Google 普通话（中国大陆）"
+        ],
+        [
+            false,
+            "zh-HK",
+            false,
+            "Google 粤語（香港）",
+            "Google 粤語（香港）"
+        ],
+        [
+            false,
+            "zh-TW",
+            false,
+            "Google 國語（臺灣）",
+            "Google 國語（臺灣）"
+        ]
+    ],
+    "e03": [
+        [
+            true,
+            "fr-FR",
+            true,
+            "Microsoft Hortense - French (France)",
+            "Microsoft Hortense - French (France)"
+        ],
+        [
+            false,
+            "fr-FR",
+            true,
+            "Microsoft Julie - French (France)",
+            "Microsoft Julie - French (France)"
+        ],
+        [
+            false,
+            "fr-FR",
+            true,
+            "Microsoft Paul - French (France)",
+            "Microsoft Paul - French (France)"
+        ]
+    ],
+    "39b": [
         0,
         1,
         2,
         3,
         4
-    ],*/
-
-    /*
-    "fd2": [
+    ],
+   /* "fd2": [
         0,
         11411,
         11411
@@ -4924,19 +4498,16 @@ const dump = {
         true,
         true,
         null
-    ],
-    */
-    /*  "1a3": [
-          "Windows",
-          "15.0.0",
-          null,
-          "64",
-          "x86",
-          "117.0.5938.88"
-      ],*/
-
-
-    "7ec": [
+    ],*/
+    /*"1a3": [
+        "Windows",
+        "15.0.0",
+        null,
+        "64",
+        "x86",
+        "117.0.5938.92"
+    ],*/
+    /*"7ec": [
         "granted",
         "TypeError",
         "TypeError",
@@ -4968,14 +4539,12 @@ const dump = {
         "TypeError",
         "denied"
     ],
-
     "7b7": [
         "denied",
         "denied"
-    ],
-    //"02f": 63
+    ],*/
+   // "02f": 79.59999999962747
 }
-
 
 var hsw = function () {
     "use strict";
@@ -7639,7 +7208,7 @@ var hsw = function () {
         return A instanceof Error ? A.name + ": " + A.message + "\n" + A.stack : D
     }
 
-    /* function EI(A, g, I, B) {
+     function EI(A, g, I, B) {
          var Q = {
              a: A,
              b: g,
@@ -7658,7 +7227,7 @@ var hsw = function () {
                  }
              };
          return C.original = Q, C
-     }*/
+     }
 
     let record_fp = []
 

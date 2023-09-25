@@ -314,6 +314,8 @@ func NewDolphin(UserAgent, Os string) (*Dolphin, error) {
 
 	vendor, renderer := getRandomVendorRenderer()
 
+	w, h := utils.GenerateRandomBrowserSize(500, 3500)
+
 	Self.Config = DolphinCreateBrowserPayload{
 		Useragent: Locale{
 			Mode:  "manual",
@@ -324,7 +326,7 @@ func NewDolphin(UserAgent, Os string) (*Dolphin, error) {
 		Name:        utils.GenerateRandomString(5),
 		BrowserType: "anty", // Browser type. Available values: ['anty']. really ?????
 		Webrtc: Webrtc{
-			Mode: "off",
+			Mode: "altered",
 		},
 		ProductSub:  "20030107",
 		Vendor:      "Google Inc.",
@@ -336,10 +338,11 @@ func NewDolphin(UserAgent, Os string) (*Dolphin, error) {
 			Mode: "noise",
 		},
 		Timezone: Locale{
-			Mode: "auto",
+			Mode:  "manual",
+			Value: "Europe/Paris",
 		},
 		Locale: Locale{
-			Mode: "auto",
+			Mode: "fr-FR",
 		},
 		WebglInfo: WebglInfo{
 			Mode:     "manual",
@@ -347,18 +350,31 @@ func NewDolphin(UserAgent, Os string) (*Dolphin, error) {
 			Renderer: renderer,
 		},
 		ClientRect: Audio{
-			Mode: "off",
+			Mode: "real",
 		},
 		Memory: CPU{
 			Mode:  "manual",
-			Value: randomElementInt([]int64{4, 6, 8, 12, 16, 32, 64}),
+			Value: randomElementInt([]int64{2, 4, 8, 16}),
 		},
 		CPU: CPU{
 			Mode:  "manual",
-			Value: randomElementInt([]int64{4, 6, 8, 12, 16, 32, 64}),
+			Value: randomElementInt([]int64{2, 4, 6, 8, 12, 16}),
 		},
 		Geolocation: Geolocation{
 			Mode: "auto",
+		},
+		Screen: Screen{
+			Mode:       "manual",
+			Resolution: fmt.Sprintf("%dx%d", w, h),
+		},
+		Audio: Audio{
+			Mode: "real",
+		},
+		MediaDevices: MediaDevices{
+			Mode:         "manual",
+			AudioInputs:  randomElementInt([]int64{0, 1, 2, 3}),
+			VideoInputs:  randomElementInt([]int64{1, 2, 3}),
+			AudioOutputs: randomElementInt([]int64{0, 1, 2, 3}),
 		},
 	}
 

@@ -1,12 +1,12 @@
 [engine]
-browserHswThreadCount =20
-browserCount = 3
+browserHswThreadCount = 20
+browserCount = 5
 rotation = 20
 rotation_wait = 15
 
 [browser]
-name = "gologin"
-useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+name = "dolphin"
+useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
 os = "win"
 headless = false
 

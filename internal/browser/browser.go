@@ -178,7 +178,7 @@ func (i *Instance) CloseInstance() error {
 }
 
 func (I *Instance) NavigateToDiscord() error {
-	if _, err := I.Page.Goto("https://discord.gg/yx2HWKwN", playwright.PageGotoOptions{
+	if _, err := I.Page.Goto("https://discord.gg/fBqaAEZu", playwright.PageGotoOptions{
 		Timeout:   playwright.Float(10000),
 		WaitUntil: playwright.WaitUntilStateDomcontentloaded,
 	}); err != nil {
