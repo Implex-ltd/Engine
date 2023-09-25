@@ -30,10 +30,10 @@ type DolphinCreateBrowserPayload struct {
 	Locale   Locale `json:"locale"`
 	//Proxy                   interface{}   `json:"proxy"`
 	//StatusID                int64         `json:"statusId"`
-	Geolocation Geolocation `json:"geolocation"`
-	CPU         CPU         `json:"cpu"`
-	Memory      CPU         `json:"memory"`
-	Screen                  Screen        `json:"screen"`
+	Geolocation  Geolocation  `json:"geolocation"`
+	CPU          CPU          `json:"cpu"`
+	Memory       CPU          `json:"memory"`
+	Screen       Screen       `json:"screen"`
 	Audio        Audio        `json:"audio"`
 	MediaDevices MediaDevices `json:"mediaDevices"`
 	Ports        Ports        `json:"ports"`

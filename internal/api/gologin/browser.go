@@ -57,7 +57,7 @@ func NewGologin(UserAgent, Os string) (*Gologin, error) {
 		Canvas: AudioContext{
 			Mode: "noise",
 		},
-		Fonts:  Fonts{
+		Fonts: Fonts{
 			EnableMasking: true,
 			EnableDOMRect: true,
 			Families:      fp.Fonts,
