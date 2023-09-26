@@ -3,163 +3,25 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Implex-ltd/engine/internal/crawler"
 	"log"
 	"math/rand"
 	"os"
 	"os/signal"
-	"sync"
 	"syscall"
 	"time"
 
-	"github.com/Implex-ltd/engine/internal/api"
 	"github.com/Implex-ltd/engine/internal/browser"
+	"github.com/Implex-ltd/engine/internal/crawler"
+	"github.com/Implex-ltd/engine/internal/pool"
+
+	"github.com/Implex-ltd/engine/internal/config"
 
 	"github.com/BurntSushi/toml"
 	"github.com/gofiber/fiber/v2"
 	"github.com/playwright-community/playwright-go"
-	"github.com/zenthangplus/goccm"
 )
 
-var (
-	pool []*browser.Instance
-	mt   = sync.Mutex{}
-	curr = 0
-)
-
-func next() *browser.Instance {
-	for {
-		if len(pool) == 0 {
-			continue
-		}
-
-		mt.Lock()
-		if curr >= len(pool) {
-			curr = 0
-		}
-
-		c := pool[curr]
-		curr++
-		mt.Unlock()
-
-		if !c.Online {
-			continue
-		}
-
-		return c
-	}
-}
-
-func initBrowser() {
-	c := goccm.New(Config.Engine.BrowserCount)
-
-	i := 0.0
-	j := 0
-	for {
-		c.Wait()
-
-		go func(i float64) {
-			defer c.Done()
-
-			br, err := api.GetBrowser(Config.Browser.Name, Config.Browser.Useragent, Config.Browser.Os)
-			if err != nil {
-				log.Println(err)
-				return
-			}
-
-			cdp, err := br.Start()
-			if err != nil {
-				log.Println(err)
-				return
-			}
-
-			client, err := browser.NewInstance(&browser.InstanceConfig{
-				Mock:     Config.Mock.BlockRegister,
-				IsRaw:    Config.Browser.Name == "gologinraw",
-				Spoof:    Config.Mock.InjectSpoof,
-				Headless: Config.Browser.Headless,
-				Threads:  Config.Engine.BrowserHswThreadCount,
-				Version:  Config.Mock.HswVersion,
-				CDP:      cdp,
-				Path:     cdp,
-				Inject:   Config.Mock.InjectHsw,
-				Hsj:      Config.Mock.EnableHsj,
-				API:      br,
-			})
-			if err != nil {
-				log.Println("NewInstance", err)
-				return
-			}
-
-			defer func(client *browser.Instance) {
-				err := client.CloseInstance()
-				if err != nil {
-					log.Println(err)
-				}
-			}(client)
-
-			mt.Lock()
-			pool = append(pool, client)
-			mt.Unlock()
-
-			defer func() {
-				mt.Lock()
-				defer mt.Unlock()
-
-				for i, c := range pool {
-					if c == client {
-						pool = append(pool[:i], pool[i+1:]...)
-						break
-					}
-				}
-			}()
-
-			if err := client.NavigateToDiscord(); err != nil {
-				log.Println("NavigateToDiscord", err)
-				return
-			}
-
-			if err := client.TriggerCaptcha(); err != nil {
-				log.Println("TriggerCaptcha", err)
-				return
-			}
-
-			log.Println("Hooked!")
-			client.Online = true
-
-			t := time.NewTicker(time.Second)
-			st := time.Now()
-			defer t.Stop()
-
-			for client.Online {
-				select {
-				case <-t.C:
-					if time.Since(st).Seconds() > (float64(Config.Engine.Rotation) + i) {
-						client.Online = false
-						log.Println("gracefully restarting")
-						break
-					}
-
-					if !client.Online {
-						client.Online = false
-						log.Println("browser crashed, restarting")
-						break
-					}
-				}
-			}
-
-			log.Println("not online")
-		}(i)
-
-		i += float64(Config.Engine.RotationWait)
-		j++
-
-		if j >= Config.Engine.BrowserCount {
-			i = 0.0
-			j = 0
-		}
-	}
-}
+var P = &pool.Pool{}
 
 func solveHandler(c *fiber.Ctx) error {
 	var b Payload
@@ -188,11 +50,23 @@ func solveHandler(c *fiber.Ctx) error {
 	}
 
 	t := time.Now()
-	currBrowser := next()
+	// Todo: add timeout
+	var br *browser.Instance
+	var err error
+	
+	for {
+		br, err = P.NextWorker()
+		if err != nil {
+			log.Println(err)
+			continue
+		}
 
-	pow, err := currBrowser.Hsw(b.Jwt, 10*time.Second)
+		break
+	}
+
+	pow, err := br.Hsw(b.Jwt, 10*time.Second)
 	if err != nil {
-		currBrowser.Online = false
+		br.Online = false
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"success": false,
 			"message": "cant eval",
@@ -220,7 +94,7 @@ func debug() {
 	}
 	lock := true
 
-	c := crawler.NewCrawler(Config.Mock.HswVersion, Config.Browser.Name, Config.Browser.Useragent, Config.Browser.Os, gotos, lock, Config.Mock.InjectSpoof, Config.Mock.EnableHsj, Config.Browser.Headless, Config.Mock.InjectHsw)
+	c := crawler.NewCrawler(gotos, lock)
 
 	out, err := c.Run()
 	log.Println(out)
@@ -231,20 +105,29 @@ func debug() {
 }
 
 func cgfHandler(c *fiber.Ctx) error {
-	return c.SendString(fmt.Sprintf(`{"useragent": "%s"}`, Config.Browser.Useragent))
+	return c.SendString(fmt.Sprintf(`{"useragent": "%s"}`, config.Config.Browser.Useragent))
 }
 
-func engine() {
-	go initBrowser()
+func engine() error {
+	var err error
+
+	P, err = pool.NewPool(config.Config.Engine.BrowserCount)
+	if err != nil {
+		return err
+	}
+
+	go P.Run()
 
 	app := fiber.New()
 	app.Post("/n", solveHandler)
 	app.Post("/config", cgfHandler)
 
-	err := app.Listen(fmt.Sprintf(`:%d`, Config.Server.Port))
+	err = app.Listen(fmt.Sprintf(`:%d`, config.Config.Server.Port))
 	if err != nil {
-		log.Fatalf("Error starting the server: %v", err)
+		return err
 	}
+
+	return nil
 }
 
 func main() {
@@ -256,7 +139,7 @@ func main() {
 	}
 	rand.New(rand.NewSource(time.Now().UnixNano()))
 
-	if _, err := toml.DecodeFile("../../scripts/config.toml", &Config); err != nil {
+	if _, err := toml.DecodeFile("../../scripts/config.toml", &config.Config); err != nil {
 		panic(err)
 	}
 
@@ -264,7 +147,11 @@ func main() {
 	case "debug":
 		go debug()
 	case "engine":
-		go engine()
+		go func() {
+			if err := engine(); err != nil {
+				panic(err)
+			}
+		}()
 	default:
 		panic("invalid args. use: debug, engine")
 	}
@@ -272,7 +159,7 @@ func main() {
 	interrupt := make(chan os.Signal, 1)
 	signal.Notify(interrupt, os.Interrupt, syscall.SIGTERM)
 
-	var wg sync.WaitGroup
+	/*var wg sync.WaitGroup
 
 	go func() {
 		<-interrupt
@@ -292,7 +179,7 @@ func main() {
 
 		wg.Wait()
 		os.Exit(0)
-	}()
+	}()*/
 
 	select {}
 }
