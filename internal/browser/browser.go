@@ -170,7 +170,7 @@ func (i *Instance) CloseInstance() error {
 		}
 	}
 
-	if len(errList) > 0 {
+	if len(errList) != 0 {
 		return fmt.Errorf("closing instance failed: %v", errList)
 	}
 
@@ -178,7 +178,7 @@ func (i *Instance) CloseInstance() error {
 }
 
 func (I *Instance) NavigateToDiscord() error {
-	if _, err := I.Page.Goto("https://discord.gg/fBqaAEZu", playwright.PageGotoOptions{
+	if _, err := I.Page.Goto("https://discord.gg/wR82V7Ae", playwright.PageGotoOptions{
 		Timeout:   playwright.Float(10000),
 		WaitUntil: playwright.WaitUntilStateDomcontentloaded,
 	}); err != nil {
@@ -279,13 +279,19 @@ func (I *Instance) Hsw(jwt string, timeoutDuration time.Duration) (string, error
 	errChan := make(chan error)
 
 	go func() {
+		if !I.Online {
+			errChan <- fmt.Errorf("browser isn't connected")
+		}
+
 		answer, err := I.Frame.Evaluate(fmt.Sprintf("hsw(`%s`)", jwt), playwright.ElementHandleInputValueOptions{
 			Timeout: playwright.Float(1500),
 		})
+
 		if err != nil {
 			errChan <- err
 			return
 		}
+
 		resultChan <- fmt.Sprintf("%s", answer)
 	}()
 
@@ -293,6 +299,7 @@ func (I *Instance) Hsw(jwt string, timeoutDuration time.Duration) (string, error
 	case result := <-resultChan:
 		return result, nil
 	case err := <-errChan:
+		I.Online = false
 		fmt.Println("eval err:", err)
 		return "", err
 	case <-time.After(timeoutDuration):

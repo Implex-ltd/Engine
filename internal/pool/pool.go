@@ -77,6 +77,7 @@ func (P *Pool) Worker() error {
 		API:      br,
 	})
 	if err != nil {
+		log.Println("non handled browser failure")
 		return err
 	}
 

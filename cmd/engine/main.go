@@ -7,6 +7,7 @@ import (
 	"math/rand"
 	"os"
 	"os/signal"
+	"sync"
 	"syscall"
 	"time"
 
@@ -53,11 +54,12 @@ func solveHandler(c *fiber.Ctx) error {
 	// Todo: add timeout
 	var br *browser.Instance
 	var err error
-	
+
 	for {
 		br, err = P.NextWorker()
 		if err != nil {
 			log.Println(err)
+			time.Sleep(time.Millisecond * 300)
 			continue
 		}
 
@@ -66,7 +68,6 @@ func solveHandler(c *fiber.Ctx) error {
 
 	pow, err := br.Hsw(b.Jwt, 10*time.Second)
 	if err != nil {
-		br.Online = false
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"success": false,
 			"message": "cant eval",
@@ -159,13 +160,13 @@ func main() {
 	interrupt := make(chan os.Signal, 1)
 	signal.Notify(interrupt, os.Interrupt, syscall.SIGTERM)
 
-	/*var wg sync.WaitGroup
+	var wg sync.WaitGroup
 
 	go func() {
 		<-interrupt
 		fmt.Println("\nExit...")
 
-		for _, br := range pool {
+		for _, br := range P.Workers {
 			wg.Add(1)
 			go func(b *browser.Instance) {
 				defer wg.Done()
@@ -179,7 +180,7 @@ func main() {
 
 		wg.Wait()
 		os.Exit(0)
-	}()*/
+	}()
 
 	select {}
 }
