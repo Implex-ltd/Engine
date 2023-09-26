@@ -1,7 +1,9 @@
 package api
 
 var AvailableBrowsers = map[string]BrowserConstructor{
+	"octo":       NewOctoConstructor,
 	"gologin":    NewGologinConstructor,
+	"dolphin":    NewDolphinConstructor,
 	"hidenium":   NewHideniumConstructor,
 	"gologinraw": NewGologinrawConstructor,
 }

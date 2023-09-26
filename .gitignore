@@ -25,3 +25,4 @@ assets
 .tmp
 .DS_Store
 .idea
+*.json

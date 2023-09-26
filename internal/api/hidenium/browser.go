@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/Implex-ltd/engine/internal/utils"
 	"io"
 	"net/http"
 	"time"
@@ -18,6 +19,8 @@ func NewHidenium(UserAgent, Os string) (*Hidenium, error) {
 		},
 	}
 
+	w, h := utils.GenerateRandomBrowserSize(500, 3500)
+
 	Self.Config = HideniumCreateBrowserPayload{
 		Os:                Os,
 		Version:           "116.0.5845.98",
@@ -29,7 +32,7 @@ func NewHidenium(UserAgent, Os string) (*Hidenium, error) {
 		ClientRectsEnable: "false",
 		NoiseFont:         "true",
 		Languages:         "fr-fr;q=0.9",
-		Resolution:        "1920x1080",
+		Resolution:        fmt.Sprintf("%dx%d", w, h),
 	}
 
 	return Self, nil
@@ -86,7 +89,7 @@ func (H *Hidenium) Close() error {
 	if err := H.Delete(); err != nil {
 		return err
 	}
-	
+
 	return nil
 }
 

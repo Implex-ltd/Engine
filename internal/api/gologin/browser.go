@@ -15,7 +15,8 @@ import (
 
 var (
 	gologinendpoint = "http://127.0.0.1:36912"
-	token           = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGZlOTYxNGI4NDU5YjYxYzc2ZGM0OWIiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2NGZlOTYxZWI4NDU5YjYyNTU2ZGM1NjUifQ.AqN21xvaANsyGV9oRdY6ME9BL-MvFIyFZ-eOCNyC5Ls" //"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGZjNWFlYTZhMWI0ZjQ2YmJhMzEwMTgiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2NGZjNWFmMDA1MDJkYjA3MTk0MDE3MDYifQ.d6DWwRrNLzYym8aJGQuoZBAHNxPH0CRSahKbRENqebU"
+	token           = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTBiNmM4MDQyMTExOTAzNzA2YjUyZmIiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2NTBiNmM4YTk1ZDViNDA3NDAzZDQxMTEifQ.dCl2O6p2DLuKn-NSfbazC60GrBElVahIFYDj_IuFLDY"
+	Limiter         = ratelimiter.NewLimiter(150, time.Minute)
 )
 
 func NewGologin(UserAgent, Os string) (*Gologin, error) {
@@ -23,7 +24,7 @@ func NewGologin(UserAgent, Os string) (*Gologin, error) {
 		Client: http.Client{
 			Timeout: 10 * time.Second,
 		},
-		Limiter: ratelimiter.NewLimiter(300, time.Minute),
+		Limiter: Limiter,
 	}
 
 	fp, err := Self.GetFingerprint(Os)
@@ -174,6 +175,8 @@ func (G *Gologin) Start() (string, error) {
 	if err := json.Unmarshal(body, &data); err != nil {
 		return "", err
 	}
+
+	time.Sleep(1 * time.Second)
 
 	return data.WsUrl, nil
 }
