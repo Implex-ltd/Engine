@@ -1,8 +1,8 @@
 [engine]
-browserHswThreadCount = 20
-browserCount = 6
-rotation = 15
-rotation_wait = 15
+browserHswThreadCount = 25
+browserCount = 7
+rotation = 20
+rotation_wait = 10
 
 [browser]
 name = "dolphin"

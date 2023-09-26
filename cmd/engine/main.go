@@ -59,7 +59,7 @@ func solveHandler(c *fiber.Ctx) error {
 		br, err = P.NextWorker()
 		if err != nil {
 			log.Println(err)
-			time.Sleep(time.Millisecond * 300)
+			time.Sleep(time.Millisecond * 800)
 			continue
 		}
 

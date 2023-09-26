@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"time"
 
@@ -104,8 +105,6 @@ func (D *Dolphin) Create() error {
 		return err
 	}
 
-	fmt.Println(string(Payload))
-
 	req, err := http.NewRequest("POST", "https://dolphin-anty-api.com/browser_profiles", bytes.NewReader(Payload))
 	if err != nil {
 		return err
@@ -128,6 +127,7 @@ func (D *Dolphin) Create() error {
 
 	var data DolphinCreateBrowserResponse
 	if err := json.Unmarshal(body, &data); err != nil {
+		log.Println(string(body))
 		return err
 	}
 

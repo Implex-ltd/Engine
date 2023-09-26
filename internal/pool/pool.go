@@ -52,7 +52,7 @@ func (P *Pool) AddWorker(w *browser.Instance) {
 	P.Workers = append(P.Workers, w)
 }
 
-func (P *Pool) Worker() error {
+func (P *Pool) Worker(i int) error {
 	br, err := api.GetBrowser(config.Config.Browser.Name, config.Config.Browser.Useragent, config.Config.Browser.Os)
 	if err != nil {
 		return err
@@ -110,7 +110,7 @@ func (P *Pool) Worker() error {
 		}
 
 		elapsedSeconds := time.Since(st).Seconds()
-		gracefulRestartThreshold := float64(config.Config.Engine.Rotation) + float64(len(P.Workers))
+		gracefulRestartThreshold := float64(config.Config.Engine.Rotation + i)
 
 		if elapsedSeconds > gracefulRestartThreshold {
 			client.Online = false
@@ -124,15 +124,21 @@ func (P *Pool) Worker() error {
 
 func (P *Pool) Run() {
 	c := goccm.New(P.Size)
+	i := 0
 
 	for {
 		c.Wait()
 
-		go func() {
+		go func(i int) {
 			defer c.Done()
-			if err := P.Worker(); err != nil {
-				log.Println(err)
+			if err := P.Worker(i); err != nil {
+				log.Println("worker exited with error:", err)
 			}
-		}()
+		}(i)
+
+		i++
+		if i > P.Size {
+			i = 0
+		}
 	}
 }

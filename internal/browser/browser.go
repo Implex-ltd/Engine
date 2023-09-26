@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/playwright-community/playwright-go"
+	"sync"
 )
 
 func NewInstance(config *InstanceConfig) (*Instance, error) {
@@ -134,6 +135,7 @@ func NewInstance(config *InstanceConfig) (*Instance, error) {
 		Manager: make(chan struct{}, config.Threads),
 		Ctx:     context,
 		API:     config.API,
+		HswMut:  &sync.Mutex{},
 	}, nil
 }
 
@@ -279,9 +281,14 @@ func (I *Instance) Hsw(jwt string, timeoutDuration time.Duration) (string, error
 	errChan := make(chan error)
 
 	go func() {
+		// ugly
+		I.HswMut.Lock()
 		if !I.Online {
+			I.HswMut.Unlock()
 			errChan <- fmt.Errorf("browser isn't connected")
+			return
 		}
+		I.HswMut.Unlock()
 
 		answer, err := I.Frame.Evaluate(fmt.Sprintf("hsw(`%s`)", jwt), playwright.ElementHandleInputValueOptions{
 			Timeout: playwright.Float(1500),

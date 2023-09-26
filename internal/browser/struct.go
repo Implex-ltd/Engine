@@ -1,6 +1,8 @@
 package browser
 
 import (
+	"sync"
+
 	"github.com/Implex-ltd/engine/internal/api"
 	"github.com/playwright-community/playwright-go"
 )
@@ -33,6 +35,7 @@ type Instance struct {
 	Online  bool
 	Ctx     playwright.BrowserContext
 	API     api.Browser
+	HswMut  *sync.Mutex
 }
 
 type InstanceConfig struct {
