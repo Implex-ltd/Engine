@@ -13,7 +13,7 @@ headless = false
 [mock]
 enable_hsj = false
 inject_hsw = false
-inject_spoof = false
+inject_spoof = true
 block_register = true
 hsw_version = "28ff887"
 
