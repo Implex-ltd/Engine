@@ -55,18 +55,26 @@ func solveHandler(c *fiber.Ctx) error {
 	var br *browser.Instance
 	var err error
 
-	for {
+	for time.Since(t).Seconds() < 10 {
 		br, err = P.NextWorker()
 		if err != nil {
 			log.Println(err)
-			time.Sleep(time.Millisecond * 800)
+			time.Sleep(time.Millisecond * 1200)
 			continue
 		}
 
 		break
 	}
 
-	pow, err := br.Hsw(b.Jwt, 10*time.Second)
+	if br == nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"success": false,
+			"message": "timeout",
+			"data":    err.Error(),
+		})
+	}
+
+	pow, err := br.Hsw(b.Jwt, 10*time.Second-time.Since(t))
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"success": false,
