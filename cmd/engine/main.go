@@ -129,7 +129,7 @@ func engine() error {
 
 	app := fiber.New()
 	app.Post("/n", solveHandler)
-	app.Post("/config", cgfHandler)
+	app.Get("/config", cgfHandler)
 
 	err = app.Listen(fmt.Sprintf(`:%d`, config.Config.Server.Port))
 	if err != nil {

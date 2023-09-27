@@ -9,12 +9,13 @@ const originalFillText = CanvasRenderingContext2D.prototype.fillText;
 const originalDrawImage = CanvasRenderingContext2D.prototype.drawImage;
 const originalfillRect = CanvasRenderingContext2D.prototype.fillRect;
 
+/*
 CanvasRenderingContext2D.prototype.fillText = function (text, x, y, maxWidth) {
     x += randomOffset(2);
     y += randomOffset(2);
     originalFillText.call(this, text, x, y, maxWidth);
 };
-
+*/
 CanvasRenderingContext2D.prototype.drawImage = function (img, sx, sy, sw, sh, dx, dy, dw, dh) {
     dx += randomOffset(4);
     dy += randomOffset(4);

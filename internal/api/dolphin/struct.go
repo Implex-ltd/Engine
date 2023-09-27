@@ -34,7 +34,7 @@ type DolphinCreateBrowserPayload struct {
 	CPU          CPU          `json:"cpu"`
 	Memory       CPU          `json:"memory"`
 	Screen       Screen       `json:"screen"`
-	Audio        Audio        `json:"audio"`
+	//Audio        Audio        `json:"audio"`
 	MediaDevices MediaDevices `json:"mediaDevices"`
 	Ports        Ports        `json:"ports"`
 	//DoNotTrack              int64         `json:"doNotTrack"`

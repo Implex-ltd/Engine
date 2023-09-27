@@ -85,9 +85,9 @@ func NewDolphin(UserAgent, Os string) (*Dolphin, error) {
 			Mode:       "manual",
 			Resolution: fmt.Sprintf("%dx%d", w, h),
 		},
-		Audio: Audio{
-			Mode: "real",
-		},
+		/*Audio: Audio{
+			Mode: "noise",
+		},*/
 		MediaDevices: MediaDevices{
 			Mode:         "manual",
 			AudioInputs:  utils.RandomElementInt([]int64{0, 1, 2, 3}),
