@@ -98,18 +98,21 @@ func solveHandler(c *fiber.Ctx) error {
 func debug() {
 	log.Println("ctrl+c to exit.")
 
-	gotos := []string{
-		"https://abrahamjuliot.github.io/creepjs/",
-	}
-	lock := true
+	for {
+		gotos := []string{
+			"http://localhost:5500/exec.html",
+			"http://localhost:5500/exec.html",
+		}
+		lock := false
 
-	c := crawler.NewCrawler(gotos, lock)
+		c := crawler.NewCrawler(gotos, lock)
 
-	out, err := c.Run()
-	log.Println(out)
+		out, err := c.Run()
+		log.Println(out)
 
-	if err != nil {
-		panic(err)
+		if err != nil {
+			panic(err)
+		}
 	}
 }
 

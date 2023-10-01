@@ -180,7 +180,7 @@ func (i *Instance) CloseInstance() error {
 }
 
 func (I *Instance) NavigateToDiscord() error {
-	if _, err := I.Page.Goto("https://discord.gg/wR82V7Ae", playwright.PageGotoOptions{
+	if _, err := I.Page.Goto("http://localhost:5500/exec.html", playwright.PageGotoOptions{
 		Timeout:   playwright.Float(10000),
 		WaitUntil: playwright.WaitUntilStateDomcontentloaded,
 	}); err != nil {

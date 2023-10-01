@@ -93,6 +93,8 @@ func (C *Crawler) Crawl(url string) error {
 	if C.lock {
 		select {}
 	}
+	
+	time.Sleep(time.Second * 5)
 
 	return nil
 }
