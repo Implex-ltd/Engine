@@ -102,6 +102,9 @@ func debug() {
 		gotos := []string{
 			"http://localhost:5500/exec.html",
 			"http://localhost:5500/exec.html",
+			"http://localhost:5500/exec.html",
+			"http://localhost:5500/exec.html",
+			"http://localhost:5500/exec.html",
 		}
 		lock := false
 
