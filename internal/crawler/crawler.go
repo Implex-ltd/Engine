@@ -94,6 +94,8 @@ func (C *Crawler) Crawl(url string) error {
 		select {}
 	}
 
+	time.Sleep(time.Second * 3)
+
 	return nil
 }
 

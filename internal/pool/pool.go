@@ -76,8 +76,10 @@ func (P *Pool) Worker(i int) error {
 		Hsj:      config.Config.Mock.EnableHsj,
 		API:      br,
 	})
+
 	if err != nil {
-		log.Println("non handled browser failure")
+		log.Println("* non handled browser failure")
+		br.Close()
 		return err
 	}
 

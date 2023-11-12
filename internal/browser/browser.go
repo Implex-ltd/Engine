@@ -180,7 +180,7 @@ func (i *Instance) CloseInstance() error {
 }
 
 func (I *Instance) NavigateToDiscord() error {
-	if _, err := I.Page.Goto("https://discord.gg/wR82V7Ae", playwright.PageGotoOptions{
+	if _, err := I.Page.Goto("http://localhost:5500/exec.html", playwright.PageGotoOptions{
 		Timeout:   playwright.Float(10000),
 		WaitUntil: playwright.WaitUntilStateDomcontentloaded,
 	}); err != nil {
@@ -289,11 +289,10 @@ func (I *Instance) Hsw(jwt string, timeoutDuration time.Duration) (string, error
 			return
 		}
 		I.HswMut.Unlock()
-
+		
 		answer, err := I.Frame.Evaluate(fmt.Sprintf("hsw(`%s`)", jwt), playwright.ElementHandleInputValueOptions{
 			Timeout: playwright.Float(1500),
 		})
-
 		if err != nil {
 			errChan <- err
 			return
